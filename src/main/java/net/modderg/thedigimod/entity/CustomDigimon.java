@@ -396,6 +396,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        player.sendSystemMessage(Component.literal(Integer.toString(this.ticksToShootAnim)));
         if (this.isTame() && this.getOwnerUUID().equals(player.getUUID()) && player.isShiftKeyDown()) {
             this.changeMovementID();
             this.switchNavigation(getMovementID());
