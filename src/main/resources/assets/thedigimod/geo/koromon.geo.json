@@ -1,0 +1,34 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "entity",
+					"pivot": [0, 0, 0.5]
+				},
+				{
+					"name": "body",
+					"parent": "entity",
+					"pivot": [0, 0, 0.5],
+					"cubes": [
+						{"origin": [-6, 0, -5.5], "size": [12, 4, 11], "uv": [8, 1]},
+						{"origin": [-6, 4, -4.5], "size": [12, 7, 10], "uv": [10, 21]},
+						{"origin": [-6, 14, -4.5], "size": [12, 0, 7], "inflate": 0.01, "pivot": [0, 11, -4.5], "rotation": [17.5, 0, 0], "uv": [13, 44]},
+						{"origin": [-6, 11, -4.5], "size": [12, 3, 0], "inflate": 0.01, "pivot": [0, 11, -4.5], "rotation": [17.5, 0, 0], "uv": [20, 51]},
+						{"origin": [-7, 11, 2.5], "size": [14, 3, 0], "inflate": 0.01, "pivot": [0, 11, -4.5], "rotation": [17.5, 0, 0], "uv": [18, 41]},
+						{"origin": [-6, 11, 2.5], "size": [12, 0, 3], "inflate": 0.01, "pivot": [0, 11, -4.5], "rotation": [17.5, 0, 0], "uv": [15, 57]}
+					]
+				}
+			]
+		}
+	]
+}
