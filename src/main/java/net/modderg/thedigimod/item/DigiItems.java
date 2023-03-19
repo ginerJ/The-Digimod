@@ -16,25 +16,25 @@ public class DigiItems {
 
     //Dims
     public static final RegistryObject<Item> BOTAMOND = ITEMS.register("botamond", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.KOROMONB.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.KOROMONB.get(), "Black Agumon"));
     public static final RegistryObject<Item> BOTAMON = ITEMS.register("botamon", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.KOROMON.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.KOROMON.get(), "Agumon"));
     public static final RegistryObject<Item> BUBBMON = ITEMS.register("bubbmon", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.MOCHIMON.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.MOCHIMON.get(), "Tentomon"));
     public static final RegistryObject<Item> PUNIMON = ITEMS.register("punimon", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.TSUNOMON.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.TSUNOMON.get(), "Bearmon"));
     public static final RegistryObject<Item> BUBBMONK = ITEMS.register("bubbmonk", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.MOCHIMONK.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.MOCHIMONK.get(), "Kunemon"));
     public static final RegistryObject<Item> JYARIMON = ITEMS.register("jyarimon", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.GIGIMON.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.GIGIMON.get(), "Guilmon"));
     public static final RegistryObject<Item> PETITMON = ITEMS.register("petitmon", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.BABYDMON.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.BABYDMON.get(), "Dracomon"));
     public static final RegistryObject<Item> PUYOMON = ITEMS.register("puyomon", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.PUYOYOMON.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.PUYOYOMON.get(), "Jellymon"));
     public static final RegistryObject<Item> DOKIMON = ITEMS.register("dokimon", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.BIBIMON.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.BIBIMON.get(), "Pulsemon"));
     public static final RegistryObject<Item> NYOKIMON = ITEMS.register("nyokimon", () -> new CustomDimItem(new Item.Properties().stacksTo(16)
-            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.YOKOMON.get()));
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.YOKOMON.get(), "Biyomon"));
 
     //Exp Items
     public static final RegistryObject<Item> DRAGON_DATA = ITEMS.register("dragon_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
