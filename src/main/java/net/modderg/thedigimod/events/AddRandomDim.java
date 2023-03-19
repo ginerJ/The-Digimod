@@ -23,7 +23,7 @@ public class AddRandomDim {
         return babies[randomIndex];
     }
 
-    static RegistryObject<?>[] babies = { DigiItems.BOTAMON,  DigiItems.DIMBEARMON, DigiItems.BUBBMON };
+    static RegistryObject<?>[] babies = { DigiItems.BOTAMON,  DigiItems.PUNIMON, DigiItems.BUBBMON };
 
     @Mod.EventBusSubscriber
     public class IniciarProcedure {
