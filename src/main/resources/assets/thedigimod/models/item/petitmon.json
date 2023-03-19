@@ -1,6 +1,6 @@
 {
   "parent" : "minecraft:item/generated",
   "textures" : {
-    "layer0" : "thedigimod:items/dim_jellymon"
+    "layer0" : "thedigimod:items/petitmon"
   }
 }

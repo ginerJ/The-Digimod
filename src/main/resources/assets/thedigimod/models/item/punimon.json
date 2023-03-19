@@ -1,6 +1,6 @@
 {
   "parent" : "minecraft:item/generated",
   "textures" : {
-    "layer0" : "thedigimod:items/dim_agumon_black"
+    "layer0" : "thedigimod:items/punimon"
   }
 }
