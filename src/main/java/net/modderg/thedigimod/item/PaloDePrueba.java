@@ -4,6 +4,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.modderg.thedigimod.particles.ModParticle;
 
 public class PaloDePrueba {
+
     private void spawnFoundParticles(UseOnContext pContext, BlockPos positionCliked){
         for(int i = 0 ; i < 360; i++){
             if(i % 20 == 0){
