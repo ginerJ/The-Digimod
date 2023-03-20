@@ -23,7 +23,6 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static net.minecraftforge.fml.loading.FMLLoader.eventBus;
 import static org.antlr.runtime.debug.DebugEventListener.PROTOCOL_VERSION;
 
 @Mod(TheDigiMod.MOD_ID)

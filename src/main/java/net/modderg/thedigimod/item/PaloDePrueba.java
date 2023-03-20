@@ -1,4 +1,4 @@
-package net.modderg.thedigimod.particles;
+package net.modderg.thedigimod.item;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.UseOnContext;

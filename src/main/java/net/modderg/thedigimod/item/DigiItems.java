@@ -59,4 +59,5 @@ public class DigiItems {
     //Food Items
     public static final RegistryObject<Item> DIGI_MEAT = ITEMS.register("digi_meat", () -> new Item(new Item.Properties().stacksTo(64)
             .tab(DigitalCreativeTab.DIGITAL_TAB)));
+
 }
