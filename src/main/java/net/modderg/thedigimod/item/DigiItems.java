@@ -6,6 +6,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.DigitalEntities;
+import net.modderg.thedigimod.particles.DigitalParticles;
 
 public class DigiItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TheDigiMod.MOD_ID);
@@ -59,5 +60,9 @@ public class DigiItems {
     //Food Items
     public static final RegistryObject<Item> DIGI_MEAT = ITEMS.register("digi_meat", () -> new Item(new Item.Properties().stacksTo(64)
             .tab(DigitalCreativeTab.DIGITAL_TAB)));
+
+    //Misc Items
+    public static final RegistryObject<Item> BLACK_DIGITRON = ITEMS.register("black_digitron", () -> new EvolutionTriggerItem(new Item.Properties().stacksTo(64)
+            .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalParticles.DIGITRON_PARTICLES));
 
 }

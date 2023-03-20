@@ -1,6 +1,5 @@
 package net.modderg.thedigimod.particles;
 
-import net.minecraft.core.particles.ParticleGroup;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -8,9 +7,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
-import org.apache.http.config.Registry;
 
-public class ModParticle {
+public class DigitalParticles {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
             DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES,TheDigiMod.MOD_ID);
 

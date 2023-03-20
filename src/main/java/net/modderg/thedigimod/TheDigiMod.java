@@ -17,7 +17,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import net.modderg.thedigimod.entity.digimons.*;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.item.DigiItems;
-import net.modderg.thedigimod.particles.ModParticle;
+import net.modderg.thedigimod.particles.DigitalParticles;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -37,7 +37,7 @@ public class TheDigiMod {
 
         DigiItems.ITEMS.register(bus);
         DigitalEntities.DIGIMONS.register(bus);
-        ModParticle.register(bus);
+        DigitalParticles.PARTICLE_TYPES.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
