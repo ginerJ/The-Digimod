@@ -17,11 +17,13 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import net.modderg.thedigimod.entity.digimons.*;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.item.DigiItems;
+import net.modderg.thedigimod.particles.ModParticle;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import static net.minecraftforge.fml.loading.FMLLoader.eventBus;
 import static org.antlr.runtime.debug.DebugEventListener.PROTOCOL_VERSION;
 
 @Mod(TheDigiMod.MOD_ID)
@@ -36,6 +38,7 @@ public class TheDigiMod {
 
         DigiItems.ITEMS.register(bus);
         DigitalEntities.DIGIMONS.register(bus);
+        ModParticle.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
