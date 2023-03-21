@@ -7,7 +7,7 @@ public class DigitalCreativeTab {
     public static final CreativeModeTab DIGITAL_TAB = new CreativeModeTab("digitaltab") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(DigiItems.VITRALBRACELET.get());
+            return new ItemStack(DigiItems.VITALBRACELET.get());
         }
     };
 }
