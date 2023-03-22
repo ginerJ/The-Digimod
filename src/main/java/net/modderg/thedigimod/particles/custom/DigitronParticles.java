@@ -17,7 +17,7 @@ public class DigitronParticles extends TextureSheetParticle {
         this.yd = yd;
         this.zd = zd;
         this.quadSize *= 0.85F;
-        this.Lifetime = 20;
+        this.Lifetime = 30;
         this.setSpriteFromAge(spriteSet);
 
         this.rCol = 1f;
