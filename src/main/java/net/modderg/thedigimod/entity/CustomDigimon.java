@@ -377,22 +377,11 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     }
 
     public int getNeededXp(){
+        int[] xpRequirements = {0, 5, 10, 15, 25, 50, 100};
         int i = getCurrentLevel();
-        if(i < 6){
-            return 5;
-        } else if(i < 11){
-            return 10;
-        } else if (i < 16){
-            return 15;
-        } else if (i < 21){
-            return 25;
-        } else if(i < 26){
-            return 50;
-        } else if(i < 31){
-            return 100;
-        }
-        return 1;
+        return (i >= 1 && i < xpRequirements.length) ? xpRequirements[i] : 1;
     }
+
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
