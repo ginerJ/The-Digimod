@@ -1,5 +1,7 @@
 package net.modderg.thedigimod.entity;
 
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -21,6 +23,7 @@ import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.modderg.thedigimod.goals.DigitalFollowOwnerGoal;
 import net.modderg.thedigimod.goals.DigitalMeleeAttackGoal;
@@ -37,6 +40,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.Objects;
 
+import static java.awt.SystemColor.text;
 import static software.bernie.geckolib3.util.GeckoLibUtil.createFactory;
 
 public class CustomDigimon extends TamableAnimal implements IAnimatable {
@@ -168,16 +172,25 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         return this.getEntityData().get(MOVEMENTID);
     }
     public void changeMovementID(){
-      int i = this.getMovementID();
-      if(i == 0){
-          setMovementID(1);
-      } else if(i == 1 && this.ISFLYINGDIGIMON()){
-          setMovementID(2);
-      } else if(i == 1 && !this.ISFLYINGDIGIMON()){
-          setMovementID(0);
-      } else if(i == 2){
-          setMovementID(0);
-      }
+        int i = this.getMovementID();
+        if(i == 0){
+            messageState("following");
+            setMovementID(1);
+        } else if(i == 1 && this.ISFLYINGDIGIMON()){
+            messageState("flying");
+            setMovementID(2);
+        } else if(i == 1 && !this.ISFLYINGDIGIMON()){
+            messageState("sitting");
+            setMovementID(0);
+        } else if(i == 2){
+            messageState("sitting");
+            setMovementID(0);
+        }
+    }
+    public void messageState(String txt){
+        if (this.getLevel() instanceof ServerLevel _level)
+            _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, this.position(), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+                    "title @r actionbar {\"text\":\"" + txt + "\"}");
     }
 
     //dragon-0 beast-1 insectplant-2 aquan-3 wind-4 machine-5 earth-6 nightmare-7 holy-8
