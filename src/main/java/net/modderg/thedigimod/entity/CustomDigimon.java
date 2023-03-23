@@ -253,7 +253,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     public int getCurrentLevel(){
         return this.getEntityData().get(CURRENTLEVEL);
     }
-//wq
+
     protected int evoCount = 0;
     public int getEvoCount() {
         return evoCount;
