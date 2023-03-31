@@ -1,13 +1,15 @@
 package net.modderg.thedigimod.events.client;
 
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.entity.renders.*;
 import net.modderg.thedigimod.projectiles.renders.CustomProjectileRender;
+
+import java.awt.font.FontRenderContext;
 
 @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 

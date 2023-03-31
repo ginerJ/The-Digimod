@@ -12,13 +12,11 @@ public class DigiItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TheDigiMod.MOD_ID);
 
     //Digivices
-    public static final RegistryObject<Item> VITALBRACELET = ITEMS.register("vitalbracelet", () -> new Item(new Item.Properties().stacksTo(1)
+    public static final RegistryObject<Item> VITALBRACELET = ITEMS.register("vitalbracelet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)
             .tab(DigitalCreativeTab.DIGITAL_TAB)));
-    public static final RegistryObject<Item> DIGIVICE = ITEMS.register("digivice", () -> new Item(new Item.Properties().stacksTo(1)
+    public static final RegistryObject<Item> DIGIVICE = ITEMS.register("digivice", () -> new DigiviceItem(new Item.Properties().stacksTo(1)
             .tab(DigitalCreativeTab.DIGITAL_TAB)));
-
-    //Vpets
-    public static final RegistryObject<Item> VPET = ITEMS.register("vpet", () -> new Item(new Item.Properties().stacksTo(1)
+    public static final RegistryObject<Item> VPET = ITEMS.register("vpet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)
             .tab(DigitalCreativeTab.DIGITAL_TAB)));
     //Dims
     public static final RegistryObject<Item> BOTAMOND = ITEMS.register("botamond", () -> new CustomDimItem(new Item.Properties().stacksTo(16)

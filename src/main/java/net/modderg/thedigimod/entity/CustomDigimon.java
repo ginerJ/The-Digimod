@@ -1,5 +1,7 @@
 package net.modderg.thedigimod.entity;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CompoundTag;
@@ -28,6 +30,7 @@ import net.minecraft.world.phys.Vec3;
 import net.modderg.thedigimod.goals.DigitalFollowOwnerGoal;
 import net.modderg.thedigimod.goals.DigitalMeleeAttackGoal;
 import net.modderg.thedigimod.item.DigiItems;
+import net.modderg.thedigimod.item.DigiviceItem;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -52,8 +55,8 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     public Boolean isUltimate(){return false;}
     public Boolean isMega(){return false;}
 
-    protected Boolean ISFLYINGDIGIMON(){return false;}
-    protected Boolean ISSWIMMERDIGIMON(){return false;}
+    protected Boolean isFlyingDigimon(){return false;}
+    protected Boolean isSwimmerDigimon(){return false;}
 
     public Boolean evolutionLevelAchieved(){return (isRookie() && this.getCurrentLevel() > 15) || (isBaby2() && this.getCurrentLevel() > 5);}
     public Boolean isEvolving() {
@@ -63,11 +66,6 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         return !(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-3D);
     }
 
-    @Override
-    public boolean doHurtTarget(Entity p_21372_) {
-        this.ticksToAttackAnim = 10;
-        return super.doHurtTarget(p_21372_);
-    }
     @Override
     public boolean canFallInLove() {
         return false;
@@ -147,19 +145,13 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
         return "??";
     }
-    public int getMoodColor(){
-        if(getMoodPoints() > 19200){
-            return 16761177;
-        } else if (getMoodPoints() > 14400){
-            return 16777088;
-        } else if (getMoodPoints() > 9600){
-            return 16646143;
-        } else if (getMoodPoints() > 0){
-            return 10262007;
-        } else if (getMoodPoints() == 0){
-            return 6579711;
-        }
-        return 16646143;
+    public int getMoodColor() {
+        int moodPoints = getMoodPoints();
+        if (moodPoints > 19200) return 16761177;
+        if (moodPoints > 14400) return 16777088;
+        if (moodPoints > 9600) return 16646143;
+        if (moodPoints > 0) return 10262007;
+        return 6579711;
     }
 
     protected static final EntityDataAccessor<Integer> MOVEMENTID = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
@@ -176,10 +168,10 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         if(i == 0){
             messageState("following");
             setMovementID(1);
-        } else if(i == 1 && this.ISFLYINGDIGIMON()){
+        } else if(i == 1 && this.isFlyingDigimon()){
             messageState("flying");
             setMovementID(2);
-        } else if(i == 1 && !this.ISFLYINGDIGIMON()){
+        } else if(i == 1 && !this.isFlyingDigimon()){
             messageState("sitting");
             setMovementID(0);
         } else if(i == 2){
@@ -188,9 +180,8 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
     }
     public void messageState(String txt){
-        if (this.getLevel() instanceof ServerLevel _level)
-            _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, this.position(), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                    "title @r actionbar {\"text\":\"" + txt + "\"}");
+        if (getOwner().getLevel().isClientSide && getOwner().getLevel() instanceof ClientLevel)
+            Minecraft.getInstance().gui.setOverlayMessage(Component.literal(txt), false);
     }
 
     //dragon-0 beast-1 insectplant-2 aquan-3 wind-4 machine-5 earth-6 nightmare-7 holy-8
@@ -216,6 +207,14 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     public int getSpecificXps(int i){
         String[]ss = this.getSpecificXps().split("-");
         return Integer.parseInt(ss[i]);
+    }
+
+    protected static final EntityDataAccessor<Integer> ATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
+    public void setAttackStat(int i){
+        this.getEntityData().set(ATTACK_STAT, i);
+    }
+    public int getAttackStat(){
+        return this.getEntityData().get(ATTACK_STAT);
     }
 
     protected static final EntityDataAccessor<Integer> EXPERIENCETOTAL = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
@@ -261,7 +260,6 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     public void setEvoCount(int e) {
         evoCount = e;
     }
-    protected int ticksToAttackAnim = 0;
 
     protected int ticksToShootAnim = this.random.nextInt(150, 250);
 
@@ -304,6 +302,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         this.entityData.define(EXPERIENCETOTAL, 0);
         this.entityData.define(SPECIFICXPS, "0-0-0-0-0-0-0-0-0");
         this.entityData.define(MOODPOINTS, 24000);
+        this.entityData.define(ATTACK_STAT, 1);
     }
 
     @Override
@@ -330,6 +329,9 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         if (compound.contains("MOODPOINTS")) {
             this.setMoodPoints(compound.getInt("MOODPOINTS"));
         }
+        if (compound.contains("ATTACK_STAT")) {
+            this.setAttackStat(compound.getInt("ATTACK_STAT"));
+        }
     }
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
@@ -341,6 +343,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         compound.putInt("EXPERIENCETOTAL", this.getExperienceTotal());
         compound.putString("SPECIFICXPS", this.getSpecificXps());
         compound.putInt("MOODPOINTS", this.getMoodPoints());
+        compound.putInt("ATTACK_STAT", this.getAttackStat());
     }
 
     public void evolveDigimon(){
@@ -398,6 +401,8 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        if (player.getItemInHand(hand).getItem() instanceof DigiviceItem && getOwner().getLevel().isClientSide && getOwner().getLevel() instanceof ClientLevel)
+            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("Attack: " + Integer.toString(getAttackStat())), false);
         if (this.isTame() && this.getOwnerUUID().equals(player.getUUID()) && player.isShiftKeyDown()) {
             this.changeMovementID();
             this.switchNavigation(getMovementID());
@@ -422,13 +427,9 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         restMoodPoints(1);
         if(getEvoCount() == 1){this.evolveDigimon();}
         evoCount = Math.max(evoCount - 1, 0);
-        ticksToAttackAnim--;
-        if(!this.isEvolving()){
-            if(this.isAggressive()){
-                ticksToShootAnim--;
-                if (ticksToShootAnim == 20) {
-                    doShoot(this);
-                }
+        if (!this.isEvolving() && this.isAggressive()) {
+            if (--ticksToShootAnim == 20) {
+                doShoot(this);
             }
             if (ticksToShootAnim == 0) {
                 ticksToShootAnim = this.random.nextInt(150, 250);

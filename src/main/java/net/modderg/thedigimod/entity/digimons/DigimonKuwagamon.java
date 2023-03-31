@@ -50,7 +50,7 @@ public class DigimonKuwagamon extends CustomDigimon {
     }
 
     @Override
-    protected Boolean ISFLYINGDIGIMON() {
+    protected Boolean isFlyingDigimon() {
         return true;
     }
 }

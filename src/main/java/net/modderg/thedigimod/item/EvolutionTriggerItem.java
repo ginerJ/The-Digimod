@@ -1,8 +1,6 @@
 package net.modderg.thedigimod.item;
 
-import com.mojang.brigadier.context.CommandContextBuilder;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -28,6 +26,7 @@ public class EvolutionTriggerItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack item, Player player, LivingEntity entity, InteractionHand hand) {
         if(entity instanceof CustomDigimon){
             spawnEvoParticles(new UseOnContext(player, hand, new BlockHitResult(entity.position(), player.getDirection(), entity.blockPosition(), true)), entity.blockPosition());
+
         }
         return super.interactLivingEntity(item, player, entity, hand);
     }

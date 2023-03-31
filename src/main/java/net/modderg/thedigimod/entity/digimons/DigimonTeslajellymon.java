@@ -51,7 +51,7 @@ public class DigimonTeslajellymon extends CustomDigimon {
     }
 
     @Override
-    protected Boolean ISFLYINGDIGIMON() {
+    protected Boolean isFlyingDigimon() {
         return true;
     }
 }
