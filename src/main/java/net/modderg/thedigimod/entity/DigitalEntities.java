@@ -8,6 +8,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.digimons.*;
+import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
+import net.modderg.thedigimod.entity.goods.PunchingBag;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 
 public class DigitalEntities {
@@ -215,10 +217,15 @@ public class DigitalEntities {
                     .sized(1.0f,2.0f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "darklizzardmon").toString()));
 
-    //attacks
+    //training goods
+    public static final RegistryObject<EntityType<PunchingBag>> PUNCHING_BAG = DIGIMONS.register("punching_bag",
+            () -> EntityType.Builder.of(PunchingBag:: new, MobCategory.MISC)
+                    .sized(1.0f,1.0f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "punching_bag").toString()));
 
+    //attacks
     public static final RegistryObject<EntityType<CustomProjectile>> BULLET = DIGIMONS.register("bullet",
             () -> EntityType.Builder.of(CustomProjectile:: new, MobCategory.MISC)
-                    .sized(1.0f,1.0f)
+                    .sized(1.0f,2.0f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "bullet").toString()));
 }

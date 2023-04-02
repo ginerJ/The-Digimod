@@ -2,14 +2,15 @@ package net.modderg.thedigimod.events.client;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.modderg.thedigimod.TheDigiMod;
+import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.DigitalEntities;
+import net.modderg.thedigimod.entity.goods.PunchingBagRender;
 import net.modderg.thedigimod.entity.renders.*;
 import net.modderg.thedigimod.projectiles.renders.CustomProjectileRender;
-
-import java.awt.font.FontRenderContext;
 
 @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 
@@ -57,6 +58,8 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.GREYMONVIRUS.get(), GreymonVirusRender::new);
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
+
+        event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), PunchingBagRender::new);
     }
     @SubscribeEvent
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
@@ -102,5 +105,6 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.DARKTYLIZZARDMON.get(), GreymonVirusRender::new);
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
+        event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), PunchingBagRender::new);
     }
 }

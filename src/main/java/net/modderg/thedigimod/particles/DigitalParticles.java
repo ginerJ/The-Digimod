@@ -14,7 +14,15 @@ public class DigitalParticles {
 
     public static final RegistryObject<SimpleParticleType> DIGITRON_PARTICLES =
             PARTICLE_TYPES.register( "digitron_particles", () -> new SimpleParticleType(true));
-    public static void register(IEventBus eventBus){
-        PARTICLE_TYPES.register(eventBus);
-    }
+
+    public static final RegistryObject<SimpleParticleType> ATTACK_UP =
+            PARTICLE_TYPES.register( "attack_up", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> DEFENCE_UP =
+            PARTICLE_TYPES.register( "defence_up", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> SPATTACK_UP =
+            PARTICLE_TYPES.register( "spattack_up", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> SPDEFENCE_UP =
+            PARTICLE_TYPES.register( "spdefence_up", () -> new SimpleParticleType(true));
+
+
 }

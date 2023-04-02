@@ -16,6 +16,7 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.modderg.thedigimod.entity.digimons.*;
 import net.modderg.thedigimod.entity.DigitalEntities;
+import net.modderg.thedigimod.entity.goods.PunchingBag;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.particles.DigitalParticles;
 
@@ -241,6 +242,8 @@ public class TheDigiMod {
         event.put(DigitalEntities.EXERMON.get(), DigimonExermon.setCustomAttributes().build());
         event.put(DigitalEntities.GREYMONVIRUS.get(), DigimonGreymonVirus.setCustomAttributes().build());
         event.put(DigitalEntities.DARKTYLIZZARDMON.get(), DigimonDarkLizzardmon.setCustomAttributes().build());
+
+        event.put(DigitalEntities.PUNCHING_BAG.get(), PunchingBag.setCustomAttributes().build());
     }
     public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, MOD_ID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
     private static int messageID = 0;

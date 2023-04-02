@@ -6,15 +6,15 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class DigitronParticles extends TextureSheetParticle {
+public class StatUpParticles extends TextureSheetParticle {
     private final int Lifetime;
 
-    protected DigitronParticles(ClientLevel level, double xCoord, double yCoord, double zCoord,
-                                SpriteSet spriteSet, double xd, double yd, double zd) {
+    protected StatUpParticles(ClientLevel level, double xCoord, double yCoord, double zCoord,
+                              SpriteSet spriteSet, double xd, double yd, double zd) {
         super(level, xCoord, yCoord, zCoord, xd, yd, zd);
         this.friction = 0.8F;
         this.xd = xd;
-        this.yd = 1.5d * yd;
+        this.yd = yd;
         this.zd = zd;
         this.quadSize *= 1F;
         this.Lifetime = 30;
@@ -50,7 +50,7 @@ public class DigitronParticles extends TextureSheetParticle {
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level,
                                        double x, double y, double z,
                                        double dx, double dy, double dz){
-            return  new DigitronParticles(level, x, y, z, this.sprites, dx, dy, dz);
+            return  new StatUpParticles(level, x, y, z, this.sprites, dx, dy, dz);
         }
     }
 }

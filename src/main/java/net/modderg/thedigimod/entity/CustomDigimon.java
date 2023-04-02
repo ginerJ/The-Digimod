@@ -1,15 +1,20 @@
 package net.modderg.thedigimod.entity;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -24,13 +29,20 @@ import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.RegistryObject;
+import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
 import net.modderg.thedigimod.goals.DigitalFollowOwnerGoal;
 import net.modderg.thedigimod.goals.DigitalMeleeAttackGoal;
+import net.modderg.thedigimod.gui.StatsScreen;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.DigiviceItem;
+import net.modderg.thedigimod.particles.DigitalParticles;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -41,6 +53,7 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import java.awt.*;
 import java.util.Objects;
 
 import static java.awt.SystemColor.text;
@@ -180,8 +193,9 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
     }
     public void messageState(String txt){
-        if (getOwner().getLevel().isClientSide && getOwner().getLevel() instanceof ClientLevel)
+        if (getOwner().getLevel().isClientSide && getOwner().getLevel() instanceof ClientLevel) {
             Minecraft.getInstance().gui.setOverlayMessage(Component.literal(txt), false);
+        }
     }
 
     //dragon-0 beast-1 insectplant-2 aquan-3 wind-4 machine-5 earth-6 nightmare-7 holy-8
@@ -210,11 +224,32 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     }
 
     protected static final EntityDataAccessor<Integer> ATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
+    protected static final EntityDataAccessor<Integer> DEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
+    protected static final EntityDataAccessor<Integer> SPATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
+    protected static final EntityDataAccessor<Integer> SPDEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
     public void setAttackStat(int i){
-        this.getEntityData().set(ATTACK_STAT, i);
+        this.getEntityData().set(ATTACK_STAT, Math.min(i, 999));
+    }
+    public void setDefenceStat(int i){
+        this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, 999));
+    }
+    public void setSpAttackStat(int i){
+        this.getEntityData().set(SPATTACK_STAT, Math.min(i, 999));
+    }
+    public void setSpDefenceStat(int i){
+        this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, 999));
     }
     public int getAttackStat(){
         return this.getEntityData().get(ATTACK_STAT);
+    }
+    public int getDefenceStat(){
+        return this.getEntityData().get(DEFENCE_STAT);
+    }
+    public int getSpAttackStat(){
+        return this.getEntityData().get(SPATTACK_STAT);
+    }
+    public int getSpDefenceStat(){
+        return this.getEntityData().get(SPDEFENCE_STAT);
     }
 
     protected static final EntityDataAccessor<Integer> EXPERIENCETOTAL = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
@@ -272,6 +307,15 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     }
 
     @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor p_146746_, DifficultyInstance p_146747_, MobSpawnType p_146748_, @Nullable SpawnGroupData p_146749_, @Nullable CompoundTag p_146750_) {
+        if(isFlyingDigimon() && this.getOwner() == null) {
+            setMovementID(2);
+            switchNavigation(2);
+        }
+        return super.finalizeSpawn(p_146746_, p_146747_, p_146748_, p_146749_, p_146750_);
+    }
+
+    @Override
     public void setCustomName(@Nullable Component component) {
         this.setNickName(component.getString());
         super.setCustomName(Component.literal(component.getString() +  " (" + Integer.toString(this.getCurrentLevel()) + "Lv)"));
@@ -303,6 +347,9 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         this.entityData.define(SPECIFICXPS, "0-0-0-0-0-0-0-0-0");
         this.entityData.define(MOODPOINTS, 24000);
         this.entityData.define(ATTACK_STAT, 1);
+        this.entityData.define(DEFENCE_STAT, 1);
+        this.entityData.define(SPATTACK_STAT, 1);
+        this.entityData.define(SPDEFENCE_STAT, 1);
     }
 
     @Override
@@ -332,6 +379,15 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         if (compound.contains("ATTACK_STAT")) {
             this.setAttackStat(compound.getInt("ATTACK_STAT"));
         }
+        if (compound.contains("DEFENCE_STAT")) {
+            this.setDefenceStat(compound.getInt("DEFENCE_STAT"));
+        }
+        if (compound.contains("SPATTACK_STAT")) {
+            this.setSpAttackStat(compound.getInt("SPATTACK_STAT"));
+        }
+        if (compound.contains("SPDEFENCE_STAT")) {
+            this.setSpDefenceStat(compound.getInt("SPDEFENCE_STAT"));
+        }
     }
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
@@ -344,6 +400,9 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         compound.putString("SPECIFICXPS", this.getSpecificXps());
         compound.putInt("MOODPOINTS", this.getMoodPoints());
         compound.putInt("ATTACK_STAT", this.getAttackStat());
+        compound.putInt("DEFENCE_STAT", this.getDefenceStat());
+        compound.putInt("SPATTACK_STAT", this.getSpAttackStat());
+        compound.putInt("SPDEFENCE_STAT", this.getSpDefenceStat());
     }
 
     public void evolveDigimon(){
@@ -398,11 +457,12 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         return (i >= 1 && i < xpRequirements.length) ? xpRequirements[i] : 1;
     }
 
+    private String lastStat = "";
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        if (player.getItemInHand(hand).getItem() instanceof DigiviceItem && getOwner().getLevel().isClientSide && getOwner().getLevel() instanceof ClientLevel)
-            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("Attack: " + Integer.toString(getAttackStat())), false);
+        if (player.getItemInHand(hand).getItem() instanceof DigiviceItem && this.getOwner() != null && getOwner().getLevel().isClientSide && getOwner().getLevel() instanceof ClientLevel)
+            this.showStats();
         if (this.isTame() && this.getOwnerUUID().equals(player.getUUID()) && player.isShiftKeyDown()) {
             this.changeMovementID();
             this.switchNavigation(getMovementID());
@@ -422,8 +482,19 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
     }
 
+    int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(), spdefence = this.getSpDefenceStat();
     @Override
     public void tick() {
+        if(attack != this.getAttackStat()){spawnStatUpParticles(DigitalParticles.ATTACK_UP);
+            attack = this.getAttackStat();}
+        if(defence != this.getDefenceStat()){spawnStatUpParticles(DigitalParticles.DEFENCE_UP);
+            defence = this.getDefenceStat();}
+        if(spattack != this.getSpAttackStat()){spawnStatUpParticles(DigitalParticles.SPATTACK_UP);
+            spattack = this.getSpAttackStat();}
+        if(spdefence != this.getSpDefenceStat()){spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP);
+            spdefence = this.getSpDefenceStat();
+        }
+
         restMoodPoints(1);
         if(getEvoCount() == 1){this.evolveDigimon();}
         evoCount = Math.max(evoCount - 1, 0);
@@ -462,6 +533,32 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
             }
         } else {
             super.travel(p_218382_);
+        }
+    }
+
+    public void showStats(){
+        if(lastStat.equals("spdefence")||lastStat.equals("")){
+            lastStat = "attack";
+            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("⚔ Attack: " + Integer.toString(getAttackStat()) + " ⚔").withStyle(style -> style.withColor(TextColor.fromRgb(0xFF0000))), false);
+        } else if (lastStat.equals("attack")){
+            lastStat = "defence";
+            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("\uD83D\uDEE1 Defence: " + Integer.toString(getDefenceStat()) + " \uD83D\uDEE1").withStyle(style -> style.withColor(TextColor.fromRgb(0x00FF00))), false);
+        } else if (lastStat.equals("defence")){
+            lastStat = "spattack";
+            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("\uD83C\uDFF9 Sp.Attack: " + Integer.toString(getSpAttackStat()) + " \uD83C\uDFF9").withStyle(style -> style.withColor(TextColor.fromRgb(0xFF69B4))), false);
+        } else if(lastStat.equals("spattack")){
+            lastStat = "spdefence";
+            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("⚙ Sp.Defence: " + Integer.toString(getSpDefenceStat()) + " ⚙").withStyle(style -> style.withColor(TextColor.fromRgb(0xADD8E6))), false);
+        }
+    }
+
+    public void spawnStatUpParticles(RegistryObject<SimpleParticleType> particle) {
+        for(int i = 0; i < 360; i++) {
+            if(i % 20 == 0) {
+                this.getLevel().addParticle(particle.get(),
+                        blockPosition().getX() + 0.75d, blockPosition().getY(), blockPosition().getZ() + 0.75d,
+                        Math.cos(i) * 0.15d, 0.15d, Math.sin(i) * 0.15d);
+            }
         }
     }
 
