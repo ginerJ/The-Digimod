@@ -30,6 +30,5 @@ public class DigitalEvents {
                 StatUpParticles.Provider::new);
         Minecraft.getInstance().particleEngine.register(DigitalParticles.SPDEFENCE_UP.get(),
                 StatUpParticles.Provider::new);
-
     }
 }

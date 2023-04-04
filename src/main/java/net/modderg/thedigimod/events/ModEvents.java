@@ -28,7 +28,7 @@ import net.modderg.thedigimod.TheDigiMod;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class Capabilities {
+public class ModEvents {
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
         TheDigiMod.addNetworkMessage(PlayerVariablesSyncMessage.class, PlayerVariablesSyncMessage::buffer, PlayerVariablesSyncMessage::new, PlayerVariablesSyncMessage::handler);

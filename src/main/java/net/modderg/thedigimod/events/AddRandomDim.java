@@ -39,10 +39,10 @@ public class AddRandomDim {
         private static void execute(@Nullable Event event, Entity entity) {
             if (entity == null)
                 return;
-            if ((entity.getCapability(Capabilities.PLAYER_VARIABLES_CAPABILITY, null).orElse(new Capabilities.PlayerVariables())).FirstJoin == false) {
+            if ((entity.getCapability(ModEvents.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModEvents.PlayerVariables())).FirstJoin == false) {
                 {
                     boolean _setval = true;
-                    entity.getCapability(Capabilities.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                    entity.getCapability(ModEvents.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                         capability.FirstJoin = _setval;
                         capability.syncPlayerVariables(entity);
                     });

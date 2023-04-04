@@ -1,6 +1,7 @@
 package net.modderg.thedigimod.item;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -67,5 +68,6 @@ public class DigiItems {
     //Misc Items
     public static final RegistryObject<Item> BLACK_DIGITRON = ITEMS.register("black_digitron", () -> new EvolutionTriggerItem(new Item.Properties().stacksTo(64)
             .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalParticles.DIGITRON_PARTICLES));
-
+    public static final RegistryObject<Item> BAG_ITEM = ITEMS.register("bag_item", () -> new SpawnGoodItem(DigitalEntities.PUNCHING_BAG.get(), 0x000000, 0xFFFFFF,new Item.Properties()
+            .stacksTo(64).tab(DigitalCreativeTab.DIGITAL_TAB)));
 }

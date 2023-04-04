@@ -44,6 +44,8 @@ public abstract class CustomDigimonRender<D extends CustomDigimon> extends GeoEn
         super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
     }
 
+
+
     protected String xpBarMath(int max, int current, int size){
         StringBuilder sb = new StringBuilder();
         int percentage = (size*(100*current/max))/100;

@@ -2,11 +2,9 @@ package net.modderg.thedigimod.events.client;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.modderg.thedigimod.TheDigiMod;
-import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.entity.goods.PunchingBagRender;
 import net.modderg.thedigimod.entity.renders.*;

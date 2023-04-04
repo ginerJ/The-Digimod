@@ -86,7 +86,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     @Override
     public boolean isFood(ItemStack item) {
         if(item.is(DigiItems.DIGI_MEAT.get())){
-            this.addMoodPoints(4800);
+            this.addMoodPoints(10);
             return true;
         }
         return false;
@@ -142,28 +142,26 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         this.getEntityData().set(MOODPOINTS, Math.max(this.getMoodPoints() - i,0));
     }
     public void addMoodPoints(int i){
-        this.getEntityData().set(MOODPOINTS, Math.min(this.getMoodPoints() + i,24000));
+        this.getEntityData().set(MOODPOINTS, Math.min(this.getMoodPoints() + i,250));
     }
     public String getMood(){
-        if(getMoodPoints() > 19200){
+        if(getMoodPoints() > 200){
             return "Joyful";
-        } else if (getMoodPoints() > 14400){
+        } else if (getMoodPoints() > 150){
             return "Happy";
-        } else if (getMoodPoints() > 9600){
+        } else if (getMoodPoints() > 100){
             return "Meh";
-        } else if (getMoodPoints() > 0){
+        } else if (getMoodPoints() > 50){
             return "Sad";
-        } else if (getMoodPoints() == 0){
-            return "Depressed";
         }
-        return "??";
+        return "Depressed";
     }
     public int getMoodColor() {
         int moodPoints = getMoodPoints();
-        if (moodPoints > 19200) return 16761177;
-        if (moodPoints > 14400) return 16777088;
-        if (moodPoints > 9600) return 16646143;
-        if (moodPoints > 0) return 10262007;
+        if (moodPoints > 200) return 16761177;
+        if (moodPoints > 150) return 16777088;
+        if (moodPoints > 100) return 16646143;
+        if (moodPoints > 50) return 10262007;
         return 6579711;
     }
 
@@ -223,13 +221,11 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         return Integer.parseInt(ss[i]);
     }
 
-    protected static final EntityDataAccessor<Integer> ATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    protected static final EntityDataAccessor<Integer> DEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    protected static final EntityDataAccessor<Integer> SPATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    protected static final EntityDataAccessor<Integer> SPDEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    public void setAttackStat(int i){
-        this.getEntityData().set(ATTACK_STAT, Math.min(i, 999));
-    }
+    protected static final EntityDataAccessor<Integer> ATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
+    DEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
+    SPATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
+    SPDEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
+    public void setAttackStat(int i){this.getEntityData().set(ATTACK_STAT, Math.min(i, 999));restMoodPoints(10);}
     public void setDefenceStat(int i){
         this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, 999));
     }
@@ -495,7 +491,6 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
             spdefence = this.getSpDefenceStat();
         }
 
-        restMoodPoints(1);
         if(getEvoCount() == 1){this.evolveDigimon();}
         evoCount = Math.max(evoCount - 1, 0);
         if (!this.isEvolving() && this.isAggressive()) {

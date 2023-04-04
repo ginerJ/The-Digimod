@@ -220,12 +220,12 @@ public class DigitalEntities {
     //training goods
     public static final RegistryObject<EntityType<PunchingBag>> PUNCHING_BAG = DIGIMONS.register("punching_bag",
             () -> EntityType.Builder.of(PunchingBag:: new, MobCategory.MISC)
-                    .sized(1.0f,1.0f)
+                    .sized(1.0f,2.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "punching_bag").toString()));
 
     //attacks
     public static final RegistryObject<EntityType<CustomProjectile>> BULLET = DIGIMONS.register("bullet",
             () -> EntityType.Builder.of(CustomProjectile:: new, MobCategory.MISC)
-                    .sized(1.0f,2.0f)
+                    .sized(1.0f,1.0f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "bullet").toString()));
 }
