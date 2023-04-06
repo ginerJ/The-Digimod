@@ -1,11 +1,13 @@
 package net.modderg.thedigimod.item;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
+import net.modderg.thedigimod.block.DigiBlocks;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.particles.DigitalParticles;
 
@@ -42,38 +44,38 @@ public class DigiItems {
             .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalEntities.YOKOMON.get(), "Biyomon"));
 
     //Exp Items
-    public static final RegistryObject<Item> DRAGON_DATA = ITEMS.register("dragon_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> DRAGON_DATA = ITEMS.register("dragon_data", () -> new CustomXpItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), 0));
-    public static final RegistryObject<Item> BEAST_DATA = ITEMS.register("beast_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> BEAST_DATA = ITEMS.register("beast_data", () -> new CustomXpItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), 1));
-    public static final RegistryObject<Item> PLANTINSECT_DATA = ITEMS.register("plantinsect_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> PLANTINSECT_DATA = ITEMS.register("plantinsect_data", () -> new CustomXpItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), 2));
-    public static final RegistryObject<Item> AQUAN_DATA = ITEMS.register("aquan_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> AQUAN_DATA = ITEMS.register("aquan_data", () -> new CustomXpItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), 3));
-    public static final RegistryObject<Item> WIND_DATA = ITEMS.register("wind_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> WIND_DATA = ITEMS.register("wind_data", () -> new CustomXpItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), 4));
-    public static final RegistryObject<Item> MACHINE_DATA = ITEMS.register("machine_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> MACHINE_DATA = ITEMS.register("machine_data", () -> new CustomXpItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), 5));
-    public static final RegistryObject<Item> EARTH_DATA = ITEMS.register("earth_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> EARTH_DATA = ITEMS.register("earth_data", () -> new CustomXpItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), 6));
-    public static final RegistryObject<Item> NIGHTMARE_DATA = ITEMS.register("nightmare_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> NIGHTMARE_DATA = ITEMS.register("nightmare_data", () -> new CustomXpItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), 7));
-    public static final RegistryObject<Item> HOLY_DATA = ITEMS.register("holy_data", () -> new CustomXpItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> HOLY_DATA = ITEMS.register("holy_data", () -> new CustomXpItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), 8));
 
     //Food Items
-    public static final RegistryObject<Item> DIGI_MEAT = ITEMS.register("digi_meat", () -> new Item(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> DIGI_MEAT = ITEMS.register("digi_meat", () -> new ItemNameBlockItem(DigiBlocks.MEAT_CROP.get(), new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB)));
 
     //Misc Items
-    public static final RegistryObject<Item> BLACK_DIGITRON = ITEMS.register("black_digitron", () -> new EvolutionTriggerItem(new Item.Properties().stacksTo(64)
+    public static final RegistryObject<Item> BLACK_DIGITRON = ITEMS.register("black_digitron", () -> new EvolutionTriggerItem(new Item.Properties()
             .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalParticles.DIGITRON_PARTICLES));
     public static final RegistryObject<Item> BAG_ITEM = ITEMS.register("bag_item", () -> new SpawnGoodItem(DigitalEntities.PUNCHING_BAG.get(), 0x000000, 0xFFFFFF,new Item.Properties()
-            .stacksTo(64).tab(DigitalCreativeTab.DIGITAL_TAB)));
+            .tab(DigitalCreativeTab.DIGITAL_TAB)));
     public static final RegistryObject<Item> TABLE_ITEM = ITEMS.register("table_item", () -> new SpawnGoodItem(DigitalEntities.SP_TABLE.get(), 0x000000, 0xFFFFFF,new Item.Properties()
-            .stacksTo(64).tab(DigitalCreativeTab.DIGITAL_TAB)));
+            .tab(DigitalCreativeTab.DIGITAL_TAB)));
     public static final RegistryObject<Item> TARGET_ITEM = ITEMS.register("target_item", () -> new SpawnGoodItem(DigitalEntities.SP_TARGET.get(), 0x000000, 0xFFFFFF,new Item.Properties()
-            .stacksTo(64).tab(DigitalCreativeTab.DIGITAL_TAB)));
+            .tab(DigitalCreativeTab.DIGITAL_TAB)));
     public static final RegistryObject<Item> SHIELD_ITEM = ITEMS.register("shield_item", () -> new SpawnGoodItem(DigitalEntities.SHIELD_STAND.get(), 0x000000, 0xFFFFFF,new Item.Properties()
-            .stacksTo(64).tab(DigitalCreativeTab.DIGITAL_TAB)));
+            .tab(DigitalCreativeTab.DIGITAL_TAB)));
 }

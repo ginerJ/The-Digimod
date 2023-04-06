@@ -1,5 +1,7 @@
 package net.modderg.thedigimod.events;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.network.PacketDistributor;
@@ -27,6 +29,7 @@ import net.minecraftforge.network.PacketDistributor;
         import net.minecraft.core.Direction;
         import net.minecraft.client.Minecraft;
 import net.modderg.thedigimod.TheDigiMod;
+import net.modderg.thedigimod.block.DigiBlocks;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
 import net.modderg.thedigimod.entity.goods.PunchingBag;
@@ -57,12 +60,16 @@ public class ModEvents {
             Minecraft.getInstance().particleEngine.register(DigitalParticles.EVO_PARTICLES.get(),
                     StatUpParticles.Provider::new);
         }
+        @SubscribeEvent
+        public static void onClientSetup(FMLCommonSetupEvent event) {
+            ItemBlockRenderTypes.setRenderLayer(DigiBlocks.MEAT_CROP.get(), RenderType.cutout());
+        }
     }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public class ModEventBusSubscriber {
     @SubscribeEvent
-    public static void init(FMLCommonSetupEvent event) {
+    public static void onSetUp(FMLCommonSetupEvent event) {
         TheDigiMod.addNetworkMessage(PlayerVariablesSyncMessage.class, PlayerVariablesSyncMessage::buffer, PlayerVariablesSyncMessage::new, PlayerVariablesSyncMessage::handler);
     }
 

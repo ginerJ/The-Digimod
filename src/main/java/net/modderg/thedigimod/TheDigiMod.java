@@ -14,6 +14,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
+import net.modderg.thedigimod.block.DigiBlocks;
 import net.modderg.thedigimod.entity.digimons.*;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.entity.goods.PunchingBag;
@@ -39,6 +40,7 @@ public class TheDigiMod {
         bus.addListener(this::setAttributes);
 
         DigiItems.ITEMS.register(bus);
+        DigiBlocks.BLOCKS.register(bus);
         DigitalEntities.DIGIMONS.register(bus);
         DigitalParticles.PARTICLE_TYPES.register(bus);
 
