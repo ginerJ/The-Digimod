@@ -17,46 +17,39 @@ import java.util.Random;
 
 public class AddRandomDim {
 
-    public static RegistryObject<?> chooseBaby(RegistryObject<?>[] babies) {
+    public static RegistryObject<?> chooseItem(RegistryObject<?>[] babies) {
         Random rand = new Random();
-        int randomIndex = rand.nextInt(babies.length);
-        return babies[randomIndex];
+        return babies[rand.nextInt(babies.length)];
     }
 
-    static RegistryObject<?>[] babies = { DigiItems.BOTAMON,  DigiItems.PUNIMON, DigiItems.BUBBMON };
+    static RegistryObject<?>[] babies = {DigiItems.BOTAMON,  DigiItems.PUNIMON, DigiItems.BUBBMON};
+    static RegistryObject<?>[] vices = {DigiItems.VPET,  DigiItems.DIGIVICE, DigiItems.VITALBRACELET};
 
     @Mod.EventBusSubscriber
     public class IniciarProcedure {
-        @SubscribeEvent
-        public static void onEntityJoin(EntityJoinLevelEvent event) {
-            execute(event, event.getEntity());
-        }
-
-        public static void execute(Entity entity) {
-            execute(null, entity);
-        }
 
         private static void execute(@Nullable Event event, Entity entity) {
             if (entity == null)
                 return;
-            if ((entity.getCapability(ModEvents.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModEvents.PlayerVariables())).FirstJoin == false) {
+            if (!(entity.getCapability(ModEvents.ModEventBusSubscriber.PLAYER_VARIABLES_CAPABILITY, null).orElse(new ModEvents.ModEventBusSubscriber.PlayerVariables())).FirstJoin) {
                 {
                     boolean _setval = true;
-                    entity.getCapability(ModEvents.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+                    entity.getCapability(ModEvents.ModEventBusSubscriber.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
                         capability.FirstJoin = _setval;
                         capability.syncPlayerVariables(entity);
                     });
                 }
                 if (entity instanceof Player _player) {
-                    RegistryObject<?> randomBaby = chooseBaby(babies);
-                    ItemStack _setstack = new ItemStack((ItemLike) randomBaby.get());
-                    _setstack.setCount(1);
+                    ItemStack _setstack = new ItemStack((ItemLike) chooseItem(babies).get());
                     ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
-                }
-                if (entity instanceof Player _player) {
-                    ItemStack _setstack = new ItemStack((DigiItems.DIGIVICE) .get());
-                    _setstack.setCount(1);
+                    _setstack = new ItemStack((ItemLike) chooseItem(vices).get());
                     ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+
+                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.BAG_ITEM.get()));
+                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.TABLE_ITEM.get()));
+                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.TARGET_ITEM.get()));
+                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.SHIELD_ITEM.get()));
+
                 }
             }
         }

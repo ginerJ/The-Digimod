@@ -70,4 +70,10 @@ public class DigiItems {
             .tab(DigitalCreativeTab.DIGITAL_TAB), DigitalParticles.DIGITRON_PARTICLES));
     public static final RegistryObject<Item> BAG_ITEM = ITEMS.register("bag_item", () -> new SpawnGoodItem(DigitalEntities.PUNCHING_BAG.get(), 0x000000, 0xFFFFFF,new Item.Properties()
             .stacksTo(64).tab(DigitalCreativeTab.DIGITAL_TAB)));
+    public static final RegistryObject<Item> TABLE_ITEM = ITEMS.register("table_item", () -> new SpawnGoodItem(DigitalEntities.SP_TABLE.get(), 0x000000, 0xFFFFFF,new Item.Properties()
+            .stacksTo(64).tab(DigitalCreativeTab.DIGITAL_TAB)));
+    public static final RegistryObject<Item> TARGET_ITEM = ITEMS.register("target_item", () -> new SpawnGoodItem(DigitalEntities.SP_TARGET.get(), 0x000000, 0xFFFFFF,new Item.Properties()
+            .stacksTo(64).tab(DigitalCreativeTab.DIGITAL_TAB)));
+    public static final RegistryObject<Item> SHIELD_ITEM = ITEMS.register("shield_item", () -> new SpawnGoodItem(DigitalEntities.SHIELD_STAND.get(), 0x000000, 0xFFFFFF,new Item.Properties()
+            .stacksTo(64).tab(DigitalCreativeTab.DIGITAL_TAB)));
 }

@@ -6,9 +6,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.DigitalEntities;
-import net.modderg.thedigimod.entity.goods.PunchingBagRender;
+import net.modderg.thedigimod.entity.goods.*;
 import net.modderg.thedigimod.entity.renders.*;
 import net.modderg.thedigimod.projectiles.renders.CustomProjectileRender;
+
 
 @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 
@@ -104,5 +105,8 @@ public class ClientEventBusSubscriber {
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
         event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), PunchingBagRender::new);
+        event.registerEntityRenderer(DigitalEntities.SP_TARGET.get(), SpTargetRender::new);
+        event.registerEntityRenderer(DigitalEntities.SP_TABLE.get(), SpTableBookRender::new);
+        event.registerEntityRenderer(DigitalEntities.SHIELD_STAND.get(), ShieldStandRender::new);
     }
 }

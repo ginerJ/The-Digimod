@@ -138,25 +138,10 @@ public class SpawnGoodItem extends Item {
         }
     }
 
-    public boolean spawnsEntity(@Nullable CompoundTag p_43231_, EntityType<?> p_43232_) {
-        return Objects.equals(this.getType(p_43231_), p_43232_);
-    }
-
-    public int getColor(int p_43212_) {
-        return p_43212_ == 0 ? this.backgroundColor : this.highlightColor;
-    }
-
-    /**
-     * @deprecated Forge: call {@link net.minecraftforge.common.ForgeSpawnEggItem#fromEntityType(EntityType)} instead
-     */
     @Deprecated
     @Nullable
     public static SpawnEggItem byId(@Nullable EntityType<?> p_43214_) {
         return BY_ID.get(p_43214_);
-    }
-
-    public static Iterable<SpawnEggItem> eggs() {
-        return Iterables.unmodifiableIterable(BY_ID.values());
     }
 
     public EntityType<?> getType(@Nullable CompoundTag p_43229_) {
@@ -168,40 +153,6 @@ public class SpawnGoodItem extends Item {
         }
 
         return this.defaultType;
-    }
-
-    public Optional<Mob> spawnOffspringFromSpawnEgg(Player p_43216_, Mob p_43217_, EntityType<? extends Mob> p_43218_, ServerLevel p_43219_, Vec3 p_43220_, ItemStack p_43221_) {
-        if (!this.spawnsEntity(p_43221_.getTag(), p_43218_)) {
-            return Optional.empty();
-        } else {
-            Mob mob;
-            if (p_43217_ instanceof AgeableMob) {
-                mob = ((AgeableMob) p_43217_).getBreedOffspring(p_43219_, (AgeableMob) p_43217_);
-            } else {
-                mob = p_43218_.create(p_43219_);
-            }
-
-            if (mob == null) {
-                return Optional.empty();
-            } else {
-                mob.setBaby(true);
-                if (!mob.isBaby()) {
-                    return Optional.empty();
-                } else {
-                    mob.moveTo(p_43220_.x(), p_43220_.y(), p_43220_.z(), 0.0F, 0.0F);
-                    p_43219_.addFreshEntityWithPassengers(mob);
-                    if (p_43221_.hasCustomHoverName()) {
-                        mob.setCustomName(p_43221_.getHoverName());
-                    }
-
-                    if (!p_43216_.getAbilities().instabuild) {
-                        p_43221_.shrink(1);
-                    }
-
-                    return Optional.of(mob);
-                }
-            }
-        }
     }
 }
 

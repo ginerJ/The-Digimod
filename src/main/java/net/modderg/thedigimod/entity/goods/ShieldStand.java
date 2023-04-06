@@ -7,8 +7,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
 
-public class PunchingBag extends CustomTrainingGood{
-    public PunchingBag(EntityType<? extends Animal> p_27557_, Level p_27558_) {
+public class ShieldStand extends CustomTrainingGood{
+    public ShieldStand(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
     }
 
@@ -23,6 +23,6 @@ public class PunchingBag extends CustomTrainingGood{
 
     @Override
     public String goodName() {
-        return "attack";
+        return "defence";
     }
 }

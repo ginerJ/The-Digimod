@@ -8,8 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.digimons.*;
-import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
-import net.modderg.thedigimod.entity.goods.PunchingBag;
+import net.modderg.thedigimod.entity.goods.*;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 
 public class DigitalEntities {
@@ -222,6 +221,22 @@ public class DigitalEntities {
             () -> EntityType.Builder.of(PunchingBag:: new, MobCategory.MISC)
                     .sized(1.0f,2.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "punching_bag").toString()));
+
+    public static final RegistryObject<EntityType<SpTarget>> SP_TARGET = DIGIMONS.register("target",
+            () -> EntityType.Builder.of(SpTarget:: new, MobCategory.MISC)
+                    .sized(1.0f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "target").toString()));
+
+    public static final RegistryObject<EntityType<SpTableBook>> SP_TABLE = DIGIMONS.register("defence_table",
+            () -> EntityType.Builder.of(SpTableBook:: new, MobCategory.MISC)
+                    .sized(1.0f,1.0f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "defence_table").toString()));
+
+    public static final RegistryObject<EntityType<ShieldStand>> SHIELD_STAND = DIGIMONS.register("shield",
+            () -> EntityType.Builder.of(ShieldStand:: new, MobCategory.MISC)
+                    .sized(1.0f,1.75f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "shield").toString()));
+
 
     //attacks
     public static final RegistryObject<EntityType<CustomProjectile>> BULLET = DIGIMONS.register("bullet",

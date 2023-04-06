@@ -1,4 +1,7 @@
 package net.modderg.thedigimod.events;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.network.PacketDistributor;
         import net.minecraftforge.network.NetworkEvent;
         import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -24,11 +27,48 @@ import net.minecraftforge.network.PacketDistributor;
         import net.minecraft.core.Direction;
         import net.minecraft.client.Minecraft;
 import net.modderg.thedigimod.TheDigiMod;
+import net.modderg.thedigimod.entity.CustomDigimon;
+import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
+import net.modderg.thedigimod.entity.goods.PunchingBag;
+import net.modderg.thedigimod.entity.goods.PunchingBagRender;
+import net.modderg.thedigimod.particles.DigitalParticles;
+import net.modderg.thedigimod.particles.custom.DigitronParticles;
+import net.modderg.thedigimod.particles.custom.StatUpParticles;
 
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEvents {
+    @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID)
+    public class ForgeBusEvents {
+        @SubscribeEvent
+        public static void hurt(LivingHurtEvent event) {
+            if(event.getEntity() instanceof PunchingBag good && event.getEntity().level instanceof ClientLevel){
+                good.setHitCount(20);
+            }
+        }
+    }
+
+    @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public class ModBusEvents {
+        @SubscribeEvent
+        public static void registerParticleFactories(final RegisterParticleProvidersEvent event){
+
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.DIGITRON_PARTICLES.get(),
+                    DigitronParticles.Provider::new);
+
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.ATTACK_UP.get(),
+                    StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.DEFENCE_UP.get(),
+                    StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.SPATTACK_UP.get(),
+                    StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.SPDEFENCE_UP.get(),
+                    StatUpParticles.Provider::new);
+        }
+    }
+
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    public class ModEventBusSubscriber {
     @SubscribeEvent
     public static void init(FMLCommonSetupEvent event) {
         TheDigiMod.addNetworkMessage(PlayerVariablesSyncMessage.class, PlayerVariablesSyncMessage::buffer, PlayerVariablesSyncMessage::new, PlayerVariablesSyncMessage::handler);
@@ -100,51 +140,52 @@ public class ModEvents {
         }
     }
 
-    public static class PlayerVariables {
-        public boolean FirstJoin = false;
+        public static class PlayerVariables {
+            public boolean FirstJoin = false;
 
-        public void syncPlayerVariables(Entity entity) {
-            if (entity instanceof ServerPlayer serverPlayer)
-                TheDigiMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new PlayerVariablesSyncMessage(this));
+            public void syncPlayerVariables(Entity entity) {
+                if (entity instanceof ServerPlayer serverPlayer)
+                    TheDigiMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new PlayerVariablesSyncMessage(this));
+            }
+
+            public Tag writeNBT() {
+                CompoundTag nbt = new CompoundTag();
+                nbt.putBoolean("FirstJoin", FirstJoin);
+                return nbt;
+            }
+
+            public void readNBT(Tag Tag) {
+                CompoundTag nbt = (CompoundTag) Tag;
+                FirstJoin = nbt.getBoolean("FirstJoin");
+            }
         }
 
-        public Tag writeNBT() {
-            CompoundTag nbt = new CompoundTag();
-            nbt.putBoolean("FirstJoin", FirstJoin);
-            return nbt;
-        }
+        public static class PlayerVariablesSyncMessage {
+            public PlayerVariables data;
 
-        public void readNBT(Tag Tag) {
-            CompoundTag nbt = (CompoundTag) Tag;
-            FirstJoin = nbt.getBoolean("FirstJoin");
-        }
-    }
+            public PlayerVariablesSyncMessage(FriendlyByteBuf buffer) {
+                this.data = new PlayerVariables();
+                this.data.readNBT(buffer.readNbt());
+            }
 
-    public static class PlayerVariablesSyncMessage {
-        public PlayerVariables data;
+            public PlayerVariablesSyncMessage(PlayerVariables data) {
+                this.data = data;
+            }
 
-        public PlayerVariablesSyncMessage(FriendlyByteBuf buffer) {
-            this.data = new PlayerVariables();
-            this.data.readNBT(buffer.readNbt());
-        }
+            public static void buffer(PlayerVariablesSyncMessage message, FriendlyByteBuf buffer) {
+                buffer.writeNbt((CompoundTag) message.data.writeNBT());
+            }
 
-        public PlayerVariablesSyncMessage(PlayerVariables data) {
-            this.data = data;
-        }
-
-        public static void buffer(PlayerVariablesSyncMessage message, FriendlyByteBuf buffer) {
-            buffer.writeNbt((CompoundTag) message.data.writeNBT());
-        }
-
-        public static void handler(PlayerVariablesSyncMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
-            NetworkEvent.Context context = contextSupplier.get();
-            context.enqueueWork(() -> {
-                if (!context.getDirection().getReceptionSide().isServer()) {
-                    PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
-                    variables.FirstJoin = message.data.FirstJoin;
-                }
-            });
-            context.setPacketHandled(true);
+            public static void handler(PlayerVariablesSyncMessage message, Supplier<NetworkEvent.Context> contextSupplier) {
+                NetworkEvent.Context context = contextSupplier.get();
+                context.enqueueWork(() -> {
+                    if (!context.getDirection().getReceptionSide().isServer()) {
+                        PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
+                        variables.FirstJoin = message.data.FirstJoin;
+                    }
+                });
+                context.setPacketHandled(true);
+            }
         }
     }
 }

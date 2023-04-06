@@ -225,9 +225,9 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     DEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
     SPATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
     SPDEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    public void setAttackStat(int i){this.getEntityData().set(ATTACK_STAT, Math.min(i, 999));restMoodPoints(10);}
+    public void setAttackStat(int i){this.getEntityData().set(ATTACK_STAT, Math.min(i, 999));}
     public void setDefenceStat(int i){
-        this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, 999));
+        this.getEntityData().set(DEFENCE_STAT, Math.min(i, 999));
     }
     public void setSpAttackStat(int i){
         this.getEntityData().set(SPATTACK_STAT, Math.min(i, 999));
@@ -341,7 +341,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         this.entityData.define(LEVELXP, 0);
         this.entityData.define(EXPERIENCETOTAL, 0);
         this.entityData.define(SPECIFICXPS, "0-0-0-0-0-0-0-0-0");
-        this.entityData.define(MOODPOINTS, 24000);
+        this.entityData.define(MOODPOINTS, 249);
         this.entityData.define(ATTACK_STAT, 1);
         this.entityData.define(DEFENCE_STAT, 1);
         this.entityData.define(SPATTACK_STAT, 1);
@@ -492,7 +492,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
 
         if(getEvoCount() == 1){this.evolveDigimon();}
-        evoCount = Math.max(evoCount - 1, 0);
+        if(evoCount > 0) evoCount--;
         if (!this.isEvolving() && this.isAggressive()) {
             if (--ticksToShootAnim == 20) {
                 doShoot(this);
