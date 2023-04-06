@@ -45,11 +45,13 @@ import net.modderg.thedigimod.item.DigiviceItem;
 import net.modderg.thedigimod.particles.DigitalParticles;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
@@ -225,15 +227,16 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     DEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
     SPATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
     SPDEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    public void setAttackStat(int i){this.getEntityData().set(ATTACK_STAT, Math.min(i, 999));}
+    public void setAttackStat(int i){
+        this.getEntityData().set(ATTACK_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));}
     public void setDefenceStat(int i){
-        this.getEntityData().set(DEFENCE_STAT, Math.min(i, 999));
+        this.getEntityData().set(DEFENCE_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));
     }
     public void setSpAttackStat(int i){
-        this.getEntityData().set(SPATTACK_STAT, Math.min(i, 999));
+        this.getEntityData().set(SPATTACK_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));
     }
     public void setSpDefenceStat(int i){
-        this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, 999));
+        this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));
     }
     public int getAttackStat(){
         return this.getEntityData().get(ATTACK_STAT);
@@ -270,7 +273,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         return this.getEntityData().get(LEVELXP);
     }
 
-    protected final int MAXLEVEL = 35;
+    protected final int MAXLEVEL = 30;
     protected static final EntityDataAccessor<Integer> CURRENTLEVEL = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
     public void addCurrentLevel(){
         this.getEntityData().set(CURRENTLEVEL, Math.min(getCurrentLevel() + 1, MAXLEVEL));
@@ -448,9 +451,8 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     }
 
     public int getNeededXp(){
-        int[] xpRequirements = {0, 5, 10, 15, 25, 50, 100};
         int i = getCurrentLevel();
-        return (i >= 1 && i < xpRequirements.length) ? xpRequirements[i] : 1;
+        return i <= 3 ? 2: (i <= 5 ? 5 : (i <= 10 ? 10:(i <= 15 ? 20:(i <= 20 ? 30: (i <= 30 ? 40: 50)))));
     }
 
     private String lastStat = "";
@@ -492,8 +494,11 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
 
         if(getEvoCount() == 1){this.evolveDigimon();}
-        if(evoCount > 0) evoCount--;
-        if (!this.isEvolving() && this.isAggressive()) {
+        if(evoCount > 0){
+            spawnEvoParticles(DigitalParticles.EVO_PARTICLES);
+            evoCount--;
+        }
+        if (!this.isEvolving() && this.isAggressive() && !(this.getTarget() instanceof CustomTrainingGood)) {
             if (--ticksToShootAnim == 20) {
                 doShoot(this);
             }
@@ -557,6 +562,16 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
     }
 
+    public void spawnEvoParticles(RegistryObject<SimpleParticleType> particle) {
+        for(int i = 0; i < 360; i++) {
+            if(random.nextInt(0,20) == 5) {
+                this.getLevel().addParticle(particle.get(),
+                        blockPosition().getX() + 0.75d, blockPosition().getY(), blockPosition().getZ() + 0.75d,
+                        Math.cos(i) * 0.3d, 0.15d + random.nextDouble()*0.1d, Math.sin(i) * 0.3d);
+            }
+        }
+    }
+
     public void doShoot(CustomDigimon entity){
         if(!this.getLevel().isClientSide()){
             CustomProjectile bullet = new CustomProjectile(DigitalEntities.BULLET.get(), entity.level);
@@ -586,13 +601,21 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
                             event.getController().setAnimation(new AnimationBuilder().addAnimation(digimon.IDLEANIM(), ILoopType.EDefaultLoopTypes.LOOP));
                         }
                     }
-
                 }
-            } else {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("show", ILoopType.EDefaultLoopTypes.LOOP));
-            }
+            } else
+            {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("show", ILoopType.EDefaultLoopTypes.LOOP));}
             return PlayState.CONTINUE;
         });
+    }
+
+    private PlayState attackPredicate(AnimationEvent event){
+        if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
+            event.getController().markNeedsReload();
+            event.getController().setAnimation(new AnimationBuilder().addAnimation(this.ATTACKANIM(), ILoopType.EDefaultLoopTypes.PLAY_ONCE));
+            this.swinging = false;
+        }
+        return PlayState.CONTINUE;
     }
 
     @Nullable
@@ -603,6 +626,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController(this, "attackController", 0,this::attackPredicate));
         data.addAnimationController(animController(this));
     }
 

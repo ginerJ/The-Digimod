@@ -24,5 +24,6 @@ public class DigitalParticles {
     public static final RegistryObject<SimpleParticleType> SPDEFENCE_UP =
             PARTICLE_TYPES.register( "spdefence_up", () -> new SimpleParticleType(true));
 
-
+    public static final RegistryObject<SimpleParticleType> EVO_PARTICLES =
+            PARTICLE_TYPES.register( "evolution_particles", () -> new SimpleParticleType(true));
 }

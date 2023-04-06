@@ -38,16 +38,6 @@ import net.modderg.thedigimod.particles.custom.StatUpParticles;
 import java.util.function.Supplier;
 
 public class ModEvents {
-    @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID)
-    public class ForgeBusEvents {
-        @SubscribeEvent
-        public static void hurt(LivingHurtEvent event) {
-            if(event.getEntity() instanceof PunchingBag good && event.getEntity().level instanceof ClientLevel){
-                good.setHitCount(20);
-            }
-        }
-    }
-
     @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public class ModBusEvents {
         @SubscribeEvent
@@ -63,6 +53,8 @@ public class ModEvents {
             Minecraft.getInstance().particleEngine.register(DigitalParticles.SPATTACK_UP.get(),
                     StatUpParticles.Provider::new);
             Minecraft.getInstance().particleEngine.register(DigitalParticles.SPDEFENCE_UP.get(),
+                    StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.EVO_PARTICLES.get(),
                     StatUpParticles.Provider::new);
         }
     }

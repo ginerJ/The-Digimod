@@ -14,11 +14,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
@@ -26,41 +28,11 @@ import static software.bernie.geckolib3.util.GeckoLibUtil.createFactory;
 
 public abstract class CustomTrainingGood extends Animal implements IAnimatable {
 
-    protected static final EntityDataAccessor<Integer> HITCOUNT = SynchedEntityData.defineId(CustomTrainingGood.class, EntityDataSerializers.INT);
-    public void setHitCount(int i){
-        this.getEntityData().set(HITCOUNT, i);
-    }
-    public int getHitCount(){
-        return this.getEntityData().get(HITCOUNT);
-    }
+    private boolean hitted = false;
 
     public CustomTrainingGood(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
         this.setCustomName(Component.literal("LOL"));
-    }
-
-    @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(HITCOUNT, 0);
-    }
-    @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-        if (compound.contains("HITCOUNT")) {
-            this.setHitCount(compound.getInt("HITCOUNT"));
-        }
-    }
-    @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-        compound.putInt("HITCOUNT", this.getHitCount());
-    }
-
-    @Override
-    public void tick() {
-        if(getHitCount() > 0) setHitCount(getHitCount()-1);
-        super.tick();
     }
 
     public String goodName(){
@@ -101,6 +73,7 @@ public abstract class CustomTrainingGood extends Animal implements IAnimatable {
 
     @Override
     protected void actuallyHurt(DamageSource p_21240_, float p_21241_) {
+        hitted = true;
         this.setHealth(getHealth()-1);
     }
 
@@ -119,9 +92,8 @@ public abstract class CustomTrainingGood extends Animal implements IAnimatable {
     protected AnimationFactory factory = createFactory(this);
 
     public static <T extends CustomTrainingGood & IAnimatable> AnimationController<T> animController(T good) {
-        return new AnimationController<>(good,"movement", 3, event ->{
-            if(good.getHitCount() > 0){event.getController().setAnimation(new AnimationBuilder().addAnimation("hit", ILoopType.EDefaultLoopTypes.LOOP));
-            } else {event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", ILoopType.EDefaultLoopTypes.LOOP));}
+        return new AnimationController<>(good,"movement", 0, event ->{
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", ILoopType.EDefaultLoopTypes.LOOP));
             return PlayState.CONTINUE;
         });
     }
