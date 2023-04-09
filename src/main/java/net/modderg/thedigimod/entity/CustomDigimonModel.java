@@ -2,10 +2,9 @@ package net.modderg.thedigimod.entity;
 
 import net.minecraft.resources.ResourceLocation;
 import net.modderg.thedigimod.TheDigiMod;
-import net.modderg.thedigimod.entity.digimons.DigimonGreymon;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class CustomDigimonModel<D extends CustomDigimon> extends AnimatedGeoModel<CustomDigimon> {
+public class CustomDigimonModel<D extends CustomDigimon> extends GeoModel<CustomDigimon> {
 
     @Override
     public ResourceLocation getModelResource(CustomDigimon digimon) {

@@ -12,6 +12,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -37,13 +39,13 @@ import java.util.Optional;
 
 
 public class SpawnGoodItem extends Item {
-    private static final Map<EntityType<? extends Mob>, SpawnEggItem> BY_ID = Maps.newIdentityHashMap();
+    private static final Map<EntityType<? extends Animal>, SpawnEggItem> BY_ID = Maps.newIdentityHashMap();
     private final int backgroundColor;
     private final int highlightColor;
-    private final EntityType<?> defaultType;
+    private final RegistryObject<? extends EntityType<?>> defaultType;
 
     @Deprecated
-    public SpawnGoodItem(EntityType<? extends Mob> p_43207_, int p_43208_, int p_43209_, Item.Properties p_43210_) {
+    public SpawnGoodItem(RegistryObject<? extends EntityType<?>> p_43207_, int p_43208_, int p_43209_, Item.Properties p_43210_) {
         super(p_43210_);
         this.defaultType = p_43207_;
         this.backgroundColor = p_43208_;
@@ -63,9 +65,9 @@ public class SpawnGoodItem extends Item {
             if (blockstate.is(Blocks.SPAWNER)) {
                 BlockEntity blockentity = level.getBlockEntity(blockpos);
                 if (blockentity instanceof SpawnerBlockEntity) {
-                    BaseSpawner basespawner = ((SpawnerBlockEntity) blockentity).getSpawner();
+                    SpawnerBlockEntity spawnerblockentity = (SpawnerBlockEntity)blockentity;
                     EntityType<?> entitytype1 = this.getType(itemstack.getTag());
-                    basespawner.setEntityId(entitytype1);
+                    spawnerblockentity.m_252803_(entitytype1, level.getRandom());
                     blockentity.setChanged();
                     level.sendBlockUpdated(blockpos, blockstate, blockstate, 3);
                     level.gameEvent(p_43223_.getPlayer(), GameEvent.BLOCK_CHANGE, blockpos);
@@ -148,11 +150,11 @@ public class SpawnGoodItem extends Item {
         if (p_43229_ != null && p_43229_.contains("EntityTag", 10)) {
             CompoundTag compoundtag = p_43229_.getCompound("EntityTag");
             if (compoundtag.contains("id", 8)) {
-                return EntityType.byString(compoundtag.getString("id")).orElse(this.defaultType);
+                return EntityType.byString(compoundtag.getString("id")).orElse(this.defaultType.get());
             }
         }
 
-        return this.defaultType;
+        return this.defaultType.get();
     }
 }
 

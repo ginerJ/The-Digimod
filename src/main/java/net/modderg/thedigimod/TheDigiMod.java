@@ -6,6 +6,7 @@ import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -20,7 +21,9 @@ import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.entity.goods.PunchingBag;
 import net.modderg.thedigimod.entity.goods.ShieldStand;
 import net.modderg.thedigimod.entity.goods.SpTableBook;
+import net.modderg.thedigimod.entity.goods.UpdateGood;
 import net.modderg.thedigimod.item.DigiItems;
+import net.modderg.thedigimod.item.DigitalCreativeTab;
 import net.modderg.thedigimod.particles.DigitalParticles;
 
 import java.util.function.BiConsumer;
@@ -45,6 +48,7 @@ public class TheDigiMod {
         DigitalParticles.PARTICLE_TYPES.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
+        bus.addListener(this::addCreativeTab);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -205,6 +209,40 @@ public class TheDigiMod {
                     Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
     }
 
+    private void addCreativeTab(CreativeModeTabEvent.BuildContents event){
+        if(event.getTab() == DigitalCreativeTab.DIGITAL_TAB){
+            event.accept(DigiItems.VITALBRACELET);
+            event.accept(DigiItems.DIGIVICE);
+            event.accept(DigiItems.VPET);
+            event.accept(DigiItems.BOTAMOND);
+            event.accept(DigiItems.BOTAMON);
+            event.accept(DigiItems.BUBBMON);
+            event.accept(DigiItems.PUNIMON);
+            event.accept(DigiItems.BUBBMONK);
+            event.accept(DigiItems.JYARIMON);
+            event.accept(DigiItems.PETITMON);
+            event.accept(DigiItems.PUYOMON);
+            event.accept(DigiItems.DOKIMON);
+            event.accept(DigiItems.NYOKIMON);
+            event.accept(DigiItems.DRAGON_DATA);
+            event.accept(DigiItems.BEAST_DATA);
+            event.accept(DigiItems.PLANTINSECT_DATA);
+            event.accept(DigiItems.AQUAN_DATA);
+            event.accept(DigiItems.WIND_DATA);
+            event.accept(DigiItems.MACHINE_DATA);
+            event.accept(DigiItems.EARTH_DATA);
+            event.accept(DigiItems.NIGHTMARE_DATA);
+            event.accept(DigiItems.HOLY_DATA);
+            event.accept(DigiItems.DIGI_MEAT);
+            event.accept(DigiItems.BLACK_DIGITRON);
+            event.accept(DigiItems.BAG_ITEM);
+            event.accept(DigiItems.TABLE_ITEM);
+            event.accept(DigiItems.TARGET_ITEM);
+            event.accept(DigiItems.SHIELD_ITEM);
+            event.accept(DigiItems.UPDATE_ITEM);
+        }
+    }
+
     private void setAttributes(final EntityAttributeCreationEvent event) {
         event.put(DigitalEntities.KOROMON.get(), DigimonKoromon.setCustomAttributes().build());
         event.put(DigitalEntities.KOROMONB.get(), DigimonKoromonB.setCustomAttributes().build());
@@ -251,6 +289,7 @@ public class TheDigiMod {
         event.put(DigitalEntities.SP_TARGET.get(), PunchingBag.setCustomAttributes().build());
         event.put(DigitalEntities.SP_TABLE.get(), SpTableBook.setCustomAttributes().build());
         event.put(DigitalEntities.SHIELD_STAND.get(), ShieldStand.setCustomAttributes().build());
+        event.put(DigitalEntities.UPDATE_GOOD.get(), UpdateGood.setCustomAttributes().build());
     }
     public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, MOD_ID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
     private static int messageID = 0;

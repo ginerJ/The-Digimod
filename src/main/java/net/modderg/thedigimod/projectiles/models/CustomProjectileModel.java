@@ -4,9 +4,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 import net.modderg.thedigimod.projectiles.PepperBreath;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class CustomProjectileModel<D extends CustomProjectile> extends AnimatedGeoModel<CustomProjectile> {
+public class CustomProjectileModel<D extends CustomProjectile> extends GeoModel<CustomProjectile> {
 
     @Override
     public ResourceLocation getModelResource(CustomProjectile projectile) {

@@ -12,19 +12,13 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.example.entity.GeoExampleEntity;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.object.PlayState;
 
-import static software.bernie.geckolib3.util.GeckoLibUtil.createFactory;
-
-public class CustomProjectile extends AbstractArrow implements IAnimatable {
+public class CustomProjectile extends AbstractArrow implements GeoEntity {
 
     protected String attack = "pepper_breath";
     public String getAttackName(){
@@ -73,20 +67,20 @@ public class CustomProjectile extends AbstractArrow implements IAnimatable {
         return null;
     }
 
-    protected AnimationFactory factory = createFactory(this);
+    protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
-    private <E extends IAnimatable> PlayState animController(AnimationEvent<E> event) {
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", ILoopType.EDefaultLoopTypes.LOOP));
+    private PlayState animController(AnimationState event) {
+        event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<CustomProjectile>(this, "controller", 0, this::animController));
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<CustomProjectile>(this, "controller", 0, this::animController));
     }
 
     @Override
-    public AnimationFactory getFactory() {
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.factory;
     }
 }

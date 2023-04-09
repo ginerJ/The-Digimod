@@ -99,7 +99,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.2.0'
+    minecraft 'net.minecraftforge:forge:1.19.3-44.1.0'
 }
 
 jar {
@@ -116,12 +116,11 @@ jar {
     }
 }
 
-repositories{
+repositories {
     maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
-    mavenCentral()
 }
-dependencies{
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.38')
+dependencies {
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19.3:4.0.4')
 }
 
 jar.finalizedBy('reobfJar')

@@ -3,9 +3,9 @@ package net.modderg.thedigimod.entity.goods;
 
 import net.minecraft.resources.ResourceLocation;
 import net.modderg.thedigimod.TheDigiMod;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class SpTargetModel<D extends SpTarget> extends AnimatedGeoModel<SpTarget> {
+public class SpTargetModel<D extends SpTarget> extends GeoModel<SpTarget> {
 
     @Override
     public ResourceLocation getModelResource(SpTarget p) {

@@ -237,6 +237,12 @@ public class DigitalEntities {
                     .sized(1.0f,1.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "shield").toString()));
 
+    public static final RegistryObject<EntityType<UpdateGood>> UPDATE_GOOD = DIGIMONS.register("update",
+            () -> EntityType.Builder.of(UpdateGood:: new, MobCategory.MISC)
+                    .sized(1.0f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "update").toString()));
+
+
 
     //attacks
     public static final RegistryObject<EntityType<CustomProjectile>> BULLET = DIGIMONS.register("bullet",

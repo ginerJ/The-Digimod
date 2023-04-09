@@ -1,13 +1,13 @@
 package net.modderg.thedigimod.entity.goods;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.renderers.geo.GeoProjectilesRenderer;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
-public class SpTableBookRender extends GeoProjectilesRenderer {
+public class SpTableBookRender<D extends SpTableBook> extends GeoEntityRenderer<SpTableBook> {
 
     public SpTableBookRender(EntityRendererProvider.Context renderManager) {
-        super(renderManager, (AnimatedGeoModel<SpTableBook>) new SpTableBookModel<>());
+        super(renderManager, (GeoModel<SpTableBook>) new SpTableBookModel<>());
     }
 
 

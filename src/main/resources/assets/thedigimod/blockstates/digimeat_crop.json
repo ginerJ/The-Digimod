@@ -7,5 +7,6 @@
     "age=4": { "model": "thedigimod:block/digimeat_stage4" },
     "age=5": { "model": "thedigimod:block/digimeat_stage5" },
     "age=6": { "model": "thedigimod:block/digimeat_stage6" }
-  }
+  },
+  "render_type": "cutout"
 }

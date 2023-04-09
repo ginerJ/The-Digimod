@@ -1,13 +1,13 @@
 package net.modderg.thedigimod.entity.goods;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.renderers.geo.GeoProjectilesRenderer;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
-public class ShieldStandRender extends GeoProjectilesRenderer {
+public class ShieldStandRender<D extends ShieldStand> extends GeoEntityRenderer<ShieldStand> {
 
     public ShieldStandRender(EntityRendererProvider.Context renderManager) {
-        super(renderManager, (AnimatedGeoModel<ShieldStand>) new ShieldStandModel<>());
+        super(renderManager, (GeoModel<ShieldStand>) new ShieldStandModel<>());
     }
 
 

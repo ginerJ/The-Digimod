@@ -1,7 +1,6 @@
 package net.modderg.thedigimod.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Matrix4f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -11,16 +10,15 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import org.joml.Matrix4f;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
-public abstract class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRenderer<CustomDigimon> {
+public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRenderer<CustomDigimon> {
     protected Style XpStyle = Style.EMPTY;
 
-    public CustomDigimonRender(EntityRendererProvider.Context renderManager, AnimatedGeoModel<CustomDigimon> modelProvider) {
-        super(renderManager, modelProvider);
-
+    public CustomDigimonRender(EntityRendererProvider.Context renderManager) {
+        super(renderManager, (GeoModel<CustomDigimon>) new CustomDigimonModel());
     }
 
     @Override
@@ -69,16 +67,16 @@ public abstract class CustomDigimonRender<D extends CustomDigimon> extends GeoEn
             int i = "deadmau5".equals(p_114499_.getString()) ? -10 : 0;
             stack.pushPose();
             stack.translate(0.0D, (double)f, 0.0D);
-            stack.mulPose(this.entityRenderDispatcher.cameraOrientation());
+            stack.m_252781_(this.entityRenderDispatcher.m_253208_());
             stack.scale(-0.025F, -0.025F, 0.025F);
-            Matrix4f matrix4f = stack.last().pose();
+            Matrix4f matrix4f = stack.last().m_252922_();
             float f1 = Minecraft.getInstance().options.getBackgroundOpacity(0.25F);
             int j = (int)(f1 * 255.0F) << 24;
             Font font = this.getFont();
             float f2 = (float)(-font.width(p_114499_) / 2);
-            font.drawInBatch(p_114499_, f2, (float)i, 553648127, false, matrix4f, p_114501_, flag, j, p_114502_);
+            font.m_253181_(p_114499_, f2, (float)i, 553648127, false, matrix4f, p_114501_, flag, j, p_114502_);
             if (flag) {
-                font.drawInBatch(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
+                font.m_253181_(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
             }
 
             stack.popPose();
@@ -93,16 +91,16 @@ public abstract class CustomDigimonRender<D extends CustomDigimon> extends GeoEn
             int i = "deadmau5".equals(p_114499_.getString()) ? -10 : 0;
             stack.pushPose();
             stack.translate(0.0D, (double)f, 0.0D);
-            stack.mulPose(this.entityRenderDispatcher.cameraOrientation());
+            stack.m_252781_(this.entityRenderDispatcher.m_253208_());
             stack.scale(-0.025F, -0.025F, 0.025F);
-            Matrix4f matrix4f = stack.last().pose();
+            Matrix4f matrix4f = stack.last().m_252922_();
             float f1 = Minecraft.getInstance().options.getBackgroundOpacity(0.25F);
             int j = (int)(f1 * 255.0F) << 24;
             Font font = this.getFont();
             float f2 = (float)(-font.width(p_114499_) / 2);
-            font.drawInBatch(p_114499_, f2, (float)i, p_114498_.getMoodColor(), false, matrix4f, p_114501_, flag, j, p_114502_);
+            font.m_253181_(p_114499_, f2, (float)i, p_114498_.getMoodColor(), false, matrix4f, p_114501_, flag, j, p_114502_);
             if (flag) {
-                font.drawInBatch(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
+                font.m_253181_(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
             }
 
             stack.popPose();
@@ -117,16 +115,16 @@ public abstract class CustomDigimonRender<D extends CustomDigimon> extends GeoEn
             int i = "deadmau5".equals(p_114499_.getString()) ? -10 : 0;
             stack.pushPose();
             stack.translate(0.0D, (double)f, 0.0D);
-            stack.mulPose(this.entityRenderDispatcher.cameraOrientation());
+            stack.m_252781_(this.entityRenderDispatcher.m_253208_());
             stack.scale(-0.025F, -0.025F, 0.025F);
-            Matrix4f matrix4f = stack.last().pose();
+            Matrix4f matrix4f = stack.last().m_252922_();
             float f1 = Minecraft.getInstance().options.getBackgroundOpacity(0.25F);
             int j = (int)(f1 * 255.0F) << 24;
             Font font = this.getFont();
             float f2 = (float)(-font.width(p_114499_) / 2);
-            font.drawInBatch(p_114499_, f2, (float)i, 8704641, false, matrix4f, p_114501_, flag, j, p_114502_);
+            font.m_253181_(p_114499_, f2, (float)i, 8704641, false, matrix4f, p_114501_, flag, j, p_114502_);
             if (flag) {
-                font.drawInBatch(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
+                font.m_253181_(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
             }
 
             stack.popPose();

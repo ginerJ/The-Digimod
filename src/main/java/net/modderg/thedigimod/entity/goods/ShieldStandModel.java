@@ -3,9 +3,9 @@ package net.modderg.thedigimod.entity.goods;
 
 import net.minecraft.resources.ResourceLocation;
 import net.modderg.thedigimod.TheDigiMod;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class ShieldStandModel<D extends ShieldStand> extends AnimatedGeoModel<ShieldStand> {
+public class ShieldStandModel<D extends ShieldStand> extends GeoModel<ShieldStand> {
 
     @Override
     public ResourceLocation getModelResource(ShieldStand p) {

@@ -68,8 +68,7 @@
 				{
 					"name": "arm2",
 					"parent": "body",
-					"pivot": [-5, 25, 0],
-					"rotation": [0, 0, -12.5]
+					"pivot": [-5, 25, 0]
 				},
 				{
 					"name": "wing2",

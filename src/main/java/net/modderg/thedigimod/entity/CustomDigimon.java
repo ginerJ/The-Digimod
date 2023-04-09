@@ -19,6 +19,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
@@ -32,36 +33,31 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
 import net.modderg.thedigimod.goals.DigitalFollowOwnerGoal;
 import net.modderg.thedigimod.goals.DigitalMeleeAttackGoal;
-import net.modderg.thedigimod.gui.StatsScreen;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.DigiviceItem;
 import net.modderg.thedigimod.particles.DigitalParticles;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.AnimationState;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
+import software.bernie.geckolib.cache.AnimatableIdCache;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.Animation;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 
-import java.awt.*;
 import java.util.Objects;
 
-import static java.awt.SystemColor.text;
-import static software.bernie.geckolib3.util.GeckoLibUtil.createFactory;
-
-public class CustomDigimon extends TamableAnimal implements IAnimatable {
+public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     public String getSpecies(){return "";}
     public Boolean isBaby2(){return false;}
@@ -78,7 +74,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         return getEvoCount() > 0;
     }
     protected boolean isStill() {
-        return !(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-3D);
+        return this.getDeltaMovement().horizontalDistanceSqr() <= 1.0E-3D;
     }
 
     @Override
@@ -95,10 +91,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     }
     @Override
     public boolean causeFallDamage(float p_147187_, float p_147188_, DamageSource p_147189_) {
-        if(this.getMovementID() == 2){
-            return false;
-        }
-        return super.causeFallDamage(p_147187_, p_147188_, p_147189_);
+        return this.getMovementID() != 2 && super.causeFallDamage(p_147187_, p_147188_, p_147189_);
     }
     @Override
     public boolean isOrderedToSit() {
@@ -198,6 +191,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
     }
 
+
     //dragon-0 beast-1 insectplant-2 aquan-3 wind-4 machine-5 earth-6 nightmare-7 holy-8
     protected static final EntityDataAccessor<String> SPECIFICXPS = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
     public void addSpecificXps(int s){
@@ -226,17 +220,18 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     protected static final EntityDataAccessor<Integer> ATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
     DEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
     SPATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
-    SPDEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
+    SPDEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
+    BATTLES_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
     public void setAttackStat(int i){
         this.getEntityData().set(ATTACK_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));}
     public void setDefenceStat(int i){
-        this.getEntityData().set(DEFENCE_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));
-    }
+        this.getEntityData().set(DEFENCE_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));}
     public void setSpAttackStat(int i){
-        this.getEntityData().set(SPATTACK_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));
-    }
+        this.getEntityData().set(SPATTACK_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));}
     public void setSpDefenceStat(int i){
-        this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));
+        this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)))));}
+    public void setBattlesStat(int i){
+        this.getEntityData().set(BATTLES_STAT, i);
     }
     public int getAttackStat(){
         return this.getEntityData().get(ATTACK_STAT);
@@ -249,6 +244,9 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     }
     public int getSpDefenceStat(){
         return this.getEntityData().get(SPDEFENCE_STAT);
+    }
+    public int getBattlesStat(){
+        return this.getEntityData().get(BATTLES_STAT);
     }
 
     protected static final EntityDataAccessor<Integer> EXPERIENCETOTAL = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
@@ -349,6 +347,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         this.entityData.define(DEFENCE_STAT, 1);
         this.entityData.define(SPATTACK_STAT, 1);
         this.entityData.define(SPDEFENCE_STAT, 1);
+        this.entityData.define(BATTLES_STAT, 0);
     }
 
     @Override
@@ -387,6 +386,9 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         if (compound.contains("SPDEFENCE_STAT")) {
             this.setSpDefenceStat(compound.getInt("SPDEFENCE_STAT"));
         }
+        if (compound.contains("BATTLES_STAT")) {
+            this.setBattlesStat(compound.getInt("BATTLES_STAT"));
+        }
     }
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
@@ -402,6 +404,7 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         compound.putInt("DEFENCE_STAT", this.getDefenceStat());
         compound.putInt("SPATTACK_STAT", this.getSpAttackStat());
         compound.putInt("SPDEFENCE_STAT", this.getSpDefenceStat());
+        compound.putInt("BATTLES_STAT", this.getBattlesStat());
     }
 
     public void evolveDigimon(){
@@ -455,8 +458,6 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         return i <= 3 ? 2: (i <= 5 ? 5 : (i <= 10 ? 10:(i <= 15 ? 20:(i <= 20 ? 30: (i <= 30 ? 40: 50)))));
     }
 
-    private String lastStat = "";
-
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         if (player.getItemInHand(hand).getItem() instanceof DigiviceItem && this.getOwner() != null && getOwner().getLevel().isClientSide && getOwner().getLevel() instanceof ClientLevel)
@@ -480,7 +481,8 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
     }
 
-    int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(), spdefence = this.getSpDefenceStat();
+    int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(),
+            spdefence = this.getSpDefenceStat(), battles = this.getBattlesStat(), health = (int)getAttribute(Attributes.MAX_HEALTH).getBaseValue();
     @Override
     public void tick() {
         if(attack != this.getAttackStat()){spawnStatUpParticles(DigitalParticles.ATTACK_UP);
@@ -490,8 +492,11 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         if(spattack != this.getSpAttackStat()){spawnStatUpParticles(DigitalParticles.SPATTACK_UP);
             spattack = this.getSpAttackStat();}
         if(spdefence != this.getSpDefenceStat()){spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP);
-            spdefence = this.getSpDefenceStat();
-        }
+            spdefence = this.getSpDefenceStat();}
+        if(battles != this.getBattlesStat()){spawnStatUpParticles(DigitalParticles.BATTLES_UP);
+            battles = this.getBattlesStat();}
+        if(health != (int)getAttribute(Attributes.MAX_HEALTH).getBaseValue()){spawnStatUpParticles(DigitalParticles.HEALTH_UP);
+            health = (int)getAttribute(Attributes.MAX_HEALTH).getBaseValue();}
 
         if(getEvoCount() == 1){this.evolveDigimon();}
         if(evoCount > 0){
@@ -536,20 +541,31 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
         }
     }
 
-    public void showStats(){
-        if(lastStat.equals("spdefence")||lastStat.equals("")){
+    private String lastStat = "";
+
+    public void showStats() {
+        if (lastStat.equals("battles") || lastStat.equals("")) {
             lastStat = "attack";
             Minecraft.getInstance().gui.setOverlayMessage(Component.literal("⚔ Attack: " + Integer.toString(getAttackStat()) + " ⚔").withStyle(style -> style.withColor(TextColor.fromRgb(0xFF0000))), false);
-        } else if (lastStat.equals("attack")){
+        } else if (lastStat.equals("attack")) {
             lastStat = "defence";
             Minecraft.getInstance().gui.setOverlayMessage(Component.literal("\uD83D\uDEE1 Defence: " + Integer.toString(getDefenceStat()) + " \uD83D\uDEE1").withStyle(style -> style.withColor(TextColor.fromRgb(0x00FF00))), false);
-        } else if (lastStat.equals("defence")){
+        } else if (lastStat.equals("defence")) {
             lastStat = "spattack";
             Minecraft.getInstance().gui.setOverlayMessage(Component.literal("\uD83C\uDFF9 Sp.Attack: " + Integer.toString(getSpAttackStat()) + " \uD83C\uDFF9").withStyle(style -> style.withColor(TextColor.fromRgb(0xFF69B4))), false);
-        } else if(lastStat.equals("spattack")){
+        } else if (lastStat.equals("spattack")) {
             lastStat = "spdefence";
             Minecraft.getInstance().gui.setOverlayMessage(Component.literal("⚙ Sp.Defence: " + Integer.toString(getSpDefenceStat()) + " ⚙").withStyle(style -> style.withColor(TextColor.fromRgb(0xADD8E6))), false);
+        } else if (lastStat.equals("spdefence")) {
+            lastStat = "battles";
+            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("\uD83D\uDDE1 Wins: " + Integer.toString(getBattlesStat()) + " \uD83D\uDDE1").withStyle(style -> style.withColor(TextColor.fromRgb(0xFF542D))), false);
         }
+    }
+
+    @Override
+    public void die(DamageSource source) {
+        if(source.getEntity() instanceof CustomDigimon digimon){digimon.setBattlesStat(getBattlesStat() + 1);}
+        super.die(source);
     }
 
     public void spawnStatUpParticles(RegistryObject<SimpleParticleType> particle) {
@@ -585,34 +601,35 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     }
 
     //Animations
-    protected AnimationFactory factory = createFactory(this);
-    public static <T extends CustomDigimon & IAnimatable> AnimationController<T> animController(T digimon) {
+    protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
+
+    public static <T extends CustomDigimon & GeoEntity> AnimationController<T> animController(T digimon) {
         return new AnimationController<>(digimon,"movement", 3, event ->{
             if(!digimon.isEvolving()){
                 if(digimon.getMovementID() == 0){
-                    event.getController().setAnimation(new AnimationBuilder().addAnimation(digimon.SITANIM(), ILoopType.EDefaultLoopTypes.LOOP));
+                    event.getController().setAnimation(RawAnimation.begin().then(digimon.SITANIM(), Animation.LoopType.LOOP));
                 } else {
                     if(digimon.getMovementID() == 2){
-                        event.getController().setAnimation(new AnimationBuilder().addAnimation(digimon.FLYANIM(), ILoopType.EDefaultLoopTypes.LOOP));
+                        event.getController().setAnimation(RawAnimation.begin().then(digimon.FLYANIM(), Animation.LoopType.LOOP));
                     }else {
                         if(digimon.getMovementID() == 1 && event.isMoving()){
-                            event.getController().setAnimation(new AnimationBuilder().addAnimation(digimon.WALKANIM(), ILoopType.EDefaultLoopTypes.LOOP));
+                            event.getController().setAnimation(RawAnimation.begin().then(digimon.WALKANIM(), Animation.LoopType.LOOP));
                         } else if (digimon.getMovementID() == 1){
-                            event.getController().setAnimation(new AnimationBuilder().addAnimation(digimon.IDLEANIM(), ILoopType.EDefaultLoopTypes.LOOP));
+                            event.getController().setAnimation(RawAnimation.begin().then(digimon.IDLEANIM(), Animation.LoopType.LOOP));
                         }
                     }
                 }
             } else
             {
-                event.getController().setAnimation(new AnimationBuilder().addAnimation("show", ILoopType.EDefaultLoopTypes.LOOP));}
+                event.getController().setAnimation(RawAnimation.begin().then("show", Animation.LoopType.LOOP));}
             return PlayState.CONTINUE;
         });
     }
 
-    private PlayState attackPredicate(AnimationEvent event){
-        if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
-            event.getController().markNeedsReload();
-            event.getController().setAnimation(new AnimationBuilder().addAnimation(this.ATTACKANIM(), ILoopType.EDefaultLoopTypes.PLAY_ONCE));
+    private PlayState attackPredicate(AnimationState state){
+        if(this.swinging && state.getController().getAnimationState().equals(AnimationController.State.STOPPED)){
+            state.getController().forceAnimationReset();
+            state.getController().setAnimation(RawAnimation.begin().then(this.ATTACKANIM(), Animation.LoopType.PLAY_ONCE));
             this.swinging = false;
         }
         return PlayState.CONTINUE;
@@ -625,13 +642,13 @@ public class CustomDigimon extends TamableAnimal implements IAnimatable {
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "attackController", 0,this::attackPredicate));
-        data.addAnimationController(animController(this));
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController(this, "attackController", 0,this::attackPredicate));
+        controllers.add(animController(this));
     }
 
     @Override
-    public AnimationFactory getFactory() {
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.factory;
     }
 }

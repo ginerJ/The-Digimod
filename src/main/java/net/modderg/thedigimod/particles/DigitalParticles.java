@@ -23,6 +23,10 @@ public class DigitalParticles {
             PARTICLE_TYPES.register( "spattack_up", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> SPDEFENCE_UP =
             PARTICLE_TYPES.register( "spdefence_up", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> BATTLES_UP =
+            PARTICLE_TYPES.register( "battles_up", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> HEALTH_UP =
+            PARTICLE_TYPES.register( "health_up", () -> new SimpleParticleType(true));
 
     public static final RegistryObject<SimpleParticleType> EVO_PARTICLES =
             PARTICLE_TYPES.register( "evolution_particles", () -> new SimpleParticleType(true));

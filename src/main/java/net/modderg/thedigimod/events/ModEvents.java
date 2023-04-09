@@ -46,19 +46,16 @@ public class ModEvents {
         @SubscribeEvent
         public static void registerParticleFactories(final RegisterParticleProvidersEvent event){
 
-            Minecraft.getInstance().particleEngine.register(DigitalParticles.DIGITRON_PARTICLES.get(),
-                    DigitronParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.DIGITRON_PARTICLES.get(), DigitronParticles.Provider::new);
 
-            Minecraft.getInstance().particleEngine.register(DigitalParticles.ATTACK_UP.get(),
-                    StatUpParticles.Provider::new);
-            Minecraft.getInstance().particleEngine.register(DigitalParticles.DEFENCE_UP.get(),
-                    StatUpParticles.Provider::new);
-            Minecraft.getInstance().particleEngine.register(DigitalParticles.SPATTACK_UP.get(),
-                    StatUpParticles.Provider::new);
-            Minecraft.getInstance().particleEngine.register(DigitalParticles.SPDEFENCE_UP.get(),
-                    StatUpParticles.Provider::new);
-            Minecraft.getInstance().particleEngine.register(DigitalParticles.EVO_PARTICLES.get(),
-                    StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.ATTACK_UP.get(), StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.DEFENCE_UP.get(), StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.SPATTACK_UP.get(), StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.SPDEFENCE_UP.get(), StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.BATTLES_UP.get(), StatUpParticles.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.HEALTH_UP.get(), StatUpParticles.Provider::new);
+
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.EVO_PARTICLES.get(), StatUpParticles.Provider::new);
         }
         @SubscribeEvent
         public static void onClientSetup(FMLCommonSetupEvent event) {

@@ -1,32 +1,23 @@
 package net.modderg.thedigimod.entity.goods;
 
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.AnimationState;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.object.PlayState;
 
-import static software.bernie.geckolib3.util.GeckoLibUtil.createFactory;
-
-public abstract class CustomTrainingGood extends Animal implements IAnimatable {
+public abstract class CustomTrainingGood extends Animal implements GeoEntity {
 
     private boolean hitted = false;
 
@@ -56,6 +47,10 @@ public abstract class CustomTrainingGood extends Animal implements IAnimatable {
                 digimon.setSpAttackStat(digimon.getSpAttackStat() + random.nextInt(0, 3));
             }else if(goodName().equals("spdefence")){
                 digimon.setSpDefenceStat(digimon.getSpDefenceStat() + random.nextInt(0, 3));
+            } else if(goodName().equals("health")){
+                digimon.getAttribute(Attributes.MAX_HEALTH).setBaseValue(digimon.getAttribute(Attributes.MAX_HEALTH).getBaseValue()
+                        + random.nextInt(0, 3));
+                digimon.setHealth(digimon.getHealth() + 1);
             }
         }
         return super.hurt(source, p_27568_);
@@ -89,22 +84,20 @@ public abstract class CustomTrainingGood extends Animal implements IAnimatable {
         return null;
     }
 
-    protected AnimationFactory factory = createFactory(this);
+    protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
-    public static <T extends CustomTrainingGood & IAnimatable> AnimationController<T> animController(T good) {
-        return new AnimationController<>(good,"movement", 0, event ->{
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", ILoopType.EDefaultLoopTypes.LOOP));
+    private PlayState animController(AnimationState event){
+            event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
-        });
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(animController(this));
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<CustomTrainingGood>(this, "controller", 0, this::animController));
     }
 
     @Override
-    public AnimationFactory getFactory() {
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.factory;
     }
 }

@@ -18,7 +18,7 @@ public class DigimonAgumonBlack extends CustomDigimon {
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 15.0D)
+                .add(Attributes.MAX_HEALTH, 1.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
@@ -48,7 +48,7 @@ public class DigimonAgumonBlack extends CustomDigimon {
 
     @Override
     protected EntityType evoPath() {
-        return DigitalEntities.DARKTYRANNOMON.get();
+        return DigitalEntities.DARKTYLIZZARDMON.get();
     }
     @Override
     protected Boolean canEvoToPath() {
@@ -56,20 +56,29 @@ public class DigimonAgumonBlack extends CustomDigimon {
     }
 
     @Override
+    protected EntityType evoPath3() {
+        return DigitalEntities.GROWLMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath3() {
+        return this.getMood().equals("Joyful") && this.getSpecificXps(0) >= 50;
+    }
+
+    @Override
     protected EntityType evoPath4() {
-        return DigitalEntities.DARKTYLIZZARDMON.get();
+        return DigitalEntities.GREYMONVIRUS.get();
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Depressed");
+        return this.getMood().equals("Joyful") && this.getSpecificXps(7) >= 25 && this.getSpecificXps(0) >= 25;
     }
 
     @Override
     protected EntityType evoPath5() {
-        return DigitalEntities.GREYMONVIRUS.get();
+        return DigitalEntities.DARKTYRANNOMON.get();
     }
     @Override
     protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Joyful");
+        return this.getMood().equals("Joyful") && this.getSpecificXps(7) >= 50;
     }
 }

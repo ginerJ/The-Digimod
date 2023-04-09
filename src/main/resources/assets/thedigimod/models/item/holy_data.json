@@ -1,6 +1,6 @@
 {
   "parent" : "minecraft:item/generated",
   "textures" : {
-    "layer0" : "thedigimod:items/holy_data"
+    "layer0" : "thedigimod:item/holy_data"
   }
 }

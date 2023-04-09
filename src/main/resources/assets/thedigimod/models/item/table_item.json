@@ -1,6 +1,6 @@
 {
   "parent" : "minecraft:item/generated",
   "textures" : {
-    "layer0" : "thedigimod:items/table_item"
+    "layer0" : "thedigimod:item/table_item"
   }
 }
