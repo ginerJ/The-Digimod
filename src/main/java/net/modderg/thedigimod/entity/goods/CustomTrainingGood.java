@@ -26,6 +26,9 @@ public abstract class CustomTrainingGood extends Animal implements GeoEntity {
         this.setCustomName(Component.literal("LOL"));
     }
 
+    public String statName(){
+        return null;
+    }
     public String goodName(){
         return null;
     }
@@ -39,15 +42,15 @@ public abstract class CustomTrainingGood extends Animal implements GeoEntity {
     public boolean hurt(DamageSource source, float p_27568_) {
         if(source.getDirectEntity() instanceof CustomDigimon digimon && this.random.nextInt(0,5) == 4){
             digimon.restMoodPoints(10);
-            if(goodName().equals("attack")){
+            if(statName().equals("attack")){
                 digimon.setAttackStat(digimon.getAttackStat() + random.nextInt(0, 3));
-            }else if(goodName().equals("defence")){
+            }else if(statName().equals("defence")){
                 digimon.setDefenceStat(digimon.getDefenceStat() + random.nextInt(0, 3));
-            }else if(goodName().equals("spattack")){
+            }else if(statName().equals("spattack")){
                 digimon.setSpAttackStat(digimon.getSpAttackStat() + random.nextInt(0, 3));
-            }else if(goodName().equals("spdefence")){
+            }else if(statName().equals("spdefence")){
                 digimon.setSpDefenceStat(digimon.getSpDefenceStat() + random.nextInt(0, 3));
-            } else if(goodName().equals("health")){
+            } else if(statName().equals("health")){
                 digimon.getAttribute(Attributes.MAX_HEALTH).setBaseValue(digimon.getAttribute(Attributes.MAX_HEALTH).getBaseValue()
                         + random.nextInt(0, 3));
                 digimon.setHealth(digimon.getHealth() + 1);

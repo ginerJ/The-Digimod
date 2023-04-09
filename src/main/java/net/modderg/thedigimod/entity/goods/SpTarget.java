@@ -22,7 +22,11 @@ public class SpTarget extends CustomTrainingGood{
     }
 
     @Override
-    public String goodName() {
+    public String statName() {
         return "spattack";
+    }
+    @Override
+    public String goodName() {
+        return "target";
     }
 }

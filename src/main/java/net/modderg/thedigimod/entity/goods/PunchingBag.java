@@ -22,7 +22,11 @@ public class PunchingBag extends CustomTrainingGood{
     }
 
     @Override
-    public String goodName() {
+    public String statName() {
         return "attack";
+    }
+    @Override
+    public String goodName() {
+        return "punching_bag";
     }
 }

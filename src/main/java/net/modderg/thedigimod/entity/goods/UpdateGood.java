@@ -22,7 +22,11 @@ public class UpdateGood extends CustomTrainingGood{
     }
 
     @Override
-    public String goodName() {
+    public String statName() {
         return "health";
+    }
+    @Override
+    public String goodName() {
+        return "update";
     }
 }

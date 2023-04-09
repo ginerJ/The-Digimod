@@ -22,7 +22,11 @@ public class SpTableBook extends CustomTrainingGood{
     }
 
     @Override
-    public String goodName() {
+    public String statName() {
         return "spdefence";
+    }
+    @Override
+    public String goodName() {
+        return "defence_table";
     }
 }

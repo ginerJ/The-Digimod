@@ -15,52 +15,6 @@ import net.modderg.thedigimod.projectiles.renders.CustomProjectileRender;
 
 public class ClientEventBusSubscriber {
     @SubscribeEvent
-    public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(DigitalEntities.KOROMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.KOROMONB.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.MOCHIMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.MOCHIMONK.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.AGUMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.TENTOMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.KABUTERIMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.GREYMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.TSUNOMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.GRIZZLYMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.BEARMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.KUNEMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.GIGIMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.GUILMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.PUYOYOMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.JELLYMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.TESLAJELLYMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.GROWLMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.KUWAGAMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.BABYDMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.DRACOMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.COREDRAMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.BIBIMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.PULSEMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.BULKMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.AGUMONBLACK.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.DARKTYRANNOMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.TYRANNOMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.VEEDRAMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.CHAKMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.BLACKGAOGAMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.YOKOMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.BIYOMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.BIRDRAMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.SABERDRAMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.AKATORIMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.NAMAKEMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.EXERMON.get(), CustomDigimonRender::new);
-        event.registerEntityRenderer(DigitalEntities.GREYMONVIRUS.get(), CustomDigimonRender::new);
-
-        event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
-
-        event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), PunchingBagRender::new);
-    }
-    @SubscribeEvent
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(DigitalEntities.KOROMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.KOROMONB.get(), CustomDigimonRender::new);
@@ -104,10 +58,11 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.DARKTYLIZZARDMON.get(), CustomDigimonRender::new);
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
-        event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), PunchingBagRender::new);
-        event.registerEntityRenderer(DigitalEntities.SP_TARGET.get(), SpTargetRender::new);
-        event.registerEntityRenderer(DigitalEntities.SP_TABLE.get(), SpTableBookRender::new);
-        event.registerEntityRenderer(DigitalEntities.SHIELD_STAND.get(), ShieldStandRender::new);
-        event.registerEntityRenderer(DigitalEntities.UPDATE_GOOD.get(), UpdateGoodRender::new);
+        
+        event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), CustomTrainingGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.SP_TARGET.get(), CustomTrainingGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.SP_TABLE.get(), CustomTrainingGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.SHIELD_STAND.get(), CustomTrainingGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.UPDATE_GOOD.get(), CustomTrainingGoodRender::new);
     }
 }
