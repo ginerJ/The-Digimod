@@ -19,11 +19,11 @@ public class DigiItems {
     public static final RegistryObject<Item> DIGIVICE = ITEMS.register("digivice", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> VPET = ITEMS.register("vpet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
     //Dims
-    public static final RegistryObject<Item> BOTAMOND = ITEMS.register("botamond", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.KOROMONB, "Black Agumon"));
     public static final RegistryObject<Item> BOTAMON = ITEMS.register("botamon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.KOROMON, "Agumon"));
+    public static final RegistryObject<Item> BOTAMOND = ITEMS.register("botamond", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.KOROMONB, "Black Agumon"));
     public static final RegistryObject<Item> BUBBMON = ITEMS.register("bubbmon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.MOCHIMON, "Tentomon"));
-    public static final RegistryObject<Item> PUNIMON = ITEMS.register("punimon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.TSUNOMON, "Bearmon"));
     public static final RegistryObject<Item> BUBBMONK = ITEMS.register("bubbmonk", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.MOCHIMONK, "Kunemon"));
+    public static final RegistryObject<Item> PUNIMON = ITEMS.register("punimon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.TSUNOMON, "Bearmon"));
     public static final RegistryObject<Item> JYARIMON = ITEMS.register("jyarimon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.GIGIMON, "Guilmon"));
     public static final RegistryObject<Item> PETITMON = ITEMS.register("petitmon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.BABYDMON, "Dracomon"));
     public static final RegistryObject<Item> PUYOMON = ITEMS.register("puyomon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.PUYOYOMON, "Jellymon"));

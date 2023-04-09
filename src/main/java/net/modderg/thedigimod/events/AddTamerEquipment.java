@@ -4,9 +4,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -15,18 +13,20 @@ import net.modderg.thedigimod.item.DigiItems;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class AddRandomDim {
+public class AddTamerEquipment {
 
     public static RegistryObject<?> chooseItem(RegistryObject<?>[] babies) {
         Random rand = new Random();
         return babies[rand.nextInt(babies.length)];
     }
 
-    static RegistryObject<?>[] babies = {DigiItems.BOTAMON,  DigiItems.PUNIMON, DigiItems.BUBBMON};
+    static RegistryObject<?>[] babies = {DigiItems.BOTAMON, DigiItems.BOTAMOND, DigiItems.BUBBMON, DigiItems.BUBBMONK, DigiItems.PUNIMON,
+            DigiItems.JYARIMON,  DigiItems.PETITMON, DigiItems.PUYOMON, DigiItems.DOKIMON, DigiItems.NYOKIMON};
+
     static RegistryObject<?>[] vices = {DigiItems.VPET,  DigiItems.DIGIVICE, DigiItems.VITALBRACELET};
 
     @Mod.EventBusSubscriber
-    public class IniciarProcedure {
+    public class InitiateProcedure {
 
         private static void execute(@Nullable Event event, Entity entity) {
             if (entity == null)
@@ -49,7 +49,7 @@ public class AddRandomDim {
                     ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.TABLE_ITEM.get()));
                     ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.TARGET_ITEM.get()));
                     ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.SHIELD_ITEM.get()));
-
+                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.UPDATE_ITEM.get()));
                 }
             }
         }

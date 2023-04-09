@@ -58,7 +58,7 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.DARKTYLIZZARDMON.get(), CustomDigimonRender::new);
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
-        
+
         event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), CustomTrainingGoodRender::new);
         event.registerEntityRenderer(DigitalEntities.SP_TARGET.get(), CustomTrainingGoodRender::new);
         event.registerEntityRenderer(DigitalEntities.SP_TABLE.get(), CustomTrainingGoodRender::new);
