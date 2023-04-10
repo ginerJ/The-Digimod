@@ -221,6 +221,26 @@ public class DigitalEntities {
                     .sized(1.0f,2.0f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "darklizzardmon").toString()));
 
+    public static final RegistryObject<EntityType<DigimonRunnermon>> RUNNERMON = DIGIMONS.register("runnermon",
+            () -> EntityType.Builder.of(DigimonRunnermon:: new, MobCategory.CREATURE)
+                    .sized(1.5f,1.75f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "runnermon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonThunderballmon>> THUNDERBALLMON = DIGIMONS.register("thunderballmon",
+            () -> EntityType.Builder.of(DigimonThunderballmon:: new, MobCategory.CREATURE)
+                    .sized(1f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "thunderballmon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonOctomon>> OCTOMON = DIGIMONS.register("octomon",
+            () -> EntityType.Builder.of(DigimonOctomon:: new, MobCategory.CREATURE)
+                    .sized(1f,2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "octomon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonGesomon>> GESOMON = DIGIMONS.register("gesomon",
+            () -> EntityType.Builder.of(DigimonGesomon:: new, MobCategory.CREATURE)
+                    .sized(1f,2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "gesomon").toString()));
+
     //training goods
     public static final RegistryObject<EntityType<PunchingBag>> PUNCHING_BAG = DIGIMONS.register("punching_bag",
             () -> EntityType.Builder.of(PunchingBag:: new, MobCategory.MISC)

@@ -58,10 +58,28 @@ public class DigimonJellymon extends CustomDigimon {
 
     @Override
     protected EntityType evoPath() {
-        return DigitalEntities.TESLAJELLYMON.get();
+        return DigitalEntities.OCTOMON.get();
     }
     @Override
     protected Boolean canEvoToPath() {
         return true;
+    }
+
+    @Override
+    protected EntityType evoPath4() {
+        return DigitalEntities.GESOMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath4() {
+        return this.getMood().equals("Sad") && this.getSpecificXps(7) > 50;
+    }
+
+    @Override
+    protected EntityType evoPath5() {
+        return DigitalEntities.TESLAJELLYMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath5() {
+        return this.getMood().equals("Joyful") && this.getSpecificXps(3) > 50;
     }
 }

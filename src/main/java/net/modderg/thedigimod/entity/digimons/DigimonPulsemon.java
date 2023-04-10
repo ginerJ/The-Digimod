@@ -48,7 +48,7 @@ public class DigimonPulsemon extends CustomDigimon {
 
     @Override
     protected EntityType evoPath() {
-        return DigitalEntities.BULKMON.get();
+        return DigitalEntities.RUNNERMON.get();
     }
     @Override
     protected Boolean canEvoToPath() {
@@ -75,11 +75,11 @@ public class DigimonPulsemon extends CustomDigimon {
 
     @Override
     protected EntityType evoPath4() {
-        return DigitalEntities.EXERMON.get();
+        return DigitalEntities.THUNDERBALLMON.get();
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getSpecificXps(2) >= 50;
+        return this.getSpecificXps(5) >= 50;
     }
 
     @Override
