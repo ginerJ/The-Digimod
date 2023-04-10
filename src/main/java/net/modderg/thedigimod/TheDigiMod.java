@@ -125,6 +125,10 @@ public class TheDigiMod {
                     Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
 
         event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.BLACK_GROWLMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+
+        event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.KUWAGAMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
 
@@ -262,6 +266,7 @@ public class TheDigiMod {
         event.put(DigitalEntities.JELLYMON.get(), DigimonJellymon.setCustomAttributes().build());
         event.put(DigitalEntities.TESLAJELLYMON.get(), DigimonTeslajellymon.setCustomAttributes().build());
         event.put(DigitalEntities.GROWLMON.get(), DigimonGrowlmon.setCustomAttributes().build());
+        event.put(DigitalEntities.BLACK_GROWLMON.get(), DigimonGrowlmon.setCustomAttributes().build());
         event.put(DigitalEntities.KUWAGAMON.get(), DigimonKuwagamon.setCustomAttributes().build());
         event.put(DigitalEntities.BABYDMON.get(), DigimonBabydmon.setCustomAttributes().build());
         event.put(DigitalEntities.DRACOMON.get(), DigimonDracomon.setCustomAttributes().build());

@@ -34,6 +34,7 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.JELLYMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.TESLAJELLYMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.GROWLMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.BLACK_GROWLMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.KUWAGAMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.BABYDMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.DRACOMON.get(), CustomDigimonRender::new);

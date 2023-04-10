@@ -64,6 +64,15 @@ public class DigimonAgumon extends CustomDigimon {
     }
 
     @Override
+    protected EntityType evoPath3() {
+        return DigitalEntities.GREYMONVIRUS.get();
+    }
+    @Override
+    protected Boolean canEvoToPath3() {
+        return this.getMood().equals("Sad") && this.getSpecificXps(7) >= 50;
+    }
+
+    @Override
     protected EntityType evoPath4() {
         return DigitalEntities.VEEDRAMON.get();
     }

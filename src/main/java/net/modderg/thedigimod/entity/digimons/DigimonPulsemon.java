@@ -52,7 +52,25 @@ public class DigimonPulsemon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath() {
-        return this.getSpecificXps(0) >= 50 && this.getMood().equals("Joyful");
+        return true;
+    }
+
+    @Override
+    protected EntityType evoPath2() {
+        return DigitalEntities.BULKMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath2() {
+        return this.getSpecificXps(0) >= 50;
+    }
+
+    @Override
+    protected EntityType evoPath3() {
+        return DigitalEntities.EXERMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath3() {
+        return this.getSpecificXps(2) >= 50;
     }
 
     @Override
@@ -70,6 +88,6 @@ public class DigimonPulsemon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Depressed");
+        return this.getMood().equals("Sad");
     }
 }

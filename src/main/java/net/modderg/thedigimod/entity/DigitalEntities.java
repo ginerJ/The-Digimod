@@ -111,6 +111,11 @@ public class DigitalEntities {
                     .sized(1.25f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "growlmon").toString()));
 
+    public static final RegistryObject<EntityType<DigimonBlackGrowlmon>> BLACK_GROWLMON = DIGIMONS.register("black_growlmon",
+            () -> EntityType.Builder.of(DigimonBlackGrowlmon:: new, MobCategory.CREATURE)
+                    .sized(1.25f,2.25f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "black_growlmon").toString()));
+
     public static final RegistryObject<EntityType<DigimonKuwagamon>> KUWAGAMON = DIGIMONS.register("kuwagamon",
             () -> EntityType.Builder.of(DigimonKuwagamon:: new, MobCategory.CREATURE)
                     .sized(1.0f,2.0f)
