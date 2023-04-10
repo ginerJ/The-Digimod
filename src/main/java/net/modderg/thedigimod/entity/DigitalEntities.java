@@ -131,6 +131,16 @@ public class DigitalEntities {
                     .sized(1.0f,1.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "dracomon").toString()));
 
+    public static final RegistryObject<EntityType<DigimonAirdramon>> AIRDRAMON = DIGIMONS.register("airdramon",
+            () -> EntityType.Builder.of(DigimonAirdramon:: new, MobCategory.CREATURE)
+                    .sized(1.0f,2.0f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "airdramon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonCoredramonGreen>> COREDRAMONGREEN = DIGIMONS.register("coredramongreen",
+            () -> EntityType.Builder.of(DigimonCoredramonGreen:: new, MobCategory.CREATURE)
+                    .sized(1.0f,2.35f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "coredramongreen").toString()));
+
     public static final RegistryObject<EntityType<DigimonCoredramon>> COREDRAMON = DIGIMONS.register("coredramon",
             () -> EntityType.Builder.of(DigimonCoredramon:: new, MobCategory.CREATURE)
                     .sized(1.0f,2.35f)

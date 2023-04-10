@@ -34,7 +34,7 @@ public class DigimonGesomon extends CustomDigimon {
     }
     @Override
     protected String IDLEANIM() {
-        return "sit2";
+        return "idle3";
     }
     @Override
     protected String WALKANIM() {

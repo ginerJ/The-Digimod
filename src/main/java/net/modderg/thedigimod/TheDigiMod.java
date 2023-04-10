@@ -227,6 +227,14 @@ public class TheDigiMod {
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.OCTOMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.COREDRAMONGREEN.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.AIRDRAMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
     }
 
     private void addCreativeTab(CreativeModeTabEvent.BuildContents event){
@@ -287,6 +295,7 @@ public class TheDigiMod {
         event.put(DigitalEntities.BABYDMON.get(), DigimonBabydmon.setCustomAttributes().build());
         event.put(DigitalEntities.DRACOMON.get(), DigimonDracomon.setCustomAttributes().build());
         event.put(DigitalEntities.COREDRAMON.get(), DigimonCoredramon.setCustomAttributes().build());
+        event.put(DigitalEntities.COREDRAMONGREEN.get(), DigimonCoredramonGreen.setCustomAttributes().build());
         event.put(DigitalEntities.BIBIMON.get(), DigimonBibimon.setCustomAttributes().build());
         event.put(DigitalEntities.PULSEMON.get(), DigimonPulsemon.setCustomAttributes().build());
         event.put(DigitalEntities.BULKMON.get(), DigimonBulkmon.setCustomAttributes().build());
@@ -309,6 +318,7 @@ public class TheDigiMod {
         event.put(DigitalEntities.RUNNERMON.get(), DigimonRunnermon.setCustomAttributes().build());
         event.put(DigitalEntities.OCTOMON.get(), DigimonOctomon.setCustomAttributes().build());
         event.put(DigitalEntities.GESOMON.get(), DigimonGesomon.setCustomAttributes().build());
+        event.put(DigitalEntities.AIRDRAMON.get(), DigimonAirdramon.setCustomAttributes().build());
 
         event.put(DigitalEntities.PUNCHING_BAG.get(), PunchingBag.setCustomAttributes().build());
         event.put(DigitalEntities.SP_TARGET.get(), PunchingBag.setCustomAttributes().build());

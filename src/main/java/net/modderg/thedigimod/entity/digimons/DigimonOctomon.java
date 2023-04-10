@@ -34,7 +34,7 @@ public class DigimonOctomon extends CustomDigimon {
     }
     @Override
     protected String IDLEANIM() {
-        return "sit3";
+        return "idle3";
     }
     @Override
     protected String WALKANIM() {
@@ -42,6 +42,6 @@ public class DigimonOctomon extends CustomDigimon {
     }
     @Override
     protected String SITANIM() {
-        return "sit3";
+        return "sit2";
     }
 }
