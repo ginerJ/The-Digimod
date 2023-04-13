@@ -7,11 +7,10 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
-import net.modderg.thedigimod.entity.DigitalEntities;
 
-public class DigimonKunemon extends CustomDigimon {
+public class DigimonGrowlmonData extends CustomDigimon {
 
-    public DigimonKunemon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
+    public DigimonGrowlmonData(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.switchNavigation(0);
     }
@@ -25,13 +24,13 @@ public class DigimonKunemon extends CustomDigimon {
     }
 
     @Override
-    public Boolean isRookie() {
+    public Boolean isChampion() {
         return true;
     }
 
     @Override
     public String getSpecies() {
-        return "Kunemon";
+        return "Growlmon(Data)";
     }
     @Override
     protected String IDLEANIM() {
@@ -39,37 +38,10 @@ public class DigimonKunemon extends CustomDigimon {
     }
     @Override
     protected String WALKANIM() {
-        return "walk3";
+        return "walk";
     }
     @Override
     protected String SITANIM() {
-        return "sit2";
-    }
-
-    @Override
-    protected EntityType evoPath() {
-        return DigitalEntities.KUWAGAMON.get();
-    }
-    @Override
-    protected Boolean canEvoToPath() {
-        return true;
-    }
-
-    @Override
-    protected EntityType evoPath4() {
-        return DigitalEntities.FLYMON.get();
-    }
-    @Override
-    protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(2) >= 50;
-    }
-
-    @Override
-    protected EntityType evoPath5() {
-        return DigitalEntities.ROACHMON.get();
-    }
-    @Override
-    protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Sad");
+        return "sit6";
     }
 }

@@ -48,10 +48,28 @@ public class DigimonTentomon extends CustomDigimon {
 
     @Override
     protected EntityType evoPath() {
-        return DigitalEntities.KABUTERIMON.get();
+        return DigitalEntities.KUWAGAMON.get();
     }
     @Override
     protected Boolean canEvoToPath() {
         return true;
+    }
+
+    @Override
+    protected EntityType evoPath4() {
+        return DigitalEntities.KABUTERIMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath4() {
+        return this.getMood().equals("Joyful") && this.getSpecificXps(2) >= 50;
+    }
+
+    @Override
+    protected EntityType evoPath5() {
+        return DigitalEntities.ROACHMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath5() {
+        return this.getMood().equals("Sad");
     }
 }

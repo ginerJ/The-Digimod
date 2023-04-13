@@ -427,20 +427,16 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     public void copyOtherDigi(CustomDigimon d){
         this.tame((Player) Objects.requireNonNull(d.getOwner()));
-        if(d.getNickName().equals(d.getSpecies())){
-            this.setNickName(this.getSpecies());
-            this.setCustomName(Component.literal(this.getNickName()));
-        }
-        else {
-            this.setNickName(d.getNickName());
-            this.setCustomName(Component.literal(this.getNickName()));
-        }
+        if(d.getNickName().equals(d.getSpecies())){this.setNickName(this.getSpecies());}
+        else {this.setNickName(d.getNickName());}
+        this.setCustomName(Component.literal(this.getNickName()));
         this.setMoodPoints(d.getMoodPoints());
         this.setPos(d.position());
         this.setExperienceTotal(d.getExperienceTotal());
         this.setLevelXp(d.getLevelXp());
         this.setCurrentLevel(d.getCurrentLevel());
         this.setSpecificXps(d.getSpecificXps());
+        this.setHealth(d.getHealth());
     }
 
     public void useXpItem(int id){

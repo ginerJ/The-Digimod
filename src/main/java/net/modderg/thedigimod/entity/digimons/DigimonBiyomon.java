@@ -78,7 +78,7 @@ public class DigimonBiyomon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Depressed") && this.getSpecificXps(7) >= 50;
+        return this.getMood().equals("Sad") && this.getSpecificXps(7) >= 50;
     }
 
 }

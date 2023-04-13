@@ -56,6 +56,16 @@ public class DigitalEntities {
                     .sized(1.0f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "kabuterimon").toString()));
 
+    public static final RegistryObject<EntityType<DigimonRoachmon>> ROACHMON = DIGIMONS.register("roachmon",
+            () -> EntityType.Builder.of(DigimonRoachmon:: new, MobCategory.CREATURE)
+                    .sized(1.0f,2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "roachmon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonFlymon>> FLYMON = DIGIMONS.register("flymon",
+            () -> EntityType.Builder.of(DigimonFlymon:: new, MobCategory.CREATURE)
+                    .sized(1.0f,2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "flymon").toString()));
+
     public static final RegistryObject<EntityType<DigimonGreymon>> GREYMON = DIGIMONS.register("greymon",
             () -> EntityType.Builder.of(DigimonGreymon:: new, MobCategory.CREATURE)
                     .sized(1.0f,2.25f)
@@ -110,6 +120,11 @@ public class DigitalEntities {
             () -> EntityType.Builder.of(DigimonGrowlmon:: new, MobCategory.CREATURE)
                     .sized(1.25f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "growlmon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonGrowlmonData>> GROWLMONDATA = DIGIMONS.register("growlmondata",
+            () -> EntityType.Builder.of(DigimonGrowlmonData:: new, MobCategory.CREATURE)
+                    .sized(1.25f,2.25f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "growlmondata").toString()));
 
     public static final RegistryObject<EntityType<DigimonBlackGrowlmon>> BLACK_GROWLMON = DIGIMONS.register("black_growlmon",
             () -> EntityType.Builder.of(DigimonBlackGrowlmon:: new, MobCategory.CREATURE)

@@ -48,10 +48,28 @@ public class DigimonGuilmon extends CustomDigimon {
 
     @Override
     protected EntityType evoPath() {
-        return DigitalEntities.GROWLMON.get();
+        return DigitalEntities.GROWLMONDATA.get();
     }
     @Override
     protected Boolean canEvoToPath() {
         return true;
+    }
+
+    @Override
+    protected EntityType evoPath4() {
+        return DigitalEntities.BLACK_GROWLMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath4() {
+        return this.getSpecificXps(7) >= 50 && this.getMood().equals("Sad");
+    }
+
+    @Override
+    protected EntityType evoPath5() {
+        return DigitalEntities.GROWLMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath5() {
+        return this.getSpecificXps(0) >= 50 && this.getMood().equals("Joyful");
     }
 }

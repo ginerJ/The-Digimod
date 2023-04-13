@@ -34,6 +34,7 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.JELLYMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.TESLAJELLYMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.GROWLMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.GROWLMONDATA.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.BLACK_GROWLMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.KUWAGAMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.BABYDMON.get(), CustomDigimonRender::new);
@@ -63,6 +64,8 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.OCTOMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.GESOMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.AIRDRAMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.ROACHMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.FLYMON.get(), CustomDigimonRender::new);
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
 
