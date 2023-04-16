@@ -44,4 +44,13 @@ public class DigimonBirdramon extends CustomDigimon {
     protected String SITANIM() {
         return "sit4";
     }
+    @Override
+    protected String FLYANIM() {
+        return "fly";
+    }
+
+    @Override
+    protected Boolean isFlyingDigimon() {
+        return true;
+    }
 }

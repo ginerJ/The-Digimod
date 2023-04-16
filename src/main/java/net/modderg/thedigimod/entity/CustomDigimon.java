@@ -436,6 +436,11 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         this.setLevelXp(d.getLevelXp());
         this.setCurrentLevel(d.getCurrentLevel());
         this.setSpecificXps(d.getSpecificXps());
+        this.setAttackStat(d.getAttackStat());
+        this.setDefenceStat(d.getDefenceStat());
+        this.setSpAttackStat(d.getSpAttackStat());
+        this.setSpDefenceStat(d.getSpDefenceStat());
+        this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(d.getAttribute(Attributes.MAX_HEALTH).getValue());
         this.setHealth(d.getHealth());
     }
 

@@ -31,10 +31,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.Direction;
 import net.minecraft.client.Minecraft;
 import net.modderg.thedigimod.TheDigiMod;
-import net.modderg.thedigimod.block.DigiBlocks;
-import net.modderg.thedigimod.entity.CustomDigimon;
-import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
-import net.modderg.thedigimod.entity.goods.PunchingBag;
 import net.modderg.thedigimod.particles.DigitalParticles;
 import net.modderg.thedigimod.particles.custom.DigitronParticles;
 import net.modderg.thedigimod.particles.custom.StatUpParticles;
@@ -57,10 +53,6 @@ public class ModEvents {
             Minecraft.getInstance().particleEngine.register(DigitalParticles.HEALTH_UP.get(), StatUpParticles.Provider::new);
 
             Minecraft.getInstance().particleEngine.register(DigitalParticles.EVO_PARTICLES.get(), StatUpParticles.Provider::new);
-        }
-        @SubscribeEvent
-        public static void onClientSetup(FMLCommonSetupEvent event) {
-            ItemBlockRenderTypes.setRenderLayer(DigiBlocks.MEAT_CROP.get(), RenderType.cutout());
         }
     }
 

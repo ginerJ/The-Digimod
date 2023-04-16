@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ii ",
+    " ii",
+    "  i"
+  ],
+  "key": {
+    "i": {
+      "item": "thedigimod:nightmare_data"
+    }
+  },
+  "result": {
+    "item": "thedigimod:black_digitron",
+    "count": 1
+  }
+}

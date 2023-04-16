@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    " i ",
+    "/ /"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:oak_log"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "thedigimod:target_item",
+    "count": 1
+  }
+}
