@@ -109,6 +109,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     protected EntityType evoPath5(){return null;}
     protected Boolean canEvoToPath5(){return false;}
 
+    public EntityType digitronEvo(){return null;}
+
     protected static final EntityDataAccessor<String> NICKNAME = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
     public void setNickName(String i){
         this.getEntityData().set(NICKNAME, i);
@@ -426,9 +428,10 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     }
 
     public void copyOtherDigi(CustomDigimon d){
-        this.tame((Player) Objects.requireNonNull(d.getOwner()));
+        if(d.getOwner() != null){this.tame((Player) d.getOwner());}
         if(d.getNickName().equals(d.getSpecies())){this.setNickName(this.getSpecies());}
         else {this.setNickName(d.getNickName());}
+        this.setMovementID(d.getMovementID());
         this.setCustomName(Component.literal(this.getNickName()));
         this.setMoodPoints(d.getMoodPoints());
         this.setPos(d.position());

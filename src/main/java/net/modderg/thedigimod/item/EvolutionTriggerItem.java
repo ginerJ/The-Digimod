@@ -26,12 +26,11 @@ public class EvolutionTriggerItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack item, Player player, LivingEntity entity, InteractionHand hand) {
         if(entity instanceof CustomDigimon){
             spawnEvoParticles(new UseOnContext(player, hand, new BlockHitResult(entity.position(), player.getDirection(), entity.blockPosition(), true)), entity.blockPosition());
-
         }
         return super.interactLivingEntity(item, player, entity, hand);
     }
 
-    private void spawnEvoParticles(UseOnContext pContext, BlockPos positionClicked) {
+    protected void spawnEvoParticles(UseOnContext pContext, BlockPos positionClicked) {
         for(int i = 0; i < 360; i++) {
             if(i % 20 == 0) {
                 pContext.getLevel().addParticle(particle.get(),

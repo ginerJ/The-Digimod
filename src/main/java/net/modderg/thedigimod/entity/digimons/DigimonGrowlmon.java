@@ -45,4 +45,9 @@ public class DigimonGrowlmon extends CustomDigimon {
     protected String SITANIM() {
         return "sit6";
     }
+
+    @Override
+    public EntityType digitronEvo() {
+        return DigitalEntities.BLACK_GROWLMON.get();
+    }
 }

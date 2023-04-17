@@ -45,4 +45,9 @@ public class DigimonGreymon extends CustomDigimon {
     protected String SITANIM() {
         return "sit4";
     }
+
+    @Override
+    public EntityType digitronEvo() {
+        return DigitalEntities.GREYMONVIRUS.get();
+    }
 }

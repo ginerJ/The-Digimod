@@ -7,6 +7,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
+import net.modderg.thedigimod.entity.DigitalEntities;
 
 public class DigimonTyrannomon extends CustomDigimon {
 
@@ -43,5 +44,10 @@ public class DigimonTyrannomon extends CustomDigimon {
     @Override
     protected String SITANIM() {
         return "sit3";
+    }
+
+    @Override
+    public EntityType digitronEvo() {
+        return DigitalEntities.DARKTYRANNOMON.get();
     }
 }

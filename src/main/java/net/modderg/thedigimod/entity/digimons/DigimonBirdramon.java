@@ -7,6 +7,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
+import net.modderg.thedigimod.entity.DigitalEntities;
 
 public class DigimonBirdramon extends CustomDigimon {
 
@@ -52,5 +53,10 @@ public class DigimonBirdramon extends CustomDigimon {
     @Override
     protected Boolean isFlyingDigimon() {
         return true;
+    }
+
+    @Override
+    public EntityType digitronEvo() {
+        return DigitalEntities.SABERDRAMON.get();
     }
 }

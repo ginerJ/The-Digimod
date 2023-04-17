@@ -40,7 +40,7 @@ public abstract class CustomTrainingGood extends Animal implements GeoEntity {
 
     @Override
     public boolean hurt(DamageSource source, float p_27568_) {
-        if(source.getDirectEntity() instanceof CustomDigimon digimon && this.random.nextInt(0,5) == 4){
+        if(source.getDirectEntity() instanceof CustomDigimon digimon && this.random.nextInt(5) == 2){
             digimon.restMoodPoints(10);
             if(statName().equals("attack")){
                 digimon.setAttackStat(digimon.getAttackStat() + random.nextInt(0, 3));

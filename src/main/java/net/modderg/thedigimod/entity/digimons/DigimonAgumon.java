@@ -90,4 +90,8 @@ public class DigimonAgumon extends CustomDigimon {
         return this.getMood().equals("Joyful") && this.getSpecificXps(0) >= 50;
     }
 
+    @Override
+    public EntityType digitronEvo() {
+        return DigitalEntities.AGUMONBLACK.get();
+    }
 }
