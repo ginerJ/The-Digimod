@@ -9,8 +9,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec2;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.DigitalEntities;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -31,10 +33,6 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
         super(p_36721_, p_36722_);
     }
 
-    public void setOwner(@Nullable CustomDigimon p_36770_) {
-        super.setOwner(p_36770_);
-    }
-
     @Override
     public void tick() {
         life--;
@@ -50,11 +48,13 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult p_36757_) {
-        if(!p_36757_.getEntity().equals(getOwner())){
-            this.remove(RemovalReason.UNLOADED_TO_CHUNK);
-        }
-        super.onHitEntity(p_36757_);
+    protected void onHitEntity(EntityHitResult hitted) {
+        if(hitted.getEntity() instanceof CustomDigimon hcd && this.getOwner() instanceof CustomDigimon cd){
+            if(!(hcd.getOwner() != null && cd.getOwner() != null && cd.getOwner().is(hcd.getOwner()))){
+                super.onHitEntity(hitted);
+            }
+        }else {super.onHitEntity(hitted);}
+        this.remove(RemovalReason.UNLOADED_TO_CHUNK);
     }
 
     @Override

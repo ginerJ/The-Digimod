@@ -6,7 +6,9 @@ import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.CustomDigimon;
+import net.modderg.thedigimod.item.DigiItems;
 
 public class DigimonAirdramon extends CustomDigimon {
 
@@ -33,19 +35,24 @@ public class DigimonAirdramon extends CustomDigimon {
         return "Airdramon";
     }
     @Override
-    protected String IDLEANIM() {
+    protected RegistryObject<?>[] reincarnateTo(){
+        return new RegistryObject[]{DigiItems.PETITMON};
+    }
+
+    @Override
+    protected String idleAnim() {
         return "idle3";
     }
     @Override
-    protected String WALKANIM() {
+    protected String walkAnim() {
         return "float";
     }
     @Override
-    protected String SITANIM() {
+    protected String sitAnim() {
         return "sit2";
     }
     @Override
-    protected String FLYANIM() {
+    protected String flyAnim() {
         return "fly2";
     }
 

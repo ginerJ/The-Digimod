@@ -34,19 +34,19 @@ public class DigimonBirdramon extends CustomDigimon {
         return "Birdramon";
     }
     @Override
-    protected String IDLEANIM() {
+    protected String idleAnim() {
         return "idle";
     }
     @Override
-    protected String WALKANIM() {
+    protected String walkAnim() {
         return "walk";
     }
     @Override
-    protected String SITANIM() {
+    protected String sitAnim() {
         return "sit4";
     }
     @Override
-    protected String FLYANIM() {
+    protected String flyAnim() {
         return "fly";
     }
 

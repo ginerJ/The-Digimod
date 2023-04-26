@@ -10,6 +10,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.joml.Matrix4f;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -32,11 +33,13 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
         mp.setStyle(XpStyle.withColor(TextColor.fromRgb(11534335)));
         MutableComponent mp2 = MutableComponent.create(Component.literal(entity.getMood()).getContents());
         mp2.setStyle(XpStyle.withColor(TextColor.fromRgb(entity.getMoodColor())));
-        MutableComponent mp3 = MutableComponent.create(Component.literal(Integer.toString(Math.round(entity.getHealth())) + " Hp").getContents());
+        MutableComponent mp3 = MutableComponent.create(Component.literal(Integer.toString(Math.round(entity.getHealth())) + "/" + (int)entity.getAttribute(Attributes.MAX_HEALTH).getValue() + "Hp").getContents());
         mp3.setStyle(XpStyle.withColor(TextColor.fromRgb(8704641)));
-        if (entity.isTame() && renderNameTagEvent.getResult() != net.minecraftforge.eventbus.api.Event.Result.DENY && (renderNameTagEvent.getResult() == net.minecraftforge.eventbus.api.Event.Result.ALLOW || this.shouldShowName(entity))) {
-            this.renderXp(entity, mp, stack, bufferIn, packedLightIn);
-            this.renderMood(entity, mp2, stack, bufferIn, packedLightIn);
+        if (renderNameTagEvent.getResult() != net.minecraftforge.eventbus.api.Event.Result.DENY && (renderNameTagEvent.getResult() == net.minecraftforge.eventbus.api.Event.Result.ALLOW || this.shouldShowName(entity))) {
+            if(entity.isTame()){
+                this.renderXp(entity, mp, stack, bufferIn, packedLightIn);
+                this.renderMood(entity, mp2, stack, bufferIn, packedLightIn);
+            }
             this.renderHp(entity, mp3, stack, bufferIn, packedLightIn);
         }
         super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
@@ -126,7 +129,6 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
             if (flag) {
                 font.m_253181_(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
             }
-
             stack.popPose();
         }
     }

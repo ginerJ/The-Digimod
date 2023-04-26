@@ -281,6 +281,14 @@ public class TheDigiMod {
             event.accept(DigiItems.SHIELD_ITEM);
             event.accept(DigiItems.UPDATE_ITEM);
         }
+        if(event.getTab() == DigitalCreativeTab.ADMIN_TAB){
+            event.accept(DigiItems.ATTACK_GB);
+            event.accept(DigiItems.SPATTACK_GB);
+            event.accept(DigiItems.DEFENCE_GB);
+            event.accept(DigiItems.SPDEFENCE_GB);
+            event.accept(DigiItems.HEALTH_DRIVES);
+            event.accept(DigiItems.BATTLE_CHIP);
+        }
     }
 
     private void setAttributes(final EntityAttributeCreationEvent event) {

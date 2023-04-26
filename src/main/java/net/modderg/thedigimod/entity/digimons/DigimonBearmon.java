@@ -6,8 +6,10 @@ import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.DigitalEntities;
+import net.modderg.thedigimod.item.DigiItems;
 
 public class DigimonBearmon extends CustomDigimon {
 
@@ -34,15 +36,20 @@ public class DigimonBearmon extends CustomDigimon {
         return "Bearmon";
     }
     @Override
-    protected String IDLEANIM() {
+    protected RegistryObject<?>[] reincarnateTo(){
+        return new RegistryObject[]{DigiItems.DOKIMON};
+    }
+
+    @Override
+    protected String idleAnim() {
         return "idle";
     }
     @Override
-    protected String WALKANIM() {
+    protected String walkAnim() {
         return "walk";
     }
     @Override
-    protected String SITANIM() {
+    protected String sitAnim() {
         return "sit";
     }
 

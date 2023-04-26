@@ -1,4 +1,4 @@
-package net.modderg.thedigimod.events.client;
+package net.modderg.thedigimod.events;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
@@ -8,7 +8,7 @@ import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.CustomDigimonRender;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.entity.goods.*;
-import net.modderg.thedigimod.projectiles.renders.CustomProjectileRender;
+import net.modderg.thedigimod.projectiles.CustomProjectileRender;
 
 
 @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

@@ -1,9 +1,7 @@
-package net.modderg.thedigimod.projectiles.models;
+package net.modderg.thedigimod.projectiles;
 
 import net.minecraft.resources.ResourceLocation;
 import net.modderg.thedigimod.TheDigiMod;
-import net.modderg.thedigimod.projectiles.CustomProjectile;
-import net.modderg.thedigimod.projectiles.PepperBreath;
 import software.bernie.geckolib.model.GeoModel;
 
 public class CustomProjectileModel<D extends CustomProjectile> extends GeoModel<CustomProjectile> {
