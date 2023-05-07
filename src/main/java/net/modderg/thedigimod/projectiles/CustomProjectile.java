@@ -1,6 +1,7 @@
 package net.modderg.thedigimod.projectiles;
 
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -51,7 +52,7 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
     protected void onHitEntity(EntityHitResult hitted) {
         if(hitted.getEntity() instanceof CustomDigimon hcd && this.getOwner() instanceof CustomDigimon cd){
             if(!(hcd.getOwner() != null && cd.getOwner() != null && cd.getOwner().is(hcd.getOwner()))){
-                super.onHitEntity(hitted);
+                hcd.hurt(DamageSource.mobAttack(cd), cd.calculateDamage(cd.getSpAttackStat(), hcd.getSpDefenceStat()));
             }
         }else {super.onHitEntity(hitted);}
         this.remove(RemovalReason.UNLOADED_TO_CHUNK);

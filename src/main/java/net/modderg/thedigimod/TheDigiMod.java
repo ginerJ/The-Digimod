@@ -288,6 +288,7 @@ public class TheDigiMod {
             event.accept(DigiItems.SPDEFENCE_GB);
             event.accept(DigiItems.HEALTH_DRIVES);
             event.accept(DigiItems.BATTLE_CHIP);
+            event.accept(DigiItems.TAMER_LEASH);
         }
     }
 

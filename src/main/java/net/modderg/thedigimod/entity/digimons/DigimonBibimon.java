@@ -52,6 +52,10 @@ public class DigimonBibimon extends CustomDigimon {
     protected String sitAnim() {
         return "sit2";
     }
+    @Override
+    protected String attackAnim() {
+        return "attack2";
+    }
 
     @Override
     protected EntityType evoPath() {

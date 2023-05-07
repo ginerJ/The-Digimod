@@ -14,11 +14,7 @@ import net.modderg.thedigimod.particles.DigitalParticles;
 public class DigiItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TheDigiMod.MOD_ID);
 
-    //Digivices
-    public static final RegistryObject<Item> VITALBRACELET = ITEMS.register("vitalbracelet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> DIGIVICE = ITEMS.register("digivice", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> VPET = ITEMS.register("vpet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
-    //Dims
+    //Babies
     public static final RegistryObject<Item> BOTAMON = ITEMS.register("botamon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.KOROMON, "Agumon"));
     public static final RegistryObject<Item> BOTAMOND = ITEMS.register("botamond", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.KOROMONB, "Black Agumon"));
     public static final RegistryObject<Item> BUBBMON = ITEMS.register("bubbmon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.MOCHIMON, "Tentomon"));
@@ -29,6 +25,11 @@ public class DigiItems {
     public static final RegistryObject<Item> PUYOMON = ITEMS.register("puyomon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.PUYOYOMON, "Jellymon"));
     public static final RegistryObject<Item> DOKIMON = ITEMS.register("dokimon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.BIBIMON, "Pulsemon"));
     public static final RegistryObject<Item> NYOKIMON = ITEMS.register("nyokimon", () -> new CustomDimItem(new Item.Properties().stacksTo(16), DigitalEntities.YOKOMON, "Biyomon"));
+
+    //Digivices
+    public static final RegistryObject<Item> VITALBRACELET = ITEMS.register("vitalbracelet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> DIGIVICE = ITEMS.register("digivice", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> VPET = ITEMS.register("vpet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
 
     //Exp Items
     public static final RegistryObject<Item> DRAGON_DATA = ITEMS.register("dragon_data", () -> new CustomXpItem(new Item.Properties(), 0));
@@ -60,5 +61,5 @@ public class DigiItems {
     public static final RegistryObject<Item> SPDEFENCE_GB = ITEMS.register("gbspdefence", () -> new StatUpItem(new Item.Properties().stacksTo(1), "spdefence"));
     public static final RegistryObject<Item> HEALTH_DRIVES = ITEMS.register("health_drives", () -> new StatUpItem(new Item.Properties().stacksTo(1), "health"));
     public static final RegistryObject<Item> BATTLE_CHIP = ITEMS.register("battles_chip", () -> new StatUpItem(new Item.Properties().stacksTo(1), "battle"));
-
+    public static final RegistryObject<Item> TAMER_LEASH = ITEMS.register("tamer_leash", () -> new TameItem(new Item.Properties()));
 }

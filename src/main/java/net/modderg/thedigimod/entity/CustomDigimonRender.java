@@ -1,18 +1,26 @@
 package net.modderg.thedigimod.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.joml.Matrix4f;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
+import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.model.data.EntityModelData;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRenderer<CustomDigimon> {
@@ -21,6 +29,8 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
     public CustomDigimonRender(EntityRendererProvider.Context renderManager) {
         super(renderManager, (GeoModel<CustomDigimon>) new CustomDigimonModel());
     }
+
+
 
     @Override
     public void render(CustomDigimon entity, float entityYaw, float partialTicks, PoseStack stack, MultiBufferSource bufferIn, int packedLightIn) {
@@ -131,5 +141,10 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
             }
             stack.popPose();
         }
+    }
+
+    @Override
+    public void renderRecursively(PoseStack poseStack, CustomDigimon animatable, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
     }
 }

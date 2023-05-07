@@ -344,7 +344,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             this.setDefenceStat((int)getHealth());
             this.setSpAttackStat((int)getHealth());
             this.setSpDefenceStat((int)getHealth());
-            this.setBattlesStat((int)getHealth());
         }
         return super.finalizeSpawn(p_146746_, p_146747_, p_146748_, p_146749_, p_146750_);
     }
@@ -514,7 +513,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     @Override
     public void die(DamageSource source) {
-        if(source.getEntity() instanceof CustomDigimon digimon){digimon.setBattlesStat(getBattlesStat() + 1);}
+        if(source.getEntity() instanceof CustomDigimon digimon){
+            digimon.setBattlesStat(digimon.getBattlesStat() + 1);
+        }
         this.getLevel().addFreshEntity(new ItemEntity(getLevel(),
                 this.getX(),this.getY(),this.getZ(), new ItemStack((ItemLike) reincarnateTo()[random.nextInt(reincarnateTo().length)].get())));
         super.die(source);
@@ -536,6 +537,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         evoD.copyOtherDigi(this);
         this.getLevel().addFreshEntity(evoD);
         this.remove(RemovalReason.UNLOADED_TO_CHUNK);
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity target) {
+        return target instanceof CustomDigimon cd ? cd.hurt(DamageSource.mobAttack(this), calculateDamage(this.getAttackStat(), cd.getDefenceStat()))
+        : super.doHurtTarget(target);
     }
 
     public void copyOtherDigi(CustomDigimon d){
@@ -654,6 +661,10 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         this.level.addFreshEntity(bullet);
     }
 
+    public int calculateDamage(int attack, int defense){
+        return (int) Math.max(1, attack - defense);
+    }
+
     //Animations
     protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
@@ -673,9 +684,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
                         }
                     }
                 }
-            } else
-            {
-                event.getController().setAnimation(RawAnimation.begin().then("show", Animation.LoopType.LOOP));}
+            } else {
+                event.getController().setAnimation(RawAnimation.begin().then("show", Animation.LoopType.LOOP));
+            }
             return PlayState.CONTINUE;
         });
     }

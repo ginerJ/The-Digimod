@@ -53,6 +53,10 @@ public class DigimonBabydmon extends CustomDigimon {
         return "sit2";
     }
     @Override
+    protected String attackAnim() {
+        return "attack2";
+    }
+    @Override
     protected String flyAnim() {
         return "bug_fly";
     }
