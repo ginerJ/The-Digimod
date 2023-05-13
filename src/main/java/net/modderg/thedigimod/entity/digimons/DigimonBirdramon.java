@@ -6,8 +6,10 @@ import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.DigitalEntities;
+import net.modderg.thedigimod.item.DigiItems;
 
 public class DigimonBirdramon extends CustomDigimon {
 
@@ -33,6 +35,11 @@ public class DigimonBirdramon extends CustomDigimon {
     public String getSpecies() {
         return "Birdramon";
     }
+    @Override
+    protected RegistryObject<?>[] reincarnateTo(){
+        return new RegistryObject[]{DigiItems.NYOKIMON};
+    }
+
     @Override
     protected String idleAnim() {
         return "idle";

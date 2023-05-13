@@ -23,7 +23,7 @@ import software.bernie.geckolib.core.object.PlayState;
 
 public class CustomProjectile extends AbstractArrow implements GeoEntity {
 
-    protected String attack = "pepper_breath";
+    protected String attack = "small_bullet";
     public String getAttackName(){
         return attack;
     }

@@ -6,9 +6,11 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.protocol.game.ClientboundAnimatePacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -516,9 +518,24 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         if(source.getEntity() instanceof CustomDigimon digimon){
             digimon.setBattlesStat(digimon.getBattlesStat() + 1);
         }
-        this.getLevel().addFreshEntity(new ItemEntity(getLevel(),
-                this.getX(),this.getY(),this.getZ(), new ItemStack((ItemLike) reincarnateTo()[random.nextInt(reincarnateTo().length)].get())));
+        if(this.isTame() || random.nextInt(0,50) < 5){
+            this.getLevel().addFreshEntity(new ItemEntity(getLevel(),
+                    this.getX(),this.getY(),this.getZ(), new ItemStack((ItemLike) reincarnateTo()[random.nextInt(reincarnateTo().length)].get())));
+        }
         super.die(source);
+    }
+
+    @Override
+    public void setTarget(@Nullable LivingEntity entity) {
+        if(!(entity instanceof CustomDigimon cd && cd.getOwner() != null && this.getOwner() != null && cd.isOwnedBy(this.getOwner()))){
+            super.setTarget(entity);
+        }
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity target) {
+        return target instanceof CustomDigimon cd ? cd.hurt(DamageSource.mobAttack(this), calculateDamage(this.getAttackStat(), cd.getDefenceStat()))
+        : super.doHurtTarget(target);
     }
 
     public void evolveDigimon(){
@@ -537,12 +554,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         evoD.copyOtherDigi(this);
         this.getLevel().addFreshEntity(evoD);
         this.remove(RemovalReason.UNLOADED_TO_CHUNK);
-    }
-
-    @Override
-    public boolean doHurtTarget(Entity target) {
-        return target instanceof CustomDigimon cd ? cd.hurt(DamageSource.mobAttack(this), calculateDamage(this.getAttackStat(), cd.getDefenceStat()))
-        : super.doHurtTarget(target);
     }
 
     public void copyOtherDigi(CustomDigimon d){
@@ -708,8 +719,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController(this, "attackController", 0,this::attackPredicate));
         controllers.add(animController(this));
+        controllers.add(new AnimationController(this, "attackController", 0,this::attackPredicate));
     }
 
     @Override

@@ -8,12 +8,12 @@ public class CustomProjectileModel<D extends CustomProjectile> extends GeoModel<
 
     @Override
     public ResourceLocation getModelResource(CustomProjectile projectile) {
-        return new ResourceLocation(TheDigiMod.MOD_ID, "geo/" + projectile.getAttackName() + ".geo.json");
+        return new ResourceLocation(TheDigiMod.MOD_ID, "geo/moves/" + projectile.getAttackName() + ".geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(CustomProjectile projectile) {
-        return new ResourceLocation(TheDigiMod.MOD_ID, "textures/projectiles/" + projectile.getAttackName() + ".png");
+        return new ResourceLocation(TheDigiMod.MOD_ID, "textures/moves/" + projectile.getAttackName() + ".png");
     }
 
     @Override
