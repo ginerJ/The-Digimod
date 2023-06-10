@@ -1,0 +1,17 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:swamp",
+    "minecraft:windswept_hills",
+    "minecraft:windswept_gravelly_hills",
+    "minecraft:windswept_forest",
+    "minecraft:grove",
+    "minecraft:stony_peaks"
+  ],
+  "spawners": {
+    "type": "thedigimod:akatorimon",
+    "weight": 50,
+    "minCount": 3,
+    "maxCount": 5
+  }
+}

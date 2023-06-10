@@ -35,8 +35,10 @@ public class DigimonRoachmon extends CustomDigimon {
         return "Roachmon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BUBBMONK, DigiItems.BUBBMON};
+    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BUBBMONK, DigiItems.BUBBMON};}
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.PLANTINSECT_DATA;
     }
 
     @Override

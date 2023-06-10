@@ -30,6 +30,8 @@ public class DigiItems {
     public static final RegistryObject<Item> VITALBRACELET = ITEMS.register("vitalbracelet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> DIGIVICE = ITEMS.register("digivice", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> VPET = ITEMS.register("vpet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> DIGIVICE_IC = ITEMS.register("digivice_ic", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> DIGIVICE_BURST = ITEMS.register("digivice_burst", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
 
     //Exp Items
     public static final RegistryObject<Item> DRAGON_DATA = ITEMS.register("dragon_data", () -> new CustomXpItem(new Item.Properties(), 0));
@@ -62,4 +64,5 @@ public class DigiItems {
     public static final RegistryObject<Item> HEALTH_DRIVES = ITEMS.register("health_drives", () -> new StatUpItem(new Item.Properties().stacksTo(1), "health"));
     public static final RegistryObject<Item> BATTLE_CHIP = ITEMS.register("battles_chip", () -> new StatUpItem(new Item.Properties().stacksTo(1), "battle"));
     public static final RegistryObject<Item> TAMER_LEASH = ITEMS.register("tamer_leash", () -> new TameItem(new Item.Properties()));
+    public static final RegistryObject<Item> GOBLIMON_BAT = ITEMS.register("goblimon_bat", () -> new StatUpItem(new Item.Properties().stacksTo(1), "mistakes"));
 }

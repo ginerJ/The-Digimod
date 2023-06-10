@@ -30,12 +30,15 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
         super(renderManager, (GeoModel<CustomDigimon>) new CustomDigimonModel());
     }
 
-
-
     @Override
     public void render(CustomDigimon entity, float entityYaw, float partialTicks, PoseStack stack, MultiBufferSource bufferIn, int packedLightIn) {
         if(entity.isEvolving()){
             packedLightIn = 0;
+        }
+        if(entity.isBaby2()){
+            stack.scale(0.85f,0.85f,0.85f);
+        } else if (entity.isChampion()){
+            stack.scale(1.1f,1.1f,1.1f);
         }
         var renderNameTagEvent = new net.minecraftforge.client.event.RenderNameTagEvent(entity, entity.getDisplayName(), this, stack, bufferIn, packedLightIn, partialTicks);
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(renderNameTagEvent);

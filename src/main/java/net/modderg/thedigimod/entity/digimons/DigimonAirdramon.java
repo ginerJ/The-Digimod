@@ -22,7 +22,7 @@ public class DigimonAirdramon extends CustomDigimon {
                 .add(Attributes.MAX_HEALTH, 1.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
-                .add(Attributes.FLYING_SPEED, 0.3D);
+                .add(Attributes.FLYING_SPEED, 0.15D);
     }
 
     @Override
@@ -38,6 +38,10 @@ public class DigimonAirdramon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.PETITMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.DRAGON_DATA;
+    }
 
     @Override
     protected String idleAnim() {
@@ -45,7 +49,7 @@ public class DigimonAirdramon extends CustomDigimon {
     }
     @Override
     protected String walkAnim() {
-        return "float";
+        return "fly3";
     }
     @Override
     protected String sitAnim() {

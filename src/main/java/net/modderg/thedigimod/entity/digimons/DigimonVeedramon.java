@@ -38,6 +38,8 @@ public class DigimonVeedramon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.BOTAMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {return DigiItems.DRAGON_DATA;}
 
     @Override
     protected String idleAnim() {

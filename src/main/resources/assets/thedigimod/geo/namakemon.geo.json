@@ -39,7 +39,7 @@
 				{
 					"name": "body",
 					"parent": "entity",
-					"pivot": [0, 0, 0],
+					"pivot": [0, 6, 0],
 					"cubes": [
 						{"origin": [-6, 16, -5], "size": [12, 3, 10], "uv": [79, 67]},
 						{"origin": [-5, 6, -4], "size": [10, 10, 8], "inflate": 0.02, "uv": [80, 46]}

@@ -38,6 +38,10 @@ public class DigimonOctomon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.PUYOMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.AQUAN_DATA;
+    }
 
     @Override
     protected String idleAnim() {

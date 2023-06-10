@@ -38,6 +38,10 @@ public class DigimonAkatorimon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.NYOKIMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.WIND_DATA;
+    }
 
     @Override
     protected String idleAnim() {

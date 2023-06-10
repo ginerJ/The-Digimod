@@ -39,6 +39,10 @@ public class DigimonGrizzlymon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.PUNIMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.BEAST_DATA;
+    }
 
     @Override
     protected String idleAnim() {
@@ -52,5 +56,6 @@ public class DigimonGrizzlymon extends CustomDigimon {
     protected String sitAnim() {
         return "sit2";
     }
-
+    @Override
+    protected String attackAnim() {return "attack4";}
 }

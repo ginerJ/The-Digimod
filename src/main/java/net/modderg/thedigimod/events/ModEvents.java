@@ -33,6 +33,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.client.Minecraft;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.particles.DigitalParticles;
+import net.modderg.thedigimod.particles.custom.BubbleParticle;
 import net.modderg.thedigimod.particles.custom.DigitronParticles;
 import net.modderg.thedigimod.particles.custom.StatUpParticles;
 
@@ -45,6 +46,9 @@ public class ModEvents {
         public static void registerParticleFactories(final RegisterParticleProvidersEvent event){
 
             Minecraft.getInstance().particleEngine.register(DigitalParticles.DIGITRON_PARTICLES.get(), DigitronParticles.Provider::new);
+
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.MEAT_BUBBLE.get(), BubbleParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.MISTAKE_BUBBLE.get(), BubbleParticle.Provider::new);
 
             Minecraft.getInstance().particleEngine.register(DigitalParticles.ATTACK_UP.get(), StatUpParticles.Provider::new);
             Minecraft.getInstance().particleEngine.register(DigitalParticles.DEFENCE_UP.get(), StatUpParticles.Provider::new);

@@ -25,7 +25,7 @@ public class AddTamerEquipment {
     static RegistryObject<?>[] babies = {DigiItems.BOTAMON, DigiItems.BOTAMOND, DigiItems.BUBBMON, DigiItems.BUBBMONK, DigiItems.PUNIMON,
             DigiItems.JYARIMON,  DigiItems.PETITMON, DigiItems.PUYOMON, DigiItems.DOKIMON, DigiItems.NYOKIMON};
 
-    static RegistryObject<?>[] vices = {DigiItems.VPET,  DigiItems.DIGIVICE, DigiItems.VITALBRACELET};
+    static RegistryObject<?>[] vices = {DigiItems.VPET,  DigiItems.DIGIVICE, DigiItems.VITALBRACELET, DigiItems.DIGIVICE_IC, DigiItems.DIGIVICE_BURST};
 
     @Mod.EventBusSubscriber
     public class FirstJoinProcedure {

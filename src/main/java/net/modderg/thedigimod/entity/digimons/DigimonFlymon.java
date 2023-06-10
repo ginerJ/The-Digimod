@@ -38,6 +38,10 @@ public class DigimonFlymon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.BUBBMONK};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.PLANTINSECT_DATA;
+    }
 
     @Override
     protected String idleAnim() {

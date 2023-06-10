@@ -16,6 +16,7 @@ import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.modderg.thedigimod.block.DigiBlocks;
+import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.digimons.*;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.entity.goods.PunchingBag;
@@ -190,19 +191,19 @@ public class TheDigiMod {
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BIYOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkBirdDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BIRDRAMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkBirdDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.SABERDRAMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkBirdDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.AKATORIMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkBirdDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.NAMAKEMON.get(), SpawnPlacements.Type.ON_GROUND,
@@ -238,7 +239,7 @@ public class TheDigiMod {
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.COREDRAMONGREEN.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, Animal::checkMobSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.AIRDRAMON.get(), SpawnPlacements.Type.ON_GROUND,
@@ -254,6 +255,8 @@ public class TheDigiMod {
             event.accept(DigiItems.VITALBRACELET);
             event.accept(DigiItems.DIGIVICE);
             event.accept(DigiItems.VPET);
+            event.accept(DigiItems.DIGIVICE_BURST);
+            event.accept(DigiItems.DIGIVICE_IC);
             event.accept(DigiItems.BOTAMOND);
             event.accept(DigiItems.BOTAMON);
             event.accept(DigiItems.BUBBMON);
@@ -289,6 +292,7 @@ public class TheDigiMod {
             event.accept(DigiItems.HEALTH_DRIVES);
             event.accept(DigiItems.BATTLE_CHIP);
             event.accept(DigiItems.TAMER_LEASH);
+            event.accept(DigiItems.GOBLIMON_BAT);
         }
     }
 

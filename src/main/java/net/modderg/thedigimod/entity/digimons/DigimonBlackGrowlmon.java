@@ -35,8 +35,10 @@ public class DigimonBlackGrowlmon extends CustomDigimon {
         return "BlackGrowlmon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BOTAMOND, DigiItems.JYARIMON};
+    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BOTAMOND, DigiItems.JYARIMON};}
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.NIGHTMARE_DATA;
     }
 
     @Override

@@ -1,0 +1,16 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:meadow",
+    "minecraft:plains",
+    "minecraft:river"
+  ],
+  "spawners": {
+    "type": "thedigimod:tsunomon",
+    "weight": 50,
+    "minCount": 3,
+    "maxCount": 5
+  }
+}

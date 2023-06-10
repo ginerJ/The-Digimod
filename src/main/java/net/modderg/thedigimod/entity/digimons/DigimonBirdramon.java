@@ -23,7 +23,7 @@ public class DigimonBirdramon extends CustomDigimon {
                 .add(Attributes.MAX_HEALTH, 1.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
-                .add(Attributes.FLYING_SPEED, 0.3D);
+                .add(Attributes.FLYING_SPEED, 0.15D);
     }
 
     @Override
@@ -38,6 +38,10 @@ public class DigimonBirdramon extends CustomDigimon {
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.NYOKIMON};
+    }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.WIND_DATA;
     }
 
     @Override

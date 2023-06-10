@@ -21,18 +21,20 @@ public class StatUpItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack item, Player player, LivingEntity entity, InteractionHand hand) {
         if(entity instanceof CustomDigimon cd){
             if(stat == "attack"){
-                cd.setAttackStat(cd.MAXULTSTAT);
+                cd.setAttackStat(cd.MAXMEGASTAT);
             } else if(stat == "spattack"){
-                cd.setSpAttackStat(cd.MAXULTSTAT);
+                cd.setSpAttackStat(cd.MAXMEGASTAT);
             } else if(stat == "defence"){
-                cd.setDefenceStat(cd.MAXULTSTAT);
+                cd.setDefenceStat(cd.MAXMEGASTAT);
             } else if(stat == "spdefence"){
-                cd.setSpDefenceStat(cd.MAXULTSTAT);
+                cd.setSpDefenceStat(cd.MAXMEGASTAT);
             } else if(stat == "health"){
-                cd.setHealthStat(cd.MAXULTSTAT);
+                cd.setHealthStat(cd.MAXMEGASTAT);
                 cd.setHealth(cd.MAXMEGASTAT);
             } else if(stat == "battle"){
                 cd.setBattlesStat(cd.getBattlesStat() + 5);
+            } else if(stat == "mistakes"){
+                cd.setCareMistakesStat(cd.getCareMistakesStat() + 1);
             }
         }
         return super.interactLivingEntity(item, player, entity, hand);

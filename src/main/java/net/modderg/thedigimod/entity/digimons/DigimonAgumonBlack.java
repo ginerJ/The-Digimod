@@ -40,6 +40,11 @@ public class DigimonAgumonBlack extends CustomDigimon {
         return new RegistryObject[]{DigiItems.BOTAMOND};
     }
     @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.NIGHTMARE_DATA;
+    }
+
+    @Override
     protected String idleAnim() {
         return "idle";
     }

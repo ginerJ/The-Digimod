@@ -35,8 +35,10 @@ public class DigimonGreymonVirus extends CustomDigimon {
         return "Greymon(Virus)";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BOTAMON, DigiItems.BOTAMOND};
+    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BOTAMON, DigiItems.BOTAMOND};}
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.NIGHTMARE_DATA;
     }
 
     @Override

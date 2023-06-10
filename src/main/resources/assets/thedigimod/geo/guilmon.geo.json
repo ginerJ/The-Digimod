@@ -104,7 +104,7 @@
 				{
 					"name": "head",
 					"parent": "neck",
-					"pivot": [0, 18.1, 1],
+					"pivot": [0, 18.1, 0],
 					"cubes": [
 						{
 							"origin": [-3, 18.1, 3],

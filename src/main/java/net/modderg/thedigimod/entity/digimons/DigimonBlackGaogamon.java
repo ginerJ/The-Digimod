@@ -38,6 +38,10 @@ public class DigimonBlackGaogamon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.PUNIMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.NIGHTMARE_DATA;
+    }
 
     @Override
     protected String idleAnim() {
@@ -51,5 +55,6 @@ public class DigimonBlackGaogamon extends CustomDigimon {
     protected String sitAnim() {
         return "sit2";
     }
-
+    @Override
+    protected String attackAnim() {return "attack3";}
 }

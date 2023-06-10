@@ -37,7 +37,11 @@ public class DigimonBearmon extends CustomDigimon {
     }
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.DOKIMON};
+        return new RegistryObject[]{DigiItems.PUNIMON};
+    }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.BEAST_DATA;
     }
 
     @Override

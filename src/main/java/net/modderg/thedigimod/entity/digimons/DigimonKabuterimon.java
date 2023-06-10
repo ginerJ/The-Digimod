@@ -39,6 +39,10 @@ public class DigimonKabuterimon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.BUBBMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.PLANTINSECT_DATA;
+    }
 
     @Override
     protected String idleAnim() {
@@ -52,6 +56,8 @@ public class DigimonKabuterimon extends CustomDigimon {
     protected String sitAnim() {
         return "sit5";
     }
+    @Override
+    protected String attackAnim() {return "shoot";}
     @Override
     protected String flyAnim() {
         return "bug_fly";

@@ -39,6 +39,10 @@ public class DigimonJellymon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.PUYOMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.AQUAN_DATA;
+    }
 
     @Override
     protected String idleAnim() {
@@ -46,13 +50,12 @@ public class DigimonJellymon extends CustomDigimon {
     }
     @Override
     protected String walkAnim() {
-        return "walk2";
+        return "walk7";
     }
     @Override
     protected String sitAnim() {
         return "sit";
     }
-
     @Override
     protected String flyAnim() {
         return "float";

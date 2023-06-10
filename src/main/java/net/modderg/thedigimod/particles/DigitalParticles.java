@@ -15,6 +15,11 @@ public class DigitalParticles {
     public static final RegistryObject<SimpleParticleType> DIGITRON_PARTICLES =
             PARTICLE_TYPES.register( "digitron_particles", () -> new SimpleParticleType(true));
 
+    public static final RegistryObject<SimpleParticleType> MEAT_BUBBLE =
+            PARTICLE_TYPES.register( "meat_bubble", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> MISTAKE_BUBBLE =
+            PARTICLE_TYPES.register( "mistake_bubble", () -> new SimpleParticleType(true));
+
     public static final RegistryObject<SimpleParticleType> ATTACK_UP =
             PARTICLE_TYPES.register( "attack_up", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> DEFENCE_UP =

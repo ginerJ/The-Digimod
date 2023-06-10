@@ -35,8 +35,10 @@ public class DigimonKuwagamon extends CustomDigimon {
         return "Kuwagamon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BUBBMON, DigiItems.BUBBMONK};
+    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BUBBMON, DigiItems.BUBBMONK};}
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.PLANTINSECT_DATA;
     }
 
     @Override

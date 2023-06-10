@@ -39,6 +39,10 @@ public class DigimonExermon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.DOKIMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.PLANTINSECT_DATA;
+    }
 
     @Override
     protected String idleAnim() {

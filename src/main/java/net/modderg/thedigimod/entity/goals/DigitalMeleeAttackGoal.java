@@ -1,4 +1,4 @@
-package net.modderg.thedigimod.goals;
+package net.modderg.thedigimod.entity.goals;
 
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;

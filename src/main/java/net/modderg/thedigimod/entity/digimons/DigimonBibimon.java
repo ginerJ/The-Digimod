@@ -37,7 +37,11 @@ public class DigimonBibimon extends CustomDigimon {
     }
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.PUNIMON};
+        return new RegistryObject[]{DigiItems.DOKIMON};
+    }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.MACHINE_DATA;
     }
 
     @Override

@@ -589,9 +589,9 @@
 					]
 				},
 				{
-					"name": "head",
+					"name": "head_",
 					"parent": "neck",
-					"pivot": [0, 25.7125, -10.2025],
+					"pivot": [0, 30.0875, -10.5525],
 					"cubes": [
 						{
 							"origin": [-3.3, 26.8125, -20.1025],
@@ -801,7 +801,7 @@
 				},
 				{
 					"name": "lower_jaw",
-					"parent": "head",
+					"parent": "head_",
 					"pivot": [0, 26.8125, -12.4025],
 					"cubes": [
 						{

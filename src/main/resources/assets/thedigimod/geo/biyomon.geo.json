@@ -252,8 +252,13 @@
 					]
 				},
 				{
-					"name": "arm",
+					"name": "wing",
 					"parent": "body",
+					"pivot": [3.55, 10, 1]
+				},
+				{
+					"name": "arm",
+					"parent": "wing",
 					"pivot": [3.55, 11, 1],
 					"rotation": [0, 0, 45],
 					"cubes": [
@@ -308,8 +313,13 @@
 					]
 				},
 				{
-					"name": "arm2",
+					"name": "wing2",
 					"parent": "body",
+					"pivot": [-3.55, 10, 1]
+				},
+				{
+					"name": "arm2",
+					"parent": "wing2",
 					"pivot": [-3.55, 11, 1],
 					"rotation": [0, 0, -45],
 					"cubes": [

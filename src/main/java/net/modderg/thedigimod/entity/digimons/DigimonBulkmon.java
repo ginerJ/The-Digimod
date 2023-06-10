@@ -38,6 +38,10 @@ public class DigimonBulkmon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.DOKIMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.MACHINE_DATA;
+    }
 
     @Override
     protected String idleAnim() {

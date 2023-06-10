@@ -18,7 +18,7 @@
 				{
 					"name": "body",
 					"parent": "entity",
-					"pivot": [0, 6.3, -2],
+					"pivot": [0, 6.3, 7],
 					"cubes": [
 						{
 							"origin": [-4.5, 10.3, -15],

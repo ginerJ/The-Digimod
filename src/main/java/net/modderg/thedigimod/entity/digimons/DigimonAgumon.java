@@ -40,6 +40,10 @@ public class DigimonAgumon extends CustomDigimon {
     protected RegistryObject<?>[] reincarnateTo(){
         return new RegistryObject[]{DigiItems.BOTAMON};
     }
+    @Override
+    protected RegistryObject<?> xpDrop() {
+        return DigiItems.DRAGON_DATA;
+    }
 
     @Override
     protected String idleAnim() {
@@ -54,9 +58,7 @@ public class DigimonAgumon extends CustomDigimon {
         return "sit";
     }
     @Override
-    protected String attackAnim() {
-        return "attack";
-    }
+    protected String attackAnim() {return "attack";}
     @Override
     protected String shootAnim() {
         return "shoot";
