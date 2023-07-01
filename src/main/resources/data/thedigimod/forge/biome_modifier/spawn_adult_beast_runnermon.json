@@ -1,12 +1,13 @@
 {
   "type": "forge:add_spawns",
   "biomes": [
+    "minecraft:taiga",
     "minecraft:plains",
     "minecraft:sunflower_plains",
     "minecraft:warped_forest"
   ],
   "spawners": {
-    "type": "thedigimod:bearmon",
+    "type": "thedigimod:runnermon",
     "weight": 100,
     "minCount": 3,
     "maxCount": 7

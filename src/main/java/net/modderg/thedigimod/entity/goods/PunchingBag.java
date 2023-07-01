@@ -36,4 +36,8 @@ public class PunchingBag extends CustomTrainingGood{
     public String goodName() {
         return "punching_bag";
     }
+    @Override
+    public ItemStack goodItem() {
+        return new ItemStack(DigiItems.BAG_ITEM.get());
+    }
 }

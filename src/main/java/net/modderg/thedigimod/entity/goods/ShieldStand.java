@@ -5,7 +5,9 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.modderg.thedigimod.item.DigiItems;
 
 public class ShieldStand extends CustomTrainingGood{
     public ShieldStand(EntityType<? extends Animal> p_27557_, Level p_27558_) {
@@ -28,5 +30,9 @@ public class ShieldStand extends CustomTrainingGood{
     @Override
     public String goodName() {
         return "shield";
+    }
+    @Override
+    public ItemStack goodItem() {
+        return new ItemStack(DigiItems.SHIELD_ITEM.get());
     }
 }

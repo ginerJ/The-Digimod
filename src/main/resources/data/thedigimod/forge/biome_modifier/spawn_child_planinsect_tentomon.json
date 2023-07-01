@@ -5,12 +5,13 @@
     "minecraft:flower_forest",
     "minecraft:sparse_jungle",
     "minecraft:bamboo_jungle",
-    "minecraft:mushroom_fields"
+    "minecraft:mushroom_fields",
+    "minecraft:cherry_grove"
   ],
   "spawners": {
     "type": "thedigimod:tentomon",
-    "weight": 50,
-    "minCount": 1,
-    "maxCount": 3
+    "weight": 100,
+    "minCount": 3,
+    "maxCount": 7
   }
 }

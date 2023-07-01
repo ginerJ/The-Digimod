@@ -23,7 +23,7 @@ public class DigimonBabydmon extends CustomDigimon {
                 .add(Attributes.MAX_HEALTH, 1.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
-                .add(Attributes.FLYING_SPEED, 0.3D);
+                .add(Attributes.FLYING_SPEED, 0.15D);
     }
 
     @Override

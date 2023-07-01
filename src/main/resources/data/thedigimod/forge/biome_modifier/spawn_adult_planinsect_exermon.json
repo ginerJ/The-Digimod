@@ -1,15 +1,15 @@
 {
   "type": "forge:add_spawns",
   "biomes": [
+    "minecraft:taiga",
     "minecraft:jungle",
     "minecraft:flower_forest",
     "minecraft:sparse_jungle",
     "minecraft:bamboo_jungle",
-    "minecraft:mushroom_fields",
     "minecraft:cherry_grove"
   ],
   "spawners": {
-    "type": "thedigimod:flymon",
+    "type": "thedigimod:exermon",
     "weight": 100,
     "minCount": 3,
     "maxCount": 7

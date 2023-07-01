@@ -19,9 +19,9 @@ public class DigitronItem extends EvolutionTriggerItem{
     @Override
     public InteractionResult interactLivingEntity(ItemStack item, Player player, LivingEntity entity, InteractionHand hand) {
         if(entity instanceof CustomDigimon cd && cd.getOwner() != null && cd.isOwnedBy(player) && cd.digitronEvo() != null){
-            CustomDigimon evoD =  (CustomDigimon) cd.digitronEvo().create(entity.getLevel());
+            CustomDigimon evoD =  (CustomDigimon) cd.digitronEvo().create(entity.level());
             evoD.copyOtherDigi(cd);
-            entity.getLevel().addFreshEntity(evoD);
+            entity.level().addFreshEntity(evoD);
             entity.remove(Entity.RemovalReason.UNLOADED_TO_CHUNK);
         }
         return super.interactLivingEntity(item, player, entity, hand);

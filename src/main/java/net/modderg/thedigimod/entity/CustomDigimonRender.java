@@ -83,16 +83,16 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
             int i = "deadmau5".equals(p_114499_.getString()) ? -10 : 0;
             stack.pushPose();
             stack.translate(0.0D, (double)f, 0.0D);
-            stack.m_252781_(this.entityRenderDispatcher.m_253208_());
+            stack.mulPose(this.entityRenderDispatcher.cameraOrientation());
             stack.scale(-0.025F, -0.025F, 0.025F);
-            Matrix4f matrix4f = stack.last().m_252922_();
+            Matrix4f matrix4f = stack.last().pose();
             float f1 = Minecraft.getInstance().options.getBackgroundOpacity(0.25F);
             int j = (int)(f1 * 255.0F) << 24;
             Font font = this.getFont();
             float f2 = (float)(-font.width(p_114499_) / 2);
-            font.m_253181_(p_114499_, f2, (float)i, 553648127, false, matrix4f, p_114501_, flag, j, p_114502_);
+            font.drawInBatch(p_114499_, f2, (float)i, 553648127, false, matrix4f, p_114501_, flag ? Font.DisplayMode.SEE_THROUGH : Font.DisplayMode.NORMAL, j, p_114502_);
             if (flag) {
-                font.m_253181_(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
+                font.drawInBatch(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, Font.DisplayMode.NORMAL, 0, p_114502_);
             }
 
             stack.popPose();
@@ -107,16 +107,16 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
             int i = "deadmau5".equals(p_114499_.getString()) ? -10 : 0;
             stack.pushPose();
             stack.translate(0.0D, (double)f, 0.0D);
-            stack.m_252781_(this.entityRenderDispatcher.m_253208_());
+            stack.mulPose(this.entityRenderDispatcher.cameraOrientation());
             stack.scale(-0.025F, -0.025F, 0.025F);
-            Matrix4f matrix4f = stack.last().m_252922_();
+            Matrix4f matrix4f = stack.last().pose();
             float f1 = Minecraft.getInstance().options.getBackgroundOpacity(0.25F);
             int j = (int)(f1 * 255.0F) << 24;
             Font font = this.getFont();
             float f2 = (float)(-font.width(p_114499_) / 2);
-            font.m_253181_(p_114499_, f2, (float)i, p_114498_.getMoodColor(), false, matrix4f, p_114501_, flag, j, p_114502_);
+            font.drawInBatch(p_114499_, f2, (float)i, 553648127, false, matrix4f, p_114501_, flag ? Font.DisplayMode.SEE_THROUGH : Font.DisplayMode.NORMAL, j, p_114502_);
             if (flag) {
-                font.m_253181_(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
+                font.drawInBatch(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, Font.DisplayMode.NORMAL, 0, p_114502_);
             }
 
             stack.popPose();
@@ -131,16 +131,16 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
             int i = "deadmau5".equals(p_114499_.getString()) ? -10 : 0;
             stack.pushPose();
             stack.translate(0.0D, (double)f, 0.0D);
-            stack.m_252781_(this.entityRenderDispatcher.m_253208_());
+            stack.mulPose(this.entityRenderDispatcher.cameraOrientation());
             stack.scale(-0.025F, -0.025F, 0.025F);
-            Matrix4f matrix4f = stack.last().m_252922_();
+            Matrix4f matrix4f = stack.last().pose();
             float f1 = Minecraft.getInstance().options.getBackgroundOpacity(0.25F);
             int j = (int)(f1 * 255.0F) << 24;
             Font font = this.getFont();
             float f2 = (float)(-font.width(p_114499_) / 2);
-            font.m_253181_(p_114499_, f2, (float)i, 8704641, false, matrix4f, p_114501_, flag, j, p_114502_);
+            font.drawInBatch(p_114499_, f2, (float)i, 553648127, false, matrix4f, p_114501_, flag ? Font.DisplayMode.SEE_THROUGH : Font.DisplayMode.NORMAL, j, p_114502_);
             if (flag) {
-                font.m_253181_(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, false, 0, p_114502_);
+                font.drawInBatch(p_114499_, f2, (float)i, -1, false, matrix4f, p_114501_, Font.DisplayMode.NORMAL, 0, p_114502_);
             }
             stack.popPose();
         }

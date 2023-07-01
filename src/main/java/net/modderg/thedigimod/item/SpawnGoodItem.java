@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.ClipContext;
@@ -31,8 +33,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.RegistryObject;
+import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -44,15 +48,33 @@ public class SpawnGoodItem extends Item {
     private final int highlightColor;
     private final RegistryObject<? extends EntityType<?>> defaultType;
 
+    private static final int DEFAULT_INTEGER_VALUE = 500;
+
     @Deprecated
     public SpawnGoodItem(RegistryObject<? extends EntityType<?>> p_43207_, int p_43208_, int p_43209_, Item.Properties p_43210_) {
         super(p_43210_);
         this.defaultType = p_43207_;
         this.backgroundColor = p_43208_;
         this.highlightColor = p_43209_;
-
     }
 
+    @Override
+    public void inventoryTick(ItemStack stack, Level p_41405_, Entity p_41406_, int p_41407_, boolean p_41408_) {
+        super.inventoryTick(stack, p_41405_, p_41406_, p_41407_, p_41408_);
+        CompoundTag compoundNBT = stack.getOrCreateTag();
+
+        if (!compoundNBT.contains("USES")) {
+            compoundNBT.putInt("USES", DEFAULT_INTEGER_VALUE);
+        }
+    }
+
+    @Override
+    public void appendHoverText(ItemStack p_41421_, @org.jetbrains.annotations.Nullable Level p_41422_, List<Component> p_41423_, TooltipFlag p_41424_) {
+        p_41423_.add(Component.translatable("Uses left: " + (p_41421_.getOrCreateTag().getInt("USES"))));
+        super.appendHoverText(p_41421_, p_41422_, p_41423_, p_41424_);
+    }
+
+    @Override
     public InteractionResult useOn(UseOnContext p_43223_) {
         Level level = p_43223_.getLevel();
         if (!(level instanceof ServerLevel)) {
@@ -67,7 +89,7 @@ public class SpawnGoodItem extends Item {
                 if (blockentity instanceof SpawnerBlockEntity) {
                     SpawnerBlockEntity spawnerblockentity = (SpawnerBlockEntity)blockentity;
                     EntityType<?> entitytype1 = this.getType(itemstack.getTag());
-                    spawnerblockentity.m_252803_(entitytype1, level.getRandom());
+                    spawnerblockentity.setEntityId(entitytype1, level.getRandom());
                     blockentity.setChanged();
                     level.sendBlockUpdated(blockpos, blockstate, blockstate, 3);
                     level.gameEvent(p_43223_.getPlayer(), GameEvent.BLOCK_CHANGE, blockpos);
@@ -84,7 +106,10 @@ public class SpawnGoodItem extends Item {
             }
 
             EntityType<?> entitytype = this.getType(itemstack.getTag());
-            if (entitytype.spawn((ServerLevel) level, itemstack, p_43223_.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP) != null) {
+
+            Entity entity = entitytype.spawn((ServerLevel) level, itemstack, p_43223_.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP);
+            if (entity instanceof CustomTrainingGood good) {
+                good.setHealth(p_43223_.getItemInHand().getOrCreateTag().getInt("USES"));
                 itemstack.shrink(1);
                 level.gameEvent(p_43223_.getPlayer(), GameEvent.ENTITY_PLACE, blockpos);
             }
@@ -103,7 +128,7 @@ public class SpawnGoodItem extends Item {
         float f5 = Mth.sin(-f * ((float)Math.PI / 180F));
         float f6 = f3 * f4;
         float f7 = f2 * f4;
-        double d0 = p_41437_.getReachDistance();
+        double d0 = p_41437_.getBlockReach();
         Vec3 vec31 = vec3.add((double)f6 * d0, (double)f5 * d0, (double)f7 * d0);
         return p_41436_.clip(new ClipContext(vec3, vec31, ClipContext.Block.OUTLINE, p_41438_, p_41437_));
     }

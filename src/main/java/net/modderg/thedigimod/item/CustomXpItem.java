@@ -22,13 +22,6 @@ public class CustomXpItem extends Item {
             CustomDigimon digimon = (CustomDigimon) entity;
             if(!digimon.isEvolving()){
                 digimon.useXpItem(xpId);
-                player.sendSystemMessage(Component.literal("Name: " + digimon.getNickName()));
-                player.sendSystemMessage(Component.literal("Xp total: " + Integer.toString(digimon.getExperienceTotal())));
-                player.sendSystemMessage(Component.literal("NextLevel Xp: " + Integer.toString(digimon.getLevelXp())));
-                player.sendSystemMessage(Component.literal("Level: " + Integer.toString(digimon.getCurrentLevel())));
-                player.sendSystemMessage(Component.literal("Xps: " + digimon.getSpecificXps()));
-                player.sendSystemMessage(Component.literal("Mood: " + Integer.toString(digimon.getMoodPoints()) + digimon.getMood()));
-                player.sendSystemMessage(Component.literal("a: " + Integer.toString(digimon.getSpecificXps(0))));
                 player.getItemInHand(hand).shrink(1);
                 return InteractionResult.CONSUME;
             }

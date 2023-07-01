@@ -45,11 +45,11 @@ public class DigimonOctomon extends CustomDigimon {
 
     @Override
     protected String idleAnim() {
-        return "idle3";
+        return "idle6";
     }
     @Override
     protected String walkAnim() {
-        return "walk3";
+        return "walk8";
     }
     @Override
     protected String sitAnim() {

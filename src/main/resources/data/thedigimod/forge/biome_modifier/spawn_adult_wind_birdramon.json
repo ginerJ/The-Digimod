@@ -9,8 +9,8 @@
   ],
   "spawners": {
     "type": "thedigimod:birdramon",
-    "weight": 50,
+    "weight": 100,
     "minCount": 3,
-    "maxCount": 5
+    "maxCount": 7
   }
 }

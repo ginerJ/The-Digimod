@@ -34,7 +34,7 @@ public class DigitalFollowOwnerGoal extends Goal {
 
     public DigitalFollowOwnerGoal(CustomDigimon p_25294_, double p_25295_, float p_25296_, float p_25297_, boolean p_25298_) {
         this.tamable = p_25294_;
-        this.level = p_25294_.level;
+        this.level = p_25294_.level();
         this.speedModifier = p_25295_;
         this.navigation = p_25294_.getNavigation();
         this.startDistance = p_25296_;

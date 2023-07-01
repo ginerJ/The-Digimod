@@ -3,7 +3,6 @@
   "biomes": [
     "minecraft:savanna",
     "minecraft:dark_forest",
-    "minecraft:old_growth_birch_forest",
     "minecraft:mushroom_fields",
     "minecraft:the_end",
     "minecraft:end_highlands",
@@ -13,8 +12,8 @@
   ],
   "spawners": {
     "type": "thedigimod:darktyrannomon",
-    "weight": 50,
-    "minCount": 1,
-    "maxCount": 2
+    "weight": 100,
+    "minCount": 3,
+    "maxCount": 7
   }
 }

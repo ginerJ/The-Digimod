@@ -41,7 +41,7 @@ public class AddTamerEquipment {
         private static void execute(@Nullable Event event, Entity entity) {
             if (entity == null)
                 return;
-            if ((entity.getCapability(TheDigiModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new TheDigiModVariables.PlayerVariables())).firstJoin == false) {
+            if (!(entity.getCapability(TheDigiModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new TheDigiModVariables.PlayerVariables())).firstJoin) {
                 {
                     boolean _setval = true;
                     entity.getCapability(TheDigiModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -60,6 +60,7 @@ public class AddTamerEquipment {
                     ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.TARGET_ITEM.get()));
                     ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.SHIELD_ITEM.get()));
                     ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.UPDATE_ITEM.get()));
+                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.DIGI_MEAT.get(), 20));
                 }
             }
         }

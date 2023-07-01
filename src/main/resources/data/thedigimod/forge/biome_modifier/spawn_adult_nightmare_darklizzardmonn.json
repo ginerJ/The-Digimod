@@ -11,7 +11,7 @@
     "minecraft:end_barrens"
   ],
   "spawners": {
-    "type": "thedigimod:greymonvirus",
+    "type": "thedigimod:darklizzardmon",
     "weight": 100,
     "minCount": 3,
     "maxCount": 7

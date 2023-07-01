@@ -266,6 +266,8 @@ public class DigitalEntities {
                     .sized(1f,2f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "gesomon").toString()));
 
+
+
     //training goods
     public static final RegistryObject<EntityType<PunchingBag>> PUNCHING_BAG = DIGIMONS.register("punching_bag",
             () -> EntityType.Builder.of(PunchingBag:: new, MobCategory.MISC)

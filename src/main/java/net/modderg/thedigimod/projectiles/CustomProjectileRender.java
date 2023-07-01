@@ -35,7 +35,7 @@ public class CustomProjectileRender<D extends CustomProjectile> extends GeoEntit
     }
 
     public static void faceRotation(PoseStack poseStack, Entity animatable, float partialTick) {
-        poseStack.m_252781_(Axis.f_252436_.m_252977_(Mth.lerp(partialTick, animatable.yRotO, animatable.getYRot())));
-        poseStack.m_252781_(Axis.f_252529_.m_252977_(Mth.lerp(partialTick, animatable.xRotO, animatable.getXRot())));
+        poseStack.mulPose(Axis.YN.rotation(Mth.lerp(partialTick, animatable.yRotO, animatable.getYRot())));
+        poseStack.mulPose(Axis.XN.rotation(Mth.lerp(partialTick, animatable.xRotO, animatable.getXRot())));
     }
 }

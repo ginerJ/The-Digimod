@@ -49,11 +49,11 @@ public class DigiItems {
 
     //Misc Items
     public static final RegistryObject<Item> BLACK_DIGITRON = ITEMS.register("black_digitron", () -> new DigitronItem(new Item.Properties(), DigitalParticles.DIGITRON_PARTICLES));
-    public static final RegistryObject<Item> BAG_ITEM = ITEMS.register("bag_item", () -> new SpawnGoodItem(DigitalEntities.PUNCHING_BAG, 0x000000, 0xFFFFFF,new Item.Properties()));
-    public static final RegistryObject<Item> TABLE_ITEM = ITEMS.register("table_item", () -> new SpawnGoodItem(DigitalEntities.SP_TABLE, 0x000000, 0xFFFFFF,new Item.Properties()));
-    public static final RegistryObject<Item> TARGET_ITEM = ITEMS.register("target_item", () -> new SpawnGoodItem(DigitalEntities.SP_TARGET, 0x000000, 0xFFFFFF,new Item.Properties()));
-    public static final RegistryObject<Item> SHIELD_ITEM = ITEMS.register("shield_item", () -> new SpawnGoodItem(DigitalEntities.SHIELD_STAND, 0x000000, 0xFFFFFF,new Item.Properties()));
-    public static final RegistryObject<Item> UPDATE_ITEM = ITEMS.register("update_item", () -> new SpawnGoodItem(DigitalEntities.UPDATE_GOOD, 0x000000, 0xFFFFFF,new Item.Properties()));
+    public static final RegistryObject<Item> BAG_ITEM = ITEMS.register("bag_item", () -> new SpawnGoodItem(DigitalEntities.PUNCHING_BAG, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> TABLE_ITEM = ITEMS.register("table_item", () -> new SpawnGoodItem(DigitalEntities.SP_TABLE, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> TARGET_ITEM = ITEMS.register("target_item", () -> new SpawnGoodItem(DigitalEntities.SP_TARGET, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SHIELD_ITEM = ITEMS.register("shield_item", () -> new SpawnGoodItem(DigitalEntities.SHIELD_STAND, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> UPDATE_ITEM = ITEMS.register("update_item", () -> new SpawnGoodItem(DigitalEntities.UPDATE_GOOD, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
 
     //admin stuff
     public static final RegistryObject<Item> ADMIN_LOGO = ITEMS.register("admin_logo", () -> new Item(new Item.Properties().stacksTo(1)));

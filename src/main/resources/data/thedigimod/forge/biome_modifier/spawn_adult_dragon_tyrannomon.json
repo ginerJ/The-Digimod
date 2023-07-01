@@ -12,8 +12,8 @@
   ],
   "spawners": {
     "type": "thedigimod:tyrannomon",
-    "weight": 50,
-    "minCount": 1,
-    "maxCount": 2
+    "weight": 100,
+    "minCount": 3,
+    "maxCount": 7
   }
 }

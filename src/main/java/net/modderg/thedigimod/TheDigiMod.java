@@ -3,10 +3,9 @@ package net.modderg.thedigimod;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -43,6 +42,7 @@ public class TheDigiMod {
         bus.addListener(this::setup);
         bus.addListener(this::setAttributes);
 
+        DigitalCreativeTab.CREATIVE_TABS.register(bus);
         DigiItems.ITEMS.register(bus);
         DigiBlocks.BLOCKS.register(bus);
         DigitalEntities.DIGIMONS.register(bus);
@@ -55,203 +55,203 @@ public class TheDigiMod {
     private void setup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.KOROMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.KOROMONB.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.MOCHIMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.MOCHIMONK.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.AGUMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.TENTOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.KABUTERIMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.ROACHMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.FLYMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.GREYMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.TSUNOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.GRIZZLYMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BEARMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.KUNEMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.GIGIMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.GUILMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.PUYOYOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.JELLYMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.TESLAJELLYMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.GROWLMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BLACK_GROWLMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.KUWAGAMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BABYDMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.DRACOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.COREDRAMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BIBIMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.PULSEMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.AGUMONBLACK.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.DARKTYRANNOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.TYRANNOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.VEEDRAMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.CHAKMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BLACKGAOGAMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.YOKOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BIYOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkBirdDigimonSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BIRDRAMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkBirdDigimonSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.SABERDRAMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkBirdDigimonSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.AKATORIMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkBirdDigimonSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.NAMAKEMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.EXERMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.GREYMONVIRUS.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.DARKTYLIZZARDMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.RUNNERMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.THUNDERBALLMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.GESOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.OCTOMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.COREDRAMONGREEN.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkMobSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkMobSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.AIRDRAMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.GROWLMONDATA.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, Animal::checkAnimalSpawnRules);});
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
     }
 
-    private void addCreativeTab(CreativeModeTabEvent.BuildContents event){
-        if(event.getTab() == DigitalCreativeTab.DIGITAL_TAB){
+    private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
+        if(event.getTab() == DigitalCreativeTab.DIGITAL_TAB.get()){
             event.accept(DigiItems.VITALBRACELET);
             event.accept(DigiItems.DIGIVICE);
             event.accept(DigiItems.VPET);
@@ -284,7 +284,7 @@ public class TheDigiMod {
             event.accept(DigiItems.SHIELD_ITEM);
             event.accept(DigiItems.UPDATE_ITEM);
         }
-        if(event.getTab() == DigitalCreativeTab.ADMIN_TAB){
+        if(event.getTab() == DigitalCreativeTab.ADMIN_TAB.get()){
             event.accept(DigiItems.ATTACK_GB);
             event.accept(DigiItems.SPATTACK_GB);
             event.accept(DigiItems.DEFENCE_GB);
