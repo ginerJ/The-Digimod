@@ -20,15 +20,15 @@ public class DigimonGuilmon extends CustomDigimon {
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 1.0D)
+                .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     @Override
-    public Boolean isRookie() {
-        return true;
+    public String evoStage() {
+        return "rookie";
     }
 
     @Override
@@ -46,15 +46,15 @@ public class DigimonGuilmon extends CustomDigimon {
 
     @Override
     protected String idleAnim() {
-        return "idle";
+        return "idle6";
     }
     @Override
     protected String walkAnim() {
-        return "walk";
+        return "walk7";
     }
     @Override
     protected String sitAnim() {
-        return "sit";
+        return "sit3";
     }
 
     @Override
@@ -72,7 +72,7 @@ public class DigimonGuilmon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getSpecificXps(7) >= 50 && this.getMood().equals("Sad");
+        return this.getSpecificXps(7) >= 50 && this.getMood().equals("Sad") && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
     }
 
     @Override
@@ -81,6 +81,6 @@ public class DigimonGuilmon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath5() {
-        return this.getSpecificXps(0) >= 50 && this.getMood().equals("Joyful");
+        return this.getSpecificXps(0) >= 50 && this.getMood().equals("Joyful") && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 }

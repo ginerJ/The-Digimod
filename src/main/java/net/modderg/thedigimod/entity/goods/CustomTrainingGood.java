@@ -24,8 +24,6 @@ import software.bernie.geckolib.core.object.PlayState;
 
 public abstract class CustomTrainingGood extends Animal implements GeoEntity {
 
-    int animate_hit = 0;
-
     public CustomTrainingGood(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
         this.setCustomName(Component.literal("LOL"));
@@ -90,9 +88,6 @@ public abstract class CustomTrainingGood extends Animal implements GeoEntity {
 
     @Override
     protected void actuallyHurt(DamageSource p_21240_, float p_21241_) {
-        if(this.level().isClientSide){
-            animate_hit = 50;
-        }
         this.setHealth(getHealth()-1);
     }
 
@@ -111,8 +106,8 @@ public abstract class CustomTrainingGood extends Animal implements GeoEntity {
     protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
     private PlayState animController(AnimationState event){
-        if(animate_hit > 0){
-            event.getController().setAnimation(RawAnimation.begin().then("hit", Animation.LoopType.PLAY_ONCE));
+        if(this.hurtTime > 0){
+            event.getController().setAnimation(RawAnimation.begin().then("hit", Animation.LoopType.LOOP));
         } else {
             event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
         }

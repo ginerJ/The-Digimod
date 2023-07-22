@@ -8,7 +8,7 @@
   ],
   "spawners": {
     "type": "thedigimod:yokomon",
-    "weight": 100,
+    "weight": 20,
     "minCount": 5,
     "maxCount": 10
   }

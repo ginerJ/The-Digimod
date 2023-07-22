@@ -20,15 +20,15 @@ public class DigimonBearmon extends CustomDigimon {
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 1.0D)
+                .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     @Override
-    public Boolean isRookie() {
-        return true;
+    public String evoStage() {
+        return "rookie";
     }
 
     @Override
@@ -50,7 +50,7 @@ public class DigimonBearmon extends CustomDigimon {
     }
     @Override
     protected String walkAnim() {
-        return "walk";
+        return "walk7";
     }
     @Override
     protected String sitAnim() {
@@ -72,7 +72,7 @@ public class DigimonBearmon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Sad") && this.getSpecificXps(7) >= 50;
+        return this.getMood().equals("Sad") && this.getSpecificXps(7) >= 50 && this.getCareMistakesStat() >= 10 && this.getBattlesStat() >= 10;
     }
 
     @Override
@@ -81,6 +81,6 @@ public class DigimonBearmon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(3) >= 50 && this.getSpecificXps(3) >= 50;
+        return this.getMood().equals("Joyful") && this.getSpecificXps(3) >= 50 && this.getSpecificXps(3) >= 50 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
     }
 }

@@ -55,6 +55,7 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Objects;
 
 public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
@@ -71,11 +72,13 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     protected final int MAXSTATGEN = 250;
     public final int MAXMEGASTAT = 999;
 
-    public Boolean isBaby2(){return false;}
-    public Boolean isRookie(){return false;}
-    public Boolean isChampion(){return false;}
-    public Boolean isUltimate(){return false;}
-    //public Boolean isMega(){return false;}
+    public String evoStage(){return "";}
+
+    public Boolean isBaby2(){return evoStage().equals("baby2");}
+    public Boolean isRookie(){return evoStage().equals("rookie");}
+    public Boolean isChampion(){return evoStage().equals("champion");}
+    public Boolean isUltimate(){return evoStage().equals("ultimate");}
+    //public Boolean isMega(){return evoStage().equals("mega");}
 
     public int getMaxStat(){
         return this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)));
@@ -125,7 +128,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     protected String sitAnim(){return "sit";}
     protected String walkAnim(){return "walk";}
     protected String flyAnim(){return "fly";}
-    protected String swimAnim(){return "swim";}
+    //protected String swimAnim(){return "swim";}
     protected String attackAnim(){return "attack";}
     protected String shootAnim(){return "shoot";}
 
@@ -191,7 +194,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         }
     }
     public void messageState(String txt){
-        if (getOwner().level().isClientSide && getOwner().level() instanceof ClientLevel) {
+        if (Objects.requireNonNull(getOwner()).level().isClientSide && getOwner().level() instanceof ClientLevel) {
             Minecraft.getInstance().gui.setOverlayMessage(Component.literal(txt), false);
         }
     }
@@ -228,7 +231,10 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     BATTLES_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
     CARE_MISTAKES_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
 
-    public void setAttackStat(int i){this.getEntityData().set(ATTACK_STAT, Math.min(i, getMaxStat()));}
+    public void setAttackStat(int i){
+        this.getEntityData().set(ATTACK_STAT, Math.min(i, getMaxStat()));
+        this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(this.getCurrentLevel()/2);
+    }
     public void setDefenceStat(int i){this.getEntityData().set(DEFENCE_STAT, Math.min(i, getMaxStat()));}
     public void setSpAttackStat(int i){this.getEntityData().set(SPATTACK_STAT, Math.min(i, getMaxStat()));}
     public void setSpDefenceStat(int i){this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, getMaxStat()));}
@@ -316,10 +322,11 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     public boolean canFallInLove() {
         return false;
     }
+
     @Override
     public boolean isFood(ItemStack item) {
         if(item.is(DigiItems.DIGI_MEAT.get())){
-            this.addMoodPoints(10);
+            this.addMoodPoints(20);
             item.shrink(1);
             if(!this.isAggressive() || this.getTarget() instanceof CustomTrainingGood){
                 this.heal(20);
@@ -346,7 +353,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             this.setHealthStat(Math.min(getMaxStat(),
                     random.nextInt(this.isBaby2() ? 1 : (this.isRookie() ? 25: (this.isChampion() ? 100: (this.isUltimate() ? 250 : 500))),getMaxStat())));
             this.setHealth((float)this.getHealthStat());
-            this.setCurrentLevel((int) (MAXLEVEL * (getHealth()/MAXSTATGEN*1.0)));
+            this.setCurrentLevel(Math.max(1,(int) (MAXLEVEL * (getHealth()/MAXSTATGEN*1.0))));
             this.setAttackStat((int)getHealth());
             this.setDefenceStat((int)getHealth());
             this.setSpAttackStat((int)getHealth());
@@ -461,8 +468,10 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        if (player.getItemInHand(hand).getItem() instanceof DigiviceItem && this.getOwner() != null && getOwner().level().isClientSide)
-            this.showStats();
+        if (player.getItemInHand(hand).getItem() instanceof DigiviceItem && this.getOwner() != null && getOwner().level().isClientSide){
+            this.viewStats();
+            return InteractionResult.CONSUME;
+        }
         if (this.isTame() && this.getOwnerUUID().equals(player.getUUID()) && player.isShiftKeyDown()) {
             this.changeMovementID();
             this.switchNavigation(getMovementID());
@@ -480,6 +489,10 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         if(evoCount > 0){
             spawnEvoParticles(DigitalParticles.EVO_PARTICLES);
             evoCount--;
+        }
+
+        if(statTimer > 0){
+            statTimer--;
         }
 
         if(this.getMoodPoints() < 100 && this.isTame() && random.nextInt(0,150) == 1){
@@ -503,54 +516,73 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     @Override
     public void travel(Vec3 p_218382_) {
-        if(getMovementID() == 2){
-            if (this.isEffectiveAi() || this.isControlledByLocalInstance()) {
-                if (this.isInWater()) {
-                    this.moveRelative(0.02F, p_218382_);
-                    this.move(MoverType.SELF, this.getDeltaMovement());
-                    this.setDeltaMovement(this.getDeltaMovement().scale((double) 0.8F));
-                } else if (this.isInLava()) {
-                    this.moveRelative(0.02F, p_218382_);
-                    this.move(MoverType.SELF, this.getDeltaMovement());
-                    this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
-                } else {
-                    this.moveRelative(this.getSpeed(), p_218382_);
-                    this.move(MoverType.SELF, this.getDeltaMovement());
-                    this.setDeltaMovement(this.getDeltaMovement().scale((double) 0.91F));
+        if(!this.isEvolving()){
+            if(getMovementID() == 2){
+                if (this.isEffectiveAi() || this.isControlledByLocalInstance()) {
+                    if (this.isInWater()) {
+                        this.moveRelative(0.02F, p_218382_);
+                        this.move(MoverType.SELF, this.getDeltaMovement());
+                        this.setDeltaMovement(this.getDeltaMovement().scale((double) 0.8F));
+                    } else if (this.isInLava()) {
+                        this.moveRelative(0.02F, p_218382_);
+                        this.move(MoverType.SELF, this.getDeltaMovement());
+                        this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
+                    } else {
+                        this.moveRelative(this.getSpeed(), p_218382_);
+                        this.move(MoverType.SELF, this.getDeltaMovement());
+                        this.setDeltaMovement(this.getDeltaMovement().scale((double) 0.91F));
+                    }
                 }
+            } else {
+                super.travel(p_218382_);
             }
-        } else if (!this.isEvolving() || !this.isOrderedToSit()){
-            super.travel(p_218382_);
         }
     }
 
     @Override
     public void die(DamageSource source) {
-        if(source.getEntity() instanceof CustomDigimon digimon){
-            digimon.setBattlesStat(digimon.getBattlesStat() + 1);
-        }
-        if(this.isTame() || random.nextInt(0,50) < 5){
-            this.level().addFreshEntity(new ItemEntity(level(),
-                    this.getX(),this.getY(),this.getZ(), new ItemStack((ItemLike) reincarnateTo()[random.nextInt(reincarnateTo().length)].get())));
-        } else if(!this.isTame()){
-            for(int i = 0; i < ( this.isBaby2() ? 1: this.isRookie() ? 5 : 15) ; i++){
-                this.level().addFreshEntity(new ItemEntity(level(), this.getX(),this.getY(),this.getZ(), new ItemStack((ItemLike) xpDrop().get())));
+        if(source.getEntity() instanceof CustomDigimon digimon) {
+            if (digimon.evoStage().equals(this.evoStage())) {
+                digimon.setBattlesStat(digimon.getBattlesStat() + 1);
             }
+            if (random.nextInt(0, 50) < 2) {
+                this.level().addFreshEntity(new ItemEntity(level(),
+                        this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) reincarnateTo()[random.nextInt(reincarnateTo().length)].get())));
+            } else if (!this.isTame()) {
+                for (int i = 0; i < (this.isBaby2() ? 1 : this.isRookie() ? 5 : 15); i++) {
+                    this.level().addFreshEntity(new ItemEntity(level(), this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) xpDrop().get())));
+                }
+            }
+        }
+        if(this.isTame()){
+            this.level().addFreshEntity(new ItemEntity(level(),
+                    this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) reincarnateTo()[random.nextInt(reincarnateTo().length)].get())));
         }
         super.die(source);
     }
 
     @Override
     public void setTarget(@Nullable LivingEntity entity) {
-        if(!(entity instanceof CustomDigimon cd && cd.getOwner() != null && this.getOwner() != null && cd.isOwnedBy(this.getOwner()))){
-            super.setTarget(entity);
+        if(entity instanceof CustomDigimon cd && cd.getOwner() != null && this.getOwner() != null && cd.isOwnedBy(this.getOwner())){
+            return;
         }
+        super.setTarget(entity);
     }
 
     @Override
     public boolean doHurtTarget(Entity target) {
-        return target instanceof CustomDigimon cd ? cd.hurt(this.damageSources().mobAttack(this), calculateDamage(this.getAttackStat(), cd.getDefenceStat()))
+        return target instanceof CustomDigimon cd ? cd.hurt(this.damageSources().mobAttack(this), calculateDamage(
+                this.getAttackStat() + this.getCurrentLevel(),
+                cd.getDefenceStat() + cd.getCurrentLevel()))
         : super.doHurtTarget(target);
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float p_27568_) {
+        if(source.getEntity() instanceof CustomDigimon digimon){
+            this.setTarget(digimon);
+        }
+        return super.hurt(source, p_27568_);
     }
 
     public static boolean checkDigimonSpawnRules(EntityType<? extends Mob> p_217058_, LevelAccessor p_217059_, MobSpawnType p_217060_, BlockPos p_217061_, RandomSource p_217062_) {
@@ -570,6 +602,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         } else if (canEvoToPath()){
             evoD = evoPath().create(this.level());
         }
+        assert evoD != null;
         evoD.copyOtherDigi(this);
         this.level().addFreshEntity(evoD);
         this.remove(RemovalReason.UNLOADED_TO_CHUNK);
@@ -579,7 +612,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         if(d.getOwner() != null){this.tame((Player) d.getOwner());}
         if(d.getNickName().equals(d.getSpecies())){this.setNickName(this.getSpecies());}
         else {this.setNickName(d.getNickName());}
-        this.setMovementID(d.getMovementID());
+        this.setMovementID(1);
         this.setCustomName(Component.literal(this.getNickName()));
         this.setMoodPoints(d.getMoodPoints());
         this.setPos(d.position());
@@ -625,27 +658,51 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             spdefence = this.getSpDefenceStat(), battles = this.getBattlesStat(), health = this.getHealthStat(), mistakes = this.getCareMistakesStat();
 
     private String lastStat = "";
+    private int statTimer = 0;
 
-    public void showStats() {
-        if (lastStat.equals("mistakes") || lastStat.equals("")) {
-            lastStat = "attack";
-            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("⚔ Attack: " + Integer.toString(getAttackStat()) + " ⚔").withStyle(style -> style.withColor(TextColor.fromRgb(0xFF0000))), false);
-        } else if (lastStat.equals("attack")) {
-            lastStat = "defence";
-            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("\uD83D\uDEE1 Defence: " + Integer.toString(getDefenceStat()) + " \uD83D\uDEE1").withStyle(style -> style.withColor(TextColor.fromRgb(0x00FF00))), false);
-        } else if (lastStat.equals("defence")) {
-            lastStat = "spattack";
-            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("\uD83C\uDFF9 Sp.Attack: " + Integer.toString(getSpAttackStat()) + " \uD83C\uDFF9").withStyle(style -> style.withColor(TextColor.fromRgb(0xFF69B4))), false);
-        } else if (lastStat.equals("spattack")) {
-            lastStat = "spdefence";
-            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("⚙ Sp.Defence: " + Integer.toString(getSpDefenceStat()) + " ⚙").withStyle(style -> style.withColor(TextColor.fromRgb(0xADD8E6))), false);
-        } else if (lastStat.equals("spdefence")) {
-            lastStat = "battles";
-            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("\uD83D\uDDE1 Wins: " + Integer.toString(getBattlesStat()) + " \uD83D\uDDE1").withStyle(style -> style.withColor(TextColor.fromRgb(0xFF542D))), false);
-        } else if (lastStat.equals("battles")) {
-            lastStat = "mistakes";
-            Minecraft.getInstance().gui.setOverlayMessage(Component.literal("\uD83D\uDDE1 Care Mistakes: " + Integer.toString(getCareMistakesStat()) + " \uD83D\uDDE1").withStyle(style -> style.withColor(TextColor.fromRgb(0xADD8E6))), false);
+    public void viewStats() {
+        switch (lastStat) {
+            case "mistakes", "" -> {
+                if (statTimer > 0) lastStat = "attack";
+            }
+            case "attack" -> {
+                if (statTimer > 0) lastStat = "defense";
+            }
+            case "defense" -> {
+                if (statTimer > 0) lastStat = "spattack";
+            }
+            case "spattack" -> {
+                if (statTimer > 0) lastStat = "spdefense";
+            }
+            case "spdefense" -> {
+                if (statTimer > 0) lastStat = "battles";
+            }
+            case "battles" -> {
+                if (statTimer > 0) lastStat = "mistakes";
+            }
         }
+        chooseStatOverlay();
+        statTimer = 30;
+    }
+
+    public void chooseStatOverlay(){
+        switch (lastStat) {
+            case "mistakes", "" -> setStatOverlay("Attack", 0xFF0000, Integer.toString(getAttackStat()), true);
+            case "attack" -> setStatOverlay("Defense", 0x00FF00, Integer.toString(getDefenceStat()), true);
+            case "defense" -> setStatOverlay("Sp.Attack", 0xFF69B4, Integer.toString(getSpAttackStat()), true);
+            case "spattack" -> setStatOverlay("Sp.Defence", 0xADD8E6, Integer.toString(getSpDefenceStat()), true);
+            case "spdefense" -> setStatOverlay("Wins", 0xFF542D, Integer.toString(getBattlesStat()), false);
+            case "battles" -> setStatOverlay("Care Mistakes", 0xADD8E6, Integer.toString(getCareMistakesStat()), false);
+        }
+    }
+
+    private void setStatOverlay(String stat, int color, String statNum, boolean lvlStat){
+        String statMax = Integer.toString(this.getMaxStat())
+        , lvl = Integer.toString(this.getCurrentLevel());
+        String message =  " " + stat + ": " + statNum + (lvlStat ? ("/" + statMax) : "");
+        Minecraft.getInstance().gui.setOverlayMessage(Component.literal(message).withStyle(style -> style.withColor(TextColor.fromRgb(color)))
+                        .append(Component.literal(lvlStat ? (" + " + lvl) : "").withStyle(style -> style.withColor(TextColor.fromRgb(0xECBE3E))))
+                , false);
     }
 
     public void checkChangeStats(){
@@ -707,9 +764,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         this.level().addFreshEntity(bullet);
     }
 
-    public int calculateDamage(int attack, int defense){
-        return (int) Math.max(1, attack - defense);
-    }
+    public int calculateDamage(int attack, int defense){return Math.max(1, attack - defense);}
 
     //Animations
     protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
@@ -718,13 +773,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         return new AnimationController<>(digimon,"movement", 3, event ->{
             if(digimon.isEvolving()){
                 event.getController().setAnimation(RawAnimation.begin().then("show", Animation.LoopType.LOOP));
-                return PlayState.CONTINUE;
-            }
-            if(digimon.getMovementID() == 0){
+            } else if(digimon.getMovementID() == 0){
                 event.getController().setAnimation(RawAnimation.begin().then(digimon.sitAnim(), Animation.LoopType.LOOP));
-                return PlayState.CONTINUE;
-            }
-            if(digimon.getMovementID() == 1){
+            } else if(digimon.getMovementID() == 1){
                 if(event.isMoving()){
                     event.getController().setAnimation(RawAnimation.begin().then(digimon.walkAnim(), Animation.LoopType.LOOP));
                 } else {

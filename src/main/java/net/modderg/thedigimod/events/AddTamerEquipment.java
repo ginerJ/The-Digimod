@@ -23,7 +23,7 @@ public class AddTamerEquipment {
     }
 
     static RegistryObject<?>[] babies = {DigiItems.BOTAMON, DigiItems.BOTAMOND, DigiItems.BUBBMON, DigiItems.BUBBMONK, DigiItems.PUNIMON,
-            DigiItems.JYARIMON,  DigiItems.PETITMON, DigiItems.PUYOMON, DigiItems.DOKIMON, DigiItems.NYOKIMON};
+            DigiItems.JYARIMON,  DigiItems.PETITMON, DigiItems.PUYOMON, DigiItems.DOKIMON, DigiItems.NYOKIMON, DigiItems.CONOMON};
 
     static RegistryObject<?>[] vices = {DigiItems.VPET,  DigiItems.DIGIVICE, DigiItems.VITALBRACELET, DigiItems.DIGIVICE_IC, DigiItems.DIGIVICE_BURST};
 
@@ -55,11 +55,7 @@ public class AddTamerEquipment {
                     _setstack = new ItemStack((ItemLike) chooseItem(vices).get());
                     ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 
-                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.BAG_ITEM.get()));
-                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.TABLE_ITEM.get()));
-                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.TARGET_ITEM.get()));
-                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.SHIELD_ITEM.get()));
-                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.UPDATE_ITEM.get()));
+                    ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.TRAINING_BAG.get()));
                     ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(DigiItems.DIGI_MEAT.get(), 20));
                 }
             }

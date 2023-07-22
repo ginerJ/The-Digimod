@@ -8,7 +8,7 @@
   ],
   "spawners": {
     "type": "thedigimod:runnermon",
-    "weight": 100,
+    "weight": 20,
     "minCount": 3,
     "maxCount": 7
   }

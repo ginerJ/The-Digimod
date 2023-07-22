@@ -19,15 +19,15 @@ public class DigimonBlackGaogamon extends CustomDigimon {
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 1.0D)
+                .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     @Override
-    public Boolean isChampion() {
-        return true;
+    public String evoStage() {
+        return "champion";
     }
 
     @Override
@@ -49,7 +49,7 @@ public class DigimonBlackGaogamon extends CustomDigimon {
     }
     @Override
     protected String walkAnim() {
-        return "walk";
+        return "walk7";
     }
     @Override
     protected String sitAnim() {

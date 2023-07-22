@@ -5,11 +5,30 @@
     "minecraft:birch_forest",
     "minecraft:meadow",
     "minecraft:ocean",
-    "minecraft:river"
+    "minecraft:river",
+    "minecraft:snowy_plains",
+    "minecraft:ice_spikes",
+    "minecraft:snowy_taiga",
+    "minecraft:grove",
+    "minecraft:snowy_slopes",
+    "minecraft:frozen_peaks",
+    "minecraft:jagged_peaks",
+    "minecraft:frozen_river",
+    "minecraft:beach",
+    "minecraft:snowy_beach",
+    "minecraft:stony_shore",
+    "minecraft:warm_ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:deep_ocean",
+    "minecraft:cold_ocean",
+    "minecraft:deep_cold_ocean",
+    "minecraft:frozen_ocean",
+    "minecraft:deep_frozen_ocean"
   ],
   "spawners": {
     "type": "thedigimod:puyoyomon",
-    "weight": 100,
+    "weight": 20,
     "minCount": 5,
     "maxCount": 10
   }

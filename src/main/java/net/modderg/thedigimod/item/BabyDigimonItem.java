@@ -1,9 +1,12 @@
 package net.modderg.thedigimod.item;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -14,19 +17,23 @@ import net.modderg.thedigimod.entity.CustomDigimon;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
-public class CustomDimItem extends Item {
+public class BabyDigimonItem extends Item {
 
     private RegistryObject<? extends EntityType<?>> DimDigi;
 
     private String descendant;
 
-    public CustomDimItem(Properties p_41383_, RegistryObject<? extends EntityType<?>> digimon, String name) {
+    public BabyDigimonItem(Properties p_41383_, RegistryObject<? extends EntityType<?>> digimon, String name) {
         super(p_41383_);
         DimDigi = digimon;
         descendant = name;
+    }
+
+    @Override
+    public boolean canBeHurtBy(DamageSource source) {
+        return super.canBeHurtBy(source) && !source.is(DamageTypeTags.IS_EXPLOSION) ;
     }
 
     @Override

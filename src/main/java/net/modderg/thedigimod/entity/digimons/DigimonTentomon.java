@@ -20,15 +20,15 @@ public class DigimonTentomon extends CustomDigimon {
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 1.0D)
+                .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     @Override
-    public Boolean isRookie() {
-        return true;
+    public String evoStage() {
+        return "rookie";
     }
 
     @Override
@@ -70,7 +70,7 @@ public class DigimonTentomon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(2) >= 50;
+        return this.getMood().equals("Joyful") && this.getSpecificXps(2) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 
     @Override

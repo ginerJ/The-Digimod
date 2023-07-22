@@ -9,6 +9,7 @@
   "item.thedigimod.puyomon" : "Puyomon",
   "item.thedigimod.dokimon" : "Dokimon",
   "item.thedigimod.nyokimon" : "Nyokimon",
+  "item.thedigimod.conomon" : "Conomon",
 
   "item.thedigimod.vitalbracelet" : "Vital Bracelet",
   "item.thedigimod.digivice" : "Digivice",
@@ -29,6 +30,8 @@
   "item.thedigimod.digi_meat" : "Digi Meat",
 
   "item.thedigimod.black_digitron" : "Black Digitron",
+
+  "item.thedigimod.training_bag" : "Training Bag",
   "item.thedigimod.bag_item" : "Punching Bag",
   "item.thedigimod.table_item" : "Learning Table",
   "item.thedigimod.target_item" : "Target",
@@ -45,12 +48,12 @@
   "item.thedigimod.tamer_leash" : "Tame Leash",
   "item.thedigimod.goblimon_bat" : "Goblimon Bat",
 
-  "entity.tameablebeasts.tameable_racoon" : "Racoon",
   "entity.thedigimod.koromon" : "Koromon",
   "entity.thedigimod.koromonb" : "Koromon",
   "entity.thedigimod.mochimon" : "Mochimon",
   "entity.thedigimod.mochimonk" : "Mochimon",
   "entity.thedigimod.tsunomon" : "Tsunomon",
+  "entity.thedigimod.kokomon" : "Kokomon",
   "entity.thedigimod.agumon" : "Agumon",
   "entity.thedigimod.tentomon" : "Tentomon",
   "entity.thedigimod.kabuterimon" : "Kabuterimon",
@@ -96,7 +99,12 @@
   "entity.thedigimod.thunderballmon" : "Thunderballmon",
   "entity.thedigimod.octomon" : "Octomon",
   "entity.thedigimod.gesomon" : "Gesomon",
+  "entity.thedigimod.lopmon" : "Lopmon",
+  "entity.thedigimod.blackgalgomon" : "BlackGalgomon",
+  "entity.thedigimod.turuiemon" : "Turuiemon",
+  "entity.thedigimod.wendimon" : "Wendimon",
 
+  "entity.thedigimod.training_bag" : "Training bag",
   "entity.thedigimod.punching_bag" : "Punching Bag",
   "entity.thedigimod.target" : "Training Target",
   "entity.thedigimod.defence_table" : "Learning Table",

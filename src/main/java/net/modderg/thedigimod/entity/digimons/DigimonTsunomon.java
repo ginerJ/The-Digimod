@@ -20,15 +20,15 @@ public class DigimonTsunomon extends CustomDigimon {
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 1.0D)
+                .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     @Override
-    public Boolean isBaby2() {
-        return true;
+    public String evoStage() {
+        return "baby2";
     }
 
     @Override
@@ -52,7 +52,7 @@ public class DigimonTsunomon extends CustomDigimon {
     }
     @Override
     protected String sitAnim() {
-        return "sit2";
+        return "sit7";
     }
     @Override
     protected String attackAnim() {

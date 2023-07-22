@@ -1,0 +1,18 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:dark_forest",
+    "minecraft:mushroom_fields",
+    "minecraft:the_end",
+    "minecraft:end_highlands",
+    "minecraft:end_midlands",
+    "minecraft:small_end_islands",
+    "minecraft:end_barrens"
+  ],
+  "spawners": {
+    "type": "thedigimod:wendimon",
+    "weight": 20,
+    "minCount": 3,
+    "maxCount": 7
+  }
+}

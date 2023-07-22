@@ -52,8 +52,10 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
     protected void onHitEntity(EntityHitResult hitted) {
         if(hitted.getEntity() instanceof CustomDigimon hcd && this.getOwner() instanceof CustomDigimon cd){
             if(!(hcd.getOwner() != null && cd.getOwner() != null && cd.getOwner().is(hcd.getOwner()))){
-                hcd.hurt(this.damageSources().mobAttack(cd), cd.calculateDamage(cd.getSpAttackStat(), hcd.getSpDefenceStat()));
-            }
+                hcd.hurt(this.damageSources().mobAttack(cd), cd.calculateDamage(
+                        cd.getSpAttackStat() + cd.getCurrentLevel(),
+                        hcd.getSpDefenceStat() + hcd.getCurrentLevel()
+                ));}
         }else {super.onHitEntity(hitted);}
         this.remove(RemovalReason.UNLOADED_TO_CHUNK);
     }

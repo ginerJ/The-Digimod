@@ -21,15 +21,15 @@ public class DigimonAgumon extends CustomDigimon {
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 1.0D)
+                .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1.D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     @Override
-    public Boolean isRookie() {
-        return true;
+    public String evoStage() {
+        return "rookie";
     }
 
     @Override
@@ -74,21 +74,12 @@ public class DigimonAgumon extends CustomDigimon {
     }
 
     @Override
-    protected EntityType evoPath3() {
-        return DigitalEntities.GREYMONVIRUS.get();
-    }
-    @Override
-    protected Boolean canEvoToPath3() {
-        return this.getMood().equals("Sad") && this.getSpecificXps(7) >= 50;
-    }
-
-    @Override
     protected EntityType evoPath4() {
         return DigitalEntities.VEEDRAMON.get();
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(6) >= 50;
+        return this.getMood().equals("Joyful") && this.getSpecificXps(6) >= 50 && this.getCareMistakesStat() <= 5 && this.getBattlesStat() >= 10;
     }
 
     @Override
@@ -97,7 +88,7 @@ public class DigimonAgumon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(0) >= 50;
+        return this.getMood().equals("Joyful") && this.getSpecificXps(0) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 
     @Override

@@ -25,7 +25,7 @@
   ],
   "spawners": {
     "type": "thedigimod:octomon",
-    "weight": 100,
+    "weight": 20,
     "minCount": 3,
     "maxCount": 7
   }

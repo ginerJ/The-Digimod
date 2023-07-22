@@ -18,6 +18,7 @@ public class ClientEventBusSubscriber {
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(DigitalEntities.KOROMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.KOROMONB.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.KOKOMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.MOCHIMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.MOCHIMONK.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.AGUMON.get(), CustomDigimonRender::new);
@@ -66,6 +67,10 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.AIRDRAMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.ROACHMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.FLYMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.LOPMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.BLACKGALGOMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.TURUIEMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.WENDIMON.get(), CustomDigimonRender::new);
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
 
