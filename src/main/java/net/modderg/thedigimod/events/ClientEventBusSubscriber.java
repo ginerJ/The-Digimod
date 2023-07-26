@@ -71,6 +71,9 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.BLACKGALGOMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.TURUIEMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.WENDIMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.YAAMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.IMPMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.NUMEMON.get(), CustomDigimonRender::new);
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
 

@@ -11,9 +11,9 @@ import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.item.DigiItems;
 
-public class DigimonDracomon extends CustomDigimon {
+public class DigimonImpmon extends CustomDigimon {
 
-    public DigimonDracomon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
+    public DigimonImpmon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.switchNavigation(0);
     }
@@ -22,7 +22,7 @@ public class DigimonDracomon extends CustomDigimon {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
-                .add(Attributes.ATTACK_DAMAGE, 1D)
+                .add(Attributes.ATTACK_DAMAGE, 1.D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
@@ -33,15 +33,15 @@ public class DigimonDracomon extends CustomDigimon {
 
     @Override
     public String getSpecies() {
-        return "Dracomon";
+        return "Impmon";
     }
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.PETITMON};
+        return new RegistryObject[]{DigiItems.KIIMON};
     }
     @Override
     protected RegistryObject<?> xpDrop() {
-        return DigiItems.DRAGON_DATA;
+        return DigiItems.NIGHTMARE_DATA;
     }
 
     @Override
@@ -50,16 +50,22 @@ public class DigimonDracomon extends CustomDigimon {
     }
     @Override
     protected String walkAnim() {
-        return "walk";
+        return "walk5";
     }
     @Override
     protected String sitAnim() {
-        return "sit3";
+        return "sit9";
+    }
+    @Override
+    protected String attackAnim() {return "attack";}
+    @Override
+    protected String shootAnim() {
+        return "shoot";
     }
 
     @Override
     protected EntityType evoPath() {
-        return DigitalEntities.AIRDRAMON.get();
+        return DigitalEntities.TYRANNOMON.get();
     }
     @Override
     protected Boolean canEvoToPath() {
@@ -67,34 +73,25 @@ public class DigimonDracomon extends CustomDigimon {
     }
 
     @Override
-    protected EntityType evoPath2() {return DigitalEntities.NUMEMON.get();}
-    @Override
-    protected Boolean canEvoToPath2() {
-        return this.getMood().equals("Sad");
-    }
-
-    @Override
-    protected EntityType evoPath3() {return DigitalEntities.GROWLMONDATA.get();}
-    @Override
-    protected Boolean canEvoToPath3() {
-        return this.getMood().equals("Sad") && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
-    }
-
-    @Override
     protected EntityType evoPath4() {
-        return DigitalEntities.COREDRAMONGREEN.get();
+        return DigitalEntities.VEEDRAMON.get();
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getSpecificXps(6) >= 50 && this.getMood().equals("Joyful") && this.getCareMistakesStat() <= 5 && this.getBattlesStat() >= 15;
+        return this.getMood().equals("Joyful") && this.getSpecificXps(6) >= 50 && this.getCareMistakesStat() <= 5 && this.getBattlesStat() >= 10;
     }
 
     @Override
     protected EntityType evoPath5() {
-        return DigitalEntities.COREDRAMON.get();
+        return DigitalEntities.GREYMON.get();
     }
     @Override
     protected Boolean canEvoToPath5() {
-        return this.getSpecificXps(0) >= 50 && this.getMood().equals("Joyful") && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
+        return this.getMood().equals("Joyful") && this.getSpecificXps(0) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
+    }
+
+    @Override
+    public EntityType digitronEvo() {
+        return DigitalEntities.AGUMONBLACK.get();
     }
 }

@@ -269,6 +269,18 @@ public class TheDigiMod {
             SpawnPlacements.register(DigitalEntities.WENDIMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.YAAMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.IMPMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.NUMEMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
     }
 
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
@@ -289,6 +301,7 @@ public class TheDigiMod {
             event.accept(DigiItems.DOKIMON);
             event.accept(DigiItems.NYOKIMON);
             event.accept(DigiItems.CONOMON);
+            event.accept(DigiItems.KIIMON);
             event.accept(DigiItems.DRAGON_DATA);
             event.accept(DigiItems.BEAST_DATA);
             event.accept(DigiItems.PLANTINSECT_DATA);
@@ -371,10 +384,13 @@ public class TheDigiMod {
         event.put(DigitalEntities.OCTOMON.get(), DigimonOctomon.setCustomAttributes().build());
         event.put(DigitalEntities.GESOMON.get(), DigimonGesomon.setCustomAttributes().build());
         event.put(DigitalEntities.AIRDRAMON.get(), DigimonAirdramon.setCustomAttributes().build());
-        event.put(DigitalEntities.LOPMON.get(), DigimonGesomon.setCustomAttributes().build());
-        event.put(DigitalEntities.BLACKGALGOMON.get(), DigimonGesomon.setCustomAttributes().build());
-        event.put(DigitalEntities.TURUIEMON.get(), DigimonGesomon.setCustomAttributes().build());
-        event.put(DigitalEntities.WENDIMON.get(), DigimonGesomon.setCustomAttributes().build());
+        event.put(DigitalEntities.LOPMON.get(), DigimonLopmon.setCustomAttributes().build());
+        event.put(DigitalEntities.BLACKGALGOMON.get(), DigimonBlackGalgomon.setCustomAttributes().build());
+        event.put(DigitalEntities.TURUIEMON.get(), DigimonTuruiemon.setCustomAttributes().build());
+        event.put(DigitalEntities.WENDIMON.get(), DigimonWendimon.setCustomAttributes().build());
+        event.put(DigitalEntities.YAAMON.get(), DigimonYaamon.setCustomAttributes().build());
+        event.put(DigitalEntities.IMPMON.get(), DigimonYaamon.setCustomAttributes().build());
+        event.put(DigitalEntities.NUMEMON.get(), DigimonNumemon.setCustomAttributes().build());
 
         event.put(DigitalEntities.PUNCHING_BAG.get(), PunchingBag.setCustomAttributes().build());
         event.put(DigitalEntities.SP_TARGET.get(), PunchingBag.setCustomAttributes().build());

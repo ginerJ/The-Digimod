@@ -31,6 +31,11 @@ public class DigitalEntities {
                     .sized(0.9f,0.9f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "kokomon").toString()));
 
+    public static final RegistryObject<EntityType<DigimonYaamon>> YAAMON = DIGIMONS.register("yaamon",
+            () -> EntityType.Builder.of(DigimonYaamon:: new, MobCategory.CREATURE)
+                    .sized(0.9f,0.9f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "yaamon").toString()));
+
     public static final RegistryObject<EntityType<DigimonMochimon>> MOCHIMON = DIGIMONS.register("mochimon",
             () -> EntityType.Builder.of(DigimonMochimon:: new, MobCategory.CREATURE)
                     .sized(0.9f,0.9f)
@@ -290,6 +295,16 @@ public class DigitalEntities {
             () -> EntityType.Builder.of(DigimonWendimon:: new, MobCategory.CREATURE)
                     .sized(1.0f,2f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "wendimon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonImpmon>> IMPMON = DIGIMONS.register("impmon",
+            () -> EntityType.Builder.of(DigimonImpmon:: new, MobCategory.CREATURE)
+                    .sized(0.75f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "impmon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonNumemon>> NUMEMON = DIGIMONS.register("numemon",
+            () -> EntityType.Builder.of(DigimonNumemon:: new, MobCategory.CREATURE)
+                    .sized(1f,1.8f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "numemon").toString()));
 
 
     //training goods

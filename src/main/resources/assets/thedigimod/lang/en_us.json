@@ -10,6 +10,7 @@
   "item.thedigimod.dokimon" : "Dokimon",
   "item.thedigimod.nyokimon" : "Nyokimon",
   "item.thedigimod.conomon" : "Conomon",
+  "item.thedigimod.kiimon" : "Kiimon",
 
   "item.thedigimod.vitalbracelet" : "Vital Bracelet",
   "item.thedigimod.digivice" : "Digivice",
@@ -103,6 +104,10 @@
   "entity.thedigimod.blackgalgomon" : "BlackGalgomon",
   "entity.thedigimod.turuiemon" : "Turuiemon",
   "entity.thedigimod.wendimon" : "Wendimon",
+  "entity.thedigimod.yaamon" : "Yaamon",
+  "entity.thedigimod.impmon" : "Impmon",
+  "entity.thedigimod.numemon" : "Numemon",
+
 
   "entity.thedigimod.training_bag" : "Training bag",
   "entity.thedigimod.punching_bag" : "Punching Bag",

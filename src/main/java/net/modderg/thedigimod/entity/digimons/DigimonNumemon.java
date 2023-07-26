@@ -11,9 +11,9 @@ import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.item.DigiItems;
 
-public class DigimonBearmon extends CustomDigimon {
+public class DigimonNumemon extends CustomDigimon {
 
-    public DigimonBearmon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
+    public DigimonNumemon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.switchNavigation(0);
     }
@@ -28,66 +28,37 @@ public class DigimonBearmon extends CustomDigimon {
 
     @Override
     public String evoStage() {
-        return "rookie";
+        return "champion";
     }
 
     @Override
     public String getSpecies() {
-        return "Bearmon";
+        return "Numemon";
     }
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.PUNIMON};
+        return new RegistryObject[]{DigiItems.BOTAMON,DigiItems.BOTAMOND,DigiItems.CONOMON,DigiItems.PUYOMON,
+                DigiItems.NYOKIMON,DigiItems.PUNIMON,DigiItems.JYARIMON,DigiItems.PETITMON};
     }
     @Override
     protected RegistryObject<?> xpDrop() {
-        return DigiItems.BEAST_DATA;
+        return DigiItems.EARTH_DATA;
     }
 
     @Override
     protected String idleAnim() {
-        return "idle";
+        return "idle6";
     }
     @Override
     protected String walkAnim() {
-        return "walk7";
+        return "walk8";
     }
     @Override
     protected String sitAnim() {
-        return "sit";
-    }
-
-    @Override
-    protected EntityType evoPath() {
-        return DigitalEntities.GRIZZLYMON.get();
+        return "sit7";
     }
     @Override
-    protected Boolean canEvoToPath() {
-        return true;
-    }
-
-    @Override
-    protected EntityType evoPath2() {return DigitalEntities.NUMEMON.get();}
-    @Override
-    protected Boolean canEvoToPath2() {
-        return this.getMood().equals("Sad");
-    }
-
-    @Override
-    protected EntityType evoPath4() {
-        return DigitalEntities.BLACKGAOGAMON.get();
-    }
-    @Override
-    protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Sad") && this.getSpecificXps(7) >= 50 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
-    }
-
-    @Override
-    protected EntityType evoPath5() {
-        return DigitalEntities.CHAKMON.get();
-    }
-    @Override
-    protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(3) >= 50 && this.getSpecificXps(3) >= 50 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
+    protected String attackAnim() {
+        return "attack2";
     }
 }

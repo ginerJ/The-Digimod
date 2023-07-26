@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:swamp",
+    "minecraft:mushroom_fields"
+  ],
+  "spawners": {
+    "type": "thedigimod:numemon",
+    "weight": 20,
+    "minCount": 3,
+    "maxCount": 7
+  }
+}

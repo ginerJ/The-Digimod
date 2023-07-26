@@ -67,6 +67,15 @@ public class DigimonAgumonBlack extends CustomDigimon {
     }
 
     @Override
+    protected EntityType evoPath2() {
+        return DigitalEntities.NUMEMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath2() {
+        return this.getMood().equals("Sad");
+    }
+
+    @Override
     protected EntityType evoPath3() {
         return DigitalEntities.BLACK_GROWLMON.get();
     }
