@@ -545,7 +545,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             if (digimon.evoStage().equals(this.evoStage())) {
                 digimon.setBattlesStat(digimon.getBattlesStat() + 1);
             }
-            if (random.nextInt(0, 50) < 2) {
+            if (!this.isTame() && random.nextInt(0, 50) < 2) {
                 this.level().addFreshEntity(new ItemEntity(level(),
                         this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) reincarnateTo()[random.nextInt(reincarnateTo().length)].get())));
             } else if (!this.isTame()) {

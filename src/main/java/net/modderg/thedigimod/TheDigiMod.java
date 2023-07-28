@@ -281,6 +281,17 @@ public class TheDigiMod {
             SpawnPlacements.register(DigitalEntities.NUMEMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.BAKEMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.ICEDEVIMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.WIZARDMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
     }
 
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
@@ -389,8 +400,11 @@ public class TheDigiMod {
         event.put(DigitalEntities.TURUIEMON.get(), DigimonTuruiemon.setCustomAttributes().build());
         event.put(DigitalEntities.WENDIMON.get(), DigimonWendimon.setCustomAttributes().build());
         event.put(DigitalEntities.YAAMON.get(), DigimonYaamon.setCustomAttributes().build());
-        event.put(DigitalEntities.IMPMON.get(), DigimonYaamon.setCustomAttributes().build());
+        event.put(DigitalEntities.IMPMON.get(), DigimonImpmon.setCustomAttributes().build());
         event.put(DigitalEntities.NUMEMON.get(), DigimonNumemon.setCustomAttributes().build());
+        event.put(DigitalEntities.BAKEMON.get(), DigimonBakemon.setCustomAttributes().build());
+        event.put(DigitalEntities.ICEDEVIMON.get(), DigimonIceDevimon.setCustomAttributes().build());
+        event.put(DigitalEntities.WIZARDMON.get(), DigimonWizardmon.setCustomAttributes().build());
 
         event.put(DigitalEntities.PUNCHING_BAG.get(), PunchingBag.setCustomAttributes().build());
         event.put(DigitalEntities.SP_TARGET.get(), PunchingBag.setCustomAttributes().build());

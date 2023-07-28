@@ -306,6 +306,21 @@ public class DigitalEntities {
                     .sized(1f,1.8f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "numemon").toString()));
 
+    public static final RegistryObject<EntityType<DigimonBakemon>> BAKEMON = DIGIMONS.register("bakemon",
+            () -> EntityType.Builder.of(DigimonBakemon:: new, MobCategory.CREATURE)
+                    .sized(1f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "bakemon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonIceDevimon>> ICEDEVIMON = DIGIMONS.register("icedevimon",
+            () -> EntityType.Builder.of(DigimonIceDevimon:: new, MobCategory.CREATURE)
+                    .sized(1f,2.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "icedevimon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonWizardmon>> WIZARDMON = DIGIMONS.register("wizardmon",
+            () -> EntityType.Builder.of(DigimonWizardmon:: new, MobCategory.CREATURE)
+                    .sized(1f,2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "wizardmon").toString()));
+
 
     //training goods
     public static final RegistryObject<EntityType<PunchingBag>> PUNCHING_BAG = DIGIMONS.register("punching_bag",

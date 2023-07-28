@@ -107,6 +107,9 @@
   "entity.thedigimod.yaamon" : "Yaamon",
   "entity.thedigimod.impmon" : "Impmon",
   "entity.thedigimod.numemon" : "Numemon",
+  "entity.thedigimod.bakemon" : "Bakemon",
+  "entity.thedigimod.icedevimon" : "IceDevimon",
+  "entity.thedigimod.wizardmon" : "Wizardmon",
 
 
   "entity.thedigimod.training_bag" : "Training bag",
