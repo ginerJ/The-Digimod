@@ -38,6 +38,7 @@
   "item.thedigimod.target_item" : "Target",
   "item.thedigimod.shield_item" : "Training Shield",
   "item.thedigimod.update_item" : "Health Upgrade",
+  "item.thedigimod.digi_core" : "DigiCore",
 
   "item.thedigimod.admin_logo" : "Admin",
   "item.thedigimod.gbattack" : "Attack Drive",
@@ -110,6 +111,7 @@
   "entity.thedigimod.bakemon" : "Bakemon",
   "entity.thedigimod.icedevimon" : "IceDevimon",
   "entity.thedigimod.wizardmon" : "Wizardmon",
+  "entity.thedigimod.boogiemon" : "Boogiemon",
 
 
   "entity.thedigimod.training_bag" : "Training bag",

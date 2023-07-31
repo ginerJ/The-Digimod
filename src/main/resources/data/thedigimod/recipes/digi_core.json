@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "did",
+    "i0i",
+    "did"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:xps/xps"
+    },
+    "0": {
+      "tag": "forge:babies/babies"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "thedigimod:digi_core",
+    "count": 1
+  }
+}

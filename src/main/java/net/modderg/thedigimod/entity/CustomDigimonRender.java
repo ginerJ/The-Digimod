@@ -47,7 +47,8 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
         MutableComponent mp2 = MutableComponent.create(Component.literal(entity.getMood()).getContents());
         mp2.setStyle(XpStyle.withColor(TextColor.fromRgb(entity.getMoodColor())));
         MutableComponent mp3 = MutableComponent.create(Component.literal(Integer.toString(Math.round(entity.getHealth())) + "/" + (int)entity.getAttribute(Attributes.MAX_HEALTH).getValue() + "Hp").getContents());
-        mp3.setStyle(XpStyle.withColor(TextColor.fromRgb(8704641)));
+        int lifes = entity.getLifes();
+        mp3.setStyle(XpStyle.withColor(TextColor.fromRgb(entity.getLifes() == 3 ? 8704641 : (entity.getLifes() == 2 ? 0xFFFF00 : 0xFF0000))));
         if (renderNameTagEvent.getResult() != net.minecraftforge.eventbus.api.Event.Result.DENY && (renderNameTagEvent.getResult() == net.minecraftforge.eventbus.api.Event.Result.ALLOW || this.shouldShowName(entity))) {
             if(entity.isTame()){
                 this.renderXp(entity, mp, stack, bufferIn, packedLightIn);

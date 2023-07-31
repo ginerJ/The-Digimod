@@ -40,7 +40,7 @@ public class DigimonAirdramon extends CustomDigimon {
     }
     @Override
     protected RegistryObject<?> xpDrop() {
-        return DigiItems.DRAGON_DATA;
+        return DigiItems.WIND_DATA;
     }
 
     @Override

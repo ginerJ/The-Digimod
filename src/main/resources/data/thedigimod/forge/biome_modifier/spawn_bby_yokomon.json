@@ -2,14 +2,17 @@
   "type": "forge:add_spawns",
   "biomes": [
     "minecraft:forest",
-    "minecraft:birch_forest",
     "minecraft:meadow",
-    "minecraft:river"
+    "minecraft:windswept_hills",
+    "minecraft:windswept_gravelly_hills",
+    "minecraft:windswept_forest",
+    "minecraft:grove",
+    "minecraft:stony_peaks"
   ],
   "spawners": {
     "type": "thedigimod:yokomon",
-    "weight": 20,
-    "minCount": 5,
+    "weight": 30,
+    "minCount": 6,
     "maxCount": 10
   }
 }

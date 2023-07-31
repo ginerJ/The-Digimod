@@ -35,6 +35,7 @@ import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.particles.DigitalParticles;
 import net.modderg.thedigimod.particles.custom.BubbleParticle;
 import net.modderg.thedigimod.particles.custom.DigitronParticles;
+import net.modderg.thedigimod.particles.custom.LifeParticle;
 import net.modderg.thedigimod.particles.custom.StatUpParticles;
 
 import java.util.function.Supplier;
@@ -56,6 +57,8 @@ public class ModEvents {
             Minecraft.getInstance().particleEngine.register(DigitalParticles.SPDEFENCE_UP.get(), StatUpParticles.Provider::new);
             Minecraft.getInstance().particleEngine.register(DigitalParticles.BATTLES_UP.get(), StatUpParticles.Provider::new);
             Minecraft.getInstance().particleEngine.register(DigitalParticles.HEALTH_UP.get(), StatUpParticles.Provider::new);
+
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.LIFE_PARTICLE.get(), LifeParticle.Provider::new);
 
             Minecraft.getInstance().particleEngine.register(DigitalParticles.EVO_PARTICLES.get(), StatUpParticles.Provider::new);
         }

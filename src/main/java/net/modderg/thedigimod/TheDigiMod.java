@@ -292,6 +292,10 @@ public class TheDigiMod {
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.WIZARDMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.BOOGIEMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
     }
 
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
@@ -330,6 +334,7 @@ public class TheDigiMod {
             event.accept(DigiItems.TARGET_ITEM);
             event.accept(DigiItems.SHIELD_ITEM);
             event.accept(DigiItems.UPDATE_ITEM);
+            event.accept(DigiItems.DIGI_CORE);
         }
         if(event.getTab() == DigitalCreativeTab.ADMIN_TAB.get()){
             event.accept(DigiItems.ATTACK_GB);
@@ -405,6 +410,7 @@ public class TheDigiMod {
         event.put(DigitalEntities.BAKEMON.get(), DigimonBakemon.setCustomAttributes().build());
         event.put(DigitalEntities.ICEDEVIMON.get(), DigimonIceDevimon.setCustomAttributes().build());
         event.put(DigitalEntities.WIZARDMON.get(), DigimonWizardmon.setCustomAttributes().build());
+        event.put(DigitalEntities.BOOGIEMON.get(), DigimonBoogiemon.setCustomAttributes().build());
 
         event.put(DigitalEntities.PUNCHING_BAG.get(), PunchingBag.setCustomAttributes().build());
         event.put(DigitalEntities.SP_TARGET.get(), PunchingBag.setCustomAttributes().build());

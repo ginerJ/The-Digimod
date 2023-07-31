@@ -65,7 +65,7 @@ public class DigimonImpmon extends CustomDigimon {
 
     @Override
     protected EntityType evoPath() {
-        return DigitalEntities.TYRANNOMON.get();
+        return DigitalEntities.BOOGIEMON.get();
     }
     @Override
     protected Boolean canEvoToPath() {
@@ -73,25 +73,30 @@ public class DigimonImpmon extends CustomDigimon {
     }
 
     @Override
+    protected EntityType evoPath3() {
+        return DigitalEntities.BAKEMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath3() {
+        return this.getMood().equals("Sad");
+    }
+
+    @Override
     protected EntityType evoPath4() {
-        return DigitalEntities.VEEDRAMON.get();
+        return DigitalEntities.ICEDEVIMON.get();
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(6) >= 50 && this.getCareMistakesStat() <= 5 && this.getBattlesStat() >= 10;
+        return this.getMood().equals("Joyful") && this.getSpecificXps(3) >= 25 && this.getSpecificXps(7) >= 25 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
     }
 
     @Override
     protected EntityType evoPath5() {
-        return DigitalEntities.GREYMON.get();
+        return DigitalEntities.WIZARDMON.get();
     }
     @Override
     protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(0) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
+        return this.getMood().equals("Joyful") && this.getSpecificXps(7) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 
-    @Override
-    public EntityType digitronEvo() {
-        return DigitalEntities.AGUMONBLACK.get();
-    }
 }

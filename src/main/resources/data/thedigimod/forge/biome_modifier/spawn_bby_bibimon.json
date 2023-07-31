@@ -2,15 +2,17 @@
   "type": "forge:add_spawns",
   "biomes": [
     "minecraft:forest",
-    "minecraft:birch_forest",
     "minecraft:meadow",
     "minecraft:taiga",
-    "minecraft:river"
+    "minecraft:old_growth_spruce_taiga",
+    "minecraft:old_growth_pine_taiga",
+    "minecraft:snowy_taiga",
+    "minecraft:grove"
   ],
   "spawners": {
     "type": "thedigimod:bibimon",
-    "weight": 20,
-    "minCount": 5,
+    "weight": 30,
+    "minCount": 6,
     "maxCount": 10
   }
 }

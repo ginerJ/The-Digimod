@@ -51,6 +51,9 @@ public class DigiItems {
     //Misc Items
     public static final RegistryObject<Item> TRAINING_BAG = ITEMS.register("training_bag", () -> new ContainerItem(new Item.Properties(), new RegistryObject[]{DigiItems.TABLE_ITEM, DigiItems.BAG_ITEM, DigiItems.SHIELD_ITEM, DigiItems.TARGET_ITEM, DigiItems.UPDATE_ITEM}));
     public static final RegistryObject<Item> BLACK_DIGITRON = ITEMS.register("black_digitron", () -> new DigitronItem(new Item.Properties(), DigitalParticles.DIGITRON_PARTICLES));
+    public static final RegistryObject<Item> DIGI_CORE = ITEMS.register("digi_core", () -> new StatUpItem(new Item.Properties().stacksTo(1), "lifes"));
+
+    //training items
     public static final RegistryObject<Item> BAG_ITEM = ITEMS.register("bag_item", () -> new SpawnGoodItem(DigitalEntities.PUNCHING_BAG, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> TABLE_ITEM = ITEMS.register("table_item", () -> new SpawnGoodItem(DigitalEntities.SP_TABLE, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> TARGET_ITEM = ITEMS.register("target_item", () -> new SpawnGoodItem(DigitalEntities.SP_TARGET, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));

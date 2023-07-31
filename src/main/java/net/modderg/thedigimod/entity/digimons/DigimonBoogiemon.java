@@ -43,20 +43,23 @@ public class DigimonBoogiemon extends CustomDigimon {
 
     @Override
     protected String idleAnim() {
-        return "idle";
+        return "fly4";
     }
     @Override
     protected String walkAnim() {
-        return "walk7";
+        return "fly3";
     }
     @Override
     protected String sitAnim() {
         return "sit6";
     }
-
+    @Override
+    protected String attackAnim() {
+        return "attack5";
+    }
     @Override
     protected String flyAnim() {
-        return "float";
+        return "fly3";
     }
 
     @Override

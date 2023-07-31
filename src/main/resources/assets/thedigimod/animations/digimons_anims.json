@@ -3140,6 +3140,41 @@
 				}
 			}
 		},
+		"sit9": {
+			"loop": true,
+			"bones": {
+				"entity": {
+					"position": {
+						"vector": [0, -6, 0]
+					}
+				},
+				"leg": {
+					"rotation": {
+						"vector": [-82.5, 0, 0]
+					}
+				},
+				"leg2": {
+					"rotation": {
+						"vector": [-82.5, 0, 0]
+					}
+				},
+				"body": {
+					"rotation": {
+						"vector": [-5, 0, 0]
+					}
+				},
+				"preleg": {
+					"rotation": {
+						"vector": [15, 0, 0]
+					}
+				},
+				"preleg2": {
+					"rotation": {
+						"vector": [10, 0, 0]
+					}
+				}
+			}
+		},
 		"shoot": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.36,

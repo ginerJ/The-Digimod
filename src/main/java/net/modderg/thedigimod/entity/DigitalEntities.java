@@ -308,18 +308,23 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<DigimonBakemon>> BAKEMON = DIGIMONS.register("bakemon",
             () -> EntityType.Builder.of(DigimonBakemon:: new, MobCategory.CREATURE)
-                    .sized(1f,1.5f)
+                    .sized(1f,1.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "bakemon").toString()));
 
     public static final RegistryObject<EntityType<DigimonIceDevimon>> ICEDEVIMON = DIGIMONS.register("icedevimon",
             () -> EntityType.Builder.of(DigimonIceDevimon:: new, MobCategory.CREATURE)
-                    .sized(1f,2.5f)
+                    .sized(1f,2.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "icedevimon").toString()));
 
     public static final RegistryObject<EntityType<DigimonWizardmon>> WIZARDMON = DIGIMONS.register("wizardmon",
             () -> EntityType.Builder.of(DigimonWizardmon:: new, MobCategory.CREATURE)
-                    .sized(1f,2f)
+                    .sized(1f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "wizardmon").toString()));
+
+    public static final RegistryObject<EntityType<DigimonBoogiemon>> BOOGIEMON = DIGIMONS.register("boogiemon",
+            () -> EntityType.Builder.of(DigimonBoogiemon:: new, MobCategory.CREATURE)
+                    .sized(1f,2.25f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "boogiemon").toString()));
 
 
     //training goods

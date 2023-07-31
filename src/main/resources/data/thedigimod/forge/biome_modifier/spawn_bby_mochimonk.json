@@ -2,15 +2,18 @@
   "type": "forge:add_spawns",
   "biomes": [
     "minecraft:forest",
-    "minecraft:birch_forest",
     "minecraft:meadow",
     "minecraft:jungle",
-    "minecraft:river"
+    "minecraft:flower_forest",
+    "minecraft:sparse_jungle",
+    "minecraft:bamboo_jungle",
+    "minecraft:mushroom_fields",
+    "minecraft:cherry_grove"
   ],
   "spawners": {
     "type": "thedigimod:mochimonk",
-    "weight": 20,
-    "minCount": 5,
+    "weight": 30,
+    "minCount": 6,
     "maxCount": 10
   }
 }

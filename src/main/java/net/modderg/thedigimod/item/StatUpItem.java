@@ -35,6 +35,9 @@ public class StatUpItem extends Item {
                 cd.setBattlesStat(cd.getBattlesStat() + 5);
             } else if(stat == "mistakes"){
                 cd.setCareMistakesStat(cd.getCareMistakesStat() + 1);
+            } else if(stat == "lifes"){
+                cd.addLife();
+                item.shrink(1);
             }
         }
         return super.interactLivingEntity(item, player, entity, hand);

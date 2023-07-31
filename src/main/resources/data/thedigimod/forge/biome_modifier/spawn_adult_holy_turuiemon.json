@@ -4,12 +4,14 @@
     "minecraft:mangrove_swamp",
     "minecraft:sunflower_plains",
     "minecraft:windswept_forest",
-    "minecraft:plains"
+    "minecraft:plains",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest"
   ],
   "spawners": {
     "type": "thedigimod:turuiemon",
     "weight": 20,
     "minCount": 3,
-    "maxCount": 7
+    "maxCount": 5
   }
 }

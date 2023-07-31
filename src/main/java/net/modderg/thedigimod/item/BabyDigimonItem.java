@@ -43,6 +43,7 @@ public class BabyDigimonItem extends Item {
         CustomDigimon digi = (CustomDigimon) DimDigi.get().create(context.getLevel());
         digi.tame(Objects.requireNonNull(context.getPlayer()));
         digi.setPos(context.getPlayer().position());
+        digi.setLifes(3);
         context.getLevel().addFreshEntity(digi);
         return InteractionResult.CONSUME;
     }

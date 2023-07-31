@@ -3,6 +3,7 @@ package net.modderg.thedigimod.entity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -224,6 +225,22 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         return Integer.parseInt(ss[i]);
     }
 
+    protected static final EntityDataAccessor<Integer> LIFES = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
+    public void setLifes(int i){
+        this.getEntityData().set(LIFES,i);
+    }
+    public int getLifes(){
+        return this.getEntityData().get(LIFES);
+    }
+    public void addLife(){
+        this.getEntityData().set(LIFES,Math.min(3,this.getLifes()+1));
+        this.setHealth(999f);
+    }
+    public void restLifes(){
+        this.getEntityData().set(LIFES,Math.max(0,this.getLifes()-1));
+        this.setHealth(999f);
+    }
+
     protected static final EntityDataAccessor<Integer> ATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
     DEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
     SPATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
@@ -399,6 +416,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         this.entityData.define(BATTLES_STAT, 0);
         this.entityData.define(CARE_MISTAKES_STAT, 0);
         this.entityData.define(FIRSTSPAWN, true);
+        this.entityData.define(LIFES, 1);
     }
 
     @Override
@@ -446,6 +464,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         if (compound.contains("CARE_MISTAKES_STAT")) {
             this.setCareMistakesStat(compound.getInt("CARE_MISTAKES_STAT"));
         }
+        if (compound.contains("LIFES")) {
+            this.setLifes(compound.getInt("LIFES"));
+        }
     }
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag compound) {
@@ -464,6 +485,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         compound.putInt("BATTLES_STAT", this.getBattlesStat());
         compound.putInt("CARE_MISTAKES_STAT", this.getCareMistakesStat());
         compound.putBoolean("FIRSTSPAWN", this.getSpawn());
+        compound.putInt("LIFES", this.getLifes());
     }
 
     @Override
@@ -585,6 +607,15 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         return super.hurt(source, p_27568_);
     }
 
+    @Override
+    public void setHealth(float value) {
+        if(value <= 0 && this.getLifes() > 1){
+            this.restLifes();
+        } else {
+            super.setHealth(value);
+        }
+    }
+
     public static boolean checkDigimonSpawnRules(EntityType<? extends Mob> p_217058_, LevelAccessor p_217059_, MobSpawnType p_217060_, BlockPos p_217061_, RandomSource p_217062_) {
         return true;
     }
@@ -626,6 +657,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         this.setSpDefenceStat(d.getSpDefenceStat());
         this.setHealthStat(d.getHealthStat());
         this.setHealth(d.getHealth());
+        this.setLifes(d.getLifes());
     }
 
     public void useXpItem(int id){
@@ -654,8 +686,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         }
     }
 
-    int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(),
-            spdefence = this.getSpDefenceStat(), battles = this.getBattlesStat(), health = this.getHealthStat(), mistakes = this.getCareMistakesStat();
+    int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(), spdefence = this.getSpDefenceStat(),
+            battles = this.getBattlesStat(), health = this.getHealthStat(), mistakes = this.getCareMistakesStat(), lifes = this.getLifes();
 
     private String lastStat = "";
     private int statTimer = 0;
@@ -706,28 +738,31 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     }
 
     public void checkChangeStats(){
-        if(attack != this.getAttackStat()){spawnStatUpParticles(DigitalParticles.ATTACK_UP);
+        if(attack != this.getAttackStat()){spawnStatUpParticles(DigitalParticles.ATTACK_UP,1);
             attack = this.getAttackStat();}
-        if(defence != this.getDefenceStat()){spawnStatUpParticles(DigitalParticles.DEFENCE_UP);
+        if(defence != this.getDefenceStat()){spawnStatUpParticles(DigitalParticles.DEFENCE_UP,1);
             defence = this.getDefenceStat();}
-        if(spattack != this.getSpAttackStat()){spawnStatUpParticles(DigitalParticles.SPATTACK_UP);
+        if(spattack != this.getSpAttackStat()){spawnStatUpParticles(DigitalParticles.SPATTACK_UP,1);
             spattack = this.getSpAttackStat();}
-        if(spdefence != this.getSpDefenceStat()){spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP);
+        if(spdefence != this.getSpDefenceStat()){spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP,1);
             spdefence = this.getSpDefenceStat();}
-        if(battles != this.getBattlesStat()){spawnStatUpParticles(DigitalParticles.BATTLES_UP);
+        if(battles != this.getBattlesStat()){spawnStatUpParticles(DigitalParticles.BATTLES_UP,1);
             battles = this.getBattlesStat();}
-        if(health != this.getHealthStat()){spawnStatUpParticles(DigitalParticles.HEALTH_UP);
+        if(health != this.getHealthStat()){spawnStatUpParticles(DigitalParticles.HEALTH_UP,1);
             health = this.getHealthStat();}
         if(mistakes != this.getCareMistakesStat()){spawnBubbleParticle(DigitalParticles.MISTAKE_BUBBLE);
             mistakes = this.getCareMistakesStat();}
+        if(lifes != this.getLifes()){spawnStatUpParticles(DigitalParticles.LIFE_PARTICLE,7);
+            lifes = this.getLifes();}
     }
 
-    public void spawnStatUpParticles(RegistryObject<SimpleParticleType> particle) {
-        for(int i = 0; i < 360; i++) {
-            if(i % 20 == 0) {
-                this.level().addParticle(particle.get(),
-                        blockPosition().getX() + 0.75d, blockPosition().getY(), blockPosition().getZ() + 0.75d,
-                        Math.cos(i) * 0.15d, 0.15d, Math.sin(i) * 0.15d);
+    public void spawnStatUpParticles(RegistryObject<SimpleParticleType> particle, int multiplier) {
+        for(int y = multiplier; y > 0; --y) {
+            for(int i = 0; i < 7; ++i) {
+                double d0 = this.random.nextGaussian() * 0.02D;
+                double d1 = this.random.nextGaussian() * 0.02D;
+                double d2 = this.random.nextGaussian() * 0.02D;
+                this.level().addParticle(particle.get(), this.getRandomX(1.0D), this.getRandomY() + 0.5D, this.getRandomZ(1.0D), d0, d1, d2);
             }
         }
     }

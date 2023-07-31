@@ -1,16 +1,18 @@
 {
   "type": "forge:add_spawns",
   "biomes": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:meadow",
     "minecraft:mangrove_swamp",
     "minecraft:sunflower_plains",
     "minecraft:windswept_forest",
-    "minecraft:plains",
     "minecraft:birch_forest"
   ],
   "spawners": {
-    "type": "thedigimod:lopmon",
-    "weight": 25,
-    "minCount": 4,
-    "maxCount": 8
+    "type": "thedigimod:kokomon",
+    "weight": 30,
+    "minCount": 6,
+    "maxCount": 10
   }
 }
