@@ -773,6 +773,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
                 this.level().addParticle(particle.get(),
                         blockPosition().getX() + 0.75d, blockPosition().getY(), blockPosition().getZ() + 0.75d,
                         Math.cos(i) * 0.3d, 0.15d + random.nextDouble()*0.1d, Math.sin(i) * 0.3d);
+                
             }
         }
     }
