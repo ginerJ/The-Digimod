@@ -59,6 +59,7 @@ public abstract class CustomTrainingGood extends Animal implements GeoEntity {
             } else if(statName().equals("health")){
                 digimon.setHealthStat(digimon.getHealthStat() + random.nextInt(0, 3));
             }
+            hurtTime = 60;
         }
         return super.hurt(source, p_27568_);
     }
