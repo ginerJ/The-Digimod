@@ -7,7 +7,7 @@
   ],
   "key": {
     "i": {
-      "item": "minecraft:oak_planks"
+      "tag": "minecraft:planks"
     },
     "/": {
       "item": "minecraft:stick"

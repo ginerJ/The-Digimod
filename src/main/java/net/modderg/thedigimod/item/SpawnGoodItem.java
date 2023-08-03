@@ -1,6 +1,5 @@
 package net.modderg.thedigimod.item;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -33,13 +31,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.RegistryObject;
-import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
+import net.modderg.thedigimod.goods.AbstractTrainingGood;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
 
 public class SpawnGoodItem extends Item {
@@ -108,7 +105,7 @@ public class SpawnGoodItem extends Item {
             EntityType<?> entitytype = this.getType(itemstack.getTag());
 
             Entity entity = entitytype.spawn((ServerLevel) level, itemstack, p_43223_.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP);
-            if (entity instanceof CustomTrainingGood good) {
+            if (entity instanceof AbstractTrainingGood good) {
                 good.setHealth(p_43223_.getItemInHand().getOrCreateTag().getInt("USES"));
                 itemstack.shrink(1);
                 level.gameEvent(p_43223_.getPlayer(), GameEvent.ENTITY_PLACE, blockpos);

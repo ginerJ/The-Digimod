@@ -3,7 +3,6 @@ package net.modderg.thedigimod.entity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -41,7 +40,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.goals.DigitalFollowOwnerGoal;
 import net.modderg.thedigimod.entity.goals.DigitalMeleeAttackGoal;
-import net.modderg.thedigimod.entity.goods.CustomTrainingGood;
+import net.modderg.thedigimod.goods.AbstractTrainingGood;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.DigiviceItem;
 import net.modderg.thedigimod.particles.DigitalParticles;
@@ -345,7 +344,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         if(item.is(DigiItems.DIGI_MEAT.get())){
             this.addMoodPoints(20);
             item.shrink(1);
-            if(!this.isAggressive() || this.getTarget() instanceof CustomTrainingGood){
+            if(!this.isAggressive() || this.getTarget() instanceof AbstractTrainingGood){
                 this.heal(20);
             }
             return true;
@@ -521,7 +520,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             spawnBubbleParticle(DigitalParticles.MEAT_BUBBLE);
         }
 
-        if (!this.isEvolving() && this.isAggressive() && !(this.getTarget() instanceof CustomTrainingGood)) {
+        if (!this.isEvolving() && this.isAggressive() && !(this.getTarget() instanceof AbstractTrainingGood)) {
             if (--ticksToShootAnim == 20) {
                 doShoot();
             } else if (ticksToShootAnim == 0) {
@@ -616,6 +615,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         }
     }
 
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
+        return null;
+    }
+
     public static boolean checkDigimonSpawnRules(EntityType<? extends Mob> p_217058_, LevelAccessor p_217059_, MobSpawnType p_217060_, BlockPos p_217061_, RandomSource p_217062_) {
         return true;
     }
@@ -661,6 +666,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     }
 
     public void useXpItem(int id){
+        spawnEvoParticles(DigitalParticles.XP_PARTICLE);
+        spawnEvoParticles(DigitalParticles.XP_PARTICLE);
+        spawnEvoParticles(DigitalParticles.XP_PARTICLE);
         addExperienceTotal();
         addLevelXp();
         if(getLevelXp() >= getNeededXp()){
@@ -771,8 +779,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         for(int i = 0; i < 360; i++) {
             if(random.nextInt(0,20) == 5) {
                 this.level().addParticle(particle.get(),
-                        blockPosition().getX() + 0.75d, blockPosition().getY(), blockPosition().getZ() + 0.75d,
-                        Math.cos(i) * 0.3d, 0.15d + random.nextDouble()*0.1d, Math.sin(i) * 0.3d);
+                        blockPosition().getX() + 1d, blockPosition().getY(), blockPosition().getZ() + 1d,
+                        Math.cos(i) * 0.2d, 0.15d + random.nextDouble()*0.1d, Math.sin(i) * 0.2d);
                 
             }
         }
@@ -831,12 +839,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             this.swinging = false;
         }
         return PlayState.CONTINUE;
-    }
-
-    @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
-        return null;
     }
 
     @Override

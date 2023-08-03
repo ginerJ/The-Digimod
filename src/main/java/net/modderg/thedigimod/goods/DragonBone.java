@@ -1,4 +1,4 @@
-package net.modderg.thedigimod.entity.goods;
+package net.modderg.thedigimod.goods;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -9,8 +9,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.item.DigiItems;
 
-public class SpTableBook extends CustomTrainingGood{
-    public SpTableBook(EntityType<? extends Animal> p_27557_, Level p_27558_) {
+public class DragonBone extends AbstractTrainingGood {
+    public DragonBone(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
     }
 
@@ -25,14 +25,14 @@ public class SpTableBook extends CustomTrainingGood{
 
     @Override
     public String statName() {
-        return "spdefence";
+        return "attack";
     }
     @Override
     public String goodName() {
-        return "defence_table";
+        return "dragon_bone";
     }
     @Override
     public ItemStack goodItem() {
-        return new ItemStack(DigiItems.TABLE_ITEM.get());
+        return new ItemStack(DigiItems.BAG_ITEM.get());
     }
 }

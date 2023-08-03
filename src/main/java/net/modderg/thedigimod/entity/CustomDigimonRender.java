@@ -27,7 +27,7 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
     protected Style XpStyle = Style.EMPTY;
 
     public CustomDigimonRender(EntityRendererProvider.Context renderManager) {
-        super(renderManager, (GeoModel<CustomDigimon>) new CustomDigimonModel());
+        super(renderManager, (GeoModel<CustomDigimon>) new CustomDigimonModel<>());
     }
 
     @Override

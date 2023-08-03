@@ -1,4 +1,4 @@
-package net.modderg.thedigimod.entity.goods;
+package net.modderg.thedigimod.goods;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -7,12 +7,10 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import org.jetbrains.annotations.Nullable;
@@ -22,9 +20,9 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
-public abstract class CustomTrainingGood extends Animal implements GeoEntity {
+public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
 
-    public CustomTrainingGood(EntityType<? extends Animal> p_27557_, Level p_27558_) {
+    public AbstractTrainingGood(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
         this.setCustomName(Component.literal("LOL"));
     }
@@ -106,18 +104,19 @@ public abstract class CustomTrainingGood extends Animal implements GeoEntity {
 
     protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
-    private PlayState animController(AnimationState event){
+    private PlayState animController(AnimationState event) {
         if(this.hurtTime > 0){
             event.getController().setAnimation(RawAnimation.begin().then("hit", Animation.LoopType.LOOP));
         } else {
             event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+
         }
         return PlayState.CONTINUE;
     }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<CustomTrainingGood>(this, "controller", 0, this::animController));
+        controllers.add(new AnimationController<AbstractTrainingGood>(this, "controller", 0, this::animController));
     }
 
     @Override

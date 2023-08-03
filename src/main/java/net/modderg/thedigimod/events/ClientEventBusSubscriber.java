@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.CustomDigimonRender;
 import net.modderg.thedigimod.entity.DigitalEntities;
-import net.modderg.thedigimod.entity.goods.*;
+import net.modderg.thedigimod.goods.AbstractGoodRender;
 import net.modderg.thedigimod.projectiles.CustomProjectileRender;
 
 
@@ -81,10 +81,11 @@ public class ClientEventBusSubscriber {
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
 
-        event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), CustomTrainingGoodRender::new);
-        event.registerEntityRenderer(DigitalEntities.SP_TARGET.get(), CustomTrainingGoodRender::new);
-        event.registerEntityRenderer(DigitalEntities.SP_TABLE.get(), CustomTrainingGoodRender::new);
-        event.registerEntityRenderer(DigitalEntities.SHIELD_STAND.get(), CustomTrainingGoodRender::new);
-        event.registerEntityRenderer(DigitalEntities.UPDATE_GOOD.get(), CustomTrainingGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.SP_TARGET.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.SP_TABLE.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.SHIELD_STAND.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.UPDATE_GOOD.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.DRAGON_BONE.get(), AbstractGoodRender::new);
     }
 }

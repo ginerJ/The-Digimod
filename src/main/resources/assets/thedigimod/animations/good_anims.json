@@ -8,7 +8,7 @@
 				"hit": {
 					"rotation": {
 						"0.0": {
-							"vector": [-10, 0, 0]
+							"vector": [-7.5, 0, 0]
 						},
 						"0.08": {
 							"vector": [10, 0, 0]
@@ -21,7 +21,8 @@
 			}
 		},
 		"idle": {
-			"loop": "hold_on_last_frame"
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.48
 		}
 	},
 	"geckolib_format_version": 2

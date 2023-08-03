@@ -2,12 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "i i",
-    "iii",
+    "iPi",
     " i "
   ],
   "key": {
     "i": {
       "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "tag": "minecraft:planks"
     }
   },
   "result": {

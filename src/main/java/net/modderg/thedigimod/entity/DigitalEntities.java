@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.digimons.*;
-import net.modderg.thedigimod.entity.goods.*;
+import net.modderg.thedigimod.goods.*;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 
 public class DigitalEntities {
@@ -352,6 +352,11 @@ public class DigitalEntities {
             () -> EntityType.Builder.of(UpdateGood:: new, MobCategory.MISC)
                     .sized(1.0f,1.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "update").toString()));
+
+    public static final RegistryObject<EntityType<DragonBone>> DRAGON_BONE = DIGIMONS.register("dragon_bone",
+            () -> EntityType.Builder.of(DragonBone:: new, MobCategory.MISC)
+                    .sized(2f,1f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "dragon_bone").toString()));
 
 
 

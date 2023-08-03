@@ -18,10 +18,7 @@ import net.modderg.thedigimod.block.DigiBlocks;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.digimons.*;
 import net.modderg.thedigimod.entity.DigitalEntities;
-import net.modderg.thedigimod.entity.goods.PunchingBag;
-import net.modderg.thedigimod.entity.goods.ShieldStand;
-import net.modderg.thedigimod.entity.goods.SpTableBook;
-import net.modderg.thedigimod.entity.goods.UpdateGood;
+import net.modderg.thedigimod.goods.*;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.DigitalCreativeTab;
 import net.modderg.thedigimod.particles.DigitalParticles;
@@ -296,6 +293,7 @@ public class TheDigiMod {
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BOOGIEMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
     }
 
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
@@ -413,10 +411,11 @@ public class TheDigiMod {
         event.put(DigitalEntities.BOOGIEMON.get(), DigimonBoogiemon.setCustomAttributes().build());
 
         event.put(DigitalEntities.PUNCHING_BAG.get(), PunchingBag.setCustomAttributes().build());
-        event.put(DigitalEntities.SP_TARGET.get(), PunchingBag.setCustomAttributes().build());
+        event.put(DigitalEntities.SP_TARGET.get(), SpTarget.setCustomAttributes().build());
         event.put(DigitalEntities.SP_TABLE.get(), SpTableBook.setCustomAttributes().build());
         event.put(DigitalEntities.SHIELD_STAND.get(), ShieldStand.setCustomAttributes().build());
         event.put(DigitalEntities.UPDATE_GOOD.get(), UpdateGood.setCustomAttributes().build());
+        event.put(DigitalEntities.DRAGON_BONE.get(), DragonBone .setCustomAttributes().build());
     }
     public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, MOD_ID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
     private static int messageID = 0;

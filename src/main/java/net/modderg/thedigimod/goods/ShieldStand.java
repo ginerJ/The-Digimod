@@ -1,4 +1,4 @@
-package net.modderg.thedigimod.entity.goods;
+package net.modderg.thedigimod.goods;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -9,8 +9,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.item.DigiItems;
 
-public class SpTarget extends CustomTrainingGood{
-    public SpTarget(EntityType<? extends Animal> p_27557_, Level p_27558_) {
+public class ShieldStand extends AbstractTrainingGood {
+    public ShieldStand(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
     }
 
@@ -25,14 +25,14 @@ public class SpTarget extends CustomTrainingGood{
 
     @Override
     public String statName() {
-        return "spattack";
+        return "defence";
     }
     @Override
     public String goodName() {
-        return "target";
+        return "shield";
     }
     @Override
     public ItemStack goodItem() {
-        return new ItemStack(DigiItems.TARGET_ITEM.get());
+        return new ItemStack(DigiItems.SHIELD_ITEM.get());
     }
 }
