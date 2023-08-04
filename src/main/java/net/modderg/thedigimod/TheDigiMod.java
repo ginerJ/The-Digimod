@@ -19,9 +19,11 @@ import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.digimons.*;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.goods.*;
+import net.modderg.thedigimod.gui.StatsGui;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.DigitalCreativeTab;
 import net.modderg.thedigimod.particles.DigitalParticles;
+import org.lwjgl.system.linux.Stat;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;

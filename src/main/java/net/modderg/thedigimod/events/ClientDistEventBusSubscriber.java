@@ -1,5 +1,6 @@
 package net.modderg.thedigimod.events;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -8,12 +9,14 @@ import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.CustomDigimonRender;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.goods.AbstractGoodRender;
+import net.modderg.thedigimod.particles.DigitalParticles;
+import net.modderg.thedigimod.particles.custom.*;
 import net.modderg.thedigimod.projectiles.CustomProjectileRender;
 
 
 @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 
-public class ClientEventBusSubscriber {
+public class ClientDistEventBusSubscriber {
     @SubscribeEvent
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(DigitalEntities.KOROMON.get(), CustomDigimonRender::new);
@@ -87,5 +90,27 @@ public class ClientEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.SHIELD_STAND.get(), AbstractGoodRender::new);
         event.registerEntityRenderer(DigitalEntities.UPDATE_GOOD.get(), AbstractGoodRender::new);
         event.registerEntityRenderer(DigitalEntities.DRAGON_BONE.get(), AbstractGoodRender::new);
+    }
+
+    @SubscribeEvent
+    public static void registerParticleFactories(final RegisterParticleProvidersEvent event){
+
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.DIGITRON_PARTICLES.get(), DigitronParticles.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.MEAT_BUBBLE.get(), BubbleParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.MISTAKE_BUBBLE.get(), BubbleParticle.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.ATTACK_UP.get(), UpParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.DEFENCE_UP.get(), UpParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.SPATTACK_UP.get(), UpParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.SPDEFENCE_UP.get(), UpParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.BATTLES_UP.get(), UpParticle.Provider::new);
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.HEALTH_UP.get(), UpParticle.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.XP_PARTICLE.get(), DownParticle.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.LIFE_PARTICLE.get(), LifeParticle.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(DigitalParticles.EVO_PARTICLES.get(), UpParticle.Provider::new);
     }
 }

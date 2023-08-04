@@ -41,6 +41,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.goals.DigitalFollowOwnerGoal;
 import net.modderg.thedigimod.entity.goals.DigitalMeleeAttackGoal;
 import net.modderg.thedigimod.goods.AbstractTrainingGood;
+import net.modderg.thedigimod.gui.StatsGui;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.DigiviceItem;
 import net.modderg.thedigimod.particles.DigitalParticles;
@@ -490,7 +491,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         if (player.getItemInHand(hand).getItem() instanceof DigiviceItem && this.getOwner() != null && getOwner().level().isClientSide){
-            this.viewStats();
             return InteractionResult.CONSUME;
         }
         if (this.isTame() && this.getOwnerUUID().equals(player.getUUID()) && player.isShiftKeyDown()) {
@@ -510,10 +510,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         if(evoCount > 0){
             spawnEvoParticles(DigitalParticles.EVO_PARTICLES);
             evoCount--;
-        }
-
-        if(statTimer > 0){
-            statTimer--;
         }
 
         if(this.getMoodPoints() < 100 && this.isTame() && random.nextInt(0,150) == 1){
@@ -696,54 +692,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(), spdefence = this.getSpDefenceStat(),
             battles = this.getBattlesStat(), health = this.getHealthStat(), mistakes = this.getCareMistakesStat(), lifes = this.getLifes();
-
-    private String lastStat = "";
-    private int statTimer = 0;
-
-    public void viewStats() {
-        switch (lastStat) {
-            case "mistakes", "" -> {
-                if (statTimer > 0) lastStat = "attack";
-            }
-            case "attack" -> {
-                if (statTimer > 0) lastStat = "defense";
-            }
-            case "defense" -> {
-                if (statTimer > 0) lastStat = "spattack";
-            }
-            case "spattack" -> {
-                if (statTimer > 0) lastStat = "spdefense";
-            }
-            case "spdefense" -> {
-                if (statTimer > 0) lastStat = "battles";
-            }
-            case "battles" -> {
-                if (statTimer > 0) lastStat = "mistakes";
-            }
-        }
-        chooseStatOverlay();
-        statTimer = 30;
-    }
-
-    public void chooseStatOverlay(){
-        switch (lastStat) {
-            case "mistakes", "" -> setStatOverlay("Attack", 0xFF0000, Integer.toString(getAttackStat()), true);
-            case "attack" -> setStatOverlay("Defense", 0x00FF00, Integer.toString(getDefenceStat()), true);
-            case "defense" -> setStatOverlay("Sp.Attack", 0xFF69B4, Integer.toString(getSpAttackStat()), true);
-            case "spattack" -> setStatOverlay("Sp.Defence", 0xADD8E6, Integer.toString(getSpDefenceStat()), true);
-            case "spdefense" -> setStatOverlay("Wins", 0xFF542D, Integer.toString(getBattlesStat()), false);
-            case "battles" -> setStatOverlay("Care Mistakes", 0xADD8E6, Integer.toString(getCareMistakesStat()), false);
-        }
-    }
-
-    private void setStatOverlay(String stat, int color, String statNum, boolean lvlStat){
-        String statMax = Integer.toString(this.getMaxStat())
-        , lvl = Integer.toString(this.getCurrentLevel());
-        String message =  " " + stat + ": " + statNum + (lvlStat ? ("/" + statMax) : "");
-        Minecraft.getInstance().gui.setOverlayMessage(Component.literal(message).withStyle(style -> style.withColor(TextColor.fromRgb(color)))
-                        .append(Component.literal(lvlStat ? (" + " + lvl) : "").withStyle(style -> style.withColor(TextColor.fromRgb(0xECBE3E))))
-                , false);
-    }
 
     public void checkChangeStats(){
         if(attack != this.getAttackStat()){spawnStatUpParticles(DigitalParticles.ATTACK_UP,1);
