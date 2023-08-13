@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ooo",
+    "ooo",
+    "ooo"
+  ],
+  "key": {
+    "o": {
+      "item": "thedigimod:beast_data"
+    }
+  },
+  "result": {
+    "item": "thedigimod:beast_pack",
+    "count": 1
+  }
+}

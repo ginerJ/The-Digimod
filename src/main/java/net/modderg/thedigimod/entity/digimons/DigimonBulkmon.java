@@ -44,15 +44,11 @@ public class DigimonBulkmon extends CustomDigimon {
     }
 
     @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk";
-    }
-    @Override
     protected String sitAnim() {
         return "sit5";
+    }
+    @Override
+    protected String attackAnim() {
+        return "attack7";
     }
 }

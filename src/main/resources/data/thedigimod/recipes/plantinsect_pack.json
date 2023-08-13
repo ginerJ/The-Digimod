@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ooo",
+    "ooo",
+    "ooo"
+  ],
+  "key": {
+    "o": {
+      "item": "thedigimod:plantinsect_data"
+    }
+  },
+  "result": {
+    "item": "thedigimod:plantinsect_pack",
+    "count": 1
+  }
+}

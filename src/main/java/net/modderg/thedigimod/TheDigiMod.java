@@ -295,7 +295,6 @@ public class TheDigiMod {
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BOOGIEMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
-
     }
 
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
@@ -326,6 +325,15 @@ public class TheDigiMod {
             event.accept(DigiItems.EARTH_DATA);
             event.accept(DigiItems.NIGHTMARE_DATA);
             event.accept(DigiItems.HOLY_DATA);
+            event.accept(DigiItems.DRAGON_PACK);
+            event.accept(DigiItems.BEAST_PACK);
+            event.accept(DigiItems.PLANTINSECT_PACK);
+            event.accept(DigiItems.AQUAN_PACK);
+            event.accept(DigiItems.WIND_PACK);
+            event.accept(DigiItems.MACHINE_PACK);
+            event.accept(DigiItems.EARTH_PACK);
+            event.accept(DigiItems.NIGHTMARE_PACK);
+            event.accept(DigiItems.HOLY_PACK);
             event.accept(DigiItems.DIGI_MEAT);
             event.accept(DigiItems.BLACK_DIGITRON);
             event.accept(DigiItems.TRAINING_BAG);
@@ -334,7 +342,15 @@ public class TheDigiMod {
             event.accept(DigiItems.TARGET_ITEM);
             event.accept(DigiItems.SHIELD_ITEM);
             event.accept(DigiItems.UPDATE_ITEM);
+            event.accept(DigiItems.DRAGON_BONE_ITEM);
+            event.accept(DigiItems.BALL_GOOD_ITEM);
+            event.accept(DigiItems.CLOWN_BOX);
             event.accept(DigiItems.DIGI_CORE);
+            event.accept(DigiItems.FLYTRAP_GOOD);
+            event.accept(DigiItems.OLD_PC_GOOD);
+            event.accept(DigiItems.LIRA_GOOD);
+            event.accept(DigiItems.RED_FREEZER);
+            event.accept(DigiItems.WIND_VANE);
         }
         if(event.getTab() == DigitalCreativeTab.ADMIN_TAB.get()){
             event.accept(DigiItems.ATTACK_GB);
@@ -417,7 +433,14 @@ public class TheDigiMod {
         event.put(DigitalEntities.SP_TABLE.get(), SpTableBook.setCustomAttributes().build());
         event.put(DigitalEntities.SHIELD_STAND.get(), ShieldStand.setCustomAttributes().build());
         event.put(DigitalEntities.UPDATE_GOOD.get(), UpdateGood.setCustomAttributes().build());
-        event.put(DigitalEntities.DRAGON_BONE.get(), DragonBone .setCustomAttributes().build());
+        event.put(DigitalEntities.DRAGON_BONE.get(), DragonBone.setCustomAttributes().build());
+        event.put(DigitalEntities.BALL_GOOD.get(), BallGood.setCustomAttributes().build());
+        event.put(DigitalEntities.CLOWN_BOX.get(), ClownBox.setCustomAttributes().build());
+        event.put(DigitalEntities.FLYTRAP_GOOD.get(), FlytrapGood.setCustomAttributes().build());
+        event.put(DigitalEntities.OLD_PC_GOOD.get(), OldPc.setCustomAttributes().build());
+        event.put(DigitalEntities.LIRA_GOOD.get(), LiraGood.setCustomAttributes().build());
+        event.put(DigitalEntities.RED_FREEZER.get(), RedFreezer.setCustomAttributes().build());
+        event.put(DigitalEntities.WIND_VANE.get(), RedFreezer.setCustomAttributes().build());
     }
     public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, MOD_ID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
     private static int messageID = 0;

@@ -662,9 +662,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     }
 
     public void useXpItem(int id){
-        spawnEvoParticles(DigitalParticles.XP_PARTICLE);
-        spawnEvoParticles(DigitalParticles.XP_PARTICLE);
-        spawnEvoParticles(DigitalParticles.XP_PARTICLE);
         addExperienceTotal();
         addLevelXp();
         if(getLevelXp() >= getNeededXp()){
@@ -692,6 +689,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(), spdefence = this.getSpDefenceStat(),
             battles = this.getBattlesStat(), health = this.getHealthStat(), mistakes = this.getCareMistakesStat(), lifes = this.getLifes();
+    String xps = this.getSpecificXps();
 
     public void checkChangeStats(){
         if(attack != this.getAttackStat()){spawnStatUpParticles(DigitalParticles.ATTACK_UP,1);
@@ -710,6 +708,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             mistakes = this.getCareMistakesStat();}
         if(lifes != this.getLifes()){spawnStatUpParticles(DigitalParticles.LIFE_PARTICLE,7);
             lifes = this.getLifes();}
+        if(!Objects.equals(xps, this.getSpecificXps())){spawnEvoParticles(DigitalParticles.XP_PARTICLE);;
+            xps = this.getSpecificXps();}
     }
 
     public void spawnStatUpParticles(RegistryObject<SimpleParticleType> particle, int multiplier) {
@@ -728,7 +728,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             if(random.nextInt(0,20) == 5) {
                 this.level().addParticle(particle.get(),
                         blockPosition().getX() + 1d, blockPosition().getY(), blockPosition().getZ() + 1d,
-                        Math.cos(i) * 0.2d, 0.15d + random.nextDouble()*0.1d, Math.sin(i) * 0.2d);
+                        Math.cos(i) * 0.3d, 0.15d + random.nextDouble()*0.1d, Math.sin(i) * 0.3d);
                 
             }
         }

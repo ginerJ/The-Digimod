@@ -5,8 +5,10 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.modderg.thedigimod.item.CustomXpItem;
 import net.modderg.thedigimod.item.DigiItems;
 
 public class DragonBone extends AbstractTrainingGood {
@@ -33,6 +35,20 @@ public class DragonBone extends AbstractTrainingGood {
     }
     @Override
     public ItemStack goodItem() {
-        return new ItemStack(DigiItems.BAG_ITEM.get());
+        return new ItemStack(DigiItems.DRAGON_BONE_ITEM.get());
+    }
+
+    @Override
+    public int min(){
+        return 2;
+    }
+    @Override
+    public int max(){
+        return 5;
+    }
+
+    @Override
+    public int getXpId(){
+        return 0;
     }
 }

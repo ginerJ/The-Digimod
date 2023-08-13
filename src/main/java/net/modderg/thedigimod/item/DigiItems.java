@@ -35,15 +35,25 @@ public class DigiItems {
     public static final RegistryObject<Item> DIGIVICE_BURST = ITEMS.register("digivice_burst", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
 
     //Exp Items
-    public static final RegistryObject<Item> DRAGON_DATA = ITEMS.register("dragon_data", () -> new CustomXpItem(new Item.Properties(), 0));
-    public static final RegistryObject<Item> BEAST_DATA = ITEMS.register("beast_data", () -> new CustomXpItem(new Item.Properties(), 1));
-    public static final RegistryObject<Item> PLANTINSECT_DATA = ITEMS.register("plantinsect_data", () -> new CustomXpItem(new Item.Properties(), 2));
-    public static final RegistryObject<Item> AQUAN_DATA = ITEMS.register("aquan_data", () -> new CustomXpItem(new Item.Properties(), 3));
-    public static final RegistryObject<Item> WIND_DATA = ITEMS.register("wind_data", () -> new CustomXpItem(new Item.Properties(), 4));
-    public static final RegistryObject<Item> MACHINE_DATA = ITEMS.register("machine_data", () -> new CustomXpItem(new Item.Properties(), 5));
-    public static final RegistryObject<Item> EARTH_DATA = ITEMS.register("earth_data", () -> new CustomXpItem(new Item.Properties(), 6));
-    public static final RegistryObject<Item> NIGHTMARE_DATA = ITEMS.register("nightmare_data", () -> new CustomXpItem(new Item.Properties(), 7));
-    public static final RegistryObject<Item> HOLY_DATA = ITEMS.register("holy_data", () -> new CustomXpItem(new Item.Properties(), 8));
+    public static final RegistryObject<Item> DRAGON_DATA = ITEMS.register("dragon_data", () -> new CustomXpItem(new Item.Properties(), 0,1));
+    public static final RegistryObject<Item> BEAST_DATA = ITEMS.register("beast_data", () -> new CustomXpItem(new Item.Properties(), 1,1));
+    public static final RegistryObject<Item> PLANTINSECT_DATA = ITEMS.register("plantinsect_data", () -> new CustomXpItem(new Item.Properties(), 2,1));
+    public static final RegistryObject<Item> AQUAN_DATA = ITEMS.register("aquan_data", () -> new CustomXpItem(new Item.Properties(), 3,1));
+    public static final RegistryObject<Item> WIND_DATA = ITEMS.register("wind_data", () -> new CustomXpItem(new Item.Properties(), 4,1));
+    public static final RegistryObject<Item> MACHINE_DATA = ITEMS.register("machine_data", () -> new CustomXpItem(new Item.Properties(), 5,1));
+    public static final RegistryObject<Item> EARTH_DATA = ITEMS.register("earth_data", () -> new CustomXpItem(new Item.Properties(), 6,1));
+    public static final RegistryObject<Item> NIGHTMARE_DATA = ITEMS.register("nightmare_data", () -> new CustomXpItem(new Item.Properties(), 7,1));
+    public static final RegistryObject<Item> HOLY_DATA = ITEMS.register("holy_data", () -> new CustomXpItem(new Item.Properties(), 8,1));
+
+    public static final RegistryObject<Item> DRAGON_PACK = ITEMS.register("dragon_pack", () -> new CustomXpItem(new Item.Properties(), 0,9));
+    public static final RegistryObject<Item> BEAST_PACK= ITEMS.register("beast_pack", () -> new CustomXpItem(new Item.Properties(), 1,9));
+    public static final RegistryObject<Item> PLANTINSECT_PACK = ITEMS.register("plantinsect_pack", () -> new CustomXpItem(new Item.Properties(), 2,9));
+    public static final RegistryObject<Item> AQUAN_PACK = ITEMS.register("aquan_pack", () -> new CustomXpItem(new Item.Properties(), 3,9));
+    public static final RegistryObject<Item> WIND_PACK = ITEMS.register("wind_pack", () -> new CustomXpItem(new Item.Properties(), 4,9));
+    public static final RegistryObject<Item> MACHINE_PACK = ITEMS.register("machine_pack", () -> new CustomXpItem(new Item.Properties(), 5,9));
+    public static final RegistryObject<Item> EARTH_PACK = ITEMS.register("earth_pack", () -> new CustomXpItem(new Item.Properties(), 6,9));
+    public static final RegistryObject<Item> NIGHTMARE_PACK = ITEMS.register("nightmare_pack", () -> new CustomXpItem(new Item.Properties(), 7,9));
+    public static final RegistryObject<Item> HOLY_PACK = ITEMS.register("holy_pack", () -> new CustomXpItem(new Item.Properties(), 8,9));
 
     //Food Items
     public static final RegistryObject<Item> DIGI_MEAT = ITEMS.register("digi_meat", () -> new ItemNameBlockItem(DigiBlocks.MEAT_CROP.get(), new Item.Properties()));
@@ -54,11 +64,20 @@ public class DigiItems {
     public static final RegistryObject<Item> DIGI_CORE = ITEMS.register("digi_core", () -> new StatUpItem(new Item.Properties().stacksTo(1), "lifes"));
 
     //training items
-    public static final RegistryObject<Item> BAG_ITEM = ITEMS.register("bag_item", () -> new SpawnGoodItem(DigitalEntities.PUNCHING_BAG, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> TABLE_ITEM = ITEMS.register("table_item", () -> new SpawnGoodItem(DigitalEntities.SP_TABLE, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> TARGET_ITEM = ITEMS.register("target_item", () -> new SpawnGoodItem(DigitalEntities.SP_TARGET, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> SHIELD_ITEM = ITEMS.register("shield_item", () -> new SpawnGoodItem(DigitalEntities.SHIELD_STAND, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> UPDATE_ITEM = ITEMS.register("update_item", () -> new SpawnGoodItem(DigitalEntities.UPDATE_GOOD, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> BAG_ITEM = ITEMS.register("bag_item", () -> new SpawnGoodItem(DigitalEntities.PUNCHING_BAG, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "attack"));
+    public static final RegistryObject<Item> TABLE_ITEM = ITEMS.register("table_item", () -> new SpawnGoodItem(DigitalEntities.SP_TABLE, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.defense"));
+    public static final RegistryObject<Item> TARGET_ITEM = ITEMS.register("target_item", () -> new SpawnGoodItem(DigitalEntities.SP_TARGET, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.attack"));
+    public static final RegistryObject<Item> SHIELD_ITEM = ITEMS.register("shield_item", () -> new SpawnGoodItem(DigitalEntities.SHIELD_STAND, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "defense"));
+    public static final RegistryObject<Item> UPDATE_ITEM = ITEMS.register("update_item", () -> new SpawnGoodItem(DigitalEntities.UPDATE_GOOD, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "health"));
+
+    public static final RegistryObject<Item> DRAGON_BONE_ITEM = ITEMS.register("dragon_bone", () -> new SpawnGoodItem(DigitalEntities.DRAGON_BONE, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "attack"));
+    public static final RegistryObject<Item> BALL_GOOD_ITEM = ITEMS.register("ball_good", () -> new SpawnGoodItem(DigitalEntities.BALL_GOOD, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "attack"));
+    public static final RegistryObject<Item> CLOWN_BOX = ITEMS.register("clown_box", () -> new SpawnGoodItem(DigitalEntities.CLOWN_BOX, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.attack"));
+    public static final RegistryObject<Item> FLYTRAP_GOOD = ITEMS.register("flytrap_good", () -> new SpawnGoodItem(DigitalEntities.FLYTRAP_GOOD, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.defense"));
+    public static final RegistryObject<Item> OLD_PC_GOOD = ITEMS.register("old_pc", () -> new SpawnGoodItem(DigitalEntities.OLD_PC_GOOD, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "defense"));
+    public static final RegistryObject<Item> LIRA_GOOD = ITEMS.register("lira_good", () -> new SpawnGoodItem(DigitalEntities.LIRA_GOOD, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.defense"));
+    public static final RegistryObject<Item> RED_FREEZER = ITEMS.register("red_freezer", () -> new SpawnGoodItem(DigitalEntities.RED_FREEZER, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.attack"));
+    public static final RegistryObject<Item> WIND_VANE = ITEMS.register("wind_vane", () -> new SpawnGoodItem(DigitalEntities.WIND_VANE, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.attack"));
 
     //admin stuff
     public static final RegistryObject<Item> ADMIN_LOGO = ITEMS.register("admin_logo", () -> new Item(new Item.Properties().stacksTo(1)));

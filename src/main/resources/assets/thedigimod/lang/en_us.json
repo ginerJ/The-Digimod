@@ -23,10 +23,20 @@
   "item.thedigimod.plantinsect_data" : "Plant/Insect Data",
   "item.thedigimod.aquan_data" : "Aquan Data",
   "item.thedigimod.wind_data" : "Wind Data",
-  "item.thedigimod.machine_data" : "Electric/Machine Data",
+  "item.thedigimod.machine_data" : "Machine Data",
   "item.thedigimod.earth_data" : "Earth Data",
   "item.thedigimod.nightmare_data" : "Nightmare Data",
   "item.thedigimod.holy_data" : "Holy Data",
+
+  "item.thedigimod.dragon_pack" : "Dragon Pack",
+  "item.thedigimod.beast_pack" : "Beast Pack",
+  "item.thedigimod.plantinsect_pack" : "Plant/Insect Pack",
+  "item.thedigimod.aquan_pack" : "Aquan Pack",
+  "item.thedigimod.wind_pack" : "Wind Pack",
+  "item.thedigimod.machine_pack" : "Machine Pack",
+  "item.thedigimod.earth_pack" : "Earth Pack",
+  "item.thedigimod.nightmare_pack" : "Nightmare Pack",
+  "item.thedigimod.holy_pack" : "Holy Pack",
 
   "item.thedigimod.digi_meat" : "Digi Meat",
 
@@ -38,6 +48,9 @@
   "item.thedigimod.target_item" : "Target",
   "item.thedigimod.shield_item" : "Training Shield",
   "item.thedigimod.update_item" : "Health Upgrade",
+
+  "item.thedigimod.dragon_bone" : "Dragon Bone",
+
   "item.thedigimod.digi_core" : "DigiCore",
 
   "item.thedigimod.admin_logo" : "Admin",
@@ -112,7 +125,6 @@
   "entity.thedigimod.icedevimon" : "IceDevimon",
   "entity.thedigimod.wizardmon" : "Wizardmon",
   "entity.thedigimod.boogiemon" : "Boogiemon",
-
 
   "entity.thedigimod.training_bag" : "Training bag",
   "entity.thedigimod.punching_bag" : "Punching Bag",

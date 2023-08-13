@@ -330,17 +330,17 @@ public class DigitalEntities {
     //training goods
     public static final RegistryObject<EntityType<PunchingBag>> PUNCHING_BAG = DIGIMONS.register("punching_bag",
             () -> EntityType.Builder.of(PunchingBag:: new, MobCategory.MISC)
-                    .sized(1.0f,2.5f)
+                    .sized(1.0f,2.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "punching_bag").toString()));
 
     public static final RegistryObject<EntityType<SpTarget>> SP_TARGET = DIGIMONS.register("target",
             () -> EntityType.Builder.of(SpTarget:: new, MobCategory.MISC)
-                    .sized(1.0f,1.5f)
+                    .sized(1.0f,1.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "target").toString()));
 
     public static final RegistryObject<EntityType<SpTableBook>> SP_TABLE = DIGIMONS.register("defence_table",
             () -> EntityType.Builder.of(SpTableBook:: new, MobCategory.MISC)
-                    .sized(1.0f,1.0f)
+                    .sized(1.0f,1.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "defence_table").toString()));
 
     public static final RegistryObject<EntityType<ShieldStand>> SHIELD_STAND = DIGIMONS.register("shield",
@@ -350,14 +350,48 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<UpdateGood>> UPDATE_GOOD = DIGIMONS.register("update",
             () -> EntityType.Builder.of(UpdateGood:: new, MobCategory.MISC)
-                    .sized(1.0f,1.5f)
+                    .sized(1.0f,1.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "update").toString()));
 
     public static final RegistryObject<EntityType<DragonBone>> DRAGON_BONE = DIGIMONS.register("dragon_bone",
             () -> EntityType.Builder.of(DragonBone:: new, MobCategory.MISC)
-                    .sized(2f,1f)
+                    .sized(1.25f,0.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "dragon_bone").toString()));
 
+  public static final RegistryObject<EntityType<BallGood>> BALL_GOOD = DIGIMONS.register("ball_good",
+            () -> EntityType.Builder.of(BallGood:: new, MobCategory.MISC)
+                    .sized(1.25f,1.25f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "ball_good").toString()));
+
+  public static final RegistryObject<EntityType<ClownBox>> CLOWN_BOX = DIGIMONS.register("clown_box",
+            () -> EntityType.Builder.of(ClownBox:: new, MobCategory.MISC)
+                    .sized(1f,1f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "clown_box").toString()));
+
+  public static final RegistryObject<EntityType<FlytrapGood>> FLYTRAP_GOOD = DIGIMONS.register("flytrap_good",
+            () -> EntityType.Builder.of(FlytrapGood:: new, MobCategory.MISC)
+                    .sized(0.75f,1f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "flytrap_good").toString()));
+
+ public static final RegistryObject<EntityType<OldPc>> OLD_PC_GOOD = DIGIMONS.register("old_pc",
+            () -> EntityType.Builder.of(OldPc:: new, MobCategory.MISC)
+                    .sized(1.5f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "old_pc").toString()));
+
+ public static final RegistryObject<EntityType<LiraGood>> LIRA_GOOD = DIGIMONS.register("lira_good",
+            () -> EntityType.Builder.of(LiraGood:: new, MobCategory.MISC)
+                    .sized(1f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "lira_good").toString()));
+
+ public static final RegistryObject<EntityType<RedFreezer>> RED_FREEZER = DIGIMONS.register("red_freezer",
+            () -> EntityType.Builder.of(RedFreezer:: new, MobCategory.MISC)
+                    .sized(1f,1f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "red_freezer").toString()));
+
+ public static final RegistryObject<EntityType<WindVane>> WIND_VANE = DIGIMONS.register("wind_vane",
+            () -> EntityType.Builder.of(WindVane:: new, MobCategory.MISC)
+                    .sized(1f,2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "wind_vane").toString()));
 
 
     //attacks

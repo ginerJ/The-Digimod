@@ -90,6 +90,13 @@ public class ClientDistEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.SHIELD_STAND.get(), AbstractGoodRender::new);
         event.registerEntityRenderer(DigitalEntities.UPDATE_GOOD.get(), AbstractGoodRender::new);
         event.registerEntityRenderer(DigitalEntities.DRAGON_BONE.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.BALL_GOOD.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.CLOWN_BOX.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.FLYTRAP_GOOD.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.OLD_PC_GOOD.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.LIRA_GOOD.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.RED_FREEZER.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.WIND_VANE.get(), AbstractGoodRender::new);
     }
 
     @SubscribeEvent

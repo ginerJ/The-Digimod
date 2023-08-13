@@ -49,10 +49,14 @@ public class DigimonDarkLizzardmon extends CustomDigimon {
     }
     @Override
     protected String walkAnim() {
-        return "walk";
+        return "walk9";
     }
     @Override
     protected String sitAnim() {
         return "sit5";
+    }
+    @Override
+    protected String attackAnim() {
+        return "attack7";
     }
 }

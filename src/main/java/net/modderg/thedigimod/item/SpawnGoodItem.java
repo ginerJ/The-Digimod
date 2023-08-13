@@ -1,6 +1,7 @@
 package net.modderg.thedigimod.item;
 
 import com.google.common.collect.Maps;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -45,11 +46,14 @@ public class SpawnGoodItem extends Item {
     private final int highlightColor;
     private final RegistryObject<? extends EntityType<?>> defaultType;
 
+    private String stat;
+
     private static final int DEFAULT_INTEGER_VALUE = 500;
 
     @Deprecated
-    public SpawnGoodItem(RegistryObject<? extends EntityType<?>> p_43207_, int p_43208_, int p_43209_, Item.Properties p_43210_) {
+    public SpawnGoodItem(RegistryObject<? extends EntityType<?>> p_43207_, int p_43208_, int p_43209_, Item.Properties p_43210_, String stat) {
         super(p_43210_);
+        this.stat = stat;
         this.defaultType = p_43207_;
         this.backgroundColor = p_43208_;
         this.highlightColor = p_43209_;
@@ -67,7 +71,9 @@ public class SpawnGoodItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack p_41421_, @org.jetbrains.annotations.Nullable Level p_41422_, List<Component> p_41423_, TooltipFlag p_41424_) {
-        p_41423_.add(Component.translatable("Uses left: " + (p_41421_.getOrCreateTag().getInt("USES"))));
+        p_41423_.add(Component.literal(""));
+        p_41423_.add(Component.literal("Trains " + stat).withStyle(ChatFormatting.BLUE));
+        p_41423_.add(Component.translatable("Uses left: " + (p_41421_.getOrCreateTag().getInt("USES"))).withStyle(ChatFormatting.GREEN));
         super.appendHoverText(p_41421_, p_41422_, p_41423_, p_41424_);
     }
 

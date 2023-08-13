@@ -11,9 +11,16 @@ import net.modderg.thedigimod.entity.CustomDigimon;
 
 public class CustomXpItem extends Item {
     private int xpId;
-    public CustomXpItem(Properties p_41383_, int id) {
+    private int charges;
+
+    public int getXpId(){
+        return xpId;
+    }
+
+    public CustomXpItem(Properties p_41383_, int id, int charges) {
         super(p_41383_);
         xpId = id;
+        this.charges = charges;
     }
 
     @Override
@@ -21,7 +28,9 @@ public class CustomXpItem extends Item {
         if(entity instanceof CustomDigimon){
             CustomDigimon digimon = (CustomDigimon) entity;
             if(!digimon.isEvolving()){
-                digimon.useXpItem(xpId);
+                for(int i = 0; i < charges; i++){
+                    digimon.useXpItem(xpId);
+                }
                 player.getItemInHand(hand).shrink(1);
                 return InteractionResult.CONSUME;
             }

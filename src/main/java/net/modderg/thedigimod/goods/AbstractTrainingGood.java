@@ -13,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
+import net.modderg.thedigimod.item.CustomXpItem;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -27,6 +28,10 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
         this.setCustomName(Component.literal("LOL"));
     }
 
+    public int getXpId(){
+        return -1;
+    }
+
     public ItemStack goodItem(){
         return null;
     }
@@ -37,6 +42,13 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
         return null;
     }
 
+    public int min(){
+        return 0;
+    }
+    public int max(){
+        return 3;
+    }
+
     @Override
     public boolean isCustomNameVisible() {
         return true;
@@ -45,19 +57,23 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
     @Override
     public boolean hurt(DamageSource source, float p_27568_) {
         if(source.getDirectEntity() instanceof CustomDigimon digimon && this.random.nextInt(4) == 2){
+            int add = random.nextInt(min(), max());
             digimon.restMoodPoints(10);
             if(statName().equals("attack")){
-                digimon.setAttackStat(digimon.getAttackStat() + random.nextInt(0, 3));
+                digimon.setAttackStat(digimon.getAttackStat() + add);
             }else if(statName().equals("defence")){
-                digimon.setDefenceStat(digimon.getDefenceStat() + random.nextInt(0, 3));
+                digimon.setDefenceStat(digimon.getDefenceStat() + add);
             }else if(statName().equals("spattack")){
-                digimon.setSpAttackStat(digimon.getSpAttackStat() + random.nextInt(0, 3));
+                digimon.setSpAttackStat(digimon.getSpAttackStat() + add);
             }else if(statName().equals("spdefence")){
-                digimon.setSpDefenceStat(digimon.getSpDefenceStat() + random.nextInt(0, 3));
+                digimon.setSpDefenceStat(digimon.getSpDefenceStat() + add);
             } else if(statName().equals("health")){
-                digimon.setHealthStat(digimon.getHealthStat() + random.nextInt(0, 3));
+                digimon.setHealthStat(digimon.getHealthStat() + add);
             }
-            hurtTime = 60;
+            if(getXpId() >= 0 && random.nextInt(0,4) == 1){
+                digimon.useXpItem(getXpId());
+            }
+            hurtTime = 100;
         }
         return super.hurt(source, p_27568_);
     }

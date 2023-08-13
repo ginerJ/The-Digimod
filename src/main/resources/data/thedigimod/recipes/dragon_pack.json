@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ooo",
+    "ooo",
+    "ooo"
+  ],
+  "key": {
+    "o": {
+      "item": "thedigimod:dragon_data"
+    }
+  },
+  "result": {
+    "item": "thedigimod:dragon_pack",
+    "count": 1
+  }
+}

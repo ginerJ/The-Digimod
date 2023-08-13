@@ -43,11 +43,11 @@ public class DigimonSaberdramon extends CustomDigimon {
 
     @Override
     protected String idleAnim() {
-        return "idle";
+        return "idle7";
     }
     @Override
     protected String walkAnim() {
-        return "walk";
+        return "walk9";
     }
     @Override
     protected String sitAnim() {
@@ -56,6 +56,10 @@ public class DigimonSaberdramon extends CustomDigimon {
     @Override
     protected String flyAnim() {
         return "fly";
+    }
+    @Override
+    protected String attackAnim() {
+        return "attack6";
     }
 
     @Override
