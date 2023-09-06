@@ -42,21 +42,16 @@ import java.util.Objects;
 
 public class SpawnGoodItem extends Item {
     private static final Map<EntityType<? extends Animal>, SpawnEggItem> BY_ID = Maps.newIdentityHashMap();
-    private final int backgroundColor;
-    private final int highlightColor;
     private final RegistryObject<? extends EntityType<?>> defaultType;
 
     private String stat;
 
     private static final int DEFAULT_INTEGER_VALUE = 500;
 
-    @Deprecated
     public SpawnGoodItem(RegistryObject<? extends EntityType<?>> p_43207_, int p_43208_, int p_43209_, Item.Properties p_43210_, String stat) {
         super(p_43210_);
         this.stat = stat;
         this.defaultType = p_43207_;
-        this.backgroundColor = p_43208_;
-        this.highlightColor = p_43209_;
     }
 
     @Override
