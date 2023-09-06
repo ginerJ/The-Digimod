@@ -1,0 +1,15 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:taiga",
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:warped_forest"
+  ],
+  "spawners": {
+    "type": "thedigimod:unimon",
+    "weight": 20,
+    "minCount": 3,
+    "maxCount": 5
+  }
+}

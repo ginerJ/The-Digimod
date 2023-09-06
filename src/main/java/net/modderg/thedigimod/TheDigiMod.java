@@ -295,73 +295,58 @@ public class TheDigiMod {
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.BOOGIEMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
-    }
 
-    private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
-        if(event.getTab() == DigitalCreativeTab.DIGITAL_TAB.get()){
-            event.accept(DigiItems.VITALBRACELET);
-            event.accept(DigiItems.DIGIVICE);
-            event.accept(DigiItems.VPET);
-            event.accept(DigiItems.DIGIVICE_BURST);
-            event.accept(DigiItems.DIGIVICE_IC);
-            event.accept(DigiItems.BOTAMOND);
-            event.accept(DigiItems.BOTAMON);
-            event.accept(DigiItems.BUBBMON);
-            event.accept(DigiItems.BUBBMONK);
-            event.accept(DigiItems.PUNIMON);
-            event.accept(DigiItems.JYARIMON);
-            event.accept(DigiItems.PETITMON);
-            event.accept(DigiItems.PUYOMON);
-            event.accept(DigiItems.DOKIMON);
-            event.accept(DigiItems.NYOKIMON);
-            event.accept(DigiItems.CONOMON);
-            event.accept(DigiItems.KIIMON);
-            event.accept(DigiItems.DRAGON_DATA);
-            event.accept(DigiItems.BEAST_DATA);
-            event.accept(DigiItems.PLANTINSECT_DATA);
-            event.accept(DigiItems.AQUAN_DATA);
-            event.accept(DigiItems.WIND_DATA);
-            event.accept(DigiItems.MACHINE_DATA);
-            event.accept(DigiItems.EARTH_DATA);
-            event.accept(DigiItems.NIGHTMARE_DATA);
-            event.accept(DigiItems.HOLY_DATA);
-            event.accept(DigiItems.DRAGON_PACK);
-            event.accept(DigiItems.BEAST_PACK);
-            event.accept(DigiItems.PLANTINSECT_PACK);
-            event.accept(DigiItems.AQUAN_PACK);
-            event.accept(DigiItems.WIND_PACK);
-            event.accept(DigiItems.MACHINE_PACK);
-            event.accept(DigiItems.EARTH_PACK);
-            event.accept(DigiItems.NIGHTMARE_PACK);
-            event.accept(DigiItems.HOLY_PACK);
-            event.accept(DigiItems.DIGI_MEAT);
-            event.accept(DigiItems.BLACK_DIGITRON);
-            event.accept(DigiItems.TRAINING_BAG);
-            event.accept(DigiItems.BAG_ITEM);
-            event.accept(DigiItems.TABLE_ITEM);
-            event.accept(DigiItems.TARGET_ITEM);
-            event.accept(DigiItems.SHIELD_ITEM);
-            event.accept(DigiItems.UPDATE_ITEM);
-            event.accept(DigiItems.DRAGON_BONE_ITEM);
-            event.accept(DigiItems.BALL_GOOD_ITEM);
-            event.accept(DigiItems.CLOWN_BOX);
-            event.accept(DigiItems.DIGI_CORE);
-            event.accept(DigiItems.FLYTRAP_GOOD);
-            event.accept(DigiItems.OLD_PC_GOOD);
-            event.accept(DigiItems.LIRA_GOOD);
-            event.accept(DigiItems.RED_FREEZER);
-            event.accept(DigiItems.WIND_VANE);
-        }
-        if(event.getTab() == DigitalCreativeTab.ADMIN_TAB.get()){
-            event.accept(DigiItems.ATTACK_GB);
-            event.accept(DigiItems.SPATTACK_GB);
-            event.accept(DigiItems.DEFENCE_GB);
-            event.accept(DigiItems.SPDEFENCE_GB);
-            event.accept(DigiItems.HEALTH_DRIVES);
-            event.accept(DigiItems.BATTLE_CHIP);
-            event.accept(DigiItems.TAMER_LEASH);
-            event.accept(DigiItems.GOBLIMON_BAT);
-        }
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.TOKOMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.GOROMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.SUNARIZAMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.GOLEMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.BABOONGAMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.CYCLOMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.TORTAMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.PATAMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.UNIMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.PEGASMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.MIMICMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.CENTALMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.ANGEMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
     }
 
     private void setAttributes(final EntityAttributeCreationEvent event) {
@@ -427,6 +412,19 @@ public class TheDigiMod {
         event.put(DigitalEntities.ICEDEVIMON.get(), DigimonIceDevimon.setCustomAttributes().build());
         event.put(DigitalEntities.WIZARDMON.get(), DigimonWizardmon.setCustomAttributes().build());
         event.put(DigitalEntities.BOOGIEMON.get(), DigimonBoogiemon.setCustomAttributes().build());
+        event.put(DigitalEntities.TOKOMON.get(), DigimonTokomon.setCustomAttributes().build());
+        event.put(DigitalEntities.GOROMON.get(), DigimonGoromon.setCustomAttributes().build());
+        event.put(DigitalEntities.SUNARIZAMON.get(), DigimonSunarizamon.setCustomAttributes().build());
+        event.put(DigitalEntities.GOLEMON.get(), DigimonGolemon.setCustomAttributes().build());
+        event.put(DigitalEntities.BABOONGAMON.get(), DigimonBaboongamon.setCustomAttributes().build());
+        event.put(DigitalEntities.CYCLOMON.get(), DigimonCyclomon.setCustomAttributes().build());
+        event.put(DigitalEntities.TORTAMON.get(), DigimonTortamon.setCustomAttributes().build());
+        event.put(DigitalEntities.PATAMON.get(), DigimonPatamon.setCustomAttributes().build());
+        event.put(DigitalEntities.UNIMON.get(), DigimonUnimon.setCustomAttributes().build());
+        event.put(DigitalEntities.PEGASMON.get(), DigimonPegasmon.setCustomAttributes().build());
+        event.put(DigitalEntities.MIMICMON.get(), DigimonMimicmon.setCustomAttributes().build());
+        event.put(DigitalEntities.CENTALMON.get(), DigimonCentalmon.setCustomAttributes().build());
+        event.put(DigitalEntities.ANGEMON.get(), DigimonAngemon.setCustomAttributes().build());
 
         event.put(DigitalEntities.PUNCHING_BAG.get(), PunchingBag.setCustomAttributes().build());
         event.put(DigitalEntities.SP_TARGET.get(), SpTarget.setCustomAttributes().build());
@@ -441,7 +439,84 @@ public class TheDigiMod {
         event.put(DigitalEntities.LIRA_GOOD.get(), LiraGood.setCustomAttributes().build());
         event.put(DigitalEntities.RED_FREEZER.get(), RedFreezer.setCustomAttributes().build());
         event.put(DigitalEntities.WIND_VANE.get(), RedFreezer.setCustomAttributes().build());
+        event.put(DigitalEntities.TRAINING_ROCK.get(), RedFreezer.setCustomAttributes().build());
     }
+
+    private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
+        if(event.getTab() == DigitalCreativeTab.DIGITAL_TAB.get()){
+            event.accept(DigiItems.VITALBRACELET);
+            event.accept(DigiItems.DIGIVICE);
+            event.accept(DigiItems.VPET);
+            event.accept(DigiItems.DIGIVICE_BURST);
+            event.accept(DigiItems.DIGIVICE_IC);
+
+            event.accept(DigiItems.BOTAMOND);
+            event.accept(DigiItems.BOTAMON);
+            event.accept(DigiItems.BUBBMON);
+            event.accept(DigiItems.BUBBMONK);
+            event.accept(DigiItems.PUNIMON);
+            event.accept(DigiItems.JYARIMON);
+            event.accept(DigiItems.PETITMON);
+            event.accept(DigiItems.PUYOMON);
+            event.accept(DigiItems.DOKIMON);
+            event.accept(DigiItems.NYOKIMON);
+            event.accept(DigiItems.CONOMON);
+            event.accept(DigiItems.KIIMON);
+            event.accept(DigiItems.POYOMON);
+            event.accept(DigiItems.SUNAMON);
+
+            event.accept(DigiItems.DRAGON_DATA);
+            event.accept(DigiItems.BEAST_DATA);
+            event.accept(DigiItems.PLANTINSECT_DATA);
+            event.accept(DigiItems.AQUAN_DATA);
+            event.accept(DigiItems.WIND_DATA);
+            event.accept(DigiItems.MACHINE_DATA);
+            event.accept(DigiItems.EARTH_DATA);
+            event.accept(DigiItems.NIGHTMARE_DATA);
+            event.accept(DigiItems.HOLY_DATA);
+            event.accept(DigiItems.DRAGON_PACK);
+            event.accept(DigiItems.BEAST_PACK);
+            event.accept(DigiItems.PLANTINSECT_PACK);
+            event.accept(DigiItems.AQUAN_PACK);
+            event.accept(DigiItems.WIND_PACK);
+            event.accept(DigiItems.MACHINE_PACK);
+            event.accept(DigiItems.EARTH_PACK);
+            event.accept(DigiItems.NIGHTMARE_PACK);
+            event.accept(DigiItems.HOLY_PACK);
+
+            event.accept(DigiItems.DIGI_MEAT);
+            event.accept(DigiItems.BLACK_DIGITRON);
+
+            event.accept(DigiItems.TRAINING_BAG);
+            event.accept(DigiItems.BAG_ITEM);
+            event.accept(DigiItems.TABLE_ITEM);
+            event.accept(DigiItems.TARGET_ITEM);
+            event.accept(DigiItems.SHIELD_ITEM);
+            event.accept(DigiItems.UPDATE_ITEM);
+            event.accept(DigiItems.DRAGON_BONE_ITEM);
+            event.accept(DigiItems.BALL_GOOD_ITEM);
+            event.accept(DigiItems.CLOWN_BOX);
+            event.accept(DigiItems.FLYTRAP_GOOD);
+            event.accept(DigiItems.OLD_PC_GOOD);
+            event.accept(DigiItems.LIRA_GOOD);
+            event.accept(DigiItems.RED_FREEZER);
+            event.accept(DigiItems.WIND_VANE);
+            event.accept(DigiItems.TRAINING_ROCK);
+
+            event.accept(DigiItems.DIGI_CORE);
+        }
+        if(event.getTab() == DigitalCreativeTab.ADMIN_TAB.get()){
+            event.accept(DigiItems.ATTACK_GB);
+            event.accept(DigiItems.SPATTACK_GB);
+            event.accept(DigiItems.DEFENCE_GB);
+            event.accept(DigiItems.SPDEFENCE_GB);
+            event.accept(DigiItems.HEALTH_DRIVES);
+            event.accept(DigiItems.BATTLE_CHIP);
+            event.accept(DigiItems.TAMER_LEASH);
+            event.accept(DigiItems.GOBLIMON_BAT);
+        }
+    }
+
     public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, MOD_ID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
     private static int messageID = 0;
 

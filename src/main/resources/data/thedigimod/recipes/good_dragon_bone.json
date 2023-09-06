@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "d  ",
+    " 0 ",
+    "  d"
+  ],
+  "key": {
+    "0": {
+      "item": "thedigimod:dragon_pack"
+    },
+    "d": {
+      "item": "minecraft:bone"
+    }
+  },
+  "result": {
+    "item": "thedigimod:dragon_bone",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "d0d",
+    "ddd"
+  ],
+  "key": {
+    "0": {
+      "item": "thedigimod:nightmare_pack"
+    },
+    "d": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "thedigimod:clown_box",
+    "count": 1
+  }
+}

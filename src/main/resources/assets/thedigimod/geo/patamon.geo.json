@@ -1,0 +1,85 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "entity",
+					"pivot": [0.5, 0, 0]
+				},
+				{
+					"name": "body",
+					"parent": "entity",
+					"pivot": [0, 2.6, 4.83333],
+					"cubes": [
+						{"origin": [-2, 8.1, 8], "size": [4, 3, 3], "inflate": -0.01, "uv": [6, 24]},
+						{"origin": [-5, 3.1, -9], "size": [10, 10, 17], "inflate": -0.01, "uv": [6, 32]},
+						{"origin": [-5, 3.1, -9], "size": [10, 10, 17], "inflate": -0.01, "uv": [6, 32]}
+					]
+				},
+				{
+					"name": "wing",
+					"parent": "body",
+					"pivot": [3.42, 13.12139, -5.60357],
+					"rotation": [18.88172, 41.64114, 27.23631],
+					"cubes": [
+						{"origin": [3.35263, 13.1, -9.31795], "size": [0, 12, 15], "inflate": -0.01, "uv": [29, 2]}
+					]
+				},
+				{
+					"name": "wing2",
+					"parent": "body",
+					"pivot": [-3.42, 13.12139, -5.60357],
+					"rotation": [18.88172, -41.64114, -27.23631],
+					"cubes": [
+						{"origin": [-3.35263, 13.1, -9.31795], "size": [0, 12, 15], "inflate": -0.01, "uv": [29, 2], "mirror": true}
+					]
+				},
+				{
+					"name": "leg2",
+					"parent": "entity",
+					"pivot": [-3.02, 3.12139, -4.40357],
+					"cubes": [
+						{"origin": [-4.5, 0.1, -6], "size": [3, 3, 3], "inflate": -0.01, "uv": [9, 36], "mirror": true},
+						{"origin": [-6.5, 0.1, -8], "size": [6, 0, 5], "inflate": -0.01, "uv": [2, 43], "mirror": true}
+					]
+				},
+				{
+					"name": "leg4",
+					"parent": "entity",
+					"pivot": [-2.42, 3.12139, 5.59643],
+					"cubes": [
+						{"origin": [-3.9, 0.1, 4], "size": [3, 3, 3], "inflate": -0.01, "uv": [9, 36], "mirror": true},
+						{"origin": [-5.9, 0.1, 2], "size": [6, 0, 5], "inflate": -0.01, "uv": [2, 43], "mirror": true}
+					]
+				},
+				{
+					"name": "leg3",
+					"parent": "entity",
+					"pivot": [3.42, 3.12139, 5.59643],
+					"cubes": [
+						{"origin": [1.9, 0.1, 4], "size": [3, 3, 3], "inflate": -0.01, "uv": [9, 36]},
+						{"origin": [0.9, 0.1, 2], "size": [6, 0, 5], "inflate": -0.01, "uv": [2, 43]}
+					]
+				},
+				{
+					"name": "leg",
+					"parent": "entity",
+					"pivot": [3.02, 3.12139, -4.40357],
+					"cubes": [
+						{"origin": [1.5, 0.1, -6], "size": [3, 3, 3], "inflate": -0.01, "uv": [9, 36]},
+						{"origin": [0.5, 0.1, -8], "size": [6, 0, 5], "inflate": -0.01, "uv": [2, 43]}
+					]
+				}
+			]
+		}
+	]
+}

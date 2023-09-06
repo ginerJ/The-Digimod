@@ -50,7 +50,7 @@ public class DigimonAgumonBlack extends CustomDigimon {
     }
     @Override
     protected String walkAnim() {
-        return "walk";
+        return "walk5";
     }
     @Override
     protected String sitAnim() {

@@ -2,7 +2,6 @@ package net.modderg.thedigimod.events;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.NetworkEvent;
@@ -32,6 +31,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.item.DigiItems;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 import java.util.function.Supplier;
@@ -75,8 +75,6 @@ public class EventBusSubscriber {
             PlayerVariables original = (event.getOriginal().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
             PlayerVariables clone = (event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
             clone.firstJoin = original.firstJoin;
-            if (!event.isWasDeath()) {
-            }
         }
     }
 
@@ -95,7 +93,7 @@ public class EventBusSubscriber {
         private final LazyOptional<PlayerVariables> instance = LazyOptional.of(() -> playerVariables);
 
         @Override
-        public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        public <T> @NotNull LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
             return cap == PLAYER_VARIABLES_CAPABILITY ? instance.cast() : LazyOptional.empty();
         }
 
@@ -150,6 +148,7 @@ public class EventBusSubscriber {
             NetworkEvent.Context context = contextSupplier.get();
             context.enqueueWork(() -> {
                 if (!context.getDirection().getReceptionSide().isServer()) {
+                    assert Minecraft.getInstance().player != null;
                     PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
                     variables.firstJoin = message.data.firstJoin;
                 }
@@ -164,7 +163,8 @@ public class EventBusSubscriber {
     }
 
     static RegistryObject<?>[] babies = {DigiItems.BOTAMON, DigiItems.BOTAMOND, DigiItems.BUBBMON, DigiItems.BUBBMONK, DigiItems.PUNIMON,
-            DigiItems.JYARIMON,  DigiItems.PETITMON, DigiItems.PUYOMON, DigiItems.DOKIMON, DigiItems.NYOKIMON, DigiItems.CONOMON, DigiItems.KIIMON};
+            DigiItems.JYARIMON,  DigiItems.PETITMON, DigiItems.PUYOMON, DigiItems.DOKIMON, DigiItems.NYOKIMON, DigiItems.CONOMON, DigiItems.KIIMON,
+            DigiItems.POYOMON, DigiItems.SUNAMON};
 
     static RegistryObject<?>[] vices = {DigiItems.VPET,  DigiItems.DIGIVICE, DigiItems.VITALBRACELET, DigiItems.DIGIVICE_IC, DigiItems.DIGIVICE_BURST};
 

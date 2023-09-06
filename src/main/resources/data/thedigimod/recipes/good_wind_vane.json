@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "d0d",
+    " d ",
+    " d "
+  ],
+  "key": {
+    "0": {
+      "item": "thedigimod:wind_pack"
+    },
+    "d": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "thedigimod:wind_vane",
+    "count": 1
+  }
+}

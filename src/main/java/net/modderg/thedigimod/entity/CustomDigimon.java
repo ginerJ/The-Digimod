@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -41,7 +40,6 @@ import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.goals.DigitalFollowOwnerGoal;
 import net.modderg.thedigimod.entity.goals.DigitalMeleeAttackGoal;
 import net.modderg.thedigimod.goods.AbstractTrainingGood;
-import net.modderg.thedigimod.gui.StatsGui;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.DigiviceItem;
 import net.modderg.thedigimod.particles.DigitalParticles;
@@ -113,6 +111,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     protected Boolean canEvoToPath4(){return false;}
     protected EntityType<CustomDigimon> evoPath5(){return null;}
     protected Boolean canEvoToPath5(){return false;}
+    protected EntityType<CustomDigimon> evoPath6(){return null;}
+    protected Boolean canEvoToPath6(){return false;}
 
     public EntityType<CustomDigimon> digitronEvo(){return null;}
 
@@ -623,7 +623,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     public void evolveDigimon(){
         CustomDigimon evoD = null;
-        if(canEvoToPath5()){
+        if(canEvoToPath6()){
+            evoD = evoPath6().create(this.level());
+        } else if(canEvoToPath5()){
             evoD = evoPath5().create(this.level());
         } else if (canEvoToPath4()){
             evoD = evoPath4().create(this.level());
@@ -762,7 +764,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
     public static <T extends CustomDigimon & GeoEntity> AnimationController<T> animController(T digimon) {
-        return new AnimationController<>(digimon,"movement", 3, event ->{
+        return new AnimationController<>(digimon,"movement", 5, event ->{
             if(digimon.isEvolving()){
                 event.getController().setAnimation(RawAnimation.begin().then("show", Animation.LoopType.LOOP));
             } else if(digimon.getMovementID() == 0){
@@ -792,7 +794,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(animController(this));
-        controllers.add(new AnimationController(this, "attackController", 3,this::attackPredicate));
+        controllers.add(new AnimationController(this, "attackController", 5,this::attackPredicate));
     }
 
     @Override

@@ -14,7 +14,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.item.CustomXpItem;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.example.entity.DynamicExampleEntity;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
@@ -79,7 +81,7 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
     }
 
     @Override
-    public InteractionResult mobInteract(Player player, InteractionHand p_27585_) {
+    public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand p_27585_) {
         if(player.isShiftKeyDown()){
             ItemStack itemstack = this.goodItem();
             itemstack.getOrCreateTag().putInt("USES", (int)this.getHealth());
@@ -97,12 +99,12 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
     }
 
     @Override
-    public boolean canBeLeashed(Player p_21418_) {
+    public boolean canBeLeashed(@NotNull Player p_21418_) {
         return false;
     }
 
     @Override
-    protected void actuallyHurt(DamageSource p_21240_, float p_21241_) {
+    protected void actuallyHurt(@NotNull DamageSource p_21240_, float p_21241_) {
         this.setHealth(getHealth()-1);
     }
 
@@ -114,13 +116,13 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
+    public AgeableMob getBreedOffspring(@NotNull ServerLevel p_146743_, @NotNull AgeableMob p_146744_) {
         return null;
     }
 
     protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
-    private PlayState animController(AnimationState event) {
+    private PlayState animController(AnimationState<AbstractTrainingGood> event) {
         if(this.hurtTime > 0){
             event.getController().setAnimation(RawAnimation.begin().then("hit", Animation.LoopType.LOOP));
         } else {

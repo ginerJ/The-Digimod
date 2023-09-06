@@ -81,6 +81,19 @@ public class ClientDistEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.ICEDEVIMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.WIZARDMON.get(), CustomDigimonRender::new);
         event.registerEntityRenderer(DigitalEntities.BOOGIEMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.TOKOMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.GOROMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.SUNARIZAMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.GOLEMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.BABOONGAMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.CYCLOMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.TORTAMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.PATAMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.UNIMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.PEGASMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.MIMICMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.CENTALMON.get(), CustomDigimonRender::new);
+        event.registerEntityRenderer(DigitalEntities.ANGEMON.get(), CustomDigimonRender::new);
 
         event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
 
@@ -97,6 +110,7 @@ public class ClientDistEventBusSubscriber {
         event.registerEntityRenderer(DigitalEntities.LIRA_GOOD.get(), AbstractGoodRender::new);
         event.registerEntityRenderer(DigitalEntities.RED_FREEZER.get(), AbstractGoodRender::new);
         event.registerEntityRenderer(DigitalEntities.WIND_VANE.get(), AbstractGoodRender::new);
+        event.registerEntityRenderer(DigitalEntities.TRAINING_ROCK.get(), AbstractGoodRender::new);
     }
 
     @SubscribeEvent

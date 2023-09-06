@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "s s",
+    "s0s",
+    "ddd"
+  ],
+  "key": {
+    "0": {
+      "item": "thedigimod:holy_pack"
+    },
+    "d": {
+      "tag": "minecraft:planks"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "thedigimod:lira_good",
+    "count": 1
+  }
+}

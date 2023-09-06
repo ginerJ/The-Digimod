@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    " 0 ",
+    " d "
+  ],
+  "key": {
+    "0": {
+      "item": "thedigimod:plantinsect_pack"
+    },
+    "d": {
+      "item": "minecraft:flower_pot"
+    }
+  },
+  "result": {
+    "item": "thedigimod:flytrap_good",
+    "count": 1
+  }
+}

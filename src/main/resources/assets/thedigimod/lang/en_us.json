@@ -11,6 +11,8 @@
   "item.thedigimod.nyokimon" : "Nyokimon",
   "item.thedigimod.conomon" : "Conomon",
   "item.thedigimod.kiimon" : "Kiimon",
+  "item.thedigimod.poyomon" : "Poyomon",
+  "item.thedigimod.sunamon" : "Sunamon",
 
   "item.thedigimod.vitalbracelet" : "Vital Bracelet",
   "item.thedigimod.digivice" : "Digivice",
@@ -50,6 +52,14 @@
   "item.thedigimod.update_item" : "Health Upgrade",
 
   "item.thedigimod.dragon_bone" : "Dragon Bone",
+  "item.thedigimod.ball_good" : "Beach Ball",
+  "item.thedigimod.clown_box" : "Clown Box",
+  "item.thedigimod.flytrap_good" : "Flytrap",
+  "item.thedigimod.old_pc" : "Old Pc",
+  "item.thedigimod.lira_good" : "Holy Lira",
+  "item.thedigimod.red_freezer" : "Red Freezer",
+  "item.thedigimod.wind_vane" : "Wind Vane",
+  "item.thedigimod.training_rock" : "Training rock",
 
   "item.thedigimod.digi_core" : "DigiCore",
 

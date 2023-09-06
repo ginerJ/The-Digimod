@@ -88,7 +88,7 @@ public class DigimonJellymon extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Sad") && this.getSpecificXps(7) > 50 && this.getCareMistakesStat() <= 5 && this.getBattlesStat() >= 15;
+        return this.getMood().equals("Sad") && this.getSpecificXps(7) > 50 && this.getCareMistakesStat() <= 5 && this.getBattlesStat() >= 10;
     }
 
     @Override

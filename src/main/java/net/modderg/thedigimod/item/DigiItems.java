@@ -26,6 +26,8 @@ public class DigiItems {
     public static final RegistryObject<Item> NYOKIMON = ITEMS.register("nyokimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.YOKOMON, "Biyomon"));
     public static final RegistryObject<Item> CONOMON = ITEMS.register("conomon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.KOKOMON, "Lopmon"));
     public static final RegistryObject<Item> KIIMON = ITEMS.register("kiimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.YAAMON, "Impmon"));
+    public static final RegistryObject<Item> SUNAMON = ITEMS.register("sunamon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.GOROMON, "Sunarizamon"));
+    public static final RegistryObject<Item> POYOMON = ITEMS.register("poyomon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.TOKOMON, "Patamon"));
 
     //Digivices
     public static final RegistryObject<Item> VITALBRACELET = ITEMS.register("vitalbracelet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));
@@ -78,6 +80,7 @@ public class DigiItems {
     public static final RegistryObject<Item> LIRA_GOOD = ITEMS.register("lira_good", () -> new SpawnGoodItem(DigitalEntities.LIRA_GOOD, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.defense"));
     public static final RegistryObject<Item> RED_FREEZER = ITEMS.register("red_freezer", () -> new SpawnGoodItem(DigitalEntities.RED_FREEZER, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.attack"));
     public static final RegistryObject<Item> WIND_VANE = ITEMS.register("wind_vane", () -> new SpawnGoodItem(DigitalEntities.WIND_VANE, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "sp.attack"));
+    public static final RegistryObject<Item> TRAINING_ROCK = ITEMS.register("training_rock", () -> new SpawnGoodItem(DigitalEntities.TRAINING_ROCK, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "defense"));
 
     //admin stuff
     public static final RegistryObject<Item> ADMIN_LOGO = ITEMS.register("admin_logo", () -> new Item(new Item.Properties().stacksTo(1)));

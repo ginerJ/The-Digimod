@@ -1,0 +1,108 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 80,
+				"texture_height": 80,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name": "entity",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "body",
+					"parent": "entity",
+					"pivot": [0.40909, 16.11144, 7.09795],
+					"cubes": [
+						{"origin": [-5.5, 12, -12], "size": [11, 8, 21], "inflate": 0.01, "uv": [2, 50]},
+						{"origin": [0, 8, 9], "size": [0, 10, 4], "inflate": 0.01, "uv": [71, 8]},
+						{"origin": [-5.5, 20, -12], "size": [11, 11, 6], "inflate": 0.01, "uv": [26, 32]},
+						{"origin": [3.5, 27, -6], "size": [0, 4, 9], "inflate": 0.01, "uv": [0, -9]},
+						{"origin": [-3.5, 27, -6], "size": [0, 4, 9], "inflate": 0.01, "uv": [0, -9]},
+						{"origin": [-3.5, 22, -7], "size": [0, 4, 9], "inflate": 0.01, "uv": [0, -9]},
+						{"origin": [3.5, 22, -7], "size": [0, 4, 9], "inflate": 0.01, "uv": [0, -9]}
+					]
+				},
+				{
+					"name": "arm",
+					"parent": "body",
+					"pivot": [5.5, 28.5, -9],
+					"rotation": [0, 0, -15],
+					"cubes": [
+						{"origin": [5.5, 21, -11.5], "size": [4, 10, 5], "inflate": 0.01, "uv": [45, 53]},
+						{"origin": [5.5, 20, -9.5], "size": [4, 11, 4], "inflate": 0.01, "pivot": [7.5, 20, -6.5], "rotation": [90, 0, 0], "uv": [64, 49]},
+						{"origin": [5.5, 17.5, -20.5], "size": [4, 3, 3], "inflate": 0.01, "pivot": [7.5, 19, -19], "rotation": [90, 0, 15], "uv": [65, 65]}
+					]
+				},
+				{
+					"name": "arm2",
+					"parent": "body",
+					"pivot": [-5.5, 28.5, -9],
+					"rotation": [0, 0, 17.5],
+					"cubes": [
+						{"origin": [-9.5, 21, -11.5], "size": [4, 10, 5], "inflate": 0.01, "uv": [30, 15], "mirror": true},
+						{"origin": [-9.5, 20, -9.5], "size": [4, 6, 4], "inflate": 0.01, "pivot": [-7.5, 20, -6.5], "rotation": [90, 0, 0], "uv": [64, 34], "mirror": true},
+						{"origin": [-10, 26, -10], "size": [5, 6, 5], "inflate": 0.01, "pivot": [-7.5, 20, -6.5], "rotation": [90, 0, 0], "uv": [2, 44], "mirror": true},
+						{"origin": [-9, 17.5, -21.5], "size": [2, 6, 0], "inflate": 0.01, "pivot": [-8, 20.5, -21.5], "rotation": [90, 0, -180], "uv": [3, 8], "mirror": true},
+						{"origin": [-8, 32, -9], "size": [2, 6, 0], "inflate": 0.01, "pivot": [-7.5, 20, -6.5], "rotation": [90, 0, 0], "uv": [3, 8], "mirror": true},
+						{"origin": [-6, 32, -9], "size": [0, 7, 3], "inflate": 0.01, "pivot": [-7.5, 20, -6.5], "rotation": [90, 0, 0], "uv": [43, 9], "mirror": true},
+						{"origin": [-9, 30, -10], "size": [0, 7, 3], "inflate": 0.01, "pivot": [-7.5, 20, -6.5], "rotation": [90, 0, 0], "uv": [43, 9], "mirror": true}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 31, -9.05],
+					"cubes": [
+						{"origin": [-3, 30, -13], "size": [6, 6, 2], "inflate": 0.01, "uv": [28, 4]},
+						{"origin": [-4, 31, -12], "size": [8, 6, 6], "inflate": 0.01, "uv": [50, 0]},
+						{"origin": [-1, 32, -12], "size": [2, 9, 7], "inflate": -0.01, "uv": [60, 17]},
+						{"origin": [-1, 41, -12], "size": [2, 3, 5], "inflate": 0.01, "uv": [51, 15]}
+					]
+				},
+				{
+					"name": "leg",
+					"parent": "entity",
+					"pivot": [4.5, 13.05, -8.5],
+					"cubes": [
+						{"origin": [2.5, 4, -11], "size": [4, 12, 5], "uv": [9, 4], "mirror": true},
+						{"origin": [2, 0, -11.5], "size": [5, 4, 6], "uv": [1, 56], "mirror": true}
+					]
+				},
+				{
+					"name": "leg2",
+					"parent": "entity",
+					"pivot": [-4.5, 13.05, -8.5],
+					"cubes": [
+						{"origin": [-6.5, 4, -11], "size": [4, 12, 5], "uv": [9, 4]},
+						{"origin": [-7, 0, -11.5], "size": [5, 4, 6], "uv": [1, 56]}
+					]
+				},
+				{
+					"name": "leg3",
+					"parent": "entity",
+					"pivot": [4.5, 12.5, 5.5],
+					"cubes": [
+						{"origin": [2.5, 4, 4.5], "size": [4, 15, 6], "uv": [5, 22], "mirror": true},
+						{"origin": [2, 0, 4.5], "size": [5, 4, 6], "uv": [1, 56], "mirror": true}
+					]
+				},
+				{
+					"name": "leg4",
+					"parent": "entity",
+					"pivot": [-4.5, 13.5, 5.5],
+					"cubes": [
+						{"origin": [-6.5, 4, 4.5], "size": [4, 15, 6], "uv": [5, 22]},
+						{"origin": [-7, 0, 4.5], "size": [5, 4, 6], "uv": [1, 56]}
+					]
+				}
+			]
+		}
+	]
+}
