@@ -43,6 +43,7 @@
   "item.thedigimod.digi_meat" : "Digi Meat",
 
   "item.thedigimod.black_digitron" : "Black Digitron",
+  "item.thedigimod.dark_tower_shard" : "Dark Tower Shard",
 
   "item.thedigimod.training_bag" : "Training Bag",
   "item.thedigimod.bag_item" : "Punching Bag",
@@ -146,5 +147,8 @@
   "entity.thedigimod.bullet" : "Bullet",
 
   "itemGroup.digital_tab" : "The Digimod Items",
-  "itemGroup.digiadmin_tab" : "The Digimod Admin Items"
+  "itemGroup.digiadmin_tab" : "The Digimod Admin Items",
+
+  "key.category.thedigimod.digimod": "The Digimod",
+  "key.thedigimod.navigate_digivice": "Navigate Digivice"
 }

@@ -3,7 +3,6 @@ package net.modderg.thedigimod.entity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -19,16 +18,13 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.SitWhenOrderedToGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomFlyingGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -38,10 +34,14 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.goals.DigitalFollowOwnerGoal;
+import net.modderg.thedigimod.entity.goals.DigitalHurtByTargetGoal;
 import net.modderg.thedigimod.entity.goals.DigitalMeleeAttackGoal;
+import net.modderg.thedigimod.entity.goals.DigitalRangedAttackGoal;
+import net.modderg.thedigimod.entity.managers.MoodManager;
+import net.modderg.thedigimod.entity.managers.ParticleManager;
 import net.modderg.thedigimod.goods.AbstractTrainingGood;
-import net.modderg.thedigimod.item.DigiItems;
-import net.modderg.thedigimod.item.DigiviceItem;
+import net.modderg.thedigimod.item.*;
+import net.modderg.thedigimod.item.custom.DigiviceItem;
 import net.modderg.thedigimod.particles.DigitalParticles;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 import org.jetbrains.annotations.NotNull;
@@ -49,16 +49,20 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Objects;
 
-public class CustomDigimon extends TamableAnimal implements GeoEntity {
+import static net.minecraft.world.entity.ai.attributes.Attributes.FLYING_SPEED;
+
+public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteerable, PlayerRideableJumping, RangedAttackMob {
 
     public String getSpecies(){return "";}
+    public String getLowerCaseSpecies(){return getSpecies().toLowerCase().replace("(", "").replace(")","");}
+
+    protected boolean isDigimonMountable(){return false;}
 
     protected RegistryObject<?>[] reincarnateTo(){
         return null;
@@ -68,19 +72,21 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     }
 
     protected final int MAXLEVEL = 30;
-    protected final int MAXSTATGEN = 250;
+    protected final int MAXADULT = 250;
+    protected final int MAXULTIMATE = 500;
     public final int MAXMEGASTAT = 999;
 
-    public String evoStage(){return "";}
+    public int evoStage(){return 0;}
 
-    public Boolean isBaby2(){return evoStage().equals("baby2");}
-    public Boolean isRookie(){return evoStage().equals("rookie");}
-    public Boolean isChampion(){return evoStage().equals("champion");}
-    public Boolean isUltimate(){return evoStage().equals("ultimate");}
+    public Boolean isBaby2(){return evoStage() == 0;}
+    public Boolean isRookie(){return evoStage() == 1;}
+    public Boolean isChampion(){return evoStage() == 2;}
+    public Boolean isUltimate(){return evoStage() == 3;}
+
     //public Boolean isMega(){return evoStage().equals("mega");}
 
     public int getMaxStat(){
-        return this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? 250: (this.isUltimate() ? 500 : 999)));
+        return this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? MAXADULT: (this.isUltimate() ? MAXULTIMATE : MAXMEGASTAT)));
     }
 
     protected Boolean isFlyingDigimon(){return false;}
@@ -102,19 +108,34 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     }
 
     protected EntityType<CustomDigimon> evoPath(){return null;}
+    public CustomDigimon getEvoPath = evoPath() != null ? evoPath().create(this.level()): null;
     protected Boolean canEvoToPath(){return false;}
+
     protected EntityType<CustomDigimon> evoPath2(){return null;}
+    public CustomDigimon getEvoPath2 = evoPath2() != null ? evoPath2().create(this.level()): null;
     protected Boolean canEvoToPath2(){return false;}
+
     protected EntityType<CustomDigimon> evoPath3(){return null;}
+    public CustomDigimon getEvoPath3 = evoPath3() != null ? evoPath3().create(this.level()): null;
     protected Boolean canEvoToPath3(){return false;}
+
     protected EntityType<CustomDigimon> evoPath4(){return null;}
+    public CustomDigimon getEvoPath4 = evoPath4() != null ? evoPath4().create(this.level()): null;
     protected Boolean canEvoToPath4(){return false;}
+
     protected EntityType<CustomDigimon> evoPath5(){return null;}
+    public CustomDigimon getEvoPath5 = evoPath5() != null ? evoPath5().create(this.level()): null;
     protected Boolean canEvoToPath5(){return false;}
+
     protected EntityType<CustomDigimon> evoPath6(){return null;}
+    public CustomDigimon getEvoPath6 = evoPath6() != null ? evoPath6().create(this.level()): null;
     protected Boolean canEvoToPath6(){return false;}
 
     public EntityType<CustomDigimon> digitronEvo(){return null;}
+
+    protected static final EntityDataAccessor<String> PREEVO = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
+    public void setPreEvo(String i){this.getEntityData().set(PREEVO, i);}
+    public String getPreEvo(){return this.getEntityData().get(PREEVO);}
 
     protected static final EntityDataAccessor<String> NICKNAME = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
     public void setNickName(String i){
@@ -132,54 +153,18 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     //protected String swimAnim(){return "swim";}
     protected String attackAnim(){return "attack";}
     protected String shootAnim(){return "shoot";}
+    protected String hurtAnim(){return "hurt";}
 
-    protected static final EntityDataAccessor<Integer> MOODPOINTS = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    public void setMoodPoints(int i){
-        this.getEntityData().set(MOODPOINTS, i);
-    }
-    public int getMoodPoints(){
-        return this.getEntityData().get(MOODPOINTS);
-    }
-    public void restMoodPoints(int i){
-        boolean mistake = getMoodPoints() > 10;
-        this.getEntityData().set(MOODPOINTS, Math.max(this.getMoodPoints() - i,0));
-        if (mistake && this.getMood().equals("Depressed")){
-            this.setCareMistakesStat(this.getCareMistakesStat() + 1);
-        }
-    }
-    public void addMoodPoints(int i){
-        this.getEntityData().set(MOODPOINTS, Math.min(this.getMoodPoints() + i,250));
-    }
-    public String getMood(){
-        if(getMoodPoints() > 200){
-            return "Joyful";
-        } else if (getMoodPoints() > 150){
-            return "Happy";
-        } else if (getMoodPoints() > 100){
-            return "Meh";
-        } else if (getMoodPoints() > 10){
-            return "Sad";
-        }
-        return "Depressed";
-    }
-    public int getMoodColor() {
-        int moodPoints = getMoodPoints();
-        if (moodPoints > 200) return 16761177;
-        if (moodPoints > 150) return 16777088;
-        if (moodPoints > 100) return 16646143;
-        if (moodPoints > 50) return 10262007;
-        return 6579711;
-    }
 
+    public MoodManager moodManager = new MoodManager(this);
+    public ParticleManager particleManager = new ParticleManager(this);
     protected static final EntityDataAccessor<Integer> MOVEMENTID = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
     public void setMovementID(int i){
         this.getEntityData().set(MOVEMENTID, i);
-        this.switchNavigation(getMovementID());
+        this.switchNavigation(i);
         this.setOrderedToSit(i == 0);
     }
-    public int getMovementID(){
-        return this.getEntityData().get(MOVEMENTID);
-    }
+    public int getMovementID(){return this.getEntityData().get(MOVEMENTID);}
     public void changeMovementID(){
         int i = this.getMovementID();
         if(i == 0){
@@ -189,8 +174,13 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             messageState("flying");
             setMovementID(2);
         } else if(i == 2 || (i == 1 && !this.isFlyingDigimon())){
+            messageState("wandering");
+            setMovementID(1);
+            setMovementID(-1);
+        } else if (i == -1){
             messageState("sitting");
             this.setTarget(null);
+            this.navigation.stop();
             setMovementID(0);
         }
     }
@@ -234,11 +224,18 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     }
     public void addLife(){
         this.getEntityData().set(LIFES,Math.min(3,this.getLifes()+1));
-        this.setHealth(999f);
+        this.setHealth(MAXMEGASTAT);
     }
     public void restLifes(){
+        if(this.getLastAttacker() instanceof CustomDigimon cd) {
+            cd.setTarget(null);
+            cd.setAggressive(false);
+            cd.resetAttackGoals();
+        }
+        this.setCareMistakesStat(this.getCareMistakesStat() + 1);
+        this.setMovementID(0);
         this.getEntityData().set(LIFES,Math.max(0,this.getLifes()-1));
-        this.setHealth(999f);
+        this.setHealth(MAXMEGASTAT);
     }
 
     protected static final EntityDataAccessor<Integer> ATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
@@ -253,7 +250,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(this.getCurrentLevel()/2);
     }
     public void setDefenceStat(int i){this.getEntityData().set(DEFENCE_STAT, Math.min(i, getMaxStat()));}
-    public void setSpAttackStat(int i){this.getEntityData().set(SPATTACK_STAT, Math.min(i, getMaxStat()));}
+    public void setSpAttackStat(int i){
+        this.getEntityData().set(SPATTACK_STAT, Math.min(i, getMaxStat()));
+    }
     public void setSpDefenceStat(int i){this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, getMaxStat()));}
     public void setBattlesStat(int i){
         this.getEntityData().set(BATTLES_STAT, i);
@@ -326,13 +325,17 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         evoCount = e;
     }
 
-    protected int ticksToShootAnim = this.random.nextInt(150, 250);
+    public int ticksToShootAnim = this.random.nextInt(150, 250);
+
+    DigitalRangedAttackGoal<CustomDigimon> rangedGoal = new DigitalRangedAttackGoal<>(this, 1.0D, 65, 10f);
+    DigitalMeleeAttackGoal meleeGoal = new DigitalMeleeAttackGoal(this,1.0D, true);
 
     protected CustomDigimon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.switchNavigation(getMovementID());
         if(!this.hasCustomName()){this.setCustomName(Component.literal(getNickName()));
         } else {setCustomName(Component.literal(this.getNickName()));}
+        resetAttackGoals();
     }
 
     @Override
@@ -343,8 +346,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     @Override
     public boolean isFood(ItemStack item) {
         if(item.is(DigiItems.DIGI_MEAT.get())){
-            this.addMoodPoints(20);
-            item.shrink(1);
+            eatItem(item, 20);
+            this.playSound(item.getItem().getEatingSound(), 0.15F, 1.0F);
             if(!this.isAggressive() || this.getTarget() instanceof AbstractTrainingGood){
                 this.heal(20);
             }
@@ -368,9 +371,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         if(getSpawn() && !this.isTame()){
             setSpawn(false);
             this.setHealthStat(Math.min(getMaxStat(),
-                    random.nextInt(this.isBaby2() ? 1 : (this.isRookie() ? 25: (this.isChampion() ? 100: (this.isUltimate() ? 250 : 500))),getMaxStat())));
+                    random.nextInt(this.isBaby2() ? 1 : (this.isRookie() ? 25: (this.isChampion() ? 100: (this.isUltimate() ? MAXADULT : MAXULTIMATE))),getMaxStat())));
             this.setHealth((float)this.getHealthStat());
-            this.setCurrentLevel(Math.max(1,(int) (MAXLEVEL * (getHealth()/MAXSTATGEN*1.0))));
+            this.setCurrentLevel(Math.max(1,(int) (MAXLEVEL * (getHealth()/getMaxStat()*1.0))));
             this.setAttackStat((int)getHealth());
             this.setDefenceStat((int)getHealth());
             this.setSpAttackStat((int)getHealth());
@@ -391,8 +394,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         this.goalSelector.addGoal(0, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
         this.goalSelector.addGoal(1, new OwnerHurtTargetGoal(this));
-        this.goalSelector.addGoal(1, new HurtByTargetGoal(this));
-        this.goalSelector.addGoal(1, new DigitalMeleeAttackGoal(this,1.0D, true));
+        this.goalSelector.addGoal(1, new DigitalHurtByTargetGoal(this));
         this.goalSelector.addGoal(2, new DigitalFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, true));
         this.goalSelector.addGoal(3, new FloatGoal(this));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomFlyingGoal(this, 1.0D));
@@ -408,7 +410,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         this.entityData.define(LEVELXP, 0);
         this.entityData.define(EXPERIENCETOTAL, 0);
         this.entityData.define(SPECIFICXPS, "0-0-0-0-0-0-0-0-0");
-        this.entityData.define(MOODPOINTS, 249);
+        this.entityData.define(MoodManager.getMoodAccessor(), 249);
         this.entityData.define(ATTACK_STAT, 1);
         this.entityData.define(DEFENCE_STAT, 1);
         this.entityData.define(SPATTACK_STAT, 1);
@@ -417,6 +419,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         this.entityData.define(CARE_MISTAKES_STAT, 0);
         this.entityData.define(FIRSTSPAWN, true);
         this.entityData.define(LIFES, 1);
+        this.entityData.define(PREEVO, "a-a-a-a-a");
     }
 
     @Override
@@ -441,7 +444,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             this.setSpecificXps(compound.getString("SPECIFICXPS"));
         }
         if (compound.contains("MOODPOINTS")) {
-            this.setMoodPoints(compound.getInt("MOODPOINTS"));
+            this.moodManager.setMoodPoints(compound.getInt("MOODPOINTS"));
         }
         if (compound.contains("FIRSTSPAWN")) {
             this.setSpawn(compound.getBoolean("FIRSTSPAWN"));
@@ -467,7 +470,11 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         if (compound.contains("LIFES")) {
             this.setLifes(compound.getInt("LIFES"));
         }
+        if (compound.contains("PREEVO")) {
+            this.setPreEvo(compound.getString("PREEVO"));
+        }
     }
+
     @Override
     public void addAdditionalSaveData(@NotNull CompoundTag compound) {
         super.addAdditionalSaveData(compound);
@@ -477,7 +484,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         compound.putInt("LEVELXP", this.getLevelXp());
         compound.putInt("EXPERIENCETOTAL", this.getExperienceTotal());
         compound.putString("SPECIFICXPS", this.getSpecificXps());
-        compound.putInt("MOODPOINTS", this.getMoodPoints());
+        compound.putInt("MOODPOINTS", this.moodManager.getMoodPoints());
         compound.putInt("ATTACK_STAT", this.getAttackStat());
         compound.putInt("DEFENCE_STAT", this.getDefenceStat());
         compound.putInt("SPATTACK_STAT", this.getSpAttackStat());
@@ -486,19 +493,56 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         compound.putInt("CARE_MISTAKES_STAT", this.getCareMistakesStat());
         compound.putBoolean("FIRSTSPAWN", this.getSpawn());
         compound.putInt("LIFES", this.getLifes());
+        compound.putString("PREEVO", this.getPreEvo());
     }
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        if (player.getItemInHand(hand).getItem() instanceof DigiviceItem && this.getOwner() != null && getOwner().level().isClientSide){
+        ItemStack itemStack = player.getItemInHand(hand);
+        if (itemStack.getItem() instanceof DigiviceItem && this.getOwner() != null && getOwner().level().isClientSide){
             return InteractionResult.CONSUME;
         }
-        if (this.isTame() && this.getOwnerUUID().equals(player.getUUID()) && player.isShiftKeyDown()) {
-            this.changeMovementID();
-            this.switchNavigation(getMovementID());
+        if(itemStack.getItem().isEdible()){
+            eatItem(itemStack, 1);
+            this.playSound(itemStack.getItem().getEatingSound(), 0.15F, 1.0F);
             return InteractionResult.CONSUME;
+        }
+        if (this.isTame() && this.getOwnerUUID().equals(player.getUUID())) {
+            if(player.isShiftKeyDown()){
+                this.changeMovementID();
+                this.switchNavigation(getMovementID());
+                return InteractionResult.CONSUME;
+            }
+            if(this.isDigimonMountable() && !this.isInSittingPose()){
+                if(!itemStack.isEmpty()) return super.mobInteract(player, hand);
+                player.startRiding(this);
+                return InteractionResult.SUCCESS;
+            }
         }
         return super.mobInteract(player, hand);
+    }
+
+    int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(), spdefence = this.getSpDefenceStat(),
+            battles = this.getBattlesStat(), health = this.getHealthStat(), mistakes = this.getCareMistakesStat(), lifes = this.getLifes();
+    String xps = this.getSpecificXps();
+
+    public void checkChangeStats(){
+        if(attack != this.getAttackStat()){particleManager.spawnStatUpParticles(DigitalParticles.ATTACK_UP,1);
+            attack = this.getAttackStat();}
+        if(defence != this.getDefenceStat()){particleManager.spawnStatUpParticles(DigitalParticles.DEFENCE_UP,1);
+            defence = this.getDefenceStat();}
+        if(spattack != this.getSpAttackStat()){particleManager.spawnStatUpParticles(DigitalParticles.SPATTACK_UP,1);
+            spattack = this.getSpAttackStat();}
+        if(spdefence != this.getSpDefenceStat()){particleManager.spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP,1);
+            spdefence = this.getSpDefenceStat();}
+        if(battles != this.getBattlesStat()){particleManager.spawnStatUpParticles(DigitalParticles.BATTLES_UP,1);
+            battles = this.getBattlesStat();}
+        if(health != this.getHealthStat()){particleManager.spawnStatUpParticles(DigitalParticles.HEALTH_UP,1);
+            health = this.getHealthStat();}
+        if(mistakes != this.getCareMistakesStat()){particleManager.spawnBubbleParticle(DigitalParticles.MISTAKE_BUBBLE);
+            mistakes = this.getCareMistakesStat();}
+        if(lifes != this.getLifes()){particleManager.spawnStatUpParticles(DigitalParticles.LIFE_PARTICLE,7);
+            lifes = this.getLifes();}
     }
 
     @Override
@@ -508,21 +552,31 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         if(getEvoCount() == 1){this.evolveDigimon();}
 
         if(evoCount > 0){
-            spawnEvoParticles(DigitalParticles.EVO_PARTICLES);
+            particleManager.spawnEvoParticles(DigitalParticles.EVO_PARTICLES);
             evoCount--;
         }
 
-        if(this.getMoodPoints() < 100 && this.isTame() && random.nextInt(0,150) == 1){
-            spawnBubbleParticle(DigitalParticles.MEAT_BUBBLE);
+        if(this.moodManager.getMoodPoints() < 100 && this.isTame() && random.nextInt(0,150) == 1){
+            particleManager.spawnBubbleParticle(DigitalParticles.MEAT_BUBBLE);
         }
 
-        if (!this.isEvolving() && this.isAggressive() && !(this.getTarget() instanceof AbstractTrainingGood)) {
-            if (--ticksToShootAnim == 20) {
-                doShoot();
-            } else if (ticksToShootAnim == 0) {
-                ticksToShootAnim = this.random.nextInt(100, 500);
+        /*
+        if(this.getTarget()instanceof AbstractTrainingGood){
+            if(ticksToShootAnim < 0){
+                ticksToShootAnim = -100;
+                resetAttackGoals();
             }
-        }
+        } else {
+            if(ticksToShootAnim == 1 || ticksToShootAnim == -1) resetAttackGoals();
+
+            if(ticksToShootAnim > 0) ticksToShootAnim--;
+            else ticksToShootAnim++;
+        }*/
+
+        if(ticksToShootAnim == 1 || ticksToShootAnim == -1) resetAttackGoals();
+
+        if(ticksToShootAnim > 0) ticksToShootAnim--;
+        else ticksToShootAnim++;
 
         if(!activateName){
             activateName = true;
@@ -532,34 +586,111 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
     }
 
     @Override
-    public void travel(Vec3 p_218382_) {
+    public void travel(Vec3 pos) {
         if(!this.isEvolving()){
-            if(getMovementID() == 2){
-                if (this.isEffectiveAi() || this.isControlledByLocalInstance()) {
-                    if (this.isInWater()) {
-                        this.moveRelative(0.02F, p_218382_);
-                        this.move(MoverType.SELF, this.getDeltaMovement());
-                        this.setDeltaMovement(this.getDeltaMovement().scale((double) 0.8F));
-                    } else if (this.isInLava()) {
-                        this.moveRelative(0.02F, p_218382_);
-                        this.move(MoverType.SELF, this.getDeltaMovement());
-                        this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
+            if (this.isAlive()) {
+                if (this.canBeControlledByRider()) {
+                    LivingEntity passenger = (LivingEntity)getControllingPassenger();
+                    this.yRotO = getYRot();
+                    this.xRotO = getXRot();
+
+                    this.setMaxUpStep(1.0f);
+
+                    setYRot(passenger.getYRot());
+                    setXRot(passenger.getXRot() * 0.5f);
+                    setRot(getYRot(), getXRot());
+
+                    this.yBodyRot = this.getYRot();
+                    this.yHeadRot = this.yBodyRot;
+                    float x = passenger.xxa * 0.25F;
+                    float z = passenger.zza/2;
+
+                    if (z <= 0) z *= 0.25f;
+
+                    this.setSpeed(0.3f);
+
+                    if (getMovementID() == 2)
+                    {
+                        float speed = (float) getAttributeValue(FLYING_SPEED) * 0.6f;
+                        moveDist = moveDist > 0? moveDist : 0;
+                        float movY = (float) (-this.getControllingPassenger().getXRot() * (Math.PI / 180));
+                        pos = new Vec3(x, movY, z);
+                        moveRelative(speed, pos);
+                        move(MoverType.SELF, getDeltaMovement());
+                        if (getDeltaMovement().lengthSqr() < 0.1)
+                            setDeltaMovement(getDeltaMovement().add(0, Math.sin(tickCount / 4f) * 0.03, 0));
+                        setDeltaMovement(getDeltaMovement().scale(0.9f));
                     } else {
-                        this.moveRelative(this.getSpeed(), p_218382_);
-                        this.move(MoverType.SELF, this.getDeltaMovement());
-                        this.setDeltaMovement(this.getDeltaMovement().scale((double) 0.91F));
+                        super.travel(new Vec3((double) x, pos.y,  z));
+                    }
+
+                } else {
+                    if(getMovementID() == 2){
+                        if (this.isEffectiveAi() || this.isControlledByLocalInstance()) {
+                            if (this.isInWater()) {
+                                this.moveRelative(0.02F, pos);
+                                this.move(MoverType.SELF, this.getDeltaMovement());
+                                this.setDeltaMovement(this.getDeltaMovement().scale((double) 0.8F));
+                            } else if (this.isInLava()) {
+                                this.moveRelative(0.02F, pos);
+                                this.move(MoverType.SELF, this.getDeltaMovement());
+                                this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
+                            } else {
+                                this.moveRelative(this.getSpeed(), pos);
+                                this.move(MoverType.SELF, this.getDeltaMovement());
+                                this.setDeltaMovement(this.getDeltaMovement().scale((double) 0.91F));
+                            }
+                        }
+                    } else {
+                        super.travel(pos);
                     }
                 }
-            } else {
-                super.travel(p_218382_);
             }
         }
+    }
+
+    @javax.annotation.Nullable
+    public LivingEntity getControllingPassenger() {
+        return this.getPassengers().isEmpty() ? null : (LivingEntity) this.getPassengers().get(0);
+    }
+
+    @Override
+    public boolean boost() {
+        return false;
+    }
+
+
+    @Override
+    public void onPlayerJump(int p_21696_) {
+        if (this.getMovementID() == 2) this.setMovementID(1);
+        else this.setMovementID(2);
+    }
+
+    @Override
+    public boolean canJump() {
+        return this.isFlyingDigimon();
+    }
+
+    @Override
+    public void handleStartJump(int p_21695_) {
+
+    }
+
+    @Override
+    public void handleStopJump() {
+
+    }
+
+    @Override
+    public void ejectPassengers() {
+        this.setMovementID(1);
+        super.ejectPassengers();
     }
 
     @Override
     public void die(DamageSource source) {
         if(source.getEntity() instanceof CustomDigimon digimon) {
-            if (digimon.evoStage().equals(this.evoStage())) {
+            if (digimon.evoStage() == this.evoStage()) {
                 digimon.setBattlesStat(digimon.getBattlesStat() + 1);
             }
             if (!this.isTame() && random.nextInt(0, 50) < 2) {
@@ -588,18 +719,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
 
     @Override
     public boolean doHurtTarget(Entity target) {
+        if (this.level() instanceof ServerLevel serverLevel)
+            triggerAnim("attackController", "attack");
         return target instanceof CustomDigimon cd ? cd.hurt(this.damageSources().mobAttack(this), calculateDamage(
                 this.getAttackStat() + this.getCurrentLevel(),
                 cd.getDefenceStat() + cd.getCurrentLevel()))
         : super.doHurtTarget(target);
-    }
-
-    @Override
-    public boolean hurt(DamageSource source, float p_27568_) {
-        if(source.getEntity() instanceof CustomDigimon digimon){
-            this.setTarget(digimon);
-        }
-        return super.hurt(source, p_27568_);
     }
 
     @Override
@@ -638,8 +763,29 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         }
         assert evoD != null;
         evoD.copyOtherDigi(this);
+
+        String[] prevos = this.getPreEvo().split("-");
+        prevos[this.evoStage()] = this.getLowerCaseSpecies();
+        evoD.setPreEvo(String.join("-", prevos));
+
         this.level().addFreshEntity(evoD);
         this.remove(RemovalReason.UNLOADED_TO_CHUNK);
+    }
+
+    public void deEvolveDigimon(){
+        if(this.evoStage()-1 >= 0 && !this.getPreEvo().split("-")[this.evoStage()-1].equals("a")){
+            CustomDigimon prevo = (CustomDigimon) DigitalEntities.digimonMap.get(this.getPreEvo().split("-")[this.evoStage()-1]).get().create(this.level());
+            prevo.copyOtherDigi(this);
+
+            prevo.setAttackStat(prevo.getMaxStat()/4);
+            prevo.setDefenceStat(prevo.getMaxStat()/4);
+            prevo.setSpAttackStat(prevo.getMaxStat()/4);
+            prevo.setSpDefenceStat(prevo.getMaxStat()/4);
+            prevo.setHealthStat(prevo.getMaxStat()/4);
+
+            this.level().addFreshEntity(prevo);
+            this.remove(RemovalReason.UNLOADED_TO_CHUNK);
+        }
     }
 
     public void copyOtherDigi(CustomDigimon d){
@@ -648,19 +794,29 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         else {this.setNickName(d.getNickName());}
         this.setMovementID(1);
         this.setCustomName(Component.literal(this.getNickName()));
-        this.setMoodPoints(d.getMoodPoints());
+        this.moodManager.setMoodPoints(d.moodManager.getMoodPoints());
         this.setPos(d.position());
         this.setExperienceTotal(d.getExperienceTotal());
         this.setLevelXp(d.getLevelXp());
         this.setCurrentLevel(d.getCurrentLevel());
         this.setSpecificXps(d.getSpecificXps());
-        this.setAttackStat(d.getAttackStat());
-        this.setDefenceStat(d.getDefenceStat());
-        this.setSpAttackStat(d.getSpAttackStat());
-        this.setSpDefenceStat(d.getSpDefenceStat());
-        this.setHealthStat(d.getHealthStat());
+        this.setPreEvo(d.getPreEvo());
+
+        int evoAdd = d.isBaby2() ? 5 : d.isRookie() ? 15 :
+                d.isChampion() ? 35 : 50;
+
+        this.setAttackStat(d.getAttackStat() + evoAdd);
+        this.setDefenceStat(d.getDefenceStat() + evoAdd);
+        this.setSpAttackStat(d.getSpAttackStat() + evoAdd);
+        this.setSpDefenceStat(d.getSpDefenceStat() + evoAdd);
+        this.setHealthStat(d.getHealthStat() + evoAdd);
+
         this.setHealth(d.getHealth());
         this.setLifes(d.getLifes());
+    }
+
+    public boolean canBeControlledByRider() {
+        return this.getControllingPassenger() instanceof Player p && this.isOwnedBy(p);
     }
 
     public void useXpItem(int id){
@@ -689,76 +845,51 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         }
     }
 
-    int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(), spdefence = this.getSpDefenceStat(),
-            battles = this.getBattlesStat(), health = this.getHealthStat(), mistakes = this.getCareMistakesStat(), lifes = this.getLifes();
-    String xps = this.getSpecificXps();
+    public int calculateDamage(int attack, int defense){return Math.max(1, attack/((defense+100)/100)/2);}
 
-    public void checkChangeStats(){
-        if(attack != this.getAttackStat()){spawnStatUpParticles(DigitalParticles.ATTACK_UP,1);
-            attack = this.getAttackStat();}
-        if(defence != this.getDefenceStat()){spawnStatUpParticles(DigitalParticles.DEFENCE_UP,1);
-            defence = this.getDefenceStat();}
-        if(spattack != this.getSpAttackStat()){spawnStatUpParticles(DigitalParticles.SPATTACK_UP,1);
-            spattack = this.getSpAttackStat();}
-        if(spdefence != this.getSpDefenceStat()){spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP,1);
-            spdefence = this.getSpDefenceStat();}
-        if(battles != this.getBattlesStat()){spawnStatUpParticles(DigitalParticles.BATTLES_UP,1);
-            battles = this.getBattlesStat();}
-        if(health != this.getHealthStat()){spawnStatUpParticles(DigitalParticles.HEALTH_UP,1);
-            health = this.getHealthStat();}
-        if(mistakes != this.getCareMistakesStat()){spawnBubbleParticle(DigitalParticles.MISTAKE_BUBBLE);
-            mistakes = this.getCareMistakesStat();}
-        if(lifes != this.getLifes()){spawnStatUpParticles(DigitalParticles.LIFE_PARTICLE,7);
-            lifes = this.getLifes();}
-        if(!Objects.equals(xps, this.getSpecificXps())){spawnEvoParticles(DigitalParticles.XP_PARTICLE);;
-            xps = this.getSpecificXps();}
-    }
-
-    public void spawnStatUpParticles(RegistryObject<SimpleParticleType> particle, int multiplier) {
-        for(int y = multiplier; y > 0; --y) {
-            for(int i = 0; i < 7; ++i) {
-                double d0 = this.random.nextGaussian() * 0.02D;
-                double d1 = this.random.nextGaussian() * 0.02D;
-                double d2 = this.random.nextGaussian() * 0.02D;
-                this.level().addParticle(particle.get(), this.getRandomX(1.0D), this.getRandomY() + 0.5D, this.getRandomZ(1.0D), d0, d1, d2);
-            }
+    @Override
+    public void performRangedAttack(@NotNull LivingEntity mob, float p_33318_){
+        if(getTarget() != null){
+            if (this.level() instanceof ServerLevel serverLevel)
+                triggerAnim("shootController", "shoot");
+            this.lookControl.setLookAt(this.getTarget());
+            CustomProjectile bullet = new CustomProjectile(DigitalEntities.BULLET.get(), this.level());
+            bullet.setPos(new Vec3(this.position().x, this.position().y + 1, this.position().z));
+            this.lookControl.setLookAt(this.getTarget());
+            double d0 = mob.getX() - this.getX();
+            double d1 = mob.getY(0.3333333333333333D) - bullet.getY();
+            double d2 = mob.getZ() - this.getZ();
+            double d3 = Math.sqrt(d0 * d0 + d2 * d2) * (double)0.2F;
+            bullet.shoot(d0, d1 + d3 * (double)0.2F, d2, 1.6F, (float)(14 - this.level().getDifficulty().getId() * 4));
+            bullet.setOwner(this);
+            this.level().addFreshEntity(bullet);
+            bullet.setOwner(this);
+            this.level().addFreshEntity(bullet);
         }
     }
 
-    public void spawnEvoParticles(RegistryObject<SimpleParticleType> particle) {
-        for(int i = 0; i < 360; i++) {
-            if(random.nextInt(0,20) == 5) {
-                this.level().addParticle(particle.get(),
-                        blockPosition().getX() + 1d, blockPosition().getY(), blockPosition().getZ() + 1d,
-                        Math.cos(i) * 0.3d, 0.15d + random.nextDouble()*0.1d, Math.sin(i) * 0.3d);
-                
+    public void eatItem(ItemStack itemStack,int moodAdd){
+        if (this.level() instanceof ServerLevel serverLevel)
+            triggerAnim("feedController", "feed");
+        this.moodManager.addMoodPoints(moodAdd);
+        particleManager.spawnItemParticles(itemStack, 16);
+        itemStack.shrink(1);
+    }
+
+    public void resetAttackGoals() {
+        if (!this.level().isClientSide) {
+            this.goalSelector.removeGoal(this.meleeGoal);
+            this.goalSelector.removeGoal(this.rangedGoal);
+
+            if(ticksToShootAnim > 0){
+                this.ticksToShootAnim = -this.random.nextInt(50,this.getAttackStat()<this.getSpAttackStat()?500:250);
+                this.goalSelector.addGoal(1, this.rangedGoal);
+            }else {
+                this.ticksToShootAnim = this.random.nextInt(50,this.getAttackStat()>this.getSpAttackStat()?500:250);
+                this.goalSelector.addGoal(1, this.meleeGoal);
             }
         }
     }
-
-    public void spawnBubbleParticle(RegistryObject<SimpleParticleType> particle) {
-        for(int i = 0; i < 360; i++) {
-            if(random.nextInt(0,100) == 1){
-                this.level().addParticle(particle.get(),
-                        this.blockPosition().getX() , blockPosition().getY() + this.getDimensions(Pose.STANDING).height + 0.5f, this.blockPosition().getZ(),
-                        0, 0.05d + random.nextDouble() * 0.01d, 0);
-                break;
-            }
-        }
-    }
-
-    public void doShoot(){
-        if(getTarget() != null){this.lookControl.setLookAt(this.getTarget());}
-
-        CustomProjectile bullet = new CustomProjectile(DigitalEntities.BULLET.get(), this.level());
-        bullet.setPos(new Vec3(this.position().x, this.position().y + 1, this.position().z));
-        bullet.shootFromRotation(this, this.getXRot(), this.getYHeadRot(), 0, 1, 1);
-        bullet.setYRot(this.getYHeadRot());
-        bullet.setOwner(this);
-        this.level().addFreshEntity(bullet);
-    }
-
-    public int calculateDamage(int attack, int defense){return Math.max(1, attack - defense);}
 
     //Animations
     protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
@@ -767,9 +898,14 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
         return new AnimationController<>(digimon,"movement", 5, event ->{
             if(digimon.isEvolving()){
                 event.getController().setAnimation(RawAnimation.begin().then("show", Animation.LoopType.LOOP));
-            } else if(digimon.getMovementID() == 0){
-                event.getController().setAnimation(RawAnimation.begin().then(digimon.sitAnim(), Animation.LoopType.LOOP));
-            } else if(digimon.getMovementID() == 1){
+                return PlayState.CONTINUE;
+            }
+            if(digimon.getMovementID() == 0){
+                event.getController().setAnimation(RawAnimation.begin().then(digimon.sitAnim(), Animation.LoopType.HOLD_ON_LAST_FRAME));
+                return PlayState.CONTINUE;
+            }
+
+            if(digimon.getMovementID() == 1 || digimon.getMovementID() == -1 ){
                 if(event.isMoving()){
                     event.getController().setAnimation(RawAnimation.begin().then(digimon.walkAnim(), Animation.LoopType.LOOP));
                 } else {
@@ -778,25 +914,23 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity {
             } else if (digimon.getMovementID() == 2){
                 event.getController().setAnimation(RawAnimation.begin().then(digimon.flyAnim(), Animation.LoopType.LOOP));
             }
+
             return PlayState.CONTINUE;
         });
     }
 
-    private PlayState attackPredicate(AnimationState state){
-        if(this.swinging && state.getController().getAnimationState().equals(AnimationController.State.STOPPED)){
-            state.getController().forceAnimationReset();
-            state.getController().setAnimation(RawAnimation.begin().then(this.attackAnim(), Animation.LoopType.PLAY_ONCE));
-            this.swinging = false;
-        }
-        return PlayState.CONTINUE;
-    }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(animController(this));
-        controllers.add(new AnimationController(this, "attackController", 5,this::attackPredicate));
-    }
 
+        controllers.add(new AnimationController<>(this, "attackController", state -> PlayState.STOP)
+                .triggerableAnim("attack", RawAnimation.begin().then(this.attackAnim(), Animation.LoopType.PLAY_ONCE)));
+        controllers.add(new AnimationController<>(this, "feedController", state -> PlayState.STOP)
+                .triggerableAnim("feed", RawAnimation.begin().then("xp", Animation.LoopType.PLAY_ONCE)));
+        controllers.add(new AnimationController<>(this, "shootController", state -> PlayState.STOP)
+                .triggerableAnim("shoot", RawAnimation.begin().then(this.shootAnim(), Animation.LoopType.PLAY_ONCE)));
+    }
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.factory;

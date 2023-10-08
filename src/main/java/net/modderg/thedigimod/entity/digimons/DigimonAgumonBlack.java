@@ -27,8 +27,8 @@ public class DigimonAgumonBlack extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "rookie";
+    public int evoStage() {
+        return 1;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class DigimonAgumonBlack extends CustomDigimon {
     }
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BOTAMOND};
+        return new RegistryObject[]{DigiItems.BOTAMON};
     }
     @Override
     protected RegistryObject<?> xpDrop() {
@@ -72,7 +72,7 @@ public class DigimonAgumonBlack extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath2() {
-        return this.getMood().equals("Sad");
+        return this.moodManager.getMood().equals("Sad");
     }
 
     @Override
@@ -81,7 +81,7 @@ public class DigimonAgumonBlack extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath3() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(0) >= 50 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
+        return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(0) >= 50 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class DigimonAgumonBlack extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(7) >= 25 && this.getSpecificXps(0) >= 25 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
+        return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(7) >= 25 && this.getSpecificXps(0) >= 25 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 
     @Override
@@ -99,6 +99,6 @@ public class DigimonAgumonBlack extends CustomDigimon {
     }
     @Override
     protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(7) >= 50 && this.getCareMistakesStat() <= 5 && this.getBattlesStat() >= 10;
+        return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(7) >= 50 && this.getCareMistakesStat() <= 5 && this.getBattlesStat() >= 10;
     }
 }

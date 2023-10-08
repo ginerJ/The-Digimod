@@ -26,8 +26,8 @@ public class DigimonDarkLizzardmon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "champion";
+    public int evoStage() {
+        return 2;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class DigimonDarkLizzardmon extends CustomDigimon {
     }
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BOTAMOND};
+        return new RegistryObject[]{DigiItems.BOTAMON};
     }
     @Override
     protected RegistryObject<?> xpDrop() {

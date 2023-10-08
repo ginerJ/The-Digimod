@@ -25,7 +25,7 @@ public class LiraGood extends AbstractTrainingGood {
 
     @Override
     public String statName() {
-        return "spdefense";
+        return "spdefence";
     }
     @Override
     public String goodName() {

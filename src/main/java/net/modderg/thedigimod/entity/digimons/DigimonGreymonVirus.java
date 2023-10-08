@@ -1,5 +1,6 @@
 package net.modderg.thedigimod.entity.digimons;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
@@ -25,9 +26,15 @@ public class DigimonGreymonVirus extends CustomDigimon {
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
+    protected boolean isDigimonMountable(){return true;}
     @Override
-    public String evoStage() {
-        return "champion";
+    protected void positionRider(Entity entity, MoveFunction moveF) {
+        if (this.hasPassenger(entity)) {moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset() + 0.1f, this.getZ());}
+    }
+
+    @Override
+    public int evoStage() {
+        return 2;
     }
 
     @Override
@@ -35,7 +42,7 @@ public class DigimonGreymonVirus extends CustomDigimon {
         return "Greymon(Virus)";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BOTAMON, DigiItems.BOTAMOND};}
+    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BOTAMON};}
     @Override
     protected RegistryObject<?> xpDrop() {
         return DigiItems.NIGHTMARE_DATA;

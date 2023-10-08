@@ -27,8 +27,8 @@ public class DigimonYaamon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "baby2";
+    public int evoStage() {
+        return 0;
     }
 
     @Override

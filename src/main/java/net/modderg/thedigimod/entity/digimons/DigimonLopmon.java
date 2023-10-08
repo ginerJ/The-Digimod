@@ -27,8 +27,8 @@ public class DigimonLopmon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "rookie";
+    public int evoStage() {
+        return 1;
     }
 
     @Override
@@ -74,24 +74,24 @@ public class DigimonLopmon extends CustomDigimon {
     protected EntityType evoPath2() {return DigitalEntities.NUMEMON.get();}
     @Override
     protected Boolean canEvoToPath2() {
-        return this.getMood().equals("Sad");
+        return this.moodManager.getMood().equals("Sad");
+    }
+
+    @Override
+    protected EntityType evoPath3() {
+        return DigitalEntities.WENDIMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath3() {
+        return this.moodManager.getMood().equals("Sad") && this.getSpecificXps(7) >= 50 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
     }
 
     @Override
     protected EntityType evoPath4() {
-        return DigitalEntities.WENDIMON.get();
-    }
-    @Override
-    protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Sad") && this.getSpecificXps(7) >= 50 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
-    }
-
-    @Override
-    protected EntityType evoPath5() {
         return DigitalEntities.TURUIEMON.get();
     }
     @Override
-    protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(1) >= 25 && this.getSpecificXps(8) >= 25 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
+    protected Boolean canEvoToPath4() {
+        return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(1) >= 25 && this.getSpecificXps(8) >= 25 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 }

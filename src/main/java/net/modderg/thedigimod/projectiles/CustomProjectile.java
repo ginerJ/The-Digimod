@@ -28,7 +28,7 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
         return attack;
     }
 
-    public int life = 80;
+    public int life = 100;
 
     public CustomProjectile(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_) {
         super(p_36721_, p_36722_);
@@ -50,13 +50,15 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
 
     @Override
     protected void onHitEntity(EntityHitResult hitted) {
-        if(hitted.getEntity() instanceof CustomDigimon hcd && this.getOwner() instanceof CustomDigimon cd){
-            if(!(hcd.getOwner() != null && cd.getOwner() != null && cd.getOwner().is(hcd.getOwner()))){
-                hcd.hurt(this.damageSources().mobAttack(cd), cd.calculateDamage(
-                        cd.getSpAttackStat() + cd.getCurrentLevel(),
-                        hcd.getSpDefenceStat() + hcd.getCurrentLevel()
-                ));}
-        }else {super.onHitEntity(hitted);}
+        if(this.getOwner() instanceof CustomDigimon cd){
+            if(hitted.getEntity() instanceof CustomDigimon hcd){
+                if(!(hcd.getOwner() != null && cd.getOwner() != null && cd.getOwner().is(hcd.getOwner()))){
+                    hcd.hurt(this.damageSources().mobAttack(cd), cd.calculateDamage(
+                            cd.getSpAttackStat() + cd.getCurrentLevel(),
+                            hcd.getSpDefenceStat() + hcd.getCurrentLevel()
+                    ));}
+            }else {super.onHitEntity(hitted);}
+        }
         this.remove(RemovalReason.UNLOADED_TO_CHUNK);
     }
 

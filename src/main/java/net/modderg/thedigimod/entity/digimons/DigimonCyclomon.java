@@ -1,5 +1,6 @@
 package net.modderg.thedigimod.entity.digimons;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
@@ -25,9 +26,11 @@ public class DigimonCyclomon extends CustomDigimon {
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
+    protected boolean isDigimonMountable(){return true;}
+
     @Override
-    public String evoStage() {
-        return "champion";
+    public int evoStage() {
+        return 2;
     }
 
     @Override

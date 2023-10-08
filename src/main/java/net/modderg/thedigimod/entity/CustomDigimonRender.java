@@ -40,21 +40,23 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
         } else if (entity.isChampion()){
             stack.scale(1.1f,1.1f,1.1f);
         }
-        var renderNameTagEvent = new net.minecraftforge.client.event.RenderNameTagEvent(entity, entity.getDisplayName(), this, stack, bufferIn, packedLightIn, partialTicks);
-        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(renderNameTagEvent);
-        MutableComponent mp = MutableComponent.create(Component.literal(xpBarMath( entity.getNeededXp(), entity.getLevelXp(), 30)).getContents());
-        mp.setStyle(XpStyle.withColor(TextColor.fromRgb(11534335)));
-        MutableComponent mp2 = MutableComponent.create(Component.literal(entity.getMood()).getContents());
-        mp2.setStyle(XpStyle.withColor(TextColor.fromRgb(entity.getMoodColor())));
-        MutableComponent mp3 = MutableComponent.create(Component.literal(Integer.toString(Math.round(entity.getHealth())) + "/" + (int)entity.getAttribute(Attributes.MAX_HEALTH).getValue() + "Hp").getContents());
-        int lifes = entity.getLifes();
-        mp3.setStyle(XpStyle.withColor(TextColor.fromRgb(entity.getLifes() == 3 ? 8704641 : (entity.getLifes() == 2 ? 0xFFFF00 : 0xFF0000))));
-        if (renderNameTagEvent.getResult() != net.minecraftforge.eventbus.api.Event.Result.DENY && (renderNameTagEvent.getResult() == net.minecraftforge.eventbus.api.Event.Result.ALLOW || this.shouldShowName(entity))) {
-            if(entity.isTame()){
-                this.renderXp(entity, mp, stack, bufferIn, packedLightIn);
-                this.renderMood(entity, mp2, stack, bufferIn, packedLightIn);
+        if(!entity.isControlledByLocalInstance()){
+            var renderNameTagEvent = new net.minecraftforge.client.event.RenderNameTagEvent(entity, entity.getDisplayName(), this, stack, bufferIn, packedLightIn, partialTicks);
+            net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(renderNameTagEvent);
+            MutableComponent mp = MutableComponent.create(Component.literal(xpBarMath( entity.getNeededXp(), entity.getLevelXp(), 30)).getContents());
+            mp.setStyle(XpStyle.withColor(TextColor.fromRgb(11534335)));
+            MutableComponent mp2 = MutableComponent.create(Component.literal(entity.moodManager.getMood()).getContents());
+            mp2.setStyle(XpStyle.withColor(TextColor.fromRgb(entity.moodManager.getMoodColor())));
+            MutableComponent mp3 = MutableComponent.create(Component.literal(Integer.toString(Math.round(entity.getHealth())) + "/" + (int)entity.getAttribute(Attributes.MAX_HEALTH).getValue() + "Hp").getContents());
+            int lifes = entity.getLifes();
+            mp3.setStyle(XpStyle.withColor(TextColor.fromRgb(entity.getLifes() == 3 ? 8704641 : (entity.getLifes() == 2 ? 0xFFFF00 : 0xFF0000))));
+            if (renderNameTagEvent.getResult() != net.minecraftforge.eventbus.api.Event.Result.DENY && (renderNameTagEvent.getResult() == net.minecraftforge.eventbus.api.Event.Result.ALLOW || this.shouldShowName(entity))) {
+                if(entity.isTame()){
+                    this.renderXp(entity, mp, stack, bufferIn, packedLightIn);
+                    this.renderMood(entity, mp2, stack, bufferIn, packedLightIn);
+                }
+                this.renderHp(entity, mp3, stack, bufferIn, packedLightIn);
             }
-            this.renderHp(entity, mp3, stack, bufferIn, packedLightIn);
         }
         super.render(entity, entityYaw, partialTicks, stack, bufferIn, packedLightIn);
     }

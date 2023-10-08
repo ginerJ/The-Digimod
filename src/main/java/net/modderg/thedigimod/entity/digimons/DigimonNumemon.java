@@ -27,8 +27,8 @@ public class DigimonNumemon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "champion";
+    public int evoStage() {
+        return 2;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class DigimonNumemon extends CustomDigimon {
     }
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BOTAMON,DigiItems.BOTAMOND,DigiItems.CONOMON,DigiItems.PUYOMON,
+        return new RegistryObject[]{DigiItems.BOTAMON,DigiItems.CONOMON,DigiItems.PUYOMON,
                 DigiItems.NYOKIMON,DigiItems.PUNIMON,DigiItems.JYARIMON,DigiItems.PETITMON};
     }
     @Override
@@ -60,5 +60,9 @@ public class DigimonNumemon extends CustomDigimon {
     @Override
     protected String attackAnim() {
         return "attack2";
+    }
+    @Override
+    protected String shootAnim() {
+        return "shoot4";
     }
 }

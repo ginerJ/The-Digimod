@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "ioi",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "item": "thedigimod:nightmare_data"
+    },
+    "o": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "thedigimod:dark_tower_shard",
+    "count": 1
+  }
+}

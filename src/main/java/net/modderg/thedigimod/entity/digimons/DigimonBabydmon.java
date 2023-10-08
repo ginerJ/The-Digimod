@@ -27,8 +27,8 @@ public class DigimonBabydmon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "baby2";
+    public int evoStage() {
+        return 0;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class DigimonBabydmon extends CustomDigimon {
 
     @Override
     protected String idleAnim() {
-        return "idle";
+        return "idle3";
     }
     @Override
     protected String walkAnim() {
@@ -63,6 +63,11 @@ public class DigimonBabydmon extends CustomDigimon {
     @Override
     protected String flyAnim() {
         return "bug_fly";
+    }
+
+    @Override
+    protected String shootAnim() {
+        return "shoot4";
     }
 
     @Override

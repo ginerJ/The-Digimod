@@ -1,5 +1,6 @@
 package net.modderg.thedigimod.entity.digimons;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
@@ -25,9 +26,17 @@ public class DigimonKuwagamon extends CustomDigimon {
                 .add(Attributes.FLYING_SPEED, 0.15D);
     }
 
+    protected boolean isDigimonMountable(){return true;}
+
     @Override
-    public String evoStage() {
-        return "champion";
+    protected void positionRider(Entity entity, MoveFunction moveF) {
+        if (this.hasPassenger(entity)) {moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset() - 0.3, this.getZ());}
+    }
+
+
+    @Override
+    public int evoStage() {
+        return 2;
     }
 
     @Override
@@ -35,7 +44,7 @@ public class DigimonKuwagamon extends CustomDigimon {
         return "Kuwagamon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BUBBMON, DigiItems.BUBBMONK};}
+    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BUBBMON};}
     @Override
     protected RegistryObject<?> xpDrop() {
         return DigiItems.PLANTINSECT_DATA;

@@ -33,9 +33,6 @@ public class DigitalParticles {
     public static final RegistryObject<SimpleParticleType> HEALTH_UP =
             PARTICLE_TYPES.register( "health_up", () -> new SimpleParticleType(true));
 
-    public static final RegistryObject<SimpleParticleType> XP_PARTICLE =
-            PARTICLE_TYPES.register( "xp_particle", () -> new SimpleParticleType(true));
-
     public static final RegistryObject<SimpleParticleType> LIFE_PARTICLE =
             PARTICLE_TYPES.register( "life_particle", () -> new SimpleParticleType(true));
 

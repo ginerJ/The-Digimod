@@ -11,20 +11,30 @@ import net.modderg.thedigimod.entity.digimons.*;
 import net.modderg.thedigimod.goods.*;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class DigitalEntities {
 
     public static DeferredRegister<EntityType<?>> DIGIMONS = DeferredRegister.create(
             ForgeRegistries.ENTITY_TYPES, TheDigiMod.MOD_ID);
 
+    public static Map<String, RegistryObject<EntityType<?>>> digimonMap;
+
+    public static void init() {
+        List<RegistryObject<EntityType<?>>> digimonList = DIGIMONS.getEntries().stream().toList();
+        List<String> digimonNameList = DIGIMONS.getEntries().stream().map(e -> e.getId().getPath()).toList();
+
+        digimonMap = IntStream.range(0, digimonNameList.size())
+                .boxed()
+                .collect(Collectors.toMap(digimonNameList::get, digimonList::get));
+    }
     public static final RegistryObject<EntityType<DigimonKoromon>> KOROMON = DIGIMONS.register("koromon",
             () -> EntityType.Builder.of(DigimonKoromon:: new, MobCategory.CREATURE)
                     .sized(0.9f,0.9f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "koromon").toString()));
-
-    public static final RegistryObject<EntityType<DigimonKoromonB>> KOROMONB = DIGIMONS.register("koromonb",
-            () -> EntityType.Builder.of(DigimonKoromonB:: new, MobCategory.CREATURE)
-                    .sized(0.9f,0.9f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "koromonb").toString()));
 
     public static final RegistryObject<EntityType<DigimonKokomon>> KOKOMON = DIGIMONS.register("kokomon",
             () -> EntityType.Builder.of(DigimonKokomon:: new, MobCategory.CREATURE)
@@ -40,11 +50,6 @@ public class DigitalEntities {
             () -> EntityType.Builder.of(DigimonMochimon:: new, MobCategory.CREATURE)
                     .sized(0.9f,0.9f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "mochimon").toString()));
-
-    public static final RegistryObject<EntityType<DigimonMochimonK>> MOCHIMONK = DIGIMONS.register("mochimonk",
-            () -> EntityType.Builder.of(DigimonMochimonK:: new, MobCategory.CREATURE)
-                    .sized(0.9f,0.9f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "mochimonk").toString()));
 
     public static final RegistryObject<EntityType<DigimonTsunomon>> TSUNOMON = DIGIMONS.register("tsunomon",
             () -> EntityType.Builder.of(DigimonTsunomon:: new, MobCategory.CREATURE)
@@ -73,7 +78,7 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<DigimonFlymon>> FLYMON = DIGIMONS.register("flymon",
             () -> EntityType.Builder.of(DigimonFlymon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2f)
+                    .sized(1.5f,1.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "flymon").toString()));
 
     public static final RegistryObject<EntityType<DigimonGreymon>> GREYMON = DIGIMONS.register("greymon",
@@ -118,12 +123,12 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<DigimonJellymon>> JELLYMON = DIGIMONS.register("jellymon",
             () -> EntityType.Builder.of(DigimonJellymon:: new, MobCategory.CREATURE)
-                    .sized(1f,1.75f)
+                    .sized(1f,1.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "jellymon").toString()));
 
     public static final RegistryObject<EntityType<DigimonTeslajellymon>> TESLAJELLYMON = DIGIMONS.register("teslajellymon",
             () -> EntityType.Builder.of(DigimonTeslajellymon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2.25f)
+                    .sized(1.0f,1.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "teslajellymon").toString()));
 
     public static final RegistryObject<EntityType<DigimonGrowlmon>> GROWLMON = DIGIMONS.register("growlmon",
@@ -136,10 +141,10 @@ public class DigitalEntities {
                     .sized(1.25f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "growlmondata").toString()));
 
-    public static final RegistryObject<EntityType<DigimonBlackGrowlmon>> BLACK_GROWLMON = DIGIMONS.register("black_growlmon",
+    public static final RegistryObject<EntityType<DigimonBlackGrowlmon>> BLACK_GROWLMON = DIGIMONS.register("blackgrowlmon",
             () -> EntityType.Builder.of(DigimonBlackGrowlmon:: new, MobCategory.CREATURE)
                     .sized(1.25f,2.25f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "black_growlmon").toString()));
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "blackgrowlmon").toString()));
 
     public static final RegistryObject<EntityType<DigimonKuwagamon>> KUWAGAMON = DIGIMONS.register("kuwagamon",
             () -> EntityType.Builder.of(DigimonKuwagamon:: new, MobCategory.CREATURE)
@@ -193,7 +198,7 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<DigimonDarkTyrannomon>> DARKTYRANNOMON = DIGIMONS.register("darktyrannomon",
             () -> EntityType.Builder.of(DigimonDarkTyrannomon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2.0f)
+                    .sized(1.0f,2.2f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "darktyrannomon").toString()));
 
     public static final RegistryObject<EntityType<DigimonTyrannomon>> TYRANNOMON = DIGIMONS.register("tyrannomon",
@@ -293,7 +298,7 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<DigimonWendimon>> WENDIMON = DIGIMONS.register("wendimon",
             () -> EntityType.Builder.of(DigimonWendimon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2f)
+                    .sized(1.25f,2.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "wendimon").toString()));
 
     public static final RegistryObject<EntityType<DigimonImpmon>> IMPMON = DIGIMONS.register("impmon",

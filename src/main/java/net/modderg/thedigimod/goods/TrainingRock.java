@@ -25,7 +25,7 @@ public class TrainingRock extends AbstractTrainingGood {
 
     @Override
     public String statName() {
-        return "defense";
+        return "defence";
     }
     @Override
     public String goodName() {

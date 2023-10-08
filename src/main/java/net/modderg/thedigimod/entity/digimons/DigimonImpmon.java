@@ -27,8 +27,8 @@ public class DigimonImpmon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "rookie";
+    public int evoStage() {
+        return 1;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class DigimonImpmon extends CustomDigimon {
         return "sit9";
     }
     @Override
-    protected String attackAnim() {return "attack";}
+    protected String attackAnim() {return "attack7";}
     @Override
     protected String shootAnim() {
         return "shoot";
@@ -73,30 +73,30 @@ public class DigimonImpmon extends CustomDigimon {
     }
 
     @Override
-    protected EntityType evoPath3() {
+    protected EntityType evoPath2() {
         return DigitalEntities.BAKEMON.get();
     }
     @Override
+    protected Boolean canEvoToPath2() {
+        return this.moodManager.getMood().equals("Sad");
+    }
+
+    @Override
+    protected EntityType evoPath3() {
+        return DigitalEntities.ICEDEVIMON.get();
+    }
+    @Override
     protected Boolean canEvoToPath3() {
-        return this.getMood().equals("Sad");
+        return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(3) >= 25 && this.getSpecificXps(7) >= 25 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
     }
 
     @Override
     protected EntityType evoPath4() {
-        return DigitalEntities.ICEDEVIMON.get();
-    }
-    @Override
-    protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(3) >= 25 && this.getSpecificXps(7) >= 25 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
-    }
-
-    @Override
-    protected EntityType evoPath5() {
         return DigitalEntities.WIZARDMON.get();
     }
     @Override
-    protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(7) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
+    protected Boolean canEvoToPath4() {
+        return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(7) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 
 }

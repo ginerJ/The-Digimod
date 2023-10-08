@@ -27,8 +27,8 @@ public class DigimonTsunomon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "baby2";
+    public int evoStage() {
+        return 0;
     }
 
     @Override
@@ -57,6 +57,11 @@ public class DigimonTsunomon extends CustomDigimon {
     @Override
     protected String attackAnim() {
         return "attack2";
+    }
+
+    @Override
+    protected String shootAnim() {
+        return "shoot4";
     }
 
     @Override

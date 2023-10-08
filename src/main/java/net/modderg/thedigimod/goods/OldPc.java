@@ -25,7 +25,7 @@ public class OldPc extends AbstractTrainingGood {
 
     @Override
     public String statName() {
-        return "defense";
+        return "defence";
     }
     @Override
     public String goodName() {

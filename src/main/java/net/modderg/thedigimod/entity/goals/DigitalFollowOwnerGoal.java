@@ -21,7 +21,7 @@ public class DigitalFollowOwnerGoal extends Goal {
     private static final int MIN_HORIZONTAL_DISTANCE_FROM_PLAYER_WHEN_TELEPORTING = 2;
     private static final int MAX_HORIZONTAL_DISTANCE_FROM_PLAYER_WHEN_TELEPORTING = 3;
     private static final int MAX_VERTICAL_DISTANCE_FROM_PLAYER_WHEN_TELEPORTING = 1;
-    private final TamableAnimal tamable;
+    private final CustomDigimon tamable;
     private LivingEntity owner;
     private final LevelReader level;
     private final double speedModifier;
@@ -50,7 +50,7 @@ public class DigitalFollowOwnerGoal extends Goal {
             return false;
         } else if (livingentity.isSpectator()) {
             return false;
-        } else if (this.tamable.isOrderedToSit()) {
+        } else if (this.tamable.isOrderedToSit() || this.tamable.getMovementID() == -1) {
             return false;
         } else if (this.tamable.distanceToSqr(livingentity) < (double)(this.startDistance * this.startDistance)) {
             return false;
@@ -63,7 +63,7 @@ public class DigitalFollowOwnerGoal extends Goal {
     public boolean canContinueToUse() {
         if (this.navigation.isDone()) {
             return false;
-        } else if (this.tamable.isOrderedToSit()) {
+        } else if (this.tamable.isOrderedToSit() || this.tamable.getMovementID() == -1) {
             return false;
         } else {
             return !(this.tamable.distanceToSqr(this.owner) <= (double)(this.stopDistance * this.stopDistance));

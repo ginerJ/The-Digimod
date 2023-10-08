@@ -27,8 +27,8 @@ public class DigimonMochimon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "baby2";
+    public int evoStage() {
+        return 0;
     }
 
     @Override
@@ -62,11 +62,24 @@ public class DigimonMochimon extends CustomDigimon {
     }
 
     @Override
+    protected String shootAnim() {
+        return "shoot4";
+    }
+
+    @Override
     protected EntityType evoPath() {
-        return DigitalEntities.TENTOMON.get();
+        return DigitalEntities.KUNEMON.get();
     }
     @Override
     protected Boolean canEvoToPath() {
         return true;
+    }
+    @Override
+    protected EntityType evoPath2() {
+        return DigitalEntities.TENTOMON.get();
+    }
+    @Override
+    protected Boolean canEvoToPath2() {
+        return this.moodManager.getMood().equals("Joyful");
     }
 }

@@ -44,7 +44,10 @@ public class TheDigiMod {
         DigitalCreativeTab.CREATIVE_TABS.register(bus);
         DigiItems.ITEMS.register(bus);
         DigiBlocks.BLOCKS.register(bus);
+
         DigitalEntities.DIGIMONS.register(bus);
+        DigitalEntities.init();
+
         DigitalParticles.PARTICLE_TYPES.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -57,15 +60,7 @@ public class TheDigiMod {
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
-            SpawnPlacements.register(DigitalEntities.KOROMONB.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
-
-        event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.MOCHIMON.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
-
-        event.enqueueWork(() -> {
-            SpawnPlacements.register(DigitalEntities.MOCHIMONK.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
@@ -351,10 +346,8 @@ public class TheDigiMod {
 
     private void setAttributes(final EntityAttributeCreationEvent event) {
         event.put(DigitalEntities.KOROMON.get(), DigimonKoromon.setCustomAttributes().build());
-        event.put(DigitalEntities.KOROMONB.get(), DigimonKoromonB.setCustomAttributes().build());
-        event.put(DigitalEntities.KOKOMON.get(), DigimonKoromonB.setCustomAttributes().build());
+        event.put(DigitalEntities.KOKOMON.get(), DigimonKokomon.setCustomAttributes().build());
         event.put(DigitalEntities.MOCHIMON.get(), DigimonMochimon.setCustomAttributes().build());
-        event.put(DigitalEntities.MOCHIMONK.get(), DigimonMochimonK.setCustomAttributes().build());
         event.put(DigitalEntities.AGUMON.get(), DigimonAgumon.setCustomAttributes().build());
         event.put(DigitalEntities.TENTOMON.get(), DigimonTentomon.setCustomAttributes().build());
         event.put(DigitalEntities.KABUTERIMON.get(), DigimonTentomon.setCustomAttributes().build());
@@ -450,10 +443,8 @@ public class TheDigiMod {
             event.accept(DigiItems.DIGIVICE_BURST);
             event.accept(DigiItems.DIGIVICE_IC);
 
-            event.accept(DigiItems.BOTAMOND);
             event.accept(DigiItems.BOTAMON);
             event.accept(DigiItems.BUBBMON);
-            event.accept(DigiItems.BUBBMONK);
             event.accept(DigiItems.PUNIMON);
             event.accept(DigiItems.JYARIMON);
             event.accept(DigiItems.PETITMON);
@@ -486,6 +477,7 @@ public class TheDigiMod {
 
             event.accept(DigiItems.DIGI_MEAT);
             event.accept(DigiItems.BLACK_DIGITRON);
+            event.accept(DigiItems.DARK_TOWER_SHARD);
 
             event.accept(DigiItems.TRAINING_BAG);
             event.accept(DigiItems.BAG_ITEM);

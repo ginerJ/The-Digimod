@@ -13,10 +13,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
-import net.modderg.thedigimod.item.CustomXpItem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.example.entity.DynamicExampleEntity;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
@@ -60,7 +58,7 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
     public boolean hurt(DamageSource source, float p_27568_) {
         if(source.getDirectEntity() instanceof CustomDigimon digimon && this.random.nextInt(4) == 2){
             int add = random.nextInt(min(), max());
-            digimon.restMoodPoints(10);
+            digimon.moodManager.restMoodPoints(10);
             if(statName().equals("attack")){
                 digimon.setAttackStat(digimon.getAttackStat() + add);
             }else if(statName().equals("defence")){
@@ -72,10 +70,9 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
             } else if(statName().equals("health")){
                 digimon.setHealthStat(digimon.getHealthStat() + add);
             }
-            if(getXpId() >= 0 && random.nextInt(0,4) == 1){
+            if(getXpId() >= 0 && random.nextInt(0,10) == 1){
                 digimon.useXpItem(getXpId());
             }
-            hurtTime = 100;
         }
         return super.hurt(source, p_27568_);
     }

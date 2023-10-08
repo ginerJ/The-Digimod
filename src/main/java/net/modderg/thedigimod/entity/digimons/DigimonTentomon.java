@@ -27,8 +27,8 @@ public class DigimonTentomon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "rookie";
+    public int evoStage() {
+        return 1;
     }
 
     @Override
@@ -65,20 +65,20 @@ public class DigimonTentomon extends CustomDigimon {
     }
 
     @Override
-    protected EntityType evoPath4() {
+    protected EntityType evoPath2() {
         return DigitalEntities.KABUTERIMON.get();
     }
     @Override
-    protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(2) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
+    protected Boolean canEvoToPath2() {
+        return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(2) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 
     @Override
-    protected EntityType evoPath5() {
+    protected EntityType evoPath3() {
         return DigitalEntities.ROACHMON.get();
     }
     @Override
-    protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Sad");
+    protected Boolean canEvoToPath3() {
+        return this.moodManager.getMood().equals("Sad");
     }
 }

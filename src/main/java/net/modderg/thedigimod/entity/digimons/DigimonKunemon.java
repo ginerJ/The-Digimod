@@ -27,8 +27,8 @@ public class DigimonKunemon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "rookie";
+    public int evoStage() {
+        return 1;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class DigimonKunemon extends CustomDigimon {
     }
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BUBBMONK};
+        return new RegistryObject[]{DigiItems.BUBBMON};
     }
     @Override
     protected RegistryObject<?> xpDrop() {
@@ -71,20 +71,20 @@ public class DigimonKunemon extends CustomDigimon {
     }
 
     @Override
-    protected EntityType evoPath4() {
+    protected EntityType evoPath2() {
         return DigitalEntities.FLYMON.get();
     }
     @Override
-    protected Boolean canEvoToPath4() {
-        return this.getMood().equals("Joyful") && this.getSpecificXps(2) >= 50;
+    protected Boolean canEvoToPath2() {
+        return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(2) >= 50;
     }
 
     @Override
-    protected EntityType evoPath5() {
+    protected EntityType evoPath3() {
         return DigitalEntities.ROACHMON.get();
     }
     @Override
-    protected Boolean canEvoToPath5() {
-        return this.getMood().equals("Sad");
+    protected Boolean canEvoToPath3() {
+        return this.moodManager.getMood().equals("Sad");
     }
 }

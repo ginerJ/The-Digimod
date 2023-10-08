@@ -22,12 +22,14 @@ public class DigimonFlymon extends CustomDigimon {
                 .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
-                .add(Attributes.FLYING_SPEED, 0.2D);
+                .add(Attributes.FLYING_SPEED, 0.15D);
     }
 
+    protected boolean isDigimonMountable(){return true;}
+
     @Override
-    public String evoStage() {
-        return "champion";
+    public int evoStage() {
+        return 2;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class DigimonFlymon extends CustomDigimon {
     }
     @Override
     protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BUBBMONK};
+        return new RegistryObject[]{DigiItems.BUBBMON};
     }
     @Override
     protected RegistryObject<?> xpDrop() {

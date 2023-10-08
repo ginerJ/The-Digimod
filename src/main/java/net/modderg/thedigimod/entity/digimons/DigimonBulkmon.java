@@ -25,9 +25,11 @@ public class DigimonBulkmon extends CustomDigimon {
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
+    protected boolean isDigimonMountable(){return true;}
+
     @Override
-    public String evoStage() {
-        return "champion";
+    public int evoStage() {
+        return 2;
     }
 
     @Override

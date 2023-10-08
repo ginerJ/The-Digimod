@@ -26,8 +26,8 @@ public class DigimonBlackGalgomon extends CustomDigimon {
     }
 
     @Override
-    public String evoStage() {
-        return "champion";
+    public int evoStage() {
+        return 2;
     }
 
     @Override

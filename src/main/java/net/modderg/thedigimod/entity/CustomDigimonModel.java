@@ -14,14 +14,14 @@ public class CustomDigimonModel<D extends CustomDigimon> extends GeoModel<Custom
     @Override
     public ResourceLocation getModelResource(CustomDigimon digimon) {
         return new ResourceLocation(TheDigiMod.MOD_ID, "geo/" +
-                digimon.getSpecies().toLowerCase().replace("(", "").replace(")","")
+                digimon.getLowerCaseSpecies()
                 + ".geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(CustomDigimon digimon) {
         return new ResourceLocation(TheDigiMod.MOD_ID, "textures/entities/" +
-                digimon.getSpecies().toLowerCase().replace("(", "").replace(")","")
+                digimon.getLowerCaseSpecies()
                 + ".png");
     }
 

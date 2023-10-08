@@ -162,7 +162,7 @@ public class EventBusSubscriber {
         return babies[rand.nextInt(babies.length)];
     }
 
-    static RegistryObject<?>[] babies = {DigiItems.BOTAMON, DigiItems.BOTAMOND, DigiItems.BUBBMON, DigiItems.BUBBMONK, DigiItems.PUNIMON,
+    static RegistryObject<?>[] babies = {DigiItems.BOTAMON,  DigiItems.BUBBMON, DigiItems.PUNIMON,
             DigiItems.JYARIMON,  DigiItems.PETITMON, DigiItems.PUYOMON, DigiItems.DOKIMON, DigiItems.NYOKIMON, DigiItems.CONOMON, DigiItems.KIIMON,
             DigiItems.POYOMON, DigiItems.SUNAMON};
 

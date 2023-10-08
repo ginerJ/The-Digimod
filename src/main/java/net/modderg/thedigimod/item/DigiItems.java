@@ -8,6 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.block.DigiBlocks;
 import net.modderg.thedigimod.entity.DigitalEntities;
+import net.modderg.thedigimod.item.custom.*;
 import net.modderg.thedigimod.particles.DigitalParticles;
 
 public class DigiItems {
@@ -15,9 +16,7 @@ public class DigiItems {
 
     //Babies
     public static final RegistryObject<Item> BOTAMON = ITEMS.register("botamon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.KOROMON, "Agumon"));
-    public static final RegistryObject<Item> BOTAMOND = ITEMS.register("botamond", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.KOROMONB, "Black Agumon"));
     public static final RegistryObject<Item> BUBBMON = ITEMS.register("bubbmon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.MOCHIMON, "Tentomon"));
-    public static final RegistryObject<Item> BUBBMONK = ITEMS.register("bubbmonk", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.MOCHIMONK, "Kunemon"));
     public static final RegistryObject<Item> PUNIMON = ITEMS.register("punimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.TSUNOMON, "Bearmon"));
     public static final RegistryObject<Item> JYARIMON = ITEMS.register("jyarimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.GIGIMON, "Guilmon"));
     public static final RegistryObject<Item> PETITMON = ITEMS.register("petitmon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.BABYDMON, "Dracomon"));
@@ -64,6 +63,7 @@ public class DigiItems {
     public static final RegistryObject<Item> TRAINING_BAG = ITEMS.register("training_bag", () -> new ContainerItem(new Item.Properties(), new RegistryObject[]{DigiItems.TABLE_ITEM, DigiItems.BAG_ITEM, DigiItems.SHIELD_ITEM, DigiItems.TARGET_ITEM, DigiItems.UPDATE_ITEM}));
     public static final RegistryObject<Item> BLACK_DIGITRON = ITEMS.register("black_digitron", () -> new DigitronItem(new Item.Properties(), DigitalParticles.DIGITRON_PARTICLES));
     public static final RegistryObject<Item> DIGI_CORE = ITEMS.register("digi_core", () -> new StatUpItem(new Item.Properties().stacksTo(1), "lifes"));
+    public static final RegistryObject<Item> DARK_TOWER_SHARD = ITEMS.register("dark_tower_shard", () -> new DarkTowerShardItem(new Item.Properties()));
 
     //training items
     public static final RegistryObject<Item> BAG_ITEM = ITEMS.register("bag_item", () -> new SpawnGoodItem(DigitalEntities.PUNCHING_BAG, 0x000000, 0xFFFFFF,new Item.Properties().stacksTo(1), "attack"));
