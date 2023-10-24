@@ -15,21 +15,25 @@ public class DigimonCyclomon extends CustomDigimon {
 
     public DigimonCyclomon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.idleAnim = "idle5";
+        this.walkAnim = "walk7";
+        this.sitAnim = "sit7";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 5.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.3D)
+                .add(Attributes.MOVEMENT_SPEED, 0.1D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
+    
+
     protected boolean isDigimonMountable(){return true;}
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -38,24 +42,11 @@ public class DigimonCyclomon extends CustomDigimon {
         return "Cyclomon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.SUNAMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.EARTH_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle5";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk7";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit7";
     }
 }

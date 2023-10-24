@@ -14,7 +14,8 @@ public class DigimonBulkmon extends CustomDigimon {
 
     public DigimonBulkmon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.sitAnim = "sit5";
+        this.attackAnim = "attack7";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -25,10 +26,12 @@ public class DigimonBulkmon extends CustomDigimon {
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
+    
+
     protected boolean isDigimonMountable(){return true;}
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -37,20 +40,11 @@ public class DigimonBulkmon extends CustomDigimon {
         return "Bulkmon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.DOKIMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.MACHINE_DATA;
-    }
-
-    @Override
-    protected String sitAnim() {
-        return "sit5";
-    }
-    @Override
-    protected String attackAnim() {
-        return "attack7";
     }
 }

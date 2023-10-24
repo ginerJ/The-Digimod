@@ -23,6 +23,7 @@ import net.modderg.thedigimod.gui.StatsGui;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.DigitalCreativeTab;
 import net.modderg.thedigimod.particles.DigitalParticles;
+import net.modderg.thedigimod.projectiles.DigitalProjectiles;
 import org.lwjgl.system.linux.Stat;
 
 import java.util.function.BiConsumer;
@@ -47,6 +48,8 @@ public class TheDigiMod {
 
         DigitalEntities.DIGIMONS.register(bus);
         DigitalEntities.init();
+        DigitalProjectiles.PROJECTILES.register(bus);
+        DigitalProjectiles.init();
 
         DigitalParticles.PARTICLE_TYPES.register(bus);
 
@@ -128,7 +131,7 @@ public class TheDigiMod {
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
-            SpawnPlacements.register(DigitalEntities.BLACK_GROWLMON.get(), SpawnPlacements.Type.ON_GROUND,
+            SpawnPlacements.register(DigitalEntities.BLACKGROWLMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
@@ -209,10 +212,6 @@ public class TheDigiMod {
 
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.GREYMONVIRUS.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
-
-        event.enqueueWork(() -> {
-            SpawnPlacements.register(DigitalEntities.DARKTYLIZZARDMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
@@ -342,82 +341,91 @@ public class TheDigiMod {
         event.enqueueWork(() -> {
             SpawnPlacements.register(DigitalEntities.ANGEMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.DARKLIZARDMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
+
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(DigitalEntities.FLARERIZAMON.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
     }
 
     private void setAttributes(final EntityAttributeCreationEvent event) {
-        event.put(DigitalEntities.KOROMON.get(), DigimonKoromon.setCustomAttributes().build());
-        event.put(DigitalEntities.KOKOMON.get(), DigimonKokomon.setCustomAttributes().build());
-        event.put(DigitalEntities.MOCHIMON.get(), DigimonMochimon.setCustomAttributes().build());
-        event.put(DigitalEntities.AGUMON.get(), DigimonAgumon.setCustomAttributes().build());
-        event.put(DigitalEntities.TENTOMON.get(), DigimonTentomon.setCustomAttributes().build());
-        event.put(DigitalEntities.KABUTERIMON.get(), DigimonTentomon.setCustomAttributes().build());
-        event.put(DigitalEntities.ROACHMON.get(), DigimonTentomon.setCustomAttributes().build());
-        event.put(DigitalEntities.FLYMON.get(), DigimonTentomon.setCustomAttributes().build());
-        event.put(DigitalEntities.GREYMON.get(), DigimonGreymon.setCustomAttributes().build());
-        event.put(DigitalEntities.TSUNOMON.get(), DigimonTsunomon.setCustomAttributes().build());
-        event.put(DigitalEntities.BEARMON.get(), DigimonTsunomon.setCustomAttributes().build());
-        event.put(DigitalEntities.GRIZZLYMON.get(), DigimonTsunomon.setCustomAttributes().build());
-        event.put(DigitalEntities.KUNEMON.get(), DigimonKunemon.setCustomAttributes().build());
-        event.put(DigitalEntities.GIGIMON.get(), DigimonGigimon.setCustomAttributes().build());
-        event.put(DigitalEntities.GUILMON.get(), DigimonGuilmon.setCustomAttributes().build());
-        event.put(DigitalEntities.PUYOYOMON.get(), DigimonPuyoyomon.setCustomAttributes().build());
-        event.put(DigitalEntities.JELLYMON.get(), DigimonJellymon.setCustomAttributes().build());
-        event.put(DigitalEntities.TESLAJELLYMON.get(), DigimonTeslajellymon.setCustomAttributes().build());
-        event.put(DigitalEntities.GROWLMON.get(), DigimonGrowlmon.setCustomAttributes().build());
-        event.put(DigitalEntities.GROWLMONDATA.get(), DigimonGrowlmonData.setCustomAttributes().build());
-        event.put(DigitalEntities.BLACK_GROWLMON.get(), DigimonBlackGrowlmon.setCustomAttributes().build());
-        event.put(DigitalEntities.KUWAGAMON.get(), DigimonKuwagamon.setCustomAttributes().build());
-        event.put(DigitalEntities.BABYDMON.get(), DigimonBabydmon.setCustomAttributes().build());
-        event.put(DigitalEntities.DRACOMON.get(), DigimonDracomon.setCustomAttributes().build());
-        event.put(DigitalEntities.COREDRAMON.get(), DigimonCoredramon.setCustomAttributes().build());
-        event.put(DigitalEntities.COREDRAMONGREEN.get(), DigimonCoredramonGreen.setCustomAttributes().build());
-        event.put(DigitalEntities.BIBIMON.get(), DigimonBibimon.setCustomAttributes().build());
-        event.put(DigitalEntities.PULSEMON.get(), DigimonPulsemon.setCustomAttributes().build());
-        event.put(DigitalEntities.BULKMON.get(), DigimonBulkmon.setCustomAttributes().build());
-        event.put(DigitalEntities.AGUMONBLACK.get(), DigimonAgumonBlack.setCustomAttributes().build());
-        event.put(DigitalEntities.DARKTYRANNOMON.get(), DigimonDarkTyrannomon.setCustomAttributes().build());
-        event.put(DigitalEntities.TYRANNOMON.get(), DigimonTyrannomon.setCustomAttributes().build());
-        event.put(DigitalEntities.VEEDRAMON.get(), DigimonVeedramon.setCustomAttributes().build());
-        event.put(DigitalEntities.CHAKMON.get(), DigimonChakmon.setCustomAttributes().build());
-        event.put(DigitalEntities.BLACKGAOGAMON.get(), DigimonBlackGaogamon.setCustomAttributes().build());
-        event.put(DigitalEntities.YOKOMON.get(), DigimonYokomon.setCustomAttributes().build());
-        event.put(DigitalEntities.BIYOMON.get(), DigimonBiyomon.setCustomAttributes().build());
-        event.put(DigitalEntities.BIRDRAMON.get(), DigimonBirdramon.setCustomAttributes().build());
-        event.put(DigitalEntities.SABERDRAMON.get(), DigimonSaberdramon.setCustomAttributes().build());
-        event.put(DigitalEntities.AKATORIMON.get(), DigimonAkatorimon.setCustomAttributes().build());
-        event.put(DigitalEntities.NAMAKEMON.get(), DigimonNamakemon.setCustomAttributes().build());
-        event.put(DigitalEntities.EXERMON.get(), DigimonExermon.setCustomAttributes().build());
-        event.put(DigitalEntities.GREYMONVIRUS.get(), DigimonGreymonVirus.setCustomAttributes().build());
-        event.put(DigitalEntities.DARKTYLIZZARDMON.get(), DigimonDarkLizzardmon.setCustomAttributes().build());
-        event.put(DigitalEntities.THUNDERBALLMON.get(), DigimonThunderballmon.setCustomAttributes().build());
-        event.put(DigitalEntities.RUNNERMON.get(), DigimonRunnermon.setCustomAttributes().build());
-        event.put(DigitalEntities.OCTOMON.get(), DigimonOctomon.setCustomAttributes().build());
-        event.put(DigitalEntities.GESOMON.get(), DigimonGesomon.setCustomAttributes().build());
-        event.put(DigitalEntities.AIRDRAMON.get(), DigimonAirdramon.setCustomAttributes().build());
-        event.put(DigitalEntities.LOPMON.get(), DigimonLopmon.setCustomAttributes().build());
-        event.put(DigitalEntities.BLACKGALGOMON.get(), DigimonBlackGalgomon.setCustomAttributes().build());
-        event.put(DigitalEntities.TURUIEMON.get(), DigimonTuruiemon.setCustomAttributes().build());
-        event.put(DigitalEntities.WENDIMON.get(), DigimonWendimon.setCustomAttributes().build());
-        event.put(DigitalEntities.YAAMON.get(), DigimonYaamon.setCustomAttributes().build());
-        event.put(DigitalEntities.IMPMON.get(), DigimonImpmon.setCustomAttributes().build());
-        event.put(DigitalEntities.NUMEMON.get(), DigimonNumemon.setCustomAttributes().build());
-        event.put(DigitalEntities.BAKEMON.get(), DigimonBakemon.setCustomAttributes().build());
-        event.put(DigitalEntities.ICEDEVIMON.get(), DigimonIceDevimon.setCustomAttributes().build());
-        event.put(DigitalEntities.WIZARDMON.get(), DigimonWizardmon.setCustomAttributes().build());
-        event.put(DigitalEntities.BOOGIEMON.get(), DigimonBoogiemon.setCustomAttributes().build());
-        event.put(DigitalEntities.TOKOMON.get(), DigimonTokomon.setCustomAttributes().build());
-        event.put(DigitalEntities.GOROMON.get(), DigimonGoromon.setCustomAttributes().build());
-        event.put(DigitalEntities.SUNARIZAMON.get(), DigimonSunarizamon.setCustomAttributes().build());
-        event.put(DigitalEntities.GOLEMON.get(), DigimonGolemon.setCustomAttributes().build());
-        event.put(DigitalEntities.BABOONGAMON.get(), DigimonBaboongamon.setCustomAttributes().build());
-        event.put(DigitalEntities.CYCLOMON.get(), DigimonCyclomon.setCustomAttributes().build());
-        event.put(DigitalEntities.TORTAMON.get(), DigimonTortamon.setCustomAttributes().build());
-        event.put(DigitalEntities.PATAMON.get(), DigimonPatamon.setCustomAttributes().build());
-        event.put(DigitalEntities.UNIMON.get(), DigimonUnimon.setCustomAttributes().build());
-        event.put(DigitalEntities.PEGASMON.get(), DigimonPegasmon.setCustomAttributes().build());
-        event.put(DigitalEntities.MIMICMON.get(), DigimonMimicmon.setCustomAttributes().build());
-        event.put(DigitalEntities.CENTALMON.get(), DigimonCentalmon.setCustomAttributes().build());
-        event.put(DigitalEntities.ANGEMON.get(), DigimonAngemon.setCustomAttributes().build());
+        event.put(DigitalEntities.KOROMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.KOKOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.MOCHIMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.AGUMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.TENTOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.KABUTERIMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.ROACHMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.FLYMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GREYMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.TSUNOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BEARMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GRIZZLYMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.KUNEMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GIGIMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GUILMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.PUYOYOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.JELLYMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.TESLAJELLYMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GROWLMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GROWLMONDATA.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BLACKGROWLMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.KUWAGAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BABYDMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.DRACOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.COREDRAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.COREDRAMONGREEN.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BIBIMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.PULSEMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BULKMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.AGUMONBLACK.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.DARKTYRANNOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.TYRANNOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.VEEDRAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.CHAKMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BLACKGAOGAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.YOKOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BIYOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BIRDRAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.SABERDRAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.AKATORIMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.NAMAKEMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.EXERMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GREYMONVIRUS.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.DARKLIZARDMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.FLARERIZAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.THUNDERBALLMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.RUNNERMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.OCTOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GESOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.AIRDRAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.LOPMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BLACKGALGOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.TURUIEMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.WENDIMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.YAAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.IMPMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.NUMEMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BAKEMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.ICEDEVIMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.WIZARDMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BOOGIEMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.TOKOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GOROMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.SUNARIZAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.GOLEMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.BABOONGAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.CYCLOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.TORTAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.PATAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.UNIMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.PEGASMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.MIMICMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.CENTALMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.ANGEMON.get(), CustomDigimon.setCustomAttributes().build());
 
         event.put(DigitalEntities.PUNCHING_BAG.get(), PunchingBag.setCustomAttributes().build());
         event.put(DigitalEntities.SP_TARGET.get(), SpTarget.setCustomAttributes().build());

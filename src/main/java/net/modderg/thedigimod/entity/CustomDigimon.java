@@ -15,6 +15,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
@@ -37,6 +38,7 @@ import net.modderg.thedigimod.entity.goals.DigitalFollowOwnerGoal;
 import net.modderg.thedigimod.entity.goals.DigitalHurtByTargetGoal;
 import net.modderg.thedigimod.entity.goals.DigitalMeleeAttackGoal;
 import net.modderg.thedigimod.entity.goals.DigitalRangedAttackGoal;
+import net.modderg.thedigimod.entity.managers.EvolutionCondition;
 import net.modderg.thedigimod.entity.managers.MoodManager;
 import net.modderg.thedigimod.entity.managers.ParticleManager;
 import net.modderg.thedigimod.goods.AbstractTrainingGood;
@@ -44,6 +46,7 @@ import net.modderg.thedigimod.item.*;
 import net.modderg.thedigimod.item.custom.DigiviceItem;
 import net.modderg.thedigimod.particles.DigitalParticles;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
+import net.modderg.thedigimod.projectiles.DigitalProjectiles;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -56,19 +59,29 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Objects;
 
 import static net.minecraft.world.entity.ai.attributes.Attributes.FLYING_SPEED;
+import static net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED;
 
 public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteerable, PlayerRideableJumping, RangedAttackMob {
 
-    public String getSpecies(){return "";}
+    public String getSpecies(){return null;}
     public String getLowerCaseSpecies(){return getSpecies().toLowerCase().replace("(", "").replace(")","");}
 
-    protected boolean isDigimonMountable(){return false;}
+    protected boolean isMountDigimon = false;
+    protected boolean isDigimonMountable(){return isMountDigimon;}
 
-    protected RegistryObject<?>[] reincarnateTo(){
-        return null;
+    protected RegistryObject<?>[] reincarnateTo = new RegistryObject[]{DigiItems.BOTAMON};
+    public RegistryObject<?>[] getReincarnateTo(){
+        return reincarnateTo;
     }
-    protected RegistryObject<?> xpDrop(){
-        return null;
+
+    public void setBabyAndXpDrop (RegistryObject[] babies, RegistryObject<?> xp){
+        reincarnateTo = babies;
+        xpDrop = xp;
+    }
+
+    protected RegistryObject<?> xpDrop = DigiItems.DRAGON_DATA;
+    public RegistryObject<?> getXpDrop(){
+        return xpDrop;
     }
 
     protected final int MAXLEVEL = 30;
@@ -76,12 +89,13 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     protected final int MAXULTIMATE = 500;
     public final int MAXMEGASTAT = 999;
 
-    public int evoStage(){return 0;}
+    protected int evoStage;
+    public int getEvoStage(){return evoStage;}
 
-    public Boolean isBaby2(){return evoStage() == 0;}
-    public Boolean isRookie(){return evoStage() == 1;}
-    public Boolean isChampion(){return evoStage() == 2;}
-    public Boolean isUltimate(){return evoStage() == 3;}
+    public Boolean isBaby2(){return getEvoStage() == 0;}
+    public Boolean isRookie(){return getEvoStage() == 1;}
+    public Boolean isChampion(){return getEvoStage() == 2;}
+    public Boolean isUltimate(){return getEvoStage() == 3;}
 
     //public Boolean isMega(){return evoStage().equals("mega");}
 
@@ -89,7 +103,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         return this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? MAXADULT: (this.isUltimate() ? MAXULTIMATE : MAXMEGASTAT)));
     }
 
-    protected Boolean isFlyingDigimon(){return false;}
+    public boolean canFlyDigimon = false;
+    protected Boolean isFlyingDigimon(){return canFlyDigimon;}
     //protected Boolean isSwimmerDigimon(){return false;}
 
     public Boolean evolutionLevelAchieved(){return (isRookie() && this.getCurrentLevel() > 15) || (isBaby2() && this.getCurrentLevel() > 5);}
@@ -107,29 +122,58 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         return this.getEntityData().get(FIRSTSPAWN);
     }
 
-    protected EntityType<CustomDigimon> evoPath(){return null;}
-    public CustomDigimon getEvoPath = evoPath() != null ? evoPath().create(this.level()): null;
-    protected Boolean canEvoToPath(){return false;}
+    public void setEvos(String evo1, String evo2, String evo3, String evo4, String evo5, String evo6){
+        if(evo1 != null){ digiEvoPath =DigitalEntities.digimonMap.get(evo1).get();}
+        if(evo2 != null){ digiEvoPath2 =DigitalEntities.digimonMap.get(evo2).get();}
+        if(evo3 != null){ digiEvoPath3 =DigitalEntities.digimonMap.get(evo3).get();}
+        if(evo4 != null){ digiEvoPath4 =DigitalEntities.digimonMap.get(evo4).get();}
+        if(evo5 != null){ digiEvoPath5 =DigitalEntities.digimonMap.get(evo5).get();}
+        if(evo6 != null){ digiEvoPath6 =DigitalEntities.digimonMap.get(evo6).get();}
 
-    protected EntityType<CustomDigimon> evoPath2(){return null;}
-    public CustomDigimon getEvoPath2 = evoPath2() != null ? evoPath2().create(this.level()): null;
-    protected Boolean canEvoToPath2(){return false;}
+        getEvoPath = digiEvoPath != null ? (CustomDigimon) digiEvoPath.create(this.level()) : null;
+        getEvoPath2 = digiEvoPath2 != null ? (CustomDigimon) digiEvoPath2.create(this.level()) : null;
+        getEvoPath3 = digiEvoPath3 != null ? (CustomDigimon) digiEvoPath3.create(this.level()) : null;
+        getEvoPath4 = digiEvoPath4 != null ? (CustomDigimon) digiEvoPath4.create(this.level()) : null;
+        getEvoPath5 = digiEvoPath5 != null ? (CustomDigimon) digiEvoPath5.create(this.level()) : null;
+        getEvoPath6 = digiEvoPath6 != null ? (CustomDigimon) digiEvoPath6.create(this.level()) : null;
+    }
 
-    protected EntityType<CustomDigimon> evoPath3(){return null;}
-    public CustomDigimon getEvoPath3 = evoPath3() != null ? evoPath3().create(this.level()): null;
-    protected Boolean canEvoToPath3(){return false;}
+    public EntityType digiEvoPath;
+    public EntityType digiEvoPath2;
+    public EntityType digiEvoPath3;
+    public EntityType digiEvoPath4;
+    public EntityType digiEvoPath5;
+    public EntityType digiEvoPath6;
 
-    protected EntityType<CustomDigimon> evoPath4(){return null;}
-    public CustomDigimon getEvoPath4 = evoPath4() != null ? evoPath4().create(this.level()): null;
-    protected Boolean canEvoToPath4(){return false;}
+    protected EvolutionCondition evoCondition;
+    protected EvolutionCondition evoCondition2;
+    protected EvolutionCondition evoCondition3;
+    protected EvolutionCondition evoCondition4;
+    protected EvolutionCondition evoCondition5;
+    protected EvolutionCondition evoCondition6;
 
-    protected EntityType<CustomDigimon> evoPath5(){return null;}
-    public CustomDigimon getEvoPath5 = evoPath5() != null ? evoPath5().create(this.level()): null;
-    protected Boolean canEvoToPath5(){return false;}
+    public CustomDigimon getEvoPath = null;
+    public CustomDigimon getEvoPath2 = null;
+    public CustomDigimon getEvoPath3 = null;
+    public CustomDigimon getEvoPath4 = null;
+    public CustomDigimon getEvoPath5 = null;
+    public CustomDigimon getEvoPath6 = null;
 
-    protected EntityType<CustomDigimon> evoPath6(){return null;}
-    public CustomDigimon getEvoPath6 = evoPath6() != null ? evoPath6().create(this.level()): null;
-    protected Boolean canEvoToPath6(){return false;}
+    protected Boolean canEvoToPath(){return evoCondition != null && evoCondition.checkConditions();}
+    protected Boolean canEvoToPath2(){return evoCondition2 != null && evoCondition2.checkConditions();}
+    protected Boolean canEvoToPath3(){return evoCondition3 != null && evoCondition3.checkConditions();}
+    protected Boolean canEvoToPath4(){return evoCondition4 != null && evoCondition4.checkConditions();}
+    protected Boolean canEvoToPath5(){return evoCondition5 != null && evoCondition5.checkConditions();}
+    protected Boolean canEvoToPath6(){return evoCondition6 != null && evoCondition6.checkConditions();}
+
+    //delete
+    protected EntityType<CustomDigimon> evoPath(){return digiEvoPath;}
+    protected EntityType<CustomDigimon> evoPath2(){return digiEvoPath2;}
+    protected EntityType<CustomDigimon> evoPath3(){return digiEvoPath3;}
+    protected EntityType<CustomDigimon> evoPath4(){return digiEvoPath4;}
+    protected EntityType<CustomDigimon> evoPath5(){return digiEvoPath5;}
+    protected EntityType<CustomDigimon> evoPath6(){return digiEvoPath6;}
+
 
     public EntityType<CustomDigimon> digitronEvo(){return null;}
 
@@ -146,18 +190,32 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     }
     private boolean activateName = false;
 
-    protected String idleAnim(){return "idle";}
-    protected String sitAnim(){return "sit";}
-    protected String walkAnim(){return "walk";}
-    protected String flyAnim(){return "fly";}
-    //protected String swimAnim(){return "swim";}
-    protected String attackAnim(){return "attack";}
-    protected String shootAnim(){return "shoot";}
-    protected String hurtAnim(){return "hurt";}
+    public void setAnimations(String ia, String sa, String wa, String fa, String ata, String sha){
+        if(ia != null){ idleAnim = ia;}
+        if(sa != null){ sitAnim = sa;}
+        if(wa != null){ walkAnim = wa;}
+        if(fa != null){ flyAnim = fa;}
+        if(ata != null){ attackAnim = ata;}
+        if(sha != null){ shootAnim = sha;}
+    }
 
+    protected String idleAnim= "idle";
+    protected String sitAnim= "sit";
+    protected String walkAnim="walk";
+    protected String flyAnim= "fly";
+    protected String attackAnim= "attack";
+    protected String shootAnim= "shoot";
+
+    protected static final EntityDataAccessor<String> SPMOVENAME = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
+    public void setSpMoveName(String i){
+        this.getEntityData().set(SPMOVENAME, i);
+    }
+    public String getSpMoveName(){
+        return this.getEntityData().get(SPMOVENAME);
+    }
 
     public MoodManager moodManager = new MoodManager(this);
-    public ParticleManager particleManager = new ParticleManager(this);
+    public ParticleManager particleManager = new ParticleManager();
     protected static final EntityDataAccessor<Integer> MOVEMENTID = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
     public void setMovementID(int i){
         this.getEntityData().set(MOVEMENTID, i);
@@ -227,11 +285,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         this.setHealth(MAXMEGASTAT);
     }
     public void restLifes(){
-        if(this.getLastAttacker() instanceof CustomDigimon cd) {
-            cd.setTarget(null);
-            cd.setAggressive(false);
-            cd.resetAttackGoals();
-        }
         this.setCareMistakesStat(this.getCareMistakesStat() + 1);
         this.setMovementID(0);
         this.getEntityData().set(LIFES,Math.max(0,this.getLifes()-1));
@@ -332,10 +385,21 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
     protected CustomDigimon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
+        this.setDigimon();
         this.switchNavigation(getMovementID());
         if(!this.hasCustomName()){this.setCustomName(Component.literal(getNickName()));
         } else {setCustomName(Component.literal(this.getNickName()));}
         resetAttackGoals();
+    }
+
+    public void setDigimon(){}
+
+    public static AttributeSupplier.Builder setCustomAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 5.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3D)
+                .add(Attributes.ATTACK_DAMAGE, 1D)
+                .add(Attributes.FLYING_SPEED, 0.15D);
     }
 
     @Override
@@ -420,6 +484,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         this.entityData.define(FIRSTSPAWN, true);
         this.entityData.define(LIFES, 1);
         this.entityData.define(PREEVO, "a-a-a-a-a");
+        this.entityData.define(SPMOVENAME, "bullet");
     }
 
     @Override
@@ -473,6 +538,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         if (compound.contains("PREEVO")) {
             this.setPreEvo(compound.getString("PREEVO"));
         }
+        if (compound.contains("SPMOVENAME")) {
+            this.setSpMoveName(compound.getString("SPMOVENAME"));
+        }
     }
 
     @Override
@@ -494,6 +562,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         compound.putBoolean("FIRSTSPAWN", this.getSpawn());
         compound.putInt("LIFES", this.getLifes());
         compound.putString("PREEVO", this.getPreEvo());
+        compound.putString("SPMOVENAME", this.getSpMoveName());
     }
 
     @Override
@@ -510,12 +579,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         if (this.isTame() && this.getOwnerUUID().equals(player.getUUID())) {
             if(player.isShiftKeyDown()){
                 this.changeMovementID();
-                this.switchNavigation(getMovementID());
                 return InteractionResult.CONSUME;
             }
             if(this.isDigimonMountable() && !this.isInSittingPose()){
                 if(!itemStack.isEmpty()) return super.mobInteract(player, hand);
                 player.startRiding(this);
+                if(this.getMovementID() == -1) this.setMovementID(1);
                 return InteractionResult.SUCCESS;
             }
         }
@@ -527,21 +596,21 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     String xps = this.getSpecificXps();
 
     public void checkChangeStats(){
-        if(attack != this.getAttackStat()){particleManager.spawnStatUpParticles(DigitalParticles.ATTACK_UP,1);
+        if(attack != this.getAttackStat()){particleManager.spawnStatUpParticles(DigitalParticles.ATTACK_UP,1, this);
             attack = this.getAttackStat();}
-        if(defence != this.getDefenceStat()){particleManager.spawnStatUpParticles(DigitalParticles.DEFENCE_UP,1);
+        if(defence != this.getDefenceStat()){particleManager.spawnStatUpParticles(DigitalParticles.DEFENCE_UP,1, this);
             defence = this.getDefenceStat();}
-        if(spattack != this.getSpAttackStat()){particleManager.spawnStatUpParticles(DigitalParticles.SPATTACK_UP,1);
+        if(spattack != this.getSpAttackStat()){particleManager.spawnStatUpParticles(DigitalParticles.SPATTACK_UP,1, this);
             spattack = this.getSpAttackStat();}
-        if(spdefence != this.getSpDefenceStat()){particleManager.spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP,1);
+        if(spdefence != this.getSpDefenceStat()){particleManager.spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP,1, this);
             spdefence = this.getSpDefenceStat();}
-        if(battles != this.getBattlesStat()){particleManager.spawnStatUpParticles(DigitalParticles.BATTLES_UP,1);
+        if(battles != this.getBattlesStat()){particleManager.spawnStatUpParticles(DigitalParticles.BATTLES_UP,1, this);
             battles = this.getBattlesStat();}
-        if(health != this.getHealthStat()){particleManager.spawnStatUpParticles(DigitalParticles.HEALTH_UP,1);
+        if(health != this.getHealthStat()){particleManager.spawnStatUpParticles(DigitalParticles.HEALTH_UP,1, this);
             health = this.getHealthStat();}
-        if(mistakes != this.getCareMistakesStat()){particleManager.spawnBubbleParticle(DigitalParticles.MISTAKE_BUBBLE);
+        if(mistakes != this.getCareMistakesStat()){particleManager.spawnBubbleParticle(DigitalParticles.MISTAKE_BUBBLE, this);
             mistakes = this.getCareMistakesStat();}
-        if(lifes != this.getLifes()){particleManager.spawnStatUpParticles(DigitalParticles.LIFE_PARTICLE,7);
+        if(lifes != this.getLifes()){particleManager.spawnStatUpParticles(DigitalParticles.LIFE_PARTICLE,7, this);
             lifes = this.getLifes();}
     }
 
@@ -552,12 +621,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         if(getEvoCount() == 1){this.evolveDigimon();}
 
         if(evoCount > 0){
-            particleManager.spawnEvoParticles(DigitalParticles.EVO_PARTICLES);
+            particleManager.spawnEvoParticles(DigitalParticles.EVO_PARTICLES, this);
             evoCount--;
         }
 
         if(this.moodManager.getMoodPoints() < 100 && this.isTame() && random.nextInt(0,150) == 1){
-            particleManager.spawnBubbleParticle(DigitalParticles.MEAT_BUBBLE);
+            particleManager.spawnBubbleParticle(DigitalParticles.MEAT_BUBBLE, this);
         }
 
         /*
@@ -607,7 +676,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
                     if (z <= 0) z *= 0.25f;
 
-                    this.setSpeed(0.3f);
+                    this.setSpeed((float)this.getAttribute(MOVEMENT_SPEED).getValue()*(float)this.getAttribute(MOVEMENT_SPEED).getValue()/0.2f);
 
                     if (getMovementID() == 2)
                     {
@@ -620,8 +689,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
                         if (getDeltaMovement().lengthSqr() < 0.1)
                             setDeltaMovement(getDeltaMovement().add(0, Math.sin(tickCount / 4f) * 0.03, 0));
                         setDeltaMovement(getDeltaMovement().scale(0.9f));
+
                     } else {
-                        super.travel(new Vec3((double) x, pos.y,  z));
+                        super.travel(new Vec3(x, pos.y,  z));
                     }
 
                 } else {
@@ -663,7 +733,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     @Override
     public void onPlayerJump(int p_21696_) {
         if (this.getMovementID() == 2) this.setMovementID(1);
-        else this.setMovementID(2);
+        else this.changeMovementID();
     }
 
     @Override
@@ -682,29 +752,28 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     }
 
     @Override
-    public void ejectPassengers() {
-        this.setMovementID(1);
-        super.ejectPassengers();
+    public boolean canBeLeashed(@NotNull Player player) {
+        return super.canBeLeashed(player)&&this.isOwnedBy(player);
     }
 
     @Override
     public void die(DamageSource source) {
         if(source.getEntity() instanceof CustomDigimon digimon) {
-            if (digimon.evoStage() == this.evoStage()) {
+            if (digimon.getEvoStage() == this.getEvoStage()) {
                 digimon.setBattlesStat(digimon.getBattlesStat() + 1);
             }
             if (!this.isTame() && random.nextInt(0, 50) < 2) {
                 this.level().addFreshEntity(new ItemEntity(level(),
-                        this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) reincarnateTo()[random.nextInt(reincarnateTo().length)].get())));
+                        this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) getReincarnateTo()[random.nextInt(getReincarnateTo().length)].get())));
             } else if (!this.isTame()) {
                 for (int i = 0; i < (this.isBaby2() ? 1 : this.isRookie() ? 5 : 15); i++) {
-                    this.level().addFreshEntity(new ItemEntity(level(), this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) xpDrop().get())));
+                    this.level().addFreshEntity(new ItemEntity(level(), this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) getXpDrop().get())));
                 }
             }
         }
         if(this.isTame()){
             this.level().addFreshEntity(new ItemEntity(level(),
-                    this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) reincarnateTo()[random.nextInt(reincarnateTo().length)].get())));
+                    this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) getReincarnateTo()[random.nextInt(getReincarnateTo().length)].get())));
         }
         super.die(source);
     }
@@ -718,7 +787,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     }
 
     @Override
-    public boolean doHurtTarget(Entity target) {
+    public boolean doHurtTarget(@NotNull Entity target) {
         if (this.level() instanceof ServerLevel serverLevel)
             triggerAnim("attackController", "attack");
         return target instanceof CustomDigimon cd ? cd.hurt(this.damageSources().mobAttack(this), calculateDamage(
@@ -738,7 +807,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
+    public AgeableMob getBreedOffspring(@NotNull ServerLevel p_146743_, @NotNull AgeableMob p_146744_) {
         return null;
     }
 
@@ -765,7 +834,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         evoD.copyOtherDigi(this);
 
         String[] prevos = this.getPreEvo().split("-");
-        prevos[this.evoStage()] = this.getLowerCaseSpecies();
+        prevos[this.getEvoStage()] = this.getLowerCaseSpecies();
         evoD.setPreEvo(String.join("-", prevos));
 
         this.level().addFreshEntity(evoD);
@@ -773,8 +842,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     }
 
     public void deEvolveDigimon(){
-        if(this.evoStage()-1 >= 0 && !this.getPreEvo().split("-")[this.evoStage()-1].equals("a")){
-            CustomDigimon prevo = (CustomDigimon) DigitalEntities.digimonMap.get(this.getPreEvo().split("-")[this.evoStage()-1]).get().create(this.level());
+        if(this.getEvoStage()-1 >= 0 && !this.getPreEvo().split("-")[this.getEvoStage()-1].equals("a")){
+            CustomDigimon prevo = (CustomDigimon) DigitalEntities.digimonMap.get(this.getPreEvo().split("-")[this.getEvoStage()-1]).get().create(this.level());
             prevo.copyOtherDigi(this);
 
             prevo.setAttackStat(prevo.getMaxStat()/4);
@@ -786,6 +855,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
             this.level().addFreshEntity(prevo);
             this.remove(RemovalReason.UNLOADED_TO_CHUNK);
         }
+    }
+
+    @Override
+    public void setOrderedToSit(boolean p_21840_) {
+        this.moveControl.strafe(0f,0f);
+        super.setOrderedToSit(p_21840_);
     }
 
     public void copyOtherDigi(CustomDigimon d){
@@ -850,29 +925,18 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     @Override
     public void performRangedAttack(@NotNull LivingEntity mob, float p_33318_){
         if(getTarget() != null){
-            if (this.level() instanceof ServerLevel serverLevel)
+            CustomProjectile bullet = (CustomProjectile) DigitalProjectiles.projectileMap.get(this.getSpMoveName()).get().create(this.level());
+            if (mob.level() instanceof ServerLevel)
                 triggerAnim("shootController", "shoot");
-            this.lookControl.setLookAt(this.getTarget());
-            CustomProjectile bullet = new CustomProjectile(DigitalEntities.BULLET.get(), this.level());
-            bullet.setPos(new Vec3(this.position().x, this.position().y + 1, this.position().z));
-            this.lookControl.setLookAt(this.getTarget());
-            double d0 = mob.getX() - this.getX();
-            double d1 = mob.getY(0.3333333333333333D) - bullet.getY();
-            double d2 = mob.getZ() - this.getZ();
-            double d3 = Math.sqrt(d0 * d0 + d2 * d2) * (double)0.2F;
-            bullet.shoot(d0, d1 + d3 * (double)0.2F, d2, 1.6F, (float)(14 - this.level().getDifficulty().getId() * 4));
-            bullet.setOwner(this);
-            this.level().addFreshEntity(bullet);
-            bullet.setOwner(this);
-            this.level().addFreshEntity(bullet);
+            bullet.performRangedAttack(this, mob);
         }
     }
 
     public void eatItem(ItemStack itemStack,int moodAdd){
-        if (this.level() instanceof ServerLevel serverLevel)
+        if (this.level() instanceof ServerLevel)
             triggerAnim("feedController", "feed");
         this.moodManager.addMoodPoints(moodAdd);
-        particleManager.spawnItemParticles(itemStack, 16);
+        particleManager.spawnItemParticles(itemStack, 16, this);
         itemStack.shrink(1);
     }
 
@@ -895,24 +959,24 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
     public static <T extends CustomDigimon & GeoEntity> AnimationController<T> animController(T digimon) {
-        return new AnimationController<>(digimon,"movement", 5, event ->{
+        return new AnimationController<>(digimon,"movement", 7, event ->{
             if(digimon.isEvolving()){
                 event.getController().setAnimation(RawAnimation.begin().then("show", Animation.LoopType.LOOP));
                 return PlayState.CONTINUE;
             }
-            if(digimon.getMovementID() == 0){
-                event.getController().setAnimation(RawAnimation.begin().then(digimon.sitAnim(), Animation.LoopType.HOLD_ON_LAST_FRAME));
+            if(digimon.isInSittingPose()){
+                event.getController().setAnimation(RawAnimation.begin().then(digimon.sitAnim, Animation.LoopType.HOLD_ON_LAST_FRAME));
                 return PlayState.CONTINUE;
             }
 
-            if(digimon.getMovementID() == 1 || digimon.getMovementID() == -1 ){
-                if(event.isMoving()){
-                    event.getController().setAnimation(RawAnimation.begin().then(digimon.walkAnim(), Animation.LoopType.LOOP));
+            if (digimon.getMovementID() == 2){
+                event.getController().setAnimation(RawAnimation.begin().then(digimon.flyAnim, Animation.LoopType.LOOP));
+            } else {
+                if (event.isMoving()) {
+                    event.getController().setAnimation(RawAnimation.begin().then(digimon.walkAnim, Animation.LoopType.LOOP));
                 } else {
-                    event.getController().setAnimation(RawAnimation.begin().then(digimon.idleAnim(), Animation.LoopType.LOOP));
+                    event.getController().setAnimation(RawAnimation.begin().then(digimon.idleAnim, Animation.LoopType.LOOP));
                 }
-            } else if (digimon.getMovementID() == 2){
-                event.getController().setAnimation(RawAnimation.begin().then(digimon.flyAnim(), Animation.LoopType.LOOP));
             }
 
             return PlayState.CONTINUE;
@@ -924,12 +988,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(animController(this));
 
+        controllers.add(new AnimationController<>(this, "shootController", state -> PlayState.STOP)
+                .triggerableAnim("shoot", RawAnimation.begin().then(this.shootAnim, Animation.LoopType.PLAY_ONCE)));
         controllers.add(new AnimationController<>(this, "attackController", state -> PlayState.STOP)
-                .triggerableAnim("attack", RawAnimation.begin().then(this.attackAnim(), Animation.LoopType.PLAY_ONCE)));
+                .triggerableAnim("attack", RawAnimation.begin().then(this.attackAnim, Animation.LoopType.PLAY_ONCE)));
         controllers.add(new AnimationController<>(this, "feedController", state -> PlayState.STOP)
                 .triggerableAnim("feed", RawAnimation.begin().then("xp", Animation.LoopType.PLAY_ONCE)));
-        controllers.add(new AnimationController<>(this, "shootController", state -> PlayState.STOP)
-                .triggerableAnim("shoot", RawAnimation.begin().then(this.shootAnim(), Animation.LoopType.PLAY_ONCE)));
     }
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {

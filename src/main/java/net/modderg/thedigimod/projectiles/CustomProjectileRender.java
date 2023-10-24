@@ -9,8 +9,11 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.phys.Vec3;
+import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.projectiles.CustomProjectile;
 import net.modderg.thedigimod.projectiles.CustomProjectileModel;
+import org.joml.Quaternionf;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.model.GeoModel;
@@ -24,18 +27,22 @@ public class CustomProjectileRender<D extends CustomProjectile> extends GeoEntit
     }
 
     @Override
-    public void preRender(PoseStack poseStack, CustomProjectile animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        faceRotation(poseStack,animatable,partialTick);
-        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderRecursively(PoseStack poseStack, CustomProjectile animatable, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        pointEntityTowardsDeltaMovement(poseStack, animatable);
+        super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
     }
 
-    @Override
-    public void render(CustomProjectile entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
-        super.render(entity, entityYaw, partialTick, poseStack, bufferSource, LightTexture.FULL_BRIGHT);
-    }
+    public static void pointEntityTowardsDeltaMovement(PoseStack poseStack, Entity entity) {
+        Vec3 deltaMovement = entity.getDeltaMovement();
+        double deltaX = deltaMovement.x;
+        double deltaY = deltaMovement.y;
+        double deltaZ = deltaMovement.z;
 
-    public static void faceRotation(PoseStack poseStack, Entity animatable, float partialTick) {
-        poseStack.mulPose(Axis.YN.rotation(Mth.lerp(partialTick, animatable.yRotO, animatable.getYRot())));
-        poseStack.mulPose(Axis.XN.rotation(Mth.lerp(partialTick, animatable.xRotO, animatable.getXRot())));
+        double horizontalDistance = Math.sqrt(deltaX * deltaX + deltaZ * deltaZ);
+        float yaw = (float) Math.toDegrees(Math.atan2(deltaZ, deltaX));
+        float pitch = (float) Math.toDegrees(Math.atan2(deltaY, horizontalDistance));
+
+        poseStack.mulPose(Axis.YP.rotationDegrees(-yaw + 90.0F));
+        poseStack.mulPose(Axis.XP.rotationDegrees(pitch));
     }
 }

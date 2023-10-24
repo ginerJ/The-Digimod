@@ -53,4 +53,5 @@ public class BabyDigimonItem extends Item {
         p_41423_.add(Component.translatable("This digimon descended from " + descendant));
         super.appendHoverText(p_41421_, p_41422_, p_41423_, p_41424_);
     }
+
 }

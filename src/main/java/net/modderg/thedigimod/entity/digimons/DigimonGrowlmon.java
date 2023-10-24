@@ -16,8 +16,8 @@ public class DigimonGrowlmon extends CustomDigimon {
 
     public DigimonGrowlmon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
-    }
+        this.sitAnim = "sit6";
+        }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
@@ -26,6 +26,8 @@ public class DigimonGrowlmon extends CustomDigimon {
                 .add(Attributes.ATTACK_DAMAGE, 1D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
+
+    
 
     protected boolean isDigimonMountable(){return true;}
 
@@ -36,7 +38,7 @@ public class DigimonGrowlmon extends CustomDigimon {
 
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -45,29 +47,16 @@ public class DigimonGrowlmon extends CustomDigimon {
         return "Growlmon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.JYARIMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.DRAGON_DATA;
     }
 
     @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit6";
-    }
-
-    @Override
     public EntityType digitronEvo() {
-        return DigitalEntities.BLACK_GROWLMON.get();
+        return DigitalEntities.BLACKGROWLMON.get();
     }
 }

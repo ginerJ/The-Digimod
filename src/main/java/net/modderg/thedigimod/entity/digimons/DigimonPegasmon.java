@@ -15,7 +15,12 @@ public class DigimonPegasmon extends CustomDigimon {
 
     public DigimonPegasmon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.idleAnim = "idle5";
+        this.walkAnim = "walk7";
+        this.flyAnim = "fly4";
+        this.sitAnim = "sit2";
+        this.attackAnim = "attack3";
+        this.shootAnim = "shoot6";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -23,13 +28,13 @@ public class DigimonPegasmon extends CustomDigimon {
                 .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
-                .add(Attributes.FLYING_SPEED, 0.15D);
+                .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     protected boolean isDigimonMountable(){return true;}
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -38,32 +43,12 @@ public class DigimonPegasmon extends CustomDigimon {
         return "Pegasmon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.POYOMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.HOLY_DATA;
-    }
-    @Override
-    protected String idleAnim() {
-        return "idle5";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk7";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit2";
-    }
-    @Override
-    protected String flyAnim() {
-        return "fly4";
-    }
-    @Override
-    protected String attackAnim() {
-        return "attack3";
     }
 
     @Override

@@ -15,7 +15,11 @@ public class DigimonPatamon extends CustomDigimon {
 
     public DigimonPatamon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.idleAnim = "idle5";
+        this.flyAnim = "fly5";
+        this.sitAnim = "sit2";
+        this.attackAnim = "attack10";
+        this.shootAnim = "attack10";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -27,7 +31,7 @@ public class DigimonPatamon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 1;
     }
 
@@ -36,26 +40,13 @@ public class DigimonPatamon extends CustomDigimon {
         return "Patamon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.POYOMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.HOLY_DATA;
     }
-
-    @Override
-    protected String idleAnim() {
-        return "idle5";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit2";
-    }
-    @Override
-    protected String flyAnim() {return "fly5";}
-    @Override
-    protected String attackAnim() {return "attack8";}
 
     @Override
     protected Boolean isFlyingDigimon() {

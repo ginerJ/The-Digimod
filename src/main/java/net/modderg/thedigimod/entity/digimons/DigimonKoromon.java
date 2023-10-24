@@ -9,13 +9,33 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.DigitalEntities;
+import net.modderg.thedigimod.entity.managers.EvolutionCondition;
 import net.modderg.thedigimod.item.DigiItems;
 
 public class DigimonKoromon extends CustomDigimon {
 
     public DigimonKoromon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.reincarnateTo = new RegistryObject[]{DigiItems.BOTAMON};
+        this.xpDrop = DigiItems.DRAGON_DATA;
+        this.setSpMoveName("bullet");
+
+        this.idleAnim = "idle3";
+        this.walkAnim = "walk4";
+        this.sitAnim = "sit7";
+        this.attackAnim = "attack2";
+        this.shootAnim = "shoot4";
+
+        this.digiEvoPath =  DigitalEntities.digimonMap.get("agumon").get();
+        this.digiEvoPath2 =  DigitalEntities.digimonMap.get("agumonblack").get();
+
+        evoCondition = new EvolutionCondition(this).alwaysTrue();
+        evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+    }
+
+    @Override
+    public String getSpecies() {
+        return "Koromon";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -24,63 +44,5 @@ public class DigimonKoromon extends CustomDigimon {
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
                 .add(Attributes.FLYING_SPEED, 0.3D);
-    }
-
-    @Override
-    public int evoStage() {
-        return 0;
-    }
-
-    @Override
-    public String getSpecies() {
-        return "Koromon";
-    }
-    @Override
-    protected RegistryObject<?>[] reincarnateTo(){
-        return new RegistryObject[]{DigiItems.BOTAMON};
-    }
-    @Override
-    protected RegistryObject<?> xpDrop() {
-        return DigiItems.DRAGON_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle3";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk4";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit7";
-    }
-    @Override
-    protected String attackAnim() {
-        return "attack2";
-    }
-
-    @Override
-    protected String shootAnim() {
-        return "shoot4";
-    }
-
-    @Override
-    protected EntityType evoPath() {
-        return DigitalEntities.AGUMON.get();
-    }
-    @Override
-    protected Boolean canEvoToPath() {
-        return true;
-    }
-
-    @Override
-    protected EntityType evoPath2() {
-        return DigitalEntities.AGUMONBLACK.get();
-    }
-    @Override
-    protected Boolean canEvoToPath2() {
-        return this.moodManager.getMood().equals("Sad");
     }
 }

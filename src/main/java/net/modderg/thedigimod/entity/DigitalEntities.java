@@ -1,6 +1,7 @@
 package net.modderg.thedigimod.entity;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -8,8 +9,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.digimons.*;
+import net.modderg.thedigimod.entity.managers.EvolutionCondition;
 import net.modderg.thedigimod.goods.*;
-import net.modderg.thedigimod.projectiles.CustomProjectile;
+import net.modderg.thedigimod.item.DigiItems;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +25,7 @@ public class DigitalEntities {
 
     public static Map<String, RegistryObject<EntityType<?>>> digimonMap;
 
+
     public static void init() {
         List<RegistryObject<EntityType<?>>> digimonList = DIGIMONS.getEntries().stream().toList();
         List<String> digimonNameList = DIGIMONS.getEntries().stream().map(e -> e.getId().getPath()).toList();
@@ -31,150 +34,668 @@ public class DigitalEntities {
                 .boxed()
                 .collect(Collectors.toMap(digimonNameList::get, digimonList::get));
     }
-    public static final RegistryObject<EntityType<DigimonKoromon>> KOROMON = DIGIMONS.register("koromon",
-            () -> EntityType.Builder.of(DigimonKoromon:: new, MobCategory.CREATURE)
+
+    public static final RegistryObject<EntityType<CustomDigimon>> KOROMON = DIGIMONS.register("koromon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BOTAMON}, DigiItems.DRAGON_DATA);
+
+                            this.setAnimations("idle3", "sit7", "walk4",null,"attack2","shoot4");
+
+                            this.digiEvoPath =  DigitalEntities.digimonMap.get("agumon").get();
+                            this.digiEvoPath2 =  DigitalEntities.digimonMap.get("agumonblack").get();
+
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+                        }
+                        @Override public String getSpecies() {return "Koromon";}
+                    }, MobCategory.CREATURE)
                     .sized(0.9f,0.9f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "koromon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonKokomon>> KOKOMON = DIGIMONS.register("kokomon",
-            () -> EntityType.Builder.of(DigimonKokomon:: new, MobCategory.CREATURE)
-                    .sized(0.9f,0.9f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "kokomon").toString()));
+    public static final RegistryObject<EntityType<CustomDigimon>> AGUMON = DIGIMONS.register("agumon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 1;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BOTAMON}, DigiItems.DRAGON_DATA);
 
-    public static final RegistryObject<EntityType<DigimonYaamon>> YAAMON = DIGIMONS.register("yaamon",
-            () -> EntityType.Builder.of(DigimonYaamon:: new, MobCategory.CREATURE)
-                    .sized(0.9f,0.9f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "yaamon").toString()));
+                            this.setAnimations(null, null, "walk5",null,null,null);
 
-    public static final RegistryObject<EntityType<DigimonMochimon>> MOCHIMON = DIGIMONS.register("mochimon",
-            () -> EntityType.Builder.of(DigimonMochimon:: new, MobCategory.CREATURE)
-                    .sized(0.9f,0.9f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "mochimon").toString()));
+                            this.setEvos("tyrannomon", "numemon", "blackgrowlmon","veedramon","greymon",null);
 
-    public static final RegistryObject<EntityType<DigimonTsunomon>> TSUNOMON = DIGIMONS.register("tsunomon",
-            () -> EntityType.Builder.of(DigimonTsunomon:: new, MobCategory.CREATURE)
-                    .sized(0.9f,0.9f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "tsunomon").toString()));
-
-    public static final RegistryObject<EntityType<DigimonAgumon>> AGUMON = DIGIMONS.register("agumon",
-            () -> EntityType.Builder.of(DigimonAgumon:: new, MobCategory.CREATURE)
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+                            evoCondition3 = new EvolutionCondition(this).moodCheck("Meh").maxMistakes(10).minWins(10).xpOver(0,50);
+                            evoCondition4 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(5).minWins(10).xpOver(6,50);
+                            evoCondition5 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(0).minWins(15).xpOver(0,50);
+                        }
+                        @Override public String getSpecies() {return "Agumon";}
+                    }, MobCategory.CREATURE)
                     .sized(0.75f,1.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "agumon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonTentomon>> TENTOMON = DIGIMONS.register("tentomon",
-            () -> EntityType.Builder.of(DigimonTentomon:: new, MobCategory.CREATURE)
-                    .sized(0.75f,1.25f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "tentomon").toString()));
+    public static final RegistryObject<EntityType<CustomDigimon>> TYRANNOMON = DIGIMONS.register("tyrannomon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BOTAMON}, DigiItems.DRAGON_DATA);
+                            this.isMountDigimon = true;
 
-    public static final RegistryObject<EntityType<DigimonKabuterimon>> KABUTERIMON = DIGIMONS.register("kabuterimon",
-            () -> EntityType.Builder.of(DigimonKabuterimon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2.25f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "kabuterimon").toString()));
+                            this.sitAnim = "sit3";
+                        }
+                        @Override public String getSpecies() {return "Tyrannomon";}
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {if (this.hasPassenger(entity)) {
+                            moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset() + 0.1f, this.getZ());}}
+                    }, MobCategory.CREATURE)
+                    .sized(1.0f,2.2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "tyrannomon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonRoachmon>> ROACHMON = DIGIMONS.register("roachmon",
-            () -> EntityType.Builder.of(DigimonRoachmon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "roachmon").toString()));
+    public static final RegistryObject<EntityType<CustomDigimon>> FLARERIZAMON = DIGIMONS.register("flarerizamon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BOTAMON}, DigiItems.DRAGON_DATA);
 
-    public static final RegistryObject<EntityType<DigimonFlymon>> FLYMON = DIGIMONS.register("flymon",
-            () -> EntityType.Builder.of(DigimonFlymon:: new, MobCategory.CREATURE)
-                    .sized(1.5f,1.75f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "flymon").toString()));
+                            this.setAnimations(null, "sit5", "walk9",null,"attack7","shoot5");
+                        }
+                        @Override public String getSpecies() {return "Flarerizamon";}
+                    }, MobCategory.CREATURE)
+                    .sized(1.0f,2.0f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "flarerizamon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonGreymon>> GREYMON = DIGIMONS.register("greymon",
-            () -> EntityType.Builder.of(DigimonGreymon:: new, MobCategory.CREATURE)
+    public static final RegistryObject<EntityType<CustomDigimon>> GREYMON = DIGIMONS.register("greymon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BOTAMON}, DigiItems.DRAGON_DATA);
+                            this.isMountDigimon = true;
+
+                            this.sitAnim = "sit4";
+                        }
+                        @Override public String getSpecies() {return "Greymon";}
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(
+                                    entity, this.getX(), this.getY() + this.getPassengersRidingOffset() + 0.1f, this.getZ());}}
+                    }, MobCategory.CREATURE)
                     .sized(1.0f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "greymon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonGreymonVirus>> GREYMONVIRUS = DIGIMONS.register("greymonvirus",
-            () -> EntityType.Builder.of(DigimonGreymonVirus:: new, MobCategory.CREATURE)
+
+
+    public static final RegistryObject<EntityType<CustomDigimon>> AGUMONBLACK = DIGIMONS.register("agumonblack",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 1;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BOTAMON}, DigiItems.DRAGON_DATA);
+
+                            this.setAnimations(null, null, "walk5",null,null,null);
+
+                            this.setEvos("darklizardmon", "numemon", "blackgrowlmon","greymonvirus","darktyrannomon",null);
+
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+                            evoCondition3 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(10).minWins(10).xpOver(0,50);
+                            evoCondition4 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(0).minWins(25).xpOver(7,25).xpOver(0,25);
+                            evoCondition5 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(5).minWins(10).xpOver(7,50);
+                        }
+                        @Override public String getSpecies() {return "Agumon(Black)";}
+                    }, MobCategory.CREATURE)
+                    .sized(0.75f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "agumonblack").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> DARKLIZARDMON = DIGIMONS.register("darklizardmon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BOTAMON}, DigiItems.NIGHTMARE_DATA);
+
+                            this.setAnimations(null, "sit5", "walk9",null,"attack7","shoot5");
+                        }
+                        @Override public String getSpecies() {return "Darklizardmon";}
+                    }, MobCategory.CREATURE)
+                    .sized(1.0f,2.0f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "darklizardmon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> GREYMONVIRUS = DIGIMONS.register("greymonvirus",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BOTAMON}, DigiItems.NIGHTMARE_DATA);
+                            this.isMountDigimon = true;
+
+                            this.sitAnim = "sit4";
+                        }
+                        @Override public String getSpecies() {return "Greymon(Virus)";}
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(
+                                    entity, this.getX(), this.getY() + this.getPassengersRidingOffset() + 0.1f, this.getZ());}}
+                    }, MobCategory.CREATURE)
                     .sized(1.0f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "greymonvirus").toString()));
 
-    public static final RegistryObject<EntityType<DigimonGrizzlymon>> GRIZZLYMON = DIGIMONS.register("grizzlymon",
-            () -> EntityType.Builder.of(DigimonGrizzlymon:: new, MobCategory.CREATURE)
-                    .sized(1.75f,1.5f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "grizzlymon").toString()));
+    public static final RegistryObject<EntityType<CustomDigimon>> DARKTYRANNOMON = DIGIMONS.register("darktyrannomon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BOTAMON}, DigiItems.NIGHTMARE_DATA);
+                            this.isMountDigimon = true;
 
-    public static final RegistryObject<EntityType<DigimonBearmon>> BEARMON = DIGIMONS.register("bearmon",
-            () -> EntityType.Builder.of(DigimonBearmon:: new, MobCategory.CREATURE)
-                    .sized(1f,1.5f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "bearmon").toString()));
+                            this.sitAnim = "sit3";
+                        }
+                        @Override public String getSpecies() {return "DarkTyrannomon";}
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {if (this.hasPassenger(entity)) {
+                            moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset() + 0.1f, this.getZ());}}
+                    }, MobCategory.CREATURE)
+                    .sized(1.0f,2.2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "darktyrannomon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonKunemon>> KUNEMON = DIGIMONS.register("kunemon",
-            () -> EntityType.Builder.of(DigimonKunemon:: new, MobCategory.CREATURE)
+
+
+    public static final RegistryObject<EntityType<CustomDigimon>> KOKOMON = DIGIMONS.register("kokomon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.CONOMON}, DigiItems.HOLY_DATA);
+
+                            this.setAnimations("idle3", "sit7", "walk4",null,"attack2","shoot4");
+
+                            this.digiEvoPath =  DigitalEntities.digimonMap.get("lopmon").get();
+
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                        }
+                        @Override public String getSpecies() {return "Kokomon";}
+                    }, MobCategory.CREATURE)
+                    .sized(0.9f,0.9f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "kokomon").toString()));
+
+
+
+    public static final RegistryObject<EntityType<CustomDigimon>> YAAMON = DIGIMONS.register("yaamon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.KIIMON}, DigiItems.NIGHTMARE_DATA);
+
+                            this.setAnimations("idle3", "sit7", "walk4",null,"attack2","shoot4");
+
+                            this.digiEvoPath =  DigitalEntities.digimonMap.get("impmon").get();
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                        }
+                        @Override public String getSpecies() {return "Yaamon";}
+                    }, MobCategory.CREATURE)
+                    .sized(0.9f,0.9f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "yaamon").toString()));
+
+
+
+    public static final RegistryObject<EntityType<CustomDigimon>> MOCHIMON = DIGIMONS.register("mochimon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BUBBMON}, DigiItems.PLANTINSECT_DATA);
+
+                            this.setAnimations("idle3", "sit7", "walk4",null,"attack2","shoot4");
+
+                            this.digiEvoPath =  DigitalEntities.digimonMap.get("kunemon").get();
+                            this.digiEvoPath2 =  DigitalEntities.digimonMap.get("tentomon").get();
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Joyfull");
+                        }
+                        @Override public String getSpecies() {return "Mochimon";}
+                    }, MobCategory.CREATURE)
+                    .sized(0.9f,0.9f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "mochimon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> TENTOMON = DIGIMONS.register("tentomon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 1;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BUBBMON}, DigiItems.PLANTINSECT_DATA);
+
+                            this.sitAnim = "sit3";
+
+                            this.setEvos("kuwagamon", "roachmon", "kabuterimon",null,null,null);
+
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+                            evoCondition3 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(0).minWins(15).xpOver(2,50);
+                        }
+                        @Override public String getSpecies() {return "Tentomon";}
+                    }, MobCategory.CREATURE)
+                    .sized(0.75f,1.25f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "tentomon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> KUWAGAMON = DIGIMONS.register("kuwagamon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BUBBMON}, DigiItems.PLANTINSECT_DATA);
+                            this.isMountDigimon = true;
+                            this.canFlyDigimon = true;
+
+                            this.sitAnim = "sit6";
+                            this.flyAnim = "bug_fly";
+                        }
+                        @Override public String getSpecies() {return "Kuwagamon";}
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(
+                                    entity, this.getX(), this.getY() + this.getPassengersRidingOffset() - 0.3, this.getZ());}}
+                    }, MobCategory.CREATURE)
+                    .sized(1.0f,2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "kuwagamon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> KUNEMON = DIGIMONS.register("kunemon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 1;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BUBBMON}, DigiItems.PLANTINSECT_DATA);
+
+                            this.walkAnim = "walk3";
+                            this.sitAnim = "sit2";
+                            this.attackAnim = "attack3";
+
+                            this.setEvos("kuwagamon", "roachmon", "flymon",null,null,null);
+
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+                            evoCondition3 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(0).minWins(15).xpOver(2,50);
+                        }
+                        @Override public String getSpecies() {return "Kunemon";}
+                    }, MobCategory.CREATURE)
                     .sized(1.25f,1.55f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "kunemon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonGigimon>> GIGIMON = DIGIMONS.register("gigimon",
-            () -> EntityType.Builder.of(DigimonGigimon:: new, MobCategory.CREATURE)
+    public static final RegistryObject<EntityType<CustomDigimon>> ROACHMON = DIGIMONS.register("roachmon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BUBBMON}, DigiItems.PLANTINSECT_DATA);
+
+                            this.walkAnim = "walk2";
+                            this.sitAnim = "sit6";
+                        }
+                        @Override public String getSpecies() {return "Roachmon";}
+
+                    }, MobCategory.CREATURE)
+                    .sized(1.0f,2f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "roachmon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> FLYMON = DIGIMONS.register("flymon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BUBBMON}, DigiItems.PLANTINSECT_DATA);
+                            this.canFlyDigimon = true;
+                            this.isMountDigimon = true;
+
+                            this.walkAnim = "walk2";
+                            this.flyAnim = "bug_fly2";
+                        }
+                        @Override public String getSpecies() {return "Flymon";}
+
+                    }, MobCategory.CREATURE)
+                    .sized(1.5f,1.75f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "flymon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> KABUTERIMON = DIGIMONS.register("kabuterimon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.BUBBMON}, DigiItems.PLANTINSECT_DATA);
+                            this.isMountDigimon = true;
+                            this.canFlyDigimon = true;
+
+                            this.sitAnim = "sit5";
+                            this.flyAnim = "bug_fly";
+                        }
+                        @Override public String getSpecies() {return "Kabuterimon";}
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(
+                                    entity, this.getX(), this.getY() + this.getPassengersRidingOffset() - 0.3, this.getZ());}}
+                    }, MobCategory.CREATURE)
+                    .sized(1.0f,2.25f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "kabuterimon").toString()));
+
+
+
+    public static final RegistryObject<EntityType<CustomDigimon>> TSUNOMON = DIGIMONS.register("tsunomon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PUNIMON}, DigiItems.BEAST_DATA);
+
+                            this.setAnimations("idle3", "sit7", "walk4",null,"attack2","shoot4");
+
+                            this.digiEvoPath =  DigitalEntities.digimonMap.get("bearmon").get();
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                        }
+                        @Override public String getSpecies() {return "Tsunomon";}
+                    }, MobCategory.CREATURE)
+                    .sized(0.9f,0.9f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "tsunomon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> BEARMON = DIGIMONS.register("bearmon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 1;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PUNIMON}, DigiItems.BEAST_DATA);
+
+                            this.walkAnim = "walk7";
+                            this.sitAnim = "sit";
+                            this.shootAnim = "shoot5";
+
+                            this.setEvos("grizzlymon", "numemon", "blackgaogamon","chakmon",null,null);
+
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+                            evoCondition3 = new EvolutionCondition(this).moodCheck("Sad").maxMistakes(10).minWins(10).xpOver(7,50);
+                            evoCondition4 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(0).minWins(15).xpOver(3,50);
+                        }
+                        @Override public String getSpecies() {return "Bearmon";}
+                    }, MobCategory.CREATURE)
+                    .sized(1f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "bearmon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> GRIZZLYMON = DIGIMONS.register("grizzlymon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PUNIMON}, DigiItems.BEAST_DATA);
+                            this.isMountDigimon = true;
+
+                            this.setAnimations(null,"sit2","walk7",null,"attack3","shoot6");
+                        }
+                        @Override public String getSpecies() {return "Grizzlymon";}
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(
+                                    entity, this.getX(), this.getY() + this.getPassengersRidingOffset() + entity.getMyRidingOffset() + 0.1, this.getZ());}}
+                    }, MobCategory.CREATURE)
+                    .sized(1.75f,2.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "grizzlymon").toString()));
+
+
+
+    public static final RegistryObject<EntityType<CustomDigimon>> GIGIMON = DIGIMONS.register("gigimon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.JYARIMON}, DigiItems.DRAGON_DATA);
+
+                            this.setAnimations("idle3", "sit7", "walk4",null,"attack2","shoot4");
+
+                            this.digiEvoPath =  DigitalEntities.digimonMap.get("guilmon").get();
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                        }
+                        @Override public String getSpecies() {return "Gigimon";}
+                    }, MobCategory.CREATURE)
                     .sized(0.9f,0.9f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "gigimon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonGuilmon>> GUILMON = DIGIMONS.register("guilmon",
-            () -> EntityType.Builder.of(DigimonGuilmon:: new, MobCategory.CREATURE)
+    public static final RegistryObject<EntityType<CustomDigimon>> GUILMON = DIGIMONS.register("guilmon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 1;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.JYARIMON}, DigiItems.DRAGON_DATA);
+
+                            this.idleAnim = "idle6";
+                            this.walkAnim = "walk7";
+                            this.sitAnim = "sit3";
+
+                            this.setEvos("growlmondata", "numemon", "growlmon","blackgrowlmon",null,null);
+
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+                            evoCondition3 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(0).minWins(15).xpOver(0,50);
+                            evoCondition4 = new EvolutionCondition(this).moodCheck("Sad").maxMistakes(10).minWins(10).xpOver(7,50);
+                        }
+                        @Override public String getSpecies() {return "Guilmon";}
+                    }, MobCategory.CREATURE)
                     .sized(1f,1.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "guilmon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonPuyoyomon>> PUYOYOMON = DIGIMONS.register("puyoyomon",
-            () -> EntityType.Builder.of(DigimonPuyoyomon:: new, MobCategory.CREATURE)
-                    .sized(0.9f,0.9f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "puyoyomon").toString()));
+    public static final RegistryObject<EntityType<CustomDigimon>> GROWLMON = DIGIMONS.register("growlmon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.JYARIMON}, DigiItems.DRAGON_DATA);
+                            this.isMountDigimon = true;
 
-    public static final RegistryObject<EntityType<DigimonJellymon>> JELLYMON = DIGIMONS.register("jellymon",
-            () -> EntityType.Builder.of(DigimonJellymon:: new, MobCategory.CREATURE)
-                    .sized(1f,1.25f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "jellymon").toString()));
+                            this.sitAnim = "sit6";
+                        }
+                        @Override public String getSpecies() {return "Growlmon";}
 
-    public static final RegistryObject<EntityType<DigimonTeslajellymon>> TESLAJELLYMON = DIGIMONS.register("teslajellymon",
-            () -> EntityType.Builder.of(DigimonTeslajellymon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,1.5f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "teslajellymon").toString()));
-
-    public static final RegistryObject<EntityType<DigimonGrowlmon>> GROWLMON = DIGIMONS.register("growlmon",
-            () -> EntityType.Builder.of(DigimonGrowlmon:: new, MobCategory.CREATURE)
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset()/2, this.getZ());}
+                        }
+                    }, MobCategory.CREATURE)
                     .sized(1.25f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "growlmon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonGrowlmonData>> GROWLMONDATA = DIGIMONS.register("growlmondata",
-            () -> EntityType.Builder.of(DigimonGrowlmonData:: new, MobCategory.CREATURE)
+    public static final RegistryObject<EntityType<CustomDigimon>> GROWLMONDATA = DIGIMONS.register("growlmondata",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.JYARIMON}, DigiItems.DRAGON_DATA);
+                            this.isMountDigimon = true;
+
+                            this.sitAnim = "sit6";
+                        }
+                        @Override public String getSpecies() {return "Growlmon(Data)";}
+
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset()/2, this.getZ());}
+                        }
+                    }, MobCategory.CREATURE)
                     .sized(1.25f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "growlmondata").toString()));
 
-    public static final RegistryObject<EntityType<DigimonBlackGrowlmon>> BLACK_GROWLMON = DIGIMONS.register("blackgrowlmon",
-            () -> EntityType.Builder.of(DigimonBlackGrowlmon:: new, MobCategory.CREATURE)
+    public static final RegistryObject<EntityType<CustomDigimon>> BLACKGROWLMON = DIGIMONS.register("blackgrowlmon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.JYARIMON}, DigiItems.NIGHTMARE_DATA);
+                            this.isMountDigimon = true;
+
+                            this.sitAnim = "sit6";
+                        }
+                        @Override public String getSpecies() {return "BlackGrowlmon";}
+
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset()/2, this.getZ());}
+                        }
+                    }, MobCategory.CREATURE)
                     .sized(1.25f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "blackgrowlmon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonKuwagamon>> KUWAGAMON = DIGIMONS.register("kuwagamon",
-            () -> EntityType.Builder.of(DigimonKuwagamon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2.0f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "kuwagamon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonBabydmon>> BABYDMON = DIGIMONS.register("babydmon",
-            () -> EntityType.Builder.of(DigimonBabydmon:: new, MobCategory.CREATURE)
+
+    public static final RegistryObject<EntityType<CustomDigimon>> PUYOYOMON = DIGIMONS.register("puyoyomon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PUYOMON}, DigiItems.AQUAN_DATA);
+
+                            this.setAnimations("idle3", "sit7", "walk4",null,"attack2","shoot4");
+
+                            this.digiEvoPath =  DigitalEntities.digimonMap.get("jellymon").get();
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                        }
+                        @Override public String getSpecies() {return "Puyoyomon";}
+                    }, MobCategory.CREATURE)
+                    .sized(0.9f,0.9f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "puyoyomon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> JELLYMON = DIGIMONS.register("jellymon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 1;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PUYOMON}, DigiItems.AQUAN_DATA);
+                            this.canFlyDigimon = true;
+
+                            this.walkAnim = "walk7";
+                            this.flyAnim = "float";
+
+                            this.setEvos("octomon", "numemon", "gesomon","teslajellymon",null,null);
+
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+                            evoCondition3 = new EvolutionCondition(this).moodCheck("Sad").maxMistakes(5).minWins(10).xpOver(7,50);
+                            evoCondition4 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(0).minWins(15).xpOver(3,50);
+                        }
+                        @Override public String getSpecies() {return "Jellymon";}
+                    }, MobCategory.CREATURE)
+                    .sized(1f,1.25f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "jellymon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> TESLAJELLYMON = DIGIMONS.register("teslajellymon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PUYOMON}, DigiItems.AQUAN_DATA);
+                            this.canFlyDigimon = true;
+
+                            this.setAnimations("idle3","sit6","walk5","fly4",null,null);
+                        }
+                        @Override public String getSpecies() {return "Teslajellymon";}
+                    }, MobCategory.CREATURE)
+                    .sized(1.0f,1.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "teslajellymon").toString()));
+
+
+
+    public static final RegistryObject<EntityType<CustomDigimon>> BABYDMON = DIGIMONS.register("babydmon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PETITMON}, DigiItems.DRAGON_DATA);
+                            this.canFlyDigimon = true;
+
+                            this.setAnimations("idle8", "sit7", "walk4","bug_fly","attack2","shoot4");
+
+                            this.digiEvoPath =  DigitalEntities.digimonMap.get("dracomon").get();
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                        }
+                        @Override public String getSpecies() {return "Babydmon";}
+                    }, MobCategory.CREATURE)
                     .sized(0.9f,0.9f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "babydmon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonDracomon>> DRACOMON = DIGIMONS.register("dracomon",
-            () -> EntityType.Builder.of(DigimonDracomon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,1.5f)
+    public static final RegistryObject<EntityType<CustomDigimon>> DRACOMON = DIGIMONS.register("dracomon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 1;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PETITMON}, DigiItems.DRAGON_DATA);
+
+                            this.sitAnim = "sit3";
+
+                            this.setEvos("airdramon", "numemon", "growlmondata","coredramongreen","coredramon",null);
+
+                            evoCondition = new EvolutionCondition(this).alwaysTrue();
+                            evoCondition2 = new EvolutionCondition(this).moodCheck("Sad");
+                            evoCondition3 = new EvolutionCondition(this).moodCheck("Sad").maxMistakes(10).minWins(10);
+                            evoCondition4 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(5).minWins(15).xpOver(6,50);
+                            evoCondition5 = new EvolutionCondition(this).moodCheck("Joyful").maxMistakes(0).minWins(15).xpOver(0,50);
+                        }
+                        @Override public String getSpecies() {return "Dracomon";}
+                    }, MobCategory.CREATURE)
+                    .sized(1f,1.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "dracomon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonAirdramon>> AIRDRAMON = DIGIMONS.register("airdramon",
-            () -> EntityType.Builder.of(DigimonAirdramon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2.0f)
+    public static final RegistryObject<EntityType<CustomDigimon>> AIRDRAMON = DIGIMONS.register("airdramon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PETITMON}, DigiItems.WIND_DATA);
+                            this.isMountDigimon = true;
+                            this.canFlyDigimon = true;
+
+                            this.setAnimations("idle3","sit2","fly3","fly2",null, "shoot5");
+                        }
+                        @Override public String getSpecies() {return "Airdramon";}
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(
+                                    entity, this.getX(), this.getY() + this.getPassengersRidingOffset()/1.8f, this.getZ());}}
+                    }, MobCategory.CREATURE)
+                    .sized(1.0f,2f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "airdramon").toString()));
 
-    public static final RegistryObject<EntityType<DigimonCoredramonGreen>> COREDRAMONGREEN = DIGIMONS.register("coredramongreen",
-            () -> EntityType.Builder.of(DigimonCoredramonGreen:: new, MobCategory.CREATURE)
+    public static final RegistryObject<EntityType<CustomDigimon>> COREDRAMONGREEN = DIGIMONS.register("coredramongreen",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PETITMON}, DigiItems.EARTH_DATA);
+                            this.isMountDigimon = true;
+
+                            this.sitAnim = "sit6";
+                        }
+                        @Override public String getSpecies() {return "Coredramon(Green)";}
+
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset()*1.01, this.getZ());}
+                        }
+                    }, MobCategory.CREATURE)
                     .sized(1.0f,2.35f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "coredramongreen").toString()));
 
-    public static final RegistryObject<EntityType<DigimonCoredramon>> COREDRAMON = DIGIMONS.register("coredramon",
-            () -> EntityType.Builder.of(DigimonCoredramon:: new, MobCategory.CREATURE)
+    public static final RegistryObject<EntityType<CustomDigimon>> COREDRAMON = DIGIMONS.register("coredramon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                        @Override
+                        public void setDigimon() {
+                            this.evoStage = 2;
+                            this.setBabyAndXpDrop(new RegistryObject[]{DigiItems.PETITMON}, DigiItems.DRAGON_DATA);
+                            this.isMountDigimon = true;
+
+                            this.sitAnim = "sit6";
+                        }
+                        @Override public String getSpecies() {return "Coredramon";}
+
+                        @Override
+                        protected void positionRider(Entity entity, MoveFunction moveF) {
+                            if (this.hasPassenger(entity)) {moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset()*1.01, this.getZ());}
+                        }
+                    }, MobCategory.CREATURE)
                     .sized(1.0f,2.35f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "coredramon").toString()));
+
+
 
     public static final RegistryObject<EntityType<DigimonBibimon>> BIBIMON = DIGIMONS.register("bibimon",
             () -> EntityType.Builder.of(DigimonBibimon:: new, MobCategory.CREATURE)
@@ -190,21 +711,6 @@ public class DigitalEntities {
             () -> EntityType.Builder.of(DigimonBulkmon:: new, MobCategory.CREATURE)
                     .sized(1.25f,2.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "bulkmon").toString()));
-
-    public static final RegistryObject<EntityType<DigimonAgumonBlack>> AGUMONBLACK = DIGIMONS.register("agumonblack",
-            () -> EntityType.Builder.of(DigimonAgumonBlack:: new, MobCategory.CREATURE)
-                    .sized(1f,1.5f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "agumonblack").toString()));
-
-    public static final RegistryObject<EntityType<DigimonDarkTyrannomon>> DARKTYRANNOMON = DIGIMONS.register("darktyrannomon",
-            () -> EntityType.Builder.of(DigimonDarkTyrannomon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2.2f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "darktyrannomon").toString()));
-
-    public static final RegistryObject<EntityType<DigimonTyrannomon>> TYRANNOMON = DIGIMONS.register("tyrannomon",
-            () -> EntityType.Builder.of(DigimonTyrannomon:: new, MobCategory.CREATURE)
-                    .sized(1.25f,2.25f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "tyrannomon").toString()));
 
     public static final RegistryObject<EntityType<DigimonVeedramon>> VEEDRAMON = DIGIMONS.register("veedramon",
             () -> EntityType.Builder.of(DigimonVeedramon:: new, MobCategory.CREATURE)
@@ -255,11 +761,6 @@ public class DigitalEntities {
             () -> EntityType.Builder.of(DigimonExermon:: new, MobCategory.CREATURE)
                     .sized(1.0f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "exermon").toString()));
-
-    public static final RegistryObject<EntityType<DigimonDarkLizzardmon>> DARKTYLIZZARDMON = DIGIMONS.register("darklizzardmon",
-            () -> EntityType.Builder.of(DigimonDarkLizzardmon:: new, MobCategory.CREATURE)
-                    .sized(1.0f,2.0f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "darklizzardmon").toString()));
 
     public static final RegistryObject<EntityType<DigimonRunnermon>> RUNNERMON = DIGIMONS.register("runnermon",
             () -> EntityType.Builder.of(DigimonRunnermon:: new, MobCategory.CREATURE)
@@ -338,7 +839,7 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<DigimonSunarizamon>> SUNARIZAMON = DIGIMONS.register("sunarizamon",
             () -> EntityType.Builder.of(DigimonSunarizamon:: new, MobCategory.CREATURE)
-                    .sized(0.75f,1.5f)
+                    .sized(1.25f,0.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "sunarizamon").toString()));
 
     public static final RegistryObject<EntityType<DigimonGolemon>> GOLEMON = DIGIMONS.register("golemon",
@@ -469,9 +970,4 @@ public class DigitalEntities {
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "training_rock").toString()));
 
 
-    //attacks
-    public static final RegistryObject<EntityType<CustomProjectile>> BULLET = DIGIMONS.register("bullet",
-            () -> EntityType.Builder.of(CustomProjectile:: new, MobCategory.MISC)
-                    .sized(1.0f,1.0f)
-                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "bullet").toString()));
 }

@@ -14,7 +14,11 @@ public class DigimonIceDevimon extends CustomDigimon {
 
     public DigimonIceDevimon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.walkAnim ="walk7";
+        this.sitAnim ="sit6";
+        this.flyAnim ="fly5";
+        this.shootAnim ="shoot6";
+        this.attackAnim ="attack5";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -26,7 +30,7 @@ public class DigimonIceDevimon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -35,28 +39,10 @@ public class DigimonIceDevimon extends CustomDigimon {
         return "IceDevimon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.KIIMON};}
+    public RegistryObject<?>[] getReincarnateTo(){return new RegistryObject[]{DigiItems.KIIMON};}
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.NIGHTMARE_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk7";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit6";
-    }
-
-    @Override
-    protected String flyAnim() {
-        return "float";
     }
 
     @Override

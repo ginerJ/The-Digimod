@@ -14,6 +14,7 @@ import net.modderg.thedigimod.gui.StatsGui;
 import net.modderg.thedigimod.particles.DigitalParticles;
 import net.modderg.thedigimod.particles.custom.*;
 import net.modderg.thedigimod.projectiles.CustomProjectileRender;
+import net.modderg.thedigimod.projectiles.DigitalProjectiles;
 
 
 public class ClientEvents {
@@ -39,7 +40,7 @@ public class ClientEvents {
             event.registerEntityRenderer(DigitalEntities.TESLAJELLYMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.GROWLMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.GROWLMONDATA.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BLACK_GROWLMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.BLACKGROWLMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.KUWAGAMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.BABYDMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.DRACOMON.get(), CustomDigimonRender::new);
@@ -62,7 +63,8 @@ public class ClientEvents {
             event.registerEntityRenderer(DigitalEntities.NAMAKEMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.EXERMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.GREYMONVIRUS.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.DARKTYLIZZARDMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.DARKLIZARDMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.FLARERIZAMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.RUNNERMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.THUNDERBALLMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.OCTOMON.get(), CustomDigimonRender::new);
@@ -95,8 +97,6 @@ public class ClientEvents {
             event.registerEntityRenderer(DigitalEntities.CENTALMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.ANGEMON.get(), CustomDigimonRender::new);
 
-            event.registerEntityRenderer(DigitalEntities.BULLET.get(), CustomProjectileRender::new);
-
             event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), AbstractGoodRender::new);
             event.registerEntityRenderer(DigitalEntities.SP_TARGET.get(), AbstractGoodRender::new);
             event.registerEntityRenderer(DigitalEntities.SP_TABLE.get(), AbstractGoodRender::new);
@@ -111,6 +111,14 @@ public class ClientEvents {
             event.registerEntityRenderer(DigitalEntities.RED_FREEZER.get(), AbstractGoodRender::new);
             event.registerEntityRenderer(DigitalEntities.WIND_VANE.get(), AbstractGoodRender::new);
             event.registerEntityRenderer(DigitalEntities.TRAINING_ROCK.get(), AbstractGoodRender::new);
+
+            event.registerEntityRenderer(DigitalProjectiles.BULLET.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.PEPPER_BREATH.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.MEGA_FLAME.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.MEGA_BLASTER.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.THUNDERBOLT.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.PETIT_THUNDER.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.DEADLY_STING.get(), CustomProjectileRender::new);
         }
 
         @SubscribeEvent
@@ -131,6 +139,11 @@ public class ClientEvents {
             Minecraft.getInstance().particleEngine.register(DigitalParticles.LIFE_PARTICLE.get(), LifeParticle.Provider::new);
 
             Minecraft.getInstance().particleEngine.register(DigitalParticles.EVO_PARTICLES.get(), UpParticle.Provider::new);
+
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.BUBBLE_ATTACK.get(), UpParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.PEPPER_BREATH.get(), UpParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.THUNDER_ATTACK.get(), UpParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.STINGER.get(), UpParticle.Provider::new);
         }
 
         @SubscribeEvent

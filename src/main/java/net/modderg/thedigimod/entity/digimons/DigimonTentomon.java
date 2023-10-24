@@ -15,7 +15,7 @@ public class DigimonTentomon extends CustomDigimon {
 
     public DigimonTentomon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.sitAnim = "sit3";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -26,8 +26,9 @@ public class DigimonTentomon extends CustomDigimon {
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
+    
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 1;
     }
 
@@ -36,24 +37,11 @@ public class DigimonTentomon extends CustomDigimon {
         return "Tentomon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.BUBBMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {return DigiItems.PLANTINSECT_DATA;}
-
-    @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit3";
-    }
+    public RegistryObject<?> getXpDrop() {return DigiItems.PLANTINSECT_DATA;}
 
     @Override
     protected EntityType evoPath() {

@@ -15,7 +15,8 @@ public class DigimonKuwagamon extends CustomDigimon {
 
     public DigimonKuwagamon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.sitAnim = "sit6";
+        this.flyAnim = "bug_fly";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -23,7 +24,7 @@ public class DigimonKuwagamon extends CustomDigimon {
                 .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
-                .add(Attributes.FLYING_SPEED, 0.15D);
+                .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     protected boolean isDigimonMountable(){return true;}
@@ -33,9 +34,8 @@ public class DigimonKuwagamon extends CustomDigimon {
         if (this.hasPassenger(entity)) {moveF.accept(entity, this.getX(), this.getY() + this.getPassengersRidingOffset() - 0.3, this.getZ());}
     }
 
-
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -44,28 +44,12 @@ public class DigimonKuwagamon extends CustomDigimon {
         return "Kuwagamon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BUBBMON};}
+    public RegistryObject<?>[] getReincarnateTo(){return new RegistryObject[]{DigiItems.BUBBMON};}
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.PLANTINSECT_DATA;
     }
 
-    @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit6";
-    }
-    @Override
-    protected String flyAnim() {
-        return "bug_fly";
-    }
 
     @Override
     protected Boolean isFlyingDigimon() {

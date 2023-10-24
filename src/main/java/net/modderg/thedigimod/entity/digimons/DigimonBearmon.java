@@ -15,8 +15,10 @@ public class DigimonBearmon extends CustomDigimon {
 
     public DigimonBearmon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
-    }
+        this.walkAnim = "walk7";
+        this.sitAnim = "sit";
+        this.shootAnim = "shoot5";
+        }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
@@ -27,7 +29,7 @@ public class DigimonBearmon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 1;
     }
 
@@ -36,25 +38,12 @@ public class DigimonBearmon extends CustomDigimon {
         return "Bearmon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.PUNIMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.BEAST_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk7";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit";
     }
 
     @Override

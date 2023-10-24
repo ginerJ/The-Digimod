@@ -15,18 +15,18 @@ public class DigiItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TheDigiMod.MOD_ID);
 
     //Babies
-    public static final RegistryObject<Item> BOTAMON = ITEMS.register("botamon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.KOROMON, "Agumon"));
-    public static final RegistryObject<Item> BUBBMON = ITEMS.register("bubbmon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.MOCHIMON, "Tentomon"));
-    public static final RegistryObject<Item> PUNIMON = ITEMS.register("punimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.TSUNOMON, "Bearmon"));
-    public static final RegistryObject<Item> JYARIMON = ITEMS.register("jyarimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.GIGIMON, "Guilmon"));
-    public static final RegistryObject<Item> PETITMON = ITEMS.register("petitmon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.BABYDMON, "Dracomon"));
-    public static final RegistryObject<Item> PUYOMON = ITEMS.register("puyomon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.PUYOYOMON, "Jellymon"));
-    public static final RegistryObject<Item> DOKIMON = ITEMS.register("dokimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.BIBIMON, "Pulsemon"));
-    public static final RegistryObject<Item> NYOKIMON = ITEMS.register("nyokimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.YOKOMON, "Biyomon"));
-    public static final RegistryObject<Item> CONOMON = ITEMS.register("conomon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.KOKOMON, "Lopmon"));
-    public static final RegistryObject<Item> KIIMON = ITEMS.register("kiimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.YAAMON, "Impmon"));
-    public static final RegistryObject<Item> SUNAMON = ITEMS.register("sunamon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.GOROMON, "Sunarizamon"));
-    public static final RegistryObject<Item> POYOMON = ITEMS.register("poyomon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.TOKOMON, "Patamon"));
+    public static final RegistryObject<Item> BOTAMON = ITEMS.register("botamon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.KOROMON, "Koromon"));
+    public static final RegistryObject<Item> BUBBMON = ITEMS.register("bubbmon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.MOCHIMON, "Mochimon"));
+    public static final RegistryObject<Item> PUNIMON = ITEMS.register("punimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.TSUNOMON, "Tsunomon"));
+    public static final RegistryObject<Item> JYARIMON = ITEMS.register("jyarimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.GIGIMON, "Gigimon"));
+    public static final RegistryObject<Item> PETITMON = ITEMS.register("petitmon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.BABYDMON, "Babydmon"));
+    public static final RegistryObject<Item> PUYOMON = ITEMS.register("puyomon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.PUYOYOMON, "Puyoyomon"));
+    public static final RegistryObject<Item> DOKIMON = ITEMS.register("dokimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.BIBIMON, "Bibimon"));
+    public static final RegistryObject<Item> NYOKIMON = ITEMS.register("nyokimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.YOKOMON, "Yokomon"));
+    public static final RegistryObject<Item> CONOMON = ITEMS.register("conomon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.KOKOMON, "Kokomon"));
+    public static final RegistryObject<Item> KIIMON = ITEMS.register("kiimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.YAAMON, "Yaamon"));
+    public static final RegistryObject<Item> SUNAMON = ITEMS.register("sunamon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.GOROMON, "Goromon"));
+    public static final RegistryObject<Item> POYOMON = ITEMS.register("poyomon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.TOKOMON, "Tokomon"));
 
     //Digivices
     public static final RegistryObject<Item> VITALBRACELET = ITEMS.register("vitalbracelet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));

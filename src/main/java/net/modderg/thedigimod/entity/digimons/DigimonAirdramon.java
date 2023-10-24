@@ -15,7 +15,11 @@ public class DigimonAirdramon extends CustomDigimon {
 
     public DigimonAirdramon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.idleAnim = "idle3";
+        this.walkAnim = "fly3";
+        this.sitAnim = "sit2";
+        this.flyAnim = "fly2";
+        this.shootAnim = "shoot5";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -23,7 +27,7 @@ public class DigimonAirdramon extends CustomDigimon {
                 .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
-                .add(Attributes.FLYING_SPEED, 0.15D);
+                .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     protected boolean isDigimonMountable(){return true;}
@@ -34,7 +38,7 @@ public class DigimonAirdramon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -43,29 +47,12 @@ public class DigimonAirdramon extends CustomDigimon {
         return "Airdramon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.PETITMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.WIND_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle3";
-    }
-    @Override
-    protected String walkAnim() {
-        return "fly3";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit2";
-    }
-    @Override
-    protected String flyAnim() {
-        return "fly2";
     }
 
     @Override

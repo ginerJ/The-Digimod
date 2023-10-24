@@ -15,11 +15,17 @@ public class DigitalMeleeAttackGoal extends MeleeAttackGoal {
 
     @Override
     public boolean canUse() {
-        return (super.canUse() && !digimon.isOrderedToSit());
+        return (super.canUse() && !digimon.isOrderedToSit() && !digimon.canBeControlledByRider());
     }
 
     @Override
     public boolean canContinueToUse() {
-        return (super.canContinueToUse() && !digimon.isOrderedToSit());
+        return (super.canContinueToUse() && !digimon.isOrderedToSit() && !digimon.canBeControlledByRider()
+        );
+    }
+
+    @Override
+    public void stop() {;
+        super.stop();
     }
 }

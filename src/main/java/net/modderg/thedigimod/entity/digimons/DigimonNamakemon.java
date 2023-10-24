@@ -15,7 +15,7 @@ public class DigimonNamakemon extends CustomDigimon {
 
     public DigimonNamakemon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.walkAnim = "walk2";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -27,7 +27,7 @@ public class DigimonNamakemon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -36,32 +36,11 @@ public class DigimonNamakemon extends CustomDigimon {
         return "Namakemon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.DOKIMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.BEAST_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk2";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit";
-    }
-    @Override
-    protected String attackAnim() {
-        return "attack";
-    }
-    @Override
-    protected String shootAnim() {
-        return "shoot";
     }
 }

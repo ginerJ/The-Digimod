@@ -15,7 +15,11 @@ public class DigimonWizardmon extends CustomDigimon {
 
     public DigimonWizardmon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.idleAnim = "idle4";
+        this.walkAnim = "walk6";
+        this.sitAnim = "sit6";
+        this.attackAnim = "attack5";
+        this.shootAnim = "shoot2";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -27,7 +31,7 @@ public class DigimonWizardmon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -36,28 +40,11 @@ public class DigimonWizardmon extends CustomDigimon {
         return "Wizardmon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.KIIMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.NIGHTMARE_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle4";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk6";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit6";
-    }
-    @Override
-    protected String attackAnim() {
-        return "attack5";
     }
 }

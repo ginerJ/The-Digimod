@@ -15,8 +15,7 @@ public class DigimonVeedramon extends CustomDigimon {
 
     public DigimonVeedramon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
-    }
+        }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
@@ -33,7 +32,7 @@ public class DigimonVeedramon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -42,22 +41,9 @@ public class DigimonVeedramon extends CustomDigimon {
         return "Veedramon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.BOTAMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {return DigiItems.DRAGON_DATA;}
-
-    @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit";
-    }
+    public RegistryObject<?> getXpDrop() {return DigiItems.DRAGON_DATA;}
 }

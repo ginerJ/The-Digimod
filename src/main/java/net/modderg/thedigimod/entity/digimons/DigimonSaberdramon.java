@@ -15,7 +15,11 @@ public class DigimonSaberdramon extends CustomDigimon {
 
     public DigimonSaberdramon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.idleAnim = "idle7";
+        this.walkAnim = "walk9";
+        this.sitAnim = "sit4";
+        this.attackAnim = "attack6";
+        this.shootAnim = "shoot5";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -34,7 +38,7 @@ public class DigimonSaberdramon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -43,32 +47,11 @@ public class DigimonSaberdramon extends CustomDigimon {
         return "Saberdramon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.NYOKIMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {return DigiItems.WIND_DATA;}
-
-    @Override
-    protected String idleAnim() {
-        return "idle7";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk9";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit4";
-    }
-    @Override
-    protected String flyAnim() {
-        return "fly";
-    }
-    @Override
-    protected String attackAnim() {
-        return "attack6";
-    }
+    public RegistryObject<?> getXpDrop() {return DigiItems.WIND_DATA;}
 
     @Override
     protected Boolean isFlyingDigimon() {

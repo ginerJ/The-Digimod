@@ -14,7 +14,9 @@ public class DigimonTuruiemon extends CustomDigimon {
 
     public DigimonTuruiemon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.idleAnim = "idle6";
+        this.walkAnim = "walk7";
+        this.sitAnim = "sit6";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -26,7 +28,7 @@ public class DigimonTuruiemon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -35,22 +37,9 @@ public class DigimonTuruiemon extends CustomDigimon {
         return "Turuiemon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.CONOMON};}
+    public RegistryObject<?>[] getReincarnateTo(){return new RegistryObject[]{DigiItems.CONOMON};}
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.HOLY_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle6";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk7";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit6";
     }
 }

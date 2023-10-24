@@ -38,4 +38,14 @@ public class DigitalParticles {
 
     public static final RegistryObject<SimpleParticleType> EVO_PARTICLES =
             PARTICLE_TYPES.register( "evolution_particles", () -> new SimpleParticleType(true));
+
+    //moves
+    public static final RegistryObject<SimpleParticleType> BUBBLE_ATTACK =
+            PARTICLE_TYPES.register( "small_bullet", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> PEPPER_BREATH =
+            PARTICLE_TYPES.register( "pepper_breath", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> THUNDER_ATTACK =
+            PARTICLE_TYPES.register( "thunder", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> STINGER =
+            PARTICLE_TYPES.register( "stinger", () -> new SimpleParticleType(true));
 }

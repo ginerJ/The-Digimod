@@ -15,7 +15,10 @@ public class DigimonSunarizamon extends CustomDigimon {
 
     public DigimonSunarizamon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.idleAnim = "idle3";
+        this.sitAnim = "sit7";
+        this.attackAnim = "attack3";
+        this.shootAnim = "shoot6";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -27,7 +30,7 @@ public class DigimonSunarizamon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 1;
     }
 
@@ -36,28 +39,13 @@ public class DigimonSunarizamon extends CustomDigimon {
         return "Sunarizamon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.SUNAMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.EARTH_DATA;
     }
-
-    @Override
-    protected String idleAnim() {
-        return "idle3";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit7";
-    }
-    @Override
-    protected String attackAnim() {return "attack3";}
 
     @Override
     protected EntityType evoPath() {
@@ -78,27 +66,34 @@ public class DigimonSunarizamon extends CustomDigimon {
     }
 
     @Override
-    protected EntityType evoPath3() {return DigitalEntities.CYCLOMON.get();}
+    protected EntityType evoPath3() {return DigitalEntities.FLARERIZAMON.get();}
     @Override
     protected Boolean canEvoToPath3() {
+        return this.moodManager.getMood().equals("Meh") && this.getSpecificXps(0) >= 50 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
+    }
+
+    @Override
+    protected EntityType evoPath4() {return DigitalEntities.CYCLOMON.get();}
+    @Override
+    protected Boolean canEvoToPath4() {
         return this.moodManager.getMood().equals("Sad") && this.getSpecificXps(0) >= 50 && this.getCareMistakesStat() <= 10 && this.getBattlesStat() >= 10;
     }
 
     @Override
-    protected EntityType evoPath4() {
+    protected EntityType evoPath5() {
         return DigitalEntities.BABOONGAMON.get();
     }
     @Override
-    protected Boolean canEvoToPath4() {
+    protected Boolean canEvoToPath5() {
         return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(1) >= 25 && this.getSpecificXps(6) >= 25 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 
     @Override
-    protected EntityType evoPath5() {
+    protected EntityType evoPath6() {
         return DigitalEntities.GOLEMON.get();
     }
     @Override
-    protected Boolean canEvoToPath5() {
+    protected Boolean canEvoToPath6() {
         return this.moodManager.getMood().equals("Joyful") && this.getSpecificXps(6) >= 50 && this.getCareMistakesStat() == 0 && this.getBattlesStat() >= 15;
     }
 }

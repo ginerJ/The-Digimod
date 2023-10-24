@@ -15,8 +15,8 @@ public class DigimonGreymonVirus extends CustomDigimon {
 
     public DigimonGreymonVirus(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
-    }
+        sitAnim = "sit4";
+        }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
@@ -26,6 +26,8 @@ public class DigimonGreymonVirus extends CustomDigimon {
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
+    
+
     protected boolean isDigimonMountable(){return true;}
     @Override
     protected void positionRider(Entity entity, MoveFunction moveF) {
@@ -33,7 +35,7 @@ public class DigimonGreymonVirus extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -42,22 +44,9 @@ public class DigimonGreymonVirus extends CustomDigimon {
         return "Greymon(Virus)";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BOTAMON};}
+    public RegistryObject<?>[] getReincarnateTo(){return new RegistryObject[]{DigiItems.BOTAMON};}
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.NIGHTMARE_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit4";
     }
 }

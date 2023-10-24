@@ -30,11 +30,11 @@ public class DigitalRangedAttackGoal<T extends net.minecraft.world.entity.Mob & 
     }
 
     public boolean canUse() {
-        return this.mob.getTarget() != null;
+        return this.mob.getTarget() != null && !mob.canBeControlledByRider();
     }
 
     public boolean canContinueToUse() {
-        return (this.canUse() || !this.mob.getNavigation().isDone()) && !this.mob.isInSittingPose();
+        return (this.canUse() || !this.mob.getNavigation().isDone()) && !this.mob.isInSittingPose() && !mob.canBeControlledByRider();
     }
 
     public void start() {

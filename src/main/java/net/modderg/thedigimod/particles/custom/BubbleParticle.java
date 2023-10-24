@@ -2,6 +2,7 @@ package net.modderg.thedigimod.particles.custom;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -28,6 +29,11 @@ public class BubbleParticle extends TextureSheetParticle {
     public void tick() {
         super.tick();
         fadeOut();
+    }
+
+    @Override
+    protected void setSprite(TextureAtlasSprite p_108338_) {
+        super.setSprite(p_108338_);
     }
 
     private void fadeOut(){

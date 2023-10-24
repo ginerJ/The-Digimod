@@ -9,13 +9,14 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.CustomDigimon;
+import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.item.DigiItems;
 
 public class DigimonGrowlmonData extends CustomDigimon {
 
     public DigimonGrowlmonData(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.sitAnim = "sit6";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -26,6 +27,8 @@ public class DigimonGrowlmonData extends CustomDigimon {
                 .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
+    
+
     protected boolean isDigimonMountable(){return true;}
 
     @Override
@@ -35,7 +38,7 @@ public class DigimonGrowlmonData extends CustomDigimon {
 
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
@@ -44,24 +47,11 @@ public class DigimonGrowlmonData extends CustomDigimon {
         return "Growlmon(Data)";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.JYARIMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.DRAGON_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit6";
     }
 }

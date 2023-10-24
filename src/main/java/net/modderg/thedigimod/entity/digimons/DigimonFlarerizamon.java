@@ -10,11 +10,14 @@ import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.item.DigiItems;
 
-public class DigimonRoachmon extends CustomDigimon {
+public class DigimonFlarerizamon extends CustomDigimon {
 
-    public DigimonRoachmon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
+    public DigimonFlarerizamon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.walkAnim = "walk9";
+        this.sitAnim = "sit5";
+        this.attackAnim = "attack7";
+        this.shootAnim = "shoot5";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -22,35 +25,24 @@ public class DigimonRoachmon extends CustomDigimon {
                 .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.ATTACK_DAMAGE, 1D)
-                .add(Attributes.FLYING_SPEED, 0.2D);
+                .add(Attributes.FLYING_SPEED, 0.3D);
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 2;
     }
 
     @Override
     public String getSpecies() {
-        return "Roachmon";
+        return "Flarerizamon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){return new RegistryObject[]{DigiItems.BUBBMON};}
-    @Override
-    protected RegistryObject<?> xpDrop() {
-        return DigiItems.PLANTINSECT_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle";
+    public RegistryObject<?>[] getReincarnateTo(){
+        return new RegistryObject[]{DigiItems.BOTAMON};
     }
     @Override
-    protected String walkAnim() {
-        return "walk2";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit6";
+    public RegistryObject<?> getXpDrop() {
+        return DigiItems.NIGHTMARE_DATA;
     }
 }

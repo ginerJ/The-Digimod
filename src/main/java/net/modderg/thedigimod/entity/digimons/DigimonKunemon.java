@@ -15,7 +15,9 @@ public class DigimonKunemon extends CustomDigimon {
 
     public DigimonKunemon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(0);
+        this.walkAnim = "walk3";
+        this.sitAnim = "sit2";
+        this.attackAnim = "attack3";
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
@@ -27,7 +29,7 @@ public class DigimonKunemon extends CustomDigimon {
     }
 
     @Override
-    public int evoStage() {
+    public int getEvoStage() {
         return 1;
     }
 
@@ -36,29 +38,12 @@ public class DigimonKunemon extends CustomDigimon {
         return "Kunemon";
     }
     @Override
-    protected RegistryObject<?>[] reincarnateTo(){
+    public RegistryObject<?>[] getReincarnateTo(){
         return new RegistryObject[]{DigiItems.BUBBMON};
     }
     @Override
-    protected RegistryObject<?> xpDrop() {
+    public RegistryObject<?> getXpDrop() {
         return DigiItems.PLANTINSECT_DATA;
-    }
-
-    @Override
-    protected String idleAnim() {
-        return "idle";
-    }
-    @Override
-    protected String walkAnim() {
-        return "walk3";
-    }
-    @Override
-    protected String sitAnim() {
-        return "sit2";
-    }
-    @Override
-    protected String attackAnim() {
-        return "attack3";
     }
 
     @Override
