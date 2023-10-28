@@ -67,7 +67,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     public String getLowerCaseSpecies(){return getSpecies().toLowerCase().replace("(", "").replace(")","");}
 
     protected boolean isMountDigimon = false;
-    protected boolean isDigimonMountable(){return isMountDigimon;}
 
     protected RegistryObject<?>[] reincarnateTo = new RegistryObject[]{DigiItems.BOTAMON};
     public RegistryObject<?>[] getReincarnateTo(){
@@ -80,8 +79,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     }
 
     protected RegistryObject<?> xpDrop = DigiItems.DRAGON_DATA;
-    public RegistryObject<?> getXpDrop(){
-        return xpDrop;
+    public ItemStack getXpDrop(){
+        return new ItemStack((ItemLike) xpDrop.get());
     }
 
     protected final int MAXLEVEL = 30;
@@ -105,6 +104,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
     public boolean canFlyDigimon = false;
     protected Boolean isFlyingDigimon(){return canFlyDigimon;}
+
     //protected Boolean isSwimmerDigimon(){return false;}
 
     public Boolean evolutionLevelAchieved(){return (isRookie() && this.getCurrentLevel() > 15) || (isBaby2() && this.getCurrentLevel() > 5);}
@@ -112,7 +112,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     public Boolean isEvolving() {
         return getEvoCount() > 0;
     }
-    //protected boolean isStill() {return this.getDeltaMovement().horizontalDistanceSqr() <= 1.0E-3D;}
+
 
     protected static final EntityDataAccessor<Boolean> FIRSTSPAWN = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.BOOLEAN);
     public void setSpawn(Boolean i){
@@ -145,12 +145,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     public EntityType digiEvoPath5;
     public EntityType digiEvoPath6;
 
-    protected EvolutionCondition evoCondition;
-    protected EvolutionCondition evoCondition2;
-    protected EvolutionCondition evoCondition3;
-    protected EvolutionCondition evoCondition4;
-    protected EvolutionCondition evoCondition5;
-    protected EvolutionCondition evoCondition6;
+    public EvolutionCondition evoCondition;
+    public EvolutionCondition evoCondition2;
+    public EvolutionCondition evoCondition3;
+    public EvolutionCondition evoCondition4;
+    public EvolutionCondition evoCondition5;
+    public EvolutionCondition evoCondition6;
 
     public CustomDigimon getEvoPath = null;
     public CustomDigimon getEvoPath2 = null;
@@ -165,15 +165,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     protected Boolean canEvoToPath4(){return evoCondition4 != null && evoCondition4.checkConditions();}
     protected Boolean canEvoToPath5(){return evoCondition5 != null && evoCondition5.checkConditions();}
     protected Boolean canEvoToPath6(){return evoCondition6 != null && evoCondition6.checkConditions();}
-
-    //delete
-    protected EntityType<CustomDigimon> evoPath(){return digiEvoPath;}
-    protected EntityType<CustomDigimon> evoPath2(){return digiEvoPath2;}
-    protected EntityType<CustomDigimon> evoPath3(){return digiEvoPath3;}
-    protected EntityType<CustomDigimon> evoPath4(){return digiEvoPath4;}
-    protected EntityType<CustomDigimon> evoPath5(){return digiEvoPath5;}
-    protected EntityType<CustomDigimon> evoPath6(){return digiEvoPath6;}
-
 
     public EntityType<CustomDigimon> digitronEvo(){return null;}
 
@@ -484,7 +475,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         this.entityData.define(FIRSTSPAWN, true);
         this.entityData.define(LIFES, 1);
         this.entityData.define(PREEVO, "a-a-a-a-a");
-        this.entityData.define(SPMOVENAME, "bullet");
     }
 
     @Override
@@ -581,7 +571,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
                 this.changeMovementID();
                 return InteractionResult.CONSUME;
             }
-            if(this.isDigimonMountable() && !this.isInSittingPose()){
+            if(this.isMountDigimon && !this.isInSittingPose()){
                 if(!itemStack.isEmpty()) return super.mobInteract(player, hand);
                 player.startRiding(this);
                 if(this.getMovementID() == -1) this.setMovementID(1);
@@ -767,7 +757,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
                         this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) getReincarnateTo()[random.nextInt(getReincarnateTo().length)].get())));
             } else if (!this.isTame()) {
                 for (int i = 0; i < (this.isBaby2() ? 1 : this.isRookie() ? 5 : 15); i++) {
-                    this.level().addFreshEntity(new ItemEntity(level(), this.getX(), this.getY(), this.getZ(), new ItemStack((ItemLike) getXpDrop().get())));
+                    this.level().addFreshEntity(new ItemEntity(level(), this.getX(), this.getY(), this.getZ(), getXpDrop()));
                 }
             }
         }
@@ -817,18 +807,18 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
     public void evolveDigimon(){
         CustomDigimon evoD = null;
-        if(canEvoToPath6()){
-            evoD = evoPath6().create(this.level());
+        if(canEvoToPath()){
+            evoD = (CustomDigimon) digiEvoPath.create(this.level());
         } else if(canEvoToPath5()){
-            evoD = evoPath5().create(this.level());
+            evoD = (CustomDigimon) digiEvoPath2.create(this.level());
         } else if (canEvoToPath4()){
-            evoD = evoPath4().create(this.level());
+            evoD = (CustomDigimon) digiEvoPath3.create(this.level());
         } else if (canEvoToPath3()){
-            evoD = evoPath3().create(this.level());
+            evoD = (CustomDigimon) digiEvoPath4.create(this.level());
         } else if (canEvoToPath2()){
-            evoD = evoPath2().create(this.level());
-        } else if (canEvoToPath()){
-            evoD = evoPath().create(this.level());
+            evoD = (CustomDigimon) digiEvoPath5.create(this.level());
+        } else if (canEvoToPath6()){
+            evoD = (CustomDigimon) digiEvoPath6.create(this.level());
         }
         assert evoD != null;
         evoD.copyOtherDigi(this);
@@ -843,7 +833,9 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
     public void deEvolveDigimon(){
         if(this.getEvoStage()-1 >= 0 && !this.getPreEvo().split("-")[this.getEvoStage()-1].equals("a")){
+
             CustomDigimon prevo = (CustomDigimon) DigitalEntities.digimonMap.get(this.getPreEvo().split("-")[this.getEvoStage()-1]).get().create(this.level());
+
             prevo.copyOtherDigi(this);
 
             prevo.setAttackStat(prevo.getMaxStat()/4);
@@ -978,7 +970,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
                     event.getController().setAnimation(RawAnimation.begin().then(digimon.idleAnim, Animation.LoopType.LOOP));
                 }
             }
-
             return PlayState.CONTINUE;
         });
     }

@@ -15,7 +15,7 @@ public class DarkTowerShardItem extends Item {
 
     @Override
     public InteractionResult interactLivingEntity(ItemStack item, Player player, LivingEntity entity, InteractionHand hand) {
-        if(entity instanceof CustomDigimon cd){
+        if(entity instanceof CustomDigimon cd && cd.isOwnedBy(player)){
             cd.deEvolveDigimon();
             return InteractionResult.CONSUME;
         }

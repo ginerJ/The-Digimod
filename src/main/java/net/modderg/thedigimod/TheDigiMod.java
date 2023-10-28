@@ -16,15 +16,12 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.modderg.thedigimod.block.DigiBlocks;
 import net.modderg.thedigimod.entity.CustomDigimon;
-import net.modderg.thedigimod.entity.digimons.*;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.goods.*;
-import net.modderg.thedigimod.gui.StatsGui;
 import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.DigitalCreativeTab;
 import net.modderg.thedigimod.particles.DigitalParticles;
 import net.modderg.thedigimod.projectiles.DigitalProjectiles;
-import org.lwjgl.system.linux.Stat;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -187,7 +184,7 @@ public class TheDigiMod {
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
-            SpawnPlacements.register(DigitalEntities.BIYOMON.get(), SpawnPlacements.Type.ON_GROUND,
+            SpawnPlacements.register(DigitalEntities.PIYOMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
@@ -243,7 +240,7 @@ public class TheDigiMod {
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
-            SpawnPlacements.register(DigitalEntities.KOKOMON.get(), SpawnPlacements.Type.ON_GROUND,
+            SpawnPlacements.register(DigitalEntities.CHOCOMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
@@ -263,7 +260,7 @@ public class TheDigiMod {
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
-            SpawnPlacements.register(DigitalEntities.YAAMON.get(), SpawnPlacements.Type.ON_GROUND,
+            SpawnPlacements.register(DigitalEntities.KEEMON.get(), SpawnPlacements.Type.ON_GROUND,
                     Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);});
 
         event.enqueueWork(() -> {
@@ -353,7 +350,7 @@ public class TheDigiMod {
 
     private void setAttributes(final EntityAttributeCreationEvent event) {
         event.put(DigitalEntities.KOROMON.get(), CustomDigimon.setCustomAttributes().build());
-        event.put(DigitalEntities.KOKOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.CHOCOMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.MOCHIMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.AGUMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.TENTOMON.get(), CustomDigimon.setCustomAttributes().build());
@@ -388,7 +385,7 @@ public class TheDigiMod {
         event.put(DigitalEntities.CHAKMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.BLACKGAOGAMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.YOKOMON.get(), CustomDigimon.setCustomAttributes().build());
-        event.put(DigitalEntities.BIYOMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.PIYOMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.BIRDRAMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.SABERDRAMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.AKATORIMON.get(), CustomDigimon.setCustomAttributes().build());
@@ -406,7 +403,7 @@ public class TheDigiMod {
         event.put(DigitalEntities.BLACKGALGOMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.TURUIEMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.WENDIMON.get(), CustomDigimon.setCustomAttributes().build());
-        event.put(DigitalEntities.YAAMON.get(), CustomDigimon.setCustomAttributes().build());
+        event.put(DigitalEntities.KEEMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.IMPMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.NUMEMON.get(), CustomDigimon.setCustomAttributes().build());
         event.put(DigitalEntities.BAKEMON.get(), CustomDigimon.setCustomAttributes().build());

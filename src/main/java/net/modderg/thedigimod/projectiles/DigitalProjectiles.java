@@ -8,7 +8,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
-import net.modderg.thedigimod.entity.digimons.DigimonKoromon;
 import net.modderg.thedigimod.particles.DigitalParticles;
 
 import java.util.List;
@@ -50,6 +49,12 @@ public class DigitalProjectiles {
                             new CustomProjectile(type,level, "mega_flame", DigitalParticles.PEPPER_BREATH), MobCategory.MISC)
                     .sized(0.9f,0.9f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "mega_flame").toString()));
+
+    public static final RegistryObject<EntityType<CustomProjectile>> V_ARROW = PROJECTILES.register("v_arrow",
+            () -> EntityType.Builder.<CustomProjectile>of((type, level) ->
+                            new CustomProjectile(type,level, "v_arrow", DigitalParticles.PEPPER_BREATH), MobCategory.MISC)
+                    .sized(1.2f,0.5f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "v_arrow").toString()));
 
     //machine
 

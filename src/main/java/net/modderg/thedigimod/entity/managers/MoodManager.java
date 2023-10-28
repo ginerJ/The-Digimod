@@ -56,4 +56,12 @@ public class MoodManager {
         if (moodPoints > 50) return 10262007;
         return 6579711;
     }
+
+    public int getMoodColor(String mood) {
+        if (mood.equals("Joyful")) return 16761177;
+        if (mood.equals("Happy")) return 16777088;
+        if (mood.equals("Meh")) return 16646143;
+        if (mood.equals("Sad")) return 10262007;
+        return 6579711;
+    }
 }

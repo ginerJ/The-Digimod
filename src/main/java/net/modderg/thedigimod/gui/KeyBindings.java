@@ -8,7 +8,11 @@ import org.lwjgl.glfw.GLFW;
 public class KeyBindings {
     public static final String KEY_CATEGORY_THEDIGIMOD = "key.category.thedigimod.digimod";
     public static final String KEY_NAVIGATING_DIGIVICE = "key.thedigimod.navigate_digivice";
+    public static final String KEY_MOUSE_TRIGGER = "key.thedigimod.mouse_inventory_trigger";
 
     public static final KeyMapping NAVIGATING_KEY = new KeyMapping(KEY_NAVIGATING_DIGIVICE, KeyConflictContext.IN_GAME,
             InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_R, KEY_CATEGORY_THEDIGIMOD);
+
+    public static final KeyMapping MOUSE_TRIGGER_KEY = new KeyMapping(KEY_MOUSE_TRIGGER, KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_Z, KEY_CATEGORY_THEDIGIMOD);
 }

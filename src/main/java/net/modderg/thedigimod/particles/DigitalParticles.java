@@ -48,4 +48,6 @@ public class DigitalParticles {
             PARTICLE_TYPES.register( "thunder", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> STINGER =
             PARTICLE_TYPES.register( "stinger", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> ENERGY_STAR =
+            PARTICLE_TYPES.register( "energy_star", () -> new SimpleParticleType(true));
 }

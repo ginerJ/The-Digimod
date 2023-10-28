@@ -3,6 +3,7 @@ package net.modderg.thedigimod.events;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
+import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.modderg.thedigimod.TheDigiMod;
@@ -16,37 +17,41 @@ import net.modderg.thedigimod.particles.custom.*;
 import net.modderg.thedigimod.projectiles.CustomProjectileRender;
 import net.modderg.thedigimod.projectiles.DigitalProjectiles;
 
-
 public class ClientEvents {
     @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientDistEventBusSubscriber {
         @SubscribeEvent
         public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(DigitalEntities.KOROMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.KOKOMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.MOCHIMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.TSUNOMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.GIGIMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.BABYDMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.PUYOYOMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.BIBIMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.YOKOMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.KEEMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.TOKOMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.GOROMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.CHOCOMON.get(), CustomDigimonRender::new);
+            
             event.registerEntityRenderer(DigitalEntities.AGUMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.TENTOMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.KABUTERIMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.GREYMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.TSUNOMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.GRIZZLYMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.BEARMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.KUNEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GIGIMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.GUILMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.PUYOYOMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.JELLYMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.TESLAJELLYMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.GROWLMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.GROWLMONDATA.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.BLACKGROWLMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.KUWAGAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BABYDMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.DRACOMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.COREDRAMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.COREDRAMONGREEN.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BIBIMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.PULSEMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.BULKMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.AGUMONBLACK.get(), CustomDigimonRender::new);
@@ -55,8 +60,7 @@ public class ClientEvents {
             event.registerEntityRenderer(DigitalEntities.VEEDRAMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.CHAKMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.BLACKGAOGAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.YOKOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BIYOMON.get(), CustomDigimonRender::new);
+            event.registerEntityRenderer(DigitalEntities.PIYOMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.BIRDRAMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.AKATORIMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.SABERDRAMON.get(), CustomDigimonRender::new);
@@ -76,15 +80,12 @@ public class ClientEvents {
             event.registerEntityRenderer(DigitalEntities.BLACKGALGOMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.TURUIEMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.WENDIMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.YAAMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.IMPMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.NUMEMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.BAKEMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.ICEDEVIMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.WIZARDMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.BOOGIEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.TOKOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GOROMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.SUNARIZAMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.GOLEMON.get(), CustomDigimonRender::new);
             event.registerEntityRenderer(DigitalEntities.BABOONGAMON.get(), CustomDigimonRender::new);
@@ -119,6 +120,7 @@ public class ClientEvents {
             event.registerEntityRenderer(DigitalProjectiles.THUNDERBOLT.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.PETIT_THUNDER.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.DEADLY_STING.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.V_ARROW.get(), CustomProjectileRender::new);
         }
 
         @SubscribeEvent
@@ -144,11 +146,13 @@ public class ClientEvents {
             Minecraft.getInstance().particleEngine.register(DigitalParticles.PEPPER_BREATH.get(), UpParticle.Provider::new);
             Minecraft.getInstance().particleEngine.register(DigitalParticles.THUNDER_ATTACK.get(), UpParticle.Provider::new);
             Minecraft.getInstance().particleEngine.register(DigitalParticles.STINGER.get(), UpParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.ENERGY_STAR.get(), UpParticle.Provider::new);
         }
 
         @SubscribeEvent
         public static void onKeyRegister(RegisterKeyMappingsEvent event){
             event.register(KeyBindings.NAVIGATING_KEY);
+            event.register(KeyBindings.MOUSE_TRIGGER_KEY);
         }
 
 
@@ -160,6 +164,13 @@ public class ClientEvents {
                 if(KeyBindings.NAVIGATING_KEY.consumeClick()){
                     StatsGui.switchGui();
                 }
+
+                if(KeyBindings.MOUSE_TRIGGER_KEY.consumeClick()){
+
+                    if (StatsGui.isShowing)StatsGui.switchFreeMouse();
+                }
+
+                GuiOverlayManager.getOverlays();
             }
         }
     }
