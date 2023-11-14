@@ -1,11 +1,20 @@
 package net.modderg.thedigimod.projectiles;
 
+import com.google.common.collect.Sets;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
 import net.minecraftforge.registries.RegistryObject;
@@ -18,21 +27,86 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
+import java.util.Collection;
+import java.util.Set;
+
 public class CustomProjectile extends AbstractArrow implements GeoEntity {
+
+    protected int timesRepeat = 1;
+    protected int healOnHit = 0;
+
+    protected CustomDigimon mob = null;
+    protected LivingEntity target = null;
 
     protected String attack = "small_bullet";
     protected ParticleOptions particle = DigitalParticles.BUBBLE_ATTACK.get();
+    protected boolean isPhysical = false;
+
+    protected boolean onFire = false ;
+    protected boolean bright = false ;
 
     public int life = 100;
+
+    private final Set<MobEffectInstance> effects = Sets.newHashSet();
+    public final Set<MobEffectInstance> oEffects = Sets.newHashSet();
 
     public CustomProjectile(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_) {
         super(p_36721_, p_36722_);
     }
 
-    public CustomProjectile(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_, String attack, RegistryObject<SimpleParticleType> particle) {
+    public CustomProjectile(EntityType<? extends AbstractArrow> p_36721_, Level p_36722_, String attack, ParticleOptions particle) {
         super(p_36721_, p_36722_);
         this.attack = attack;
-        this.particle = particle.get();
+        this.particle = particle;
+    }
+
+    public CustomProjectile addEffect(MobEffect effect) {
+        this.effects.add(new MobEffectInstance(effect,200,0));
+        return this;
+    }
+
+    public CustomProjectile addEffect(MobEffect effect, int seconds) {
+        this.effects.add(new MobEffectInstance(effect,40*seconds,0));
+        return this;
+    }
+
+    public CustomProjectile addOwnerEffect(MobEffect effect) {
+        this.oEffects.add(new MobEffectInstance(effect,600,0));
+        return this;
+    }
+
+    public CustomProjectile addOwnerEffect(MobEffect effect, int seconds) {
+        this.oEffects.add(new MobEffectInstance(effect,40*seconds,0));
+        return this;
+    }
+
+    public CustomProjectile setPhysical(){
+        isPhysical = true;
+        return this;
+    }
+
+    public CustomProjectile setFire(){
+        onFire = true;
+        return this;
+    }
+
+    public CustomProjectile healOnHit(int heal){
+        this.healOnHit = heal;
+        return this;
+    }
+
+    public CustomProjectile setRepeat(int times){
+        timesRepeat = times;
+        return this;
+    }
+
+    public int getRepeatTimes(){
+        return timesRepeat;
+    }
+
+    public CustomProjectile setBright(){
+        bright = true;
+        return this;
     }
 
     public void performRangedAttack(@NotNull CustomDigimon mob, @NotNull LivingEntity target){
@@ -52,13 +126,15 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
 
         this.setOwner(mob);
 
+        this.mob = mob;
+        this.target = target;
+
         mob.level().addFreshEntity(this);
     }
 
     @Override
     public void tick() {
-        life--;
-        if(life <0){
+        if(--life <0){
             this.remove(RemovalReason.UNLOADED_TO_CHUNK);
         }
         super.tick();
@@ -75,11 +151,15 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
             if(hitted.getEntity() instanceof CustomDigimon hcd){
                 if(!(hcd.getOwner() != null && cd.getOwner() != null && cd.getOwner().is(hcd.getOwner()))){
                     hcd.hurt(this.damageSources().mobAttack(cd), cd.calculateDamage(
-                            cd.getSpAttackStat() + cd.getCurrentLevel(),
+                            (isPhysical ? cd.getAttackStat()/2 : cd.getSpAttackStat())/ timesRepeat + cd.getCurrentLevel(),
                             hcd.getSpDefenceStat() + hcd.getCurrentLevel()
                     ));}
-            }else {super.onHitEntity(hitted);}
+            }else {
+                super.onHitEntity(hitted);
+            }
+            cd.heal(healOnHit);
         }
+        if(onFire) hitted.getEntity().setSecondsOnFire(3);
         this.remove(RemovalReason.UNLOADED_TO_CHUNK);
     }
 
@@ -118,11 +198,18 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<CustomProjectile>(this, "controller", 0, this::animController));
+        controllers.add(new AnimationController<>(this, "controller", 0, this::animController));
     }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.factory;
+    }
+
+    @Override
+    protected void doPostHurtEffects(LivingEntity p_36873_) {
+        for(MobEffectInstance effect : this.effects) {
+            p_36873_.addEffect(effect, this);
+        }
     }
 }

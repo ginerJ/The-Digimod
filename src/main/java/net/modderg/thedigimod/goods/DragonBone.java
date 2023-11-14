@@ -36,14 +36,7 @@ public class DragonBone extends AbstractTrainingGood {
         return new ItemStack(DigiItems.DRAGON_BONE_ITEM.get());
     }
 
-    @Override
-    public int min(){
-        return 2;
-    }
-    @Override
-    public int max(){
-        return 5;
-    }
+    
 
     @Override
     public int getXpId(){

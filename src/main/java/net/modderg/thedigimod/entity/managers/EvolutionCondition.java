@@ -18,6 +18,13 @@ public class EvolutionCondition {
         this.digimon = cd;
     }
 
+    public EvolutionCondition(){}
+
+    public EvolutionCondition setDigimon(CustomDigimon cd){
+        this.digimon = cd;
+        return this;
+    }
+
     public LinkedList<EvolutionCondition> conditions = new LinkedList<>();
 
     public boolean checkConditions(){
@@ -44,7 +51,7 @@ public class EvolutionCondition {
         return this;
     }
 
-    public EvolutionCondition alwaysTrue(){
+    public EvolutionCondition alwaysCan(){
         this.alwaysTrue = true;
         return this;
     }

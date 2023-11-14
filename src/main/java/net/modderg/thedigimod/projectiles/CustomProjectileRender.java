@@ -29,6 +29,9 @@ public class CustomProjectileRender<D extends CustomProjectile> extends GeoEntit
     @Override
     public void renderRecursively(PoseStack poseStack, CustomProjectile animatable, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         pointEntityTowardsDeltaMovement(poseStack, animatable);
+        if(animatable.bright){
+            packedLight = LightTexture.FULL_BRIGHT;
+        }
         super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
     }
 

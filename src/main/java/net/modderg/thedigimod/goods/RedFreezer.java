@@ -36,14 +36,7 @@ public class RedFreezer extends AbstractTrainingGood {
         return new ItemStack(DigiItems.RED_FREEZER.get());
     }
 
-    @Override
-    public int min(){
-        return 2;
-    }
-    @Override
-    public int max(){
-        return 5;
-    }
+    
 
     @Override
     public int getXpId(){

@@ -23,6 +23,9 @@ import software.bernie.geckolib.core.object.PlayState;
 
 public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
 
+    protected float statMultiplier = 1.0f;
+    public AbstractTrainingGood setStatMultiplier(float f){statMultiplier = f; return this;}
+
     public AbstractTrainingGood(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
         this.setCustomName(Component.literal("LOL"));
@@ -42,13 +45,6 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
         return null;
     }
 
-    public int min(){
-        return 0;
-    }
-    public int max(){
-        return 3;
-    }
-
     @Override
     public boolean isCustomNameVisible() {
         return true;
@@ -57,7 +53,8 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
     @Override
     public boolean hurt(DamageSource source, float p_27568_) {
         if(source.getDirectEntity() instanceof CustomDigimon digimon && this.random.nextInt(4) == 2){
-            int add = random.nextInt(min(), max());
+            int add = random.nextInt(digimon.minStatGain(), digimon.maxStatGain());
+            add = (int) (add * statMultiplier);
             digimon.moodManager.restMoodPoints(10);
             if(statName().equals("attack")){
                 digimon.setAttackStat(digimon.getAttackStat() + add);
@@ -70,7 +67,7 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
             } else if(statName().equals("health")){
                 digimon.setHealthStat(digimon.getHealthStat() + add);
             }
-            if(getXpId() >= 0 && random.nextInt(0,10) == 1){
+            if(getXpId() >= 0 && random.nextInt(0,20) == 1){
                 digimon.useXpItem(getXpId());
             }
         }

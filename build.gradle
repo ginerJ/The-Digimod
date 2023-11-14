@@ -1,7 +1,7 @@
 plugins {
     id 'eclipse'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.neoforged.gradle' version '[6.0.13, 6.2)'
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
@@ -100,7 +100,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20-46.0.14'
+    minecraft 'net.neoforged:forge:1.20.1-47.1.79'
 }
 
 jar {

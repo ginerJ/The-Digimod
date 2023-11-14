@@ -1,12 +1,15 @@
 package net.modderg.thedigimod.events;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.modderg.thedigimod.TheDigiMod;
+import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.CustomDigimonRender;
 import net.modderg.thedigimod.entity.DigitalEntities;
 import net.modderg.thedigimod.goods.AbstractGoodRender;
@@ -22,96 +25,26 @@ public class ClientEvents {
     public static class ClientDistEventBusSubscriber {
         @SubscribeEvent
         public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
-            event.registerEntityRenderer(DigitalEntities.KOROMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.MOCHIMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.TSUNOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GIGIMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BABYDMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.PUYOYOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BIBIMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.YOKOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.KEEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.TOKOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GOROMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.CHOCOMON.get(), CustomDigimonRender::new);
-            
-            event.registerEntityRenderer(DigitalEntities.AGUMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.TENTOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.KABUTERIMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GREYMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GRIZZLYMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BEARMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.KUNEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GUILMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.JELLYMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.TESLAJELLYMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GROWLMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GROWLMONDATA.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BLACKGROWLMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.KUWAGAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.DRACOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.COREDRAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.COREDRAMONGREEN.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.PULSEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BULKMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.AGUMONBLACK.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.DARKTYRANNOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.TYRANNOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.VEEDRAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.CHAKMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BLACKGAOGAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.PIYOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BIRDRAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.AKATORIMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.SABERDRAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.NAMAKEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.EXERMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GREYMONVIRUS.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.DARKLIZARDMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.FLARERIZAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.RUNNERMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.THUNDERBALLMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.OCTOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GESOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.AIRDRAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.ROACHMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.FLYMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.LOPMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BLACKGALGOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.TURUIEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.WENDIMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.IMPMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.NUMEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BAKEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.ICEDEVIMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.WIZARDMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BOOGIEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.SUNARIZAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.GOLEMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.BABOONGAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.CYCLOMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.TORTAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.PATAMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.UNIMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.PEGASMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.MIMICMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.CENTALMON.get(), CustomDigimonRender::new);
-            event.registerEntityRenderer(DigitalEntities.ANGEMON.get(), CustomDigimonRender::new);
 
-            event.registerEntityRenderer(DigitalEntities.PUNCHING_BAG.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.SP_TARGET.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.SP_TABLE.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.SHIELD_STAND.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.UPDATE_GOOD.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.DRAGON_BONE.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.BALL_GOOD.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.CLOWN_BOX.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.FLYTRAP_GOOD.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.OLD_PC_GOOD.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.LIRA_GOOD.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.RED_FREEZER.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.WIND_VANE.get(), AbstractGoodRender::new);
-            event.registerEntityRenderer(DigitalEntities.TRAINING_ROCK.get(), AbstractGoodRender::new);
+            for (String s:DigitalEntities.digimonMap.keySet()){
+                EntityType<CustomDigimon> digimon = (EntityType<CustomDigimon>) DigitalEntities.digimonMap.get(s).get();
+                event.registerEntityRenderer(digimon, CustomDigimonRender::new);
+            }
+
+            event.registerEntityRenderer(DigitalProjectiles.PUNCHING_BAG.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.SP_TARGET.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.SP_TABLE.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.SHIELD_STAND.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.UPDATE_GOOD.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.DRAGON_BONE.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.BALL_GOOD.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.CLOWN_BOX.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.FLYTRAP_GOOD.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.OLD_PC_GOOD.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.LIRA_GOOD.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.RED_FREEZER.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.WIND_VANE.get(), AbstractGoodRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.TRAINING_ROCK.get(), AbstractGoodRender::new);
 
             event.registerEntityRenderer(DigitalProjectiles.BULLET.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.PEPPER_BREATH.get(), CustomProjectileRender::new);
@@ -121,6 +54,24 @@ public class ClientEvents {
             event.registerEntityRenderer(DigitalProjectiles.PETIT_THUNDER.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.DEADLY_STING.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.V_ARROW.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.HYPER_HEAT.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.POOP_THROW.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.METEOR_WING.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.GATLING_GUN.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.DISC_ATTACK.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.HEAVENS_KNUCKLE.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.HOLY_SHOOT.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.GLIDING_ROCKS.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.BEAST_SLASH.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.INK_GUN.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.SNOW_BULLET.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.TRON_FLAME.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.DEATH_CLAW.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.POISON_BREATH.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.SAND_BLAST.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.NIGHT_OF_FIRE.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.BEAR_PUNCH.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.PETIT_TWISTER.get(), CustomProjectileRender::new);
         }
 
         @SubscribeEvent
@@ -143,10 +94,15 @@ public class ClientEvents {
             Minecraft.getInstance().particleEngine.register(DigitalParticles.EVO_PARTICLES.get(), UpParticle.Provider::new);
 
             Minecraft.getInstance().particleEngine.register(DigitalParticles.BUBBLE_ATTACK.get(), UpParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(DigitalParticles.PEPPER_BREATH.get(), UpParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(DigitalParticles.THUNDER_ATTACK.get(), UpParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.PEPPER_BREATH.get(), BrightParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.BULLET_PARTICLE.get(), BrightParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.THUNDER_ATTACK.get(), BrightParticle.Provider::new);
             Minecraft.getInstance().particleEngine.register(DigitalParticles.STINGER.get(), UpParticle.Provider::new);
-            Minecraft.getInstance().particleEngine.register(DigitalParticles.ENERGY_STAR.get(), UpParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.ENERGY_STAR.get(), BrightParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.RED_ENERGY_STAR.get(), BrightParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.POOP_PARTICLE.get(), UpParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.HOLY_CROSS.get(), BrightParticle.Provider::new);
+            Minecraft.getInstance().particleEngine.register(DigitalParticles.ROCK_PARTICLE.get(), UpParticle.Provider::new);
         }
 
         @SubscribeEvent

@@ -44,10 +44,20 @@ public class DigitalParticles {
             PARTICLE_TYPES.register( "small_bullet", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> PEPPER_BREATH =
             PARTICLE_TYPES.register( "pepper_breath", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> BULLET_PARTICLE =
+            PARTICLE_TYPES.register( "bullet_particle", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> THUNDER_ATTACK =
             PARTICLE_TYPES.register( "thunder", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> STINGER =
             PARTICLE_TYPES.register( "stinger", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> ENERGY_STAR =
             PARTICLE_TYPES.register( "energy_star", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> RED_ENERGY_STAR =
+            PARTICLE_TYPES.register( "red_energy_star", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> POOP_PARTICLE =
+            PARTICLE_TYPES.register( "poop_particle", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> HOLY_CROSS =
+            PARTICLE_TYPES.register( "holy_cross", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> ROCK_PARTICLE =
+            PARTICLE_TYPES.register( "rock_particle", () -> new SimpleParticleType(true));
 }

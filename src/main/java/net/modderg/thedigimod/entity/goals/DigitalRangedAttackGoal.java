@@ -21,6 +21,10 @@ public class DigitalRangedAttackGoal<T extends net.minecraft.world.entity.Mob & 
     private boolean strafingBackwards;
     private int strafingTime = -1;
 
+    public void setAttackTime(int attackTime) {
+        this.attackTime = attackTime;
+    }
+
     public DigitalRangedAttackGoal(CustomDigimon p_25792_, double p_25793_, int p_25794_, float p_25795_) {
         this.mob = p_25792_;
         this.speedModifier = p_25793_;
@@ -109,8 +113,9 @@ public class DigitalRangedAttackGoal<T extends net.minecraft.world.entity.Mob & 
                 this.mob.getLookControl().setLookAt(livingentity, 30.0F, 30.0F);
             }
 
-            if (--this.attackTime == 0) {
+            if(--this.attackTime == 60){
                 this.mob.performRangedAttack(livingentity, 1f);
+            } else if (this.attackTime == 0) {
                 this.attackTime = this.attackIntervalMin;//was trying to make this shit shoot
             } else if (this.attackTime < 0) {
                 this.attackTime = this.attackIntervalMin;
