@@ -3,9 +3,11 @@ package net.modderg.thedigimod.events;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.modderg.thedigimod.TheDigiMod;
@@ -114,6 +116,14 @@ public class ClientEvents {
 
         @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, value = Dist.CLIENT)
         public static class ClientDistEvents {
+
+            @SubscribeEvent
+            public static void  onPlayerTick(TickEvent.PlayerTickEvent event){
+                if(event.phase == TickEvent.Phase.END){
+                    Player entity = event.player;
+                    if (entity.isShiftKeyDown()) entity.ejectPassengers();
+                }
+            }
 
             @SubscribeEvent
             public static void onKeyPress(InputEvent.Key event){

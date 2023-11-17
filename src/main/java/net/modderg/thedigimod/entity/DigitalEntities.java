@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@SuppressWarnings({"unused","SpellCheckingInspection"})
 public class DigitalEntities {
 
     public static DeferredRegister<EntityType<?>> DIGIMONS = DeferredRegister.create(
@@ -38,7 +39,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Koromon")
                                     .setBabyAndXpDrop(DigiItems.DRAGON_DATA, DigiItems.BOTAMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                                    .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("agumon","agumonblack",null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan(),
@@ -52,7 +53,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Mochimon")
                                     .setBabyAndXpDrop(DigiItems.PLANTINSECT_DATA, DigiItems.BUBBMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                                    .setAnimations("idle6", "sit7", "walk8",null,"attack2","shoot4")
                                     .setEvos("kunemon","tentomon",null,null,null,null)
                                     .setEvoConditions(
                                         new EvolutionCondition().alwaysCan(),
@@ -66,7 +67,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Tsunomon")
                                     .setBabyAndXpDrop(DigiItems.BEAST_DATA, DigiItems.PUNIMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                            .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("bearmon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -79,7 +80,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Gigimon")
                                     .setBabyAndXpDrop(DigiItems.DRAGON_DATA, DigiItems.JYARIMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                            .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("guilmon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -92,7 +93,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Babydmon")
                                     .setBabyAndXpDrop(DigiItems.DRAGON_DATA, DigiItems.PETITMON)
-                                    .setAnimations("idle8", "sit2", "walk4","bug_fly","attack2","shoot4")
+                                    .setAnimations("idle6", "sit7", "walk4","bug_fly","attack2","shoot4")
                                     .setEvos("dracomon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -105,7 +106,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Puyoyomon")
                                     .setBabyAndXpDrop(DigiItems.AQUAN_DATA, DigiItems.PUYOMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                                    .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("jellymon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -118,7 +119,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Bibimon")
                                     .setBabyAndXpDrop(DigiItems.MACHINE_DATA, DigiItems.DOKIMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                                    .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("pulsemon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -131,7 +132,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Yokomon")
                                     .setBabyAndXpDrop(DigiItems.WIND_DATA, DigiItems.NYOKIMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                                    .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("piyomon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -144,7 +145,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Keemon")
                                     .setBabyAndXpDrop(DigiItems.NIGHTMARE_DATA, DigiItems.KIIMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                                    .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("impmon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -157,7 +158,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Tokomon")
                                     .setBabyAndXpDrop(DigiItems.HOLY_DATA, DigiItems.POYOMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                                    .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("patamon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -169,8 +170,8 @@ public class DigitalEntities {
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Goromon")
-                                    .setBabyAndXpDrop(DigiItems.EARTH_DATA, new RegistryObject[]{DigiItems.SUNAMON})
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                                    .setBabyAndXpDrop(DigiItems.EARTH_DATA, DigiItems.SUNAMON)
+                                    .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("sunarizamon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -183,7 +184,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Chocomon")
                                     .setBabyAndXpDrop(DigiItems.HOLY_DATA, DigiItems.CONOMON)
-                                    .setAnimations("idle3", "sit2", "walk4",null,"attack2","shoot4")
+                            .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("lopmon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -196,7 +197,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "petit_thunder";}}
                                     .setSpecies("Chapmon")
                                     .setBabyAndXpDrop(DigiItems.AQUAN_DATA, DigiItems.DATIRIMON)
-                                    .setAnimations("idle6", "sit2", "walk4",null,"attack2","shoot4")
+                                    .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
                                     .setEvos("kamemon",null,null,null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan()
@@ -237,7 +238,7 @@ public class DigitalEntities {
                                     .setEvoStage(2)
                                     .setRank("fail")
                                     .setBabyAndXpDrop(DigiItems.EARTH_DATA, DigiItems.BUBBMON)
-                                    .setAnimations("idle6", "sit7", "walk8",null,"attack2","shoot4")
+                                    .setAnimations("idle3", "sit7", "walk8",null,"attack2","shoot4")
                                     , MobCategory.CREATURE)
                     .sized(1f,1.7f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "numemon").toString()));
@@ -249,7 +250,7 @@ public class DigitalEntities {
                                     .setEvoStage(2)
                                     .setRank("fail")
                                     .setBabyAndXpDrop(DigiItems.AQUAN_DATA, DigiItems.PUYOMON,DigiItems.DATIRIMON)
-                                    .setAnimations("idle6", "sit7", "walk8",null,"attack2","shoot4")
+                                    .setAnimations("idle3", "sit7", "walk8",null,"attack2","shoot4")
                                     , MobCategory.CREATURE)
                     .sized(1f,1.7f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "karatukinumemon").toString()));
@@ -259,7 +260,7 @@ public class DigitalEntities {
                                     String getDefaultSpMove(){return "pepper_breath";}}
                                     .setSpecies("Agumon")
                                     .setBabyAndXpDrop(DigiItems.DRAGON_DATA, DigiItems.BOTAMON)
-                                    .setAnimations(null, null, "walk5",null,null,null)
+                                    .setAnimations("idle3", null, "walk5",null,"attack7",null)
                                     .setEvos("tyrannomon", "numemon", "greymon","veedramon","flarerizamon",null)
                                     .setDigitronEvo("agumonblack")
                                     .setEvoConditions(
@@ -278,7 +279,7 @@ public class DigitalEntities {
                                     .setSpecies("Tyrannomon")
                                     .setEvoStage(2)
                                     .setBabyAndXpDrop(DigiItems.DRAGON_DATA, DigiItems.BOTAMON)
-                                    .setAnimations(null, "sit3", null,null,null,null)
+                                    .setAnimations("idle9", "sit9", "walk9",null,"attack7",null)
                                     .setDigitronEvo("darktyrannomon")
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2.2f)
@@ -290,7 +291,7 @@ public class DigitalEntities {
                                     .setSpecies("Flarerizamon")
                                     .setEvoStage(2)
                                     .setBabyAndXpDrop(DigiItems.DRAGON_DATA, DigiItems.BOTAMON)
-                                    .setAnimations(null, "sit5", "walk9",null,"attack7","shoot5")
+                                    .setAnimations("idle7", "sit5", "walk9",null,"attack6","attack6")
                                     .setDigitronEvo("darklizardmon")
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2.0f)
@@ -303,7 +304,7 @@ public class DigitalEntities {
                                     .setRank("super")
                                     .setEvoStage(2)
                                     .setBabyAndXpDrop(DigiItems.DRAGON_DATA, DigiItems.BOTAMON)
-                                    .setAnimations(null, "sit4", null,null,null,null)
+                                    .setAnimations("idle5", "sit4", "walk7",null,null,"attack6")
                                     .setDigitronEvo("greymonvirus")
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2.25f)
@@ -316,6 +317,7 @@ public class DigitalEntities {
                                     .setRank("super")
                                     .setEvoStage(2)
                                     .setBabyAndXpDrop(DigiItems.DRAGON_DATA, DigiItems.BOTAMON)
+                                    .setAnimations("idle3",null,"walk7",null,null,"attack6")
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "veedramon").toString()));
@@ -326,7 +328,7 @@ public class DigitalEntities {
                                     .setSpecies("Agumon(Black)")
                                     .setEvoStage(1)
                                     .setBabyAndXpDrop(DigiItems.NIGHTMARE_DATA, DigiItems.BOTAMON)
-                                    .setAnimations(null, null, "walk5",null,null,null)
+                                    .setAnimations("idle3", null, "walk5",null,null,null)
                                     .setEvos("darklizardmon", "numemon", "blackgrowlmon","greymonvirus","darktyrannomon",null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan(),
@@ -344,7 +346,7 @@ public class DigitalEntities {
                                     .setSpecies("Darklizardmon")
                                     .setEvoStage(2)
                                     .setBabyAndXpDrop(DigiItems.NIGHTMARE_DATA, DigiItems.BOTAMON)
-                                    .setAnimations(null, "sit5", "walk9",null,"attack7","shoot5")
+                                    .setAnimations("idle7", "sit5", "walk9",null,"attack6","attack6")
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2.0f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "darklizardmon").toString()));
@@ -356,7 +358,7 @@ public class DigitalEntities {
                                     .setRank("super")
                                     .setEvoStage(2)
                                     .setBabyAndXpDrop(DigiItems.NIGHTMARE_DATA, DigiItems.BOTAMON)
-                                    .setAnimations(null, "sit4", null,null,null,null)
+                                    .setAnimations("idle5", "sit4", "walk7",null,null,"attack6")
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "greymonvirus").toString()));
@@ -368,7 +370,7 @@ public class DigitalEntities {
                                     .setRank("super")
                                     .setEvoStage(2)
                                     .setBabyAndXpDrop(DigiItems.NIGHTMARE_DATA, DigiItems.BOTAMON)
-                                    .setAnimations(null, "sit3", null,null,null,null)
+                                    .setAnimations("idle9", "sit9", "walk9",null,"attack7",null)
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2.2f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "darktyrannomon").toString()));
@@ -379,7 +381,7 @@ public class DigitalEntities {
                                     .setSpecies("Tentomon")
                                     .setEvoStage(1)
                                     .setBabyAndXpDrop(DigiItems.PLANTINSECT_DATA, DigiItems.BUBBMON)
-                                    .setAnimations(null, "sit3", null,null,null,null)
+                                    .setAnimations("idle9", "sit3", "walk7",null,"attack5",null)
                                     .setEvos("kuwagamon", "roachmon", "kabuterimon",null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan(),
@@ -396,7 +398,7 @@ public class DigitalEntities {
                                     .setEvoStage(2)
                                     .setFlyingDigimon()
                                     .setBabyAndXpDrop(DigiItems.PLANTINSECT_DATA, DigiItems.BUBBMON)
-                                    .setAnimations(null, "sit6",null,"bug_fly",null,null)
+                                    .setAnimations("idle3", "sit6","walk9","bug_fly","attack6",null)
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "kuwagamon").toString()));
@@ -408,7 +410,7 @@ public class DigitalEntities {
                                     .setSpecies("Kunemon")
                                     .setEvoStage(1)
                                     .setBabyAndXpDrop(DigiItems.PLANTINSECT_DATA, DigiItems.BUBBMON)
-                                    .setAnimations(null, "sit2", "walk3",null,"attack3",null)
+                                    .setAnimations("idle3", "sit2", "walk8",null,"attack3",null)
                                     .setEvos("kuwagamon", "roachmon", "flymon",null,null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan(),
@@ -425,7 +427,7 @@ public class DigitalEntities {
                                     .setRank("fail")
                                     .setEvoStage(2)
                                     .setBabyAndXpDrop(DigiItems.PLANTINSECT_DATA, DigiItems.BUBBMON)
-                                    .setAnimations(null, "sit6", "walk2",null,null,null)
+                                    .setAnimations("idle8", "sit3", "walk9",null,"attack5","attack")
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "roachmon").toString()));
@@ -438,7 +440,7 @@ public class DigitalEntities {
                                     .setEvoStage(2)
                                     .setFlyingDigimon()
                                     .setBabyAndXpDrop(DigiItems.PLANTINSECT_DATA, DigiItems.BUBBMON)
-                                    .setAnimations(null, null,"walk2","bug_fly",null,null)
+                                    .setAnimations("idle3", null,"walk9","bug_fly","attack6",null)
                                     , MobCategory.CREATURE)
                     .sized(1.5f,1.75f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "flymon").toString()));
@@ -451,12 +453,10 @@ public class DigitalEntities {
                                     .setEvoStage(2)
                                     .setFlyingDigimon()
                                     .setBabyAndXpDrop(DigiItems.PLANTINSECT_DATA, DigiItems.BUBBMON)
-                                    .setAnimations(null, "sit5",null,"bug_fly",null,null)
+                                    .setAnimations("idle3", "sit6","walk7","bug_fly","attack5",null)
                                     , MobCategory.CREATURE)
                     .sized(1.0f,2.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "kabuterimon").toString()));
-
-
 
     public static final RegistryObject<EntityType<CustomDigimon>> BEARMON = DIGIMONS.register("bearmon",
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){

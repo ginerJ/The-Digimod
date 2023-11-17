@@ -124,6 +124,19 @@ dependencies {
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20:4.2')
 }
 
+repositories {
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
+
+dependencies {
+    implementation fg.deobf("curse.maven:Xaeros-263420:4812568")
+}
+
 jar.finalizedBy('reobfJar')
 
 publishing {

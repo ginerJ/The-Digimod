@@ -9,10 +9,10 @@ import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.CommonColors;
 import net.minecraft.util.Mth;
-import net.minecraft.util.StringUtil;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -23,11 +23,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.entity.managers.EvolutionCondition;
+import net.modderg.thedigimod.item.DigiItems;
 import net.modderg.thedigimod.item.custom.CustomXpItem;
 import net.modderg.thedigimod.item.custom.DigiviceItem;
-import org.codehaus.plexus.util.StringUtils;
-
-import java.util.Arrays;
 
 @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class StatsGui {
@@ -64,7 +62,7 @@ private static final ResourceLocation DIGIMON_GUI2 = new ResourceLocation(TheDig
 
         if (renderViewEntity instanceof Player player && (player.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof DigiviceItem ||
                 player.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof DigiviceItem)
-                && Minecraft.getInstance().hitResult instanceof EntityHitResult hit && hit.getEntity() instanceof CustomDigimon cd)
+                && Minecraft.getInstance().hitResult instanceof EntityHitResult hit && hit.getEntity() instanceof CustomDigimon cd && !player.hasPassenger(cd))
         {
             isShowing = true;
             if(freedMouse){
@@ -144,104 +142,102 @@ private static final ResourceLocation DIGIMON_GUI2 = new ResourceLocation(TheDig
         int x = Mth.floor(minecraft.mouseHandler.xpos() * window.getGuiScaledWidth() / window.getScreenWidth());
         int y = Mth.floor(minecraft.mouseHandler.ypos() * window.getGuiScaledHeight() / window.getScreenHeight());
 
-        graphics.blit((freedMouse?DIGIMON_GUI2:DIGIMON_GUI),graphics.guiWidth()-125,graphics.guiHeight()-104,0,0,125,104,
+        graphics.blit((freedMouse?DIGIMON_GUI2:DIGIMON_GUI),screenWidth-125,graphics.guiHeight()-104,0,0,125,104,
                 125,104);
 
-        graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getLowerCaseSpecies()+".png"),
-                graphics.guiWidth()-57,graphics.guiHeight()-78,0,0,20,20, 20,20);
+        graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getLowerCaseSpecies()+".png"),
+                screenWidth-57,graphics.guiHeight()-78,0,0,20,20, 20,20);
 
 
         graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/item/"+ CustomXpItem.getXpItem((((CustomXpItem)cd.getXpDrop()).xpId)) + ".png"),
-                graphics.guiWidth()-33,graphics.guiHeight()-78,0,0,20,20, 20,20);
+                screenWidth-33,graphics.guiHeight()-78,0,0,20,20, 20,20);
 
         graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/item/chip_"+ cd.getSpMoveName() + ".png"),
-                graphics.guiWidth()-81,graphics.guiHeight()-78,0,0,20,20, 20,20);
+                screenWidth-81,graphics.guiHeight()-78,0,0,20,20, 20,20);
 
-        if(x>= graphics.guiWidth()-81 && graphics.guiWidth()-61 >=x && y>= graphics.guiHeight()-78 && graphics.guiHeight()-58 >=y)
-            graphics.drawString(minecraft.font,
-                    Component.literal(StringUtils.capitalise(cd.getSpMoveName().equals("bullet")?"Bubbles":cd.getSpMoveName().replace("_"," "))),
-                    graphics.guiWidth()-87,graphics.guiHeight()-87, 0x8d92c9);
+        if(x>= screenWidth-81 && screenWidth-61 >=x && y>= graphics.guiHeight()-78 && graphics.guiHeight()-58 >=y)
+            graphics.renderTooltip(Minecraft.getInstance().font, new ItemStack(DigiItems.itemMap.get("chip_"+ cd.getSpMoveName()).get()), x, y);
         else {
             graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_"+ cd.getRank()+".png"),
-                    graphics.guiWidth()-42,graphics.guiHeight()-83,0,0,8,9, 8,9);
+                    screenWidth-42,graphics.guiHeight()-83,0,0,8,9, 8,9);
         }
 
 
         EvolutionCondition conditionToRender = null;
 
-        if(cd.getEvoPath != null){
-            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getEvoPath.getLowerCaseSpecies() +".png"),
-                    graphics.guiWidth()-57,graphics.guiHeight()-52,0,0,20,20, 20,20);
-            if(x>= graphics.guiWidth()-57 && graphics.guiWidth()-37 >=x && y>= graphics.guiHeight()-52 && graphics.guiHeight()-32 >=y) {
-                conditionToRender = cd.evoCondition;
-                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPath.getRank() + ".png"),
-                        graphics.guiWidth() - 42, graphics.guiHeight() - 57, 0, 0, 8, 9, 8, 9);
+        if(cd.getEvoPaths[0] != null){
+            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getEvoPaths[0].getLowerCaseSpecies() +".png"),
+                    screenWidth-57,graphics.guiHeight()-52,0,0,20,20, 20,20);
+            if(x>= screenWidth-57 && screenWidth-37 >=x && y>= graphics.guiHeight()-52 && graphics.guiHeight()-32 >=y) {
+                conditionToRender = cd.evolutionConditions[0];
+                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPaths[0].getRank() + ".png"),
+                        screenWidth - 42, graphics.guiHeight() - 57, 0, 0, 8, 9, 8, 9);
             }
         }
-        if(cd.getEvoPath2 != null){
-            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getEvoPath2.getLowerCaseSpecies() +".png"),
-                    graphics.guiWidth()-81,graphics.guiHeight()-52,0,0,20,20, 20,20);
-            if(x>= graphics.guiWidth()-81 && graphics.guiWidth()-61 >=x && y>= graphics.guiHeight()-52 && graphics.guiHeight()-32 >=y) {
-                conditionToRender = cd.evoCondition2;
-                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPath2.getRank() + ".png"),
-                        graphics.guiWidth() - 66, graphics.guiHeight() - 57, 0, 0, 8, 9, 8, 9);
+        if(cd.getEvoPaths[1] != null){
+            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getEvoPaths[1].getLowerCaseSpecies() +".png"),
+                    screenWidth-81,graphics.guiHeight()-52,0,0,20,20, 20,20);
+            if(x>= screenWidth-81 && screenWidth-61 >=x && y>= graphics.guiHeight()-52 && graphics.guiHeight()-32 >=y) {
+                conditionToRender = cd.evolutionConditions[1];
+                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPaths[1].getRank() + ".png"),
+                        screenWidth - 66, graphics.guiHeight() - 57, 0, 0, 8, 9, 8, 9);
             }
         }
-        if(cd.getEvoPath3 != null){
-            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getEvoPath3.getLowerCaseSpecies() +".png"),
-                    graphics.guiWidth()-33,graphics.guiHeight()-52,0,0,20,20, 20,20);
-            if(x>= graphics.guiWidth()-33 && graphics.guiWidth()-13 >=x && y>= graphics.guiHeight()-52 && graphics.guiHeight()-32 >=y) {
-                conditionToRender = cd.evoCondition3;
-                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPath3.getRank() + ".png"),
-                        graphics.guiWidth() - 18, graphics.guiHeight() - 57, 0, 0, 8, 9, 8, 9);
+        if(cd.getEvoPaths[2] != null){
+            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getEvoPaths[2].getLowerCaseSpecies() +".png"),
+                    screenWidth-33,graphics.guiHeight()-52,0,0,20,20, 20,20);
+            if(x>= screenWidth-33 && screenWidth-13 >=x && y>= graphics.guiHeight()-52 && graphics.guiHeight()-32 >=y) {
+                conditionToRender = cd.evolutionConditions[2];
+                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPaths[2].getRank() + ".png"),
+                        screenWidth - 18, graphics.guiHeight() - 57, 0, 0, 8, 9, 8, 9);
             }
         }
-        if(cd.getEvoPath4 != null){
-            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getEvoPath4.getLowerCaseSpecies() +".png"),
-                    graphics.guiWidth()-57,graphics.guiHeight()-28,0,0,20,20, 20,20);
-            if(x>= graphics.guiWidth()-57 && graphics.guiWidth()-37 >=x && y>= graphics.guiHeight()-28 && graphics.guiHeight()-8 >=y) {
-                conditionToRender = cd.evoCondition4;
-                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPath4.getRank() + ".png"),
-                        graphics.guiWidth() - 42, graphics.guiHeight() - 33, 0, 0, 8, 9, 8, 9);
+        if(cd.getEvoPaths[3] != null){
+            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getEvoPaths[3].getLowerCaseSpecies() +".png"),
+                    screenWidth-57,graphics.guiHeight()-28,0,0,20,20, 20,20);
+            if(x>= screenWidth-57 && screenWidth-37 >=x && y>= graphics.guiHeight()-28 && graphics.guiHeight()-8 >=y) {
+                conditionToRender = cd.evolutionConditions[3];
+                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPaths[3].getRank() + ".png"),
+                        screenWidth - 42, graphics.guiHeight() - 33, 0, 0, 8, 9, 8, 9);
             }
         }
-        if(cd.getEvoPath5 != null){
-            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getEvoPath5.getLowerCaseSpecies() +".png"),
-                    graphics.guiWidth()-81,graphics.guiHeight()-28,0,0,20,20, 20,20);
-            if(x>= graphics.guiWidth()-81 && graphics.guiWidth()-61 >=x && y>= graphics.guiHeight()-28 && graphics.guiHeight()-8 >=y) {
-                conditionToRender = cd.evoCondition5;
-                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPath5.getRank() + ".png"),
-                        graphics.guiWidth() - 66, graphics.guiHeight() - 33, 0, 0, 8, 9, 8, 9);
+        if(cd.getEvoPaths[5] != null){
+            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getEvoPaths[4].getLowerCaseSpecies() +".png"),
+                    screenWidth-81,graphics.guiHeight()-28,0,0,20,20, 20,20);
+            if(x>= screenWidth-81 && screenWidth-61 >=x && y>= graphics.guiHeight()-28 && graphics.guiHeight()-8 >=y) {
+                conditionToRender = cd.evolutionConditions[4];
+                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPaths[5].getRank() + ".png"),
+                        screenWidth - 66, graphics.guiHeight() - 33, 0, 0, 8, 9, 8, 9);
             }
         }
-        if(cd.getEvoPath6 != null){
-            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getEvoPath6.getLowerCaseSpecies() +".png"),
-                    graphics.guiWidth()-33,graphics.guiHeight()-28,0,0,20,20, 20,20);
-            if(x>= graphics.guiWidth()-33 && graphics.guiWidth()-13 >=x && y>= graphics.guiHeight()-28 && graphics.guiHeight()-8 >=y) {
-                conditionToRender = cd.evoCondition6;
-                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPath6.getRank() + ".png"),
-                        graphics.guiWidth() - 18, graphics.guiHeight() - 33, 0, 0, 8, 9, 8, 9);
+        if(cd.getEvoPaths[5] != null){
+            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getEvoPaths[5].getLowerCaseSpecies() +".png"),
+                    screenWidth-33,graphics.guiHeight()-28,0,0,20,20, 20,20);
+            if(x>= screenWidth-33 && screenWidth-13 >=x && y>= graphics.guiHeight()-28 && graphics.guiHeight()-8 >=y) {
+                conditionToRender = cd.evolutionConditions[5];
+                graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/icons/rank_" + cd.getEvoPaths[5].getRank() + ".png"),
+                        screenWidth - 18, graphics.guiHeight() - 33, 0, 0, 8, 9, 8, 9);
             }
         }
 
         if(freedMouse){
             if(!cd.getPreEvo().split("-")[0].equals("a")){
-                graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getPreEvo().split("-")[0] +".png"),
-                        graphics.guiWidth()-118,graphics.guiHeight()-88,0,0,20,20, 20,20);
+                graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getPreEvo().split("-")[0] +".png"),
+                        screenWidth-118,graphics.guiHeight()-88,0,0,20,20, 20,20);
 
                 if(!cd.getPreEvo().split("-")[1].equals("a")){
-                    graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getPreEvo().split("-")[1] +".png"),
-                            graphics.guiWidth()-118,graphics.guiHeight()-67,0,0,20,20, 20,20);
+                    graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getPreEvo().split("-")[1] +".png"),
+                            screenWidth-118,graphics.guiHeight()-67,0,0,20,20, 20,20);
                     if(!cd.getPreEvo().split("-")[2].equals("a")){
-                        graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getPreEvo().split("-")[2] +".png"),
-                                graphics.guiWidth()-118,graphics.guiHeight()-46,0,0,20,20, 20,20);
+                        graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getPreEvo().split("-")[2] +".png"),
+                                screenWidth-118,graphics.guiHeight()-46,0,0,20,20, 20,20);
                         if(!cd.getPreEvo().split("-")[3].equals("a")){
-                            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod"+ cd.getPreEvo().split("-")[3] +".png"),
-                                    graphics.guiWidth()-118,graphics.guiHeight()-25,0,0,20,20, 20,20);
+                            graphics.blit(new ResourceLocation("xaerominimap","entity/icon/sprite/thedigimod/"+ cd.getPreEvo().split("-")[3] +".png"),
+                                    screenWidth-118,graphics.guiHeight()-25,0,0,20,20, 20,20);
                         }
                     }
                 }
-                if(x>= graphics.guiWidth()-118 && graphics.guiWidth()-98 >=x && y>= graphics.guiHeight()-88 && graphics.guiHeight()-5 >=y)
+                if(x>= screenWidth-118 && screenWidth-98 >=x && y>= graphics.guiHeight()-88 && graphics.guiHeight()-5 >=y)
                     graphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/gui/dark_shard_cond.png"),
                             x-25,y-24,0,0,25,24, 25,24);
             }
