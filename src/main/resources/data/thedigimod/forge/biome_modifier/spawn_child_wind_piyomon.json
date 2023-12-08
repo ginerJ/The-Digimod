@@ -8,7 +8,7 @@
     "minecraft:stony_peaks"
   ],
   "spawners": {
-    "type": "thedigimod:biyomon",
+    "type": "thedigimod:piyomon",
     "weight": 25,
     "minCount": 4,
     "maxCount": 8

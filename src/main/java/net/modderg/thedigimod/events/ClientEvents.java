@@ -1,12 +1,11 @@
 package net.modderg.thedigimod.events;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
-import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -135,8 +134,13 @@ public class ClientEvents {
 
                     if (StatsGui.isShowing)StatsGui.switchFreeMouse();
                 }
+            }
 
-                GuiOverlayManager.getOverlays();
+            @SubscribeEvent
+            public static void  screenNameCheckEvent(ScreenEvent event){
+                if(event.getScreen().isPauseScreen() || event.getScreen() instanceof InventoryScreen){
+                    if (StatsGui.freedMouse)StatsGui.switchFreeMouse();
+                }
             }
         }
     }

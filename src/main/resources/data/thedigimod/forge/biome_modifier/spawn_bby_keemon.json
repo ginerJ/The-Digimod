@@ -12,7 +12,7 @@
     "minecraft:end_barrens"
   ],
   "spawners": {
-    "type": "thedigimod:yaamon",
+    "type": "thedigimod:keemon",
     "weight": 30,
     "minCount": 6,
     "maxCount": 10

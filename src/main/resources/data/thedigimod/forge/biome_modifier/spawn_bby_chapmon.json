@@ -19,7 +19,6 @@
     "minecraft:warm_ocean",
     "minecraft:lukewarm_ocean",
     "minecraft:deep_lukewarm_ocean",
-    "minecraft:ocean",
     "minecraft:deep_ocean",
     "minecraft:cold_ocean",
     "minecraft:deep_cold_ocean",
@@ -27,7 +26,7 @@
     "minecraft:deep_frozen_ocean"
   ],
   "spawners": {
-    "type": "thedigimod:puyoyomon",
+    "type": "thedigimod:chapmon",
     "weight": 30,
     "minCount": 6,
     "maxCount": 10

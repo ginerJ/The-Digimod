@@ -10,7 +10,7 @@
     "minecraft:birch_forest"
   ],
   "spawners": {
-    "type": "thedigimod:kokomon",
+    "type": "thedigimod:chocomon",
     "weight": 30,
     "minCount": 6,
     "maxCount": 10

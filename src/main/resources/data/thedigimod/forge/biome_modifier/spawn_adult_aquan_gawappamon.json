@@ -1,10 +1,6 @@
 {
   "type": "forge:add_spawns",
   "biomes": [
-    "minecraft:forest",
-    "minecraft:meadow",
-    "minecraft:ocean",
-    "minecraft:river",
     "minecraft:snowy_plains",
     "minecraft:ice_spikes",
     "minecraft:snowy_taiga",
@@ -12,6 +8,7 @@
     "minecraft:snowy_slopes",
     "minecraft:frozen_peaks",
     "minecraft:jagged_peaks",
+    "minecraft:river",
     "minecraft:frozen_river",
     "minecraft:beach",
     "minecraft:snowy_beach",
@@ -27,9 +24,9 @@
     "minecraft:deep_frozen_ocean"
   ],
   "spawners": {
-    "type": "thedigimod:puyoyomon",
-    "weight": 30,
-    "minCount": 6,
-    "maxCount": 10
+    "type": "thedigimod:gawappamon",
+    "weight": 20,
+    "minCount": 3,
+    "maxCount": 5
   }
 }

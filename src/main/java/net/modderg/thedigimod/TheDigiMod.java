@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -61,13 +62,22 @@ public class TheDigiMod {
         for (RegistryObject<EntityType<?>> d :DigitalEntities.DIGIMONS.getEntries()) {
             EntityType<CustomDigimon> digimon = (EntityType<CustomDigimon>) d.get();
             event.enqueueWork(() -> {
-                SpawnPlacements.register(digimon, SpawnPlacements.Type.ON_GROUND,
-                        Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);
+                boolean wuter = digimon.equals(DigitalEntities.OCTOMON.get())||
+                        digimon.equals(DigitalEntities.GESOMON.get())||
+                        digimon.equals(DigitalEntities.PUYOYOMON.get());
+
+                        if(wuter)
+                            SpawnPlacements.register(digimon, SpawnPlacements.Type.NO_RESTRICTIONS,
+                                    Heightmap.Types.MOTION_BLOCKING, CustomDigimon::checkDigimonSpawnRules);
+                        else
+                            SpawnPlacements.register(digimon, SpawnPlacements.Type.ON_GROUND,
+                                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CustomDigimon::checkDigimonSpawnRules);
             });
         }
     }
 
     private void setAttributes(final EntityAttributeCreationEvent event) {
+
         for (RegistryObject<EntityType<?>> digimon : DigitalEntities.DIGIMONS.getEntries()) {
             event.put((EntityType<? extends LivingEntity>) digimon.get(), CustomDigimon.setCustomAttributes().build());
         }

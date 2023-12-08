@@ -2,7 +2,6 @@ package net.modderg.thedigimod.entity.goals;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.level.LevelReader;
@@ -17,10 +16,6 @@ import java.util.EnumSet;
 
 public class DigitalFollowOwnerGoal extends Goal {
 
-    public static final int TELEPORT_WHEN_DISTANCE_IS = 12;
-    private static final int MIN_HORIZONTAL_DISTANCE_FROM_PLAYER_WHEN_TELEPORTING = 2;
-    private static final int MAX_HORIZONTAL_DISTANCE_FROM_PLAYER_WHEN_TELEPORTING = 3;
-    private static final int MAX_VERTICAL_DISTANCE_FROM_PLAYER_WHEN_TELEPORTING = 1;
     private final CustomDigimon tamable;
     private LivingEntity owner;
     private final LevelReader level;
@@ -72,14 +67,18 @@ public class DigitalFollowOwnerGoal extends Goal {
 
     public void start() {
         this.timeToRecalcPath = 0;
-        this.oldWaterCost = this.tamable.getPathfindingMalus(BlockPathTypes.WATER);
-        this.tamable.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+        if(!tamable.isSwimmerDigimon()){
+            this.oldWaterCost = this.tamable.getPathfindingMalus(BlockPathTypes.WATER);
+            this.tamable.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+        }
     }
 
     public void stop() {
         this.owner = null;
         this.navigation.stop();
-        this.tamable.setPathfindingMalus(BlockPathTypes.WATER, this.oldWaterCost);
+        if(!tamable.isSwimmerDigimon()){
+            this.tamable.setPathfindingMalus(BlockPathTypes.WATER, this.oldWaterCost);
+        }
     }
 
     public void tick() {
@@ -119,7 +118,7 @@ public class DigitalFollowOwnerGoal extends Goal {
         } else if (!this.canTeleportTo(new BlockPos(p_25304_, p_25305_, p_25306_))) {
             return false;
         } else {
-            this.tamable.moveTo((double)p_25304_ + 0.5D, (double)p_25305_, (double)p_25306_ + 0.5D, this.tamable.getYRot(), this.tamable.getXRot());
+            this.tamable.moveTo((double)p_25304_ + 0.5D, p_25305_, (double)p_25306_ + 0.5D, this.tamable.getYRot(), this.tamable.getXRot());
             this.navigation.stop();
             return true;
         }
@@ -127,7 +126,7 @@ public class DigitalFollowOwnerGoal extends Goal {
 
     private boolean canTeleportTo(BlockPos p_25308_) {
         BlockPathTypes blockpathtypes = WalkNodeEvaluator.getBlockPathTypeStatic(this.level, p_25308_.mutable());
-        if (blockpathtypes != BlockPathTypes.WALKABLE) {
+        if ((!tamable.isSwimmerDigimon() || blockpathtypes != BlockPathTypes.WATER) && blockpathtypes != BlockPathTypes.WALKABLE) {
             return false;
         } else {
             BlockState blockstate = this.level.getBlockState(p_25308_.below());

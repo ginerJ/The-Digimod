@@ -2,22 +2,15 @@ package net.modderg.thedigimod.projectiles;
 
 import com.google.common.collect.Sets;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.fluids.FluidType;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.particles.DigitalParticles;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +20,7 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
-import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 
 public class CustomProjectile extends AbstractArrow implements GeoEntity {
@@ -111,7 +104,7 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
 
     public void performRangedAttack(@NotNull CustomDigimon mob, @NotNull LivingEntity target){
         this.setPos(new Vec3(mob.position().x, mob.position().y + 1, mob.position().z));
-        mob.getLookControl().setLookAt(mob.getTarget());
+        mob.getLookControl().setLookAt(Objects.requireNonNull(mob.getTarget()));
 
         double d0 = target.getX() - mob.getX();
         double d1 = target.getY(0.3333333333333333D) - mob.getEyeY();
@@ -211,5 +204,15 @@ public class CustomProjectile extends AbstractArrow implements GeoEntity {
         for(MobEffectInstance effect : this.effects) {
             p_36873_.addEffect(effect, this);
         }
+    }
+
+    @Override
+    public boolean isPushedByFluid(FluidType type) {
+        return false;
+    }
+
+    @Override
+    protected float getWaterInertia() {
+        return 1f;
     }
 }

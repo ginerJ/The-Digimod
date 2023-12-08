@@ -11,7 +11,7 @@
     "minecraft:end_barrens"
   ],
   "spawners": {
-    "type": "thedigimod:darklizzardmon",
+    "type": "thedigimod:darklizardmon",
     "weight": 20,
     "minCount": 3,
     "maxCount": 5
