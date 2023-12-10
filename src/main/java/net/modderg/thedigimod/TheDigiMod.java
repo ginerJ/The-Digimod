@@ -64,7 +64,8 @@ public class TheDigiMod {
             event.enqueueWork(() -> {
                 boolean wuter = digimon.equals(DigitalEntities.OCTOMON.get())||
                         digimon.equals(DigitalEntities.GESOMON.get())||
-                        digimon.equals(DigitalEntities.PUYOYOMON.get());
+                        digimon.equals(DigitalEntities.PUYOYOMON.get())||
+                        digimon.equals(DigitalEntities.ARCHELOMON.get());
 
                         if(wuter)
                             SpawnPlacements.register(digimon, SpawnPlacements.Type.NO_RESTRICTIONS,
@@ -179,6 +180,7 @@ public class TheDigiMod {
             event.accept(DigiItems.CHIP_INK_GUN);
             event.accept(DigiItems.CHIP_SNOW_BULLET);
             event.accept(DigiItems.CHIP_PETIT_THUNDER);
+            event.accept(DigiItems.CHIP_OCEAN_STORM);
             event.accept(DigiItems.CHIP_MEGA_BLASTER);
             event.accept(DigiItems.CHIP_THUNDERBOLT);
             event.accept(DigiItems.CHIP_GATLING_ARM);

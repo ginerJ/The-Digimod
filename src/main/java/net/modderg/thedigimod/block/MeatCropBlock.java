@@ -1,5 +1,9 @@
 package net.modderg.thedigimod.block;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -14,6 +18,26 @@ public class MeatCropBlock extends CropBlock {
 
     public MeatCropBlock(Properties properties) {
         super(properties);
+    }
+
+    protected static float getGrowthSpeed(Block p_52273_, BlockGetter p_52274_, BlockPos p_52275_) {
+        return CropBlock.getGrowthSpeed(p_52273_,p_52274_,p_52275_) * 4f;
+    }
+
+    @Override
+    public void randomTick(BlockState p_221050_, ServerLevel p_221051_, BlockPos p_221052_, RandomSource p_221053_) {
+        if (!p_221051_.isAreaLoaded(p_221052_, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
+        if (p_221051_.getRawBrightness(p_221052_, 0) >= 9) {
+            int i = this.getAge(p_221050_);
+            if (i < this.getMaxAge()) {
+                float f = getGrowthSpeed(this, p_221051_, p_221052_);
+                if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(p_221051_, p_221052_, p_221050_, p_221053_.nextInt((int)(25.0F / f) + 1) == 0)) {
+                    p_221051_.setBlock(p_221052_, this.getStateForAge(i + 1), 2);
+                    net.minecraftforge.common.ForgeHooks.onCropsGrowPost(p_221051_, p_221052_, p_221050_);
+                }
+            }
+        }
+
     }
 
     @Override

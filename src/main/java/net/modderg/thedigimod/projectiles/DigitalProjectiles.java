@@ -123,6 +123,15 @@ public class DigitalProjectiles {
                     .sized(0.6f,0.6f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "snow_bullet").toString()));
 
+    public static final RegistryObject<EntityType<CustomProjectile>> OCEAN_STORM = PROJECTILES.register("ocean_storm",
+            () -> EntityType.Builder.<CustomProjectile>of((type, level) ->
+                                    new CustomProjectile(type,level, "ocean_storm", new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(DigiItems.CHIP_OCEAN_STORM.get())))
+                                            .setRepeat(2)
+                            ,MobCategory.MISC)
+                    .sized(1f,1f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "ocean_storm").toString()));
+
+
     //machine
     public static final RegistryObject<EntityType<CustomProjectile>> PETIT_THUNDER = PROJECTILES.register("petit_thunder",
             () -> EntityType.Builder.<CustomProjectile>of((type, level) ->

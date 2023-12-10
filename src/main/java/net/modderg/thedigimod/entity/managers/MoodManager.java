@@ -26,8 +26,8 @@ public class MoodManager {
         return digimon.getEntityData().get(MOODPOINTS);
     }
     public void restMoodPoints(int i){
-        boolean mistake = getMoodPoints() > 10;
         digimon.getEntityData().set(MOODPOINTS, Math.max(this.getMoodPoints() - i,0));
+        boolean mistake = getMoodPoints() > 10;
         if (mistake && this.getMood().equals("Depressed")){
             digimon.setCareMistakesStat(digimon.getCareMistakesStat() + 1);
         }
@@ -53,7 +53,7 @@ public class MoodManager {
         if (moodPoints > 200) return 16761177;
         if (moodPoints > 150) return 16777088;
         if (moodPoints > 100) return 16646143;
-        if (moodPoints > 50) return 10262007;
+        if (moodPoints > 10) return 10262007;
         return 6579711;
     }
 

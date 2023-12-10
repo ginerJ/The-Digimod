@@ -66,6 +66,7 @@ public class ClientEvents {
             event.registerEntityRenderer(DigitalProjectiles.BEAST_SLASH.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.INK_GUN.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.SNOW_BULLET.get(), CustomProjectileRender::new);
+            event.registerEntityRenderer(DigitalProjectiles.OCEAN_STORM.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.TRON_FLAME.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.DEATH_CLAW.get(), CustomProjectileRender::new);
             event.registerEntityRenderer(DigitalProjectiles.POISON_BREATH.get(), CustomProjectileRender::new);

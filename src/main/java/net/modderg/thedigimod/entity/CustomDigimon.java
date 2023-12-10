@@ -523,11 +523,11 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     public int calculateDamage(int attack, int defense){return Math.max(1, attack/((defense+100)/100)/2);}
 
     public void eatItem(ItemStack itemStack,int moodAdd){
-        if (this.level() instanceof ServerLevel)
-            triggerAnim("feedController", "feed");
         this.moodManager.addMoodPoints(moodAdd);
         particleManager.spawnItemParticles(itemStack, 16, this);
         itemStack.shrink(1);
+        if (this.level() instanceof ServerLevel)
+            triggerAnim("feedController", "feed");
     }
 
     public void resetAttackGoals() {
@@ -552,7 +552,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
     @Override
     public boolean isFood(ItemStack item) {
-        if(item.is(DigiItems.DIGI_MEAT.get())||item.is(DigiItems.GUILMON_BREAD.get())){
+        if(isFoodBool(item)){
             eatItem(item, 20);
             this.playSound(item.getItem().getEatingSound(), 0.15F, 1.0F);
             if(!this.isAggressive() || this.getTarget() instanceof AbstractTrainingGood){
@@ -561,6 +561,10 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
             return true;
         }
         return false;
+    }
+
+    public boolean isFoodBool(ItemStack item){
+        return item.is(DigiItems.DIGI_MEAT.get())||item.is(DigiItems.GUILMON_BREAD.get());
     }
 
     @ParametersAreNonnullByDefault
@@ -716,11 +720,13 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         if (item instanceof DigiviceItem && this.getOwner() != null && getOwner().level().isClientSide){
             return InteractionResult.CONSUME;
         }
-        if(item.isEdible() ){
-            eatItem(itemStack, 1);
+
+        if(item.isEdible() && !isFoodBool(itemStack)){
+            eatItem(itemStack, 5);
             this.playSound(itemStack.getItem().getEatingSound(), 0.15F, 1.0F);
             return InteractionResult.CONSUME;
         }
+
         if (this.isTame() && Objects.equals(this.getOwnerUUID(), player.getUUID())) {
             if(player.isShiftKeyDown()){
                 this.changeMovementID();

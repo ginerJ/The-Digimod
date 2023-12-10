@@ -213,10 +213,12 @@ public class DigitalEntities {
                                     .setSpecies("Kamemon")
                                     .setBabyAndXpDrop(DigiItems.AQUAN_DATA, DigiItems.DATIRIMON)
                                     .setAnimations("idle3", null, "walk7",null,"attack8",null)
-                                    .setEvos("gawappamon","karatukinumemon",null,null,null,null)
+                                    .setEvos("archelomon","karatukinumemon","tortamon","gawappamon",null,null)
                                     .setEvoConditions(
                                             new EvolutionCondition().alwaysCan(),
-                                            new EvolutionCondition().moodCheck("Sad")
+                                            new EvolutionCondition().moodCheck("Sad"),
+                                            new EvolutionCondition().maxMistakes(10).minWins(10).xpOver(6,50),
+                                            new EvolutionCondition().maxMistakes(0).minWins(15).xpOver(3,50)
                                     ), MobCategory.CREATURE)
                     .sized(0.75f,1.5f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "kamemon").toString()));
@@ -263,6 +265,7 @@ public class DigitalEntities {
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
                                     String getDefaultSpMove(){return "pepper_breath";}}
                                     .setSpecies("Agumon")
+                                    .setEvoStage(1)
                                     .setBabyAndXpDrop(DigiItems.DRAGON_DATA, DigiItems.BOTAMON)
                                     .setAnimations("idle3", null, "walk5",null,"attack7",null)
                                     .setEvos("tyrannomon", "numemon", "greymon","veedramon","flarerizamon",null)
@@ -620,6 +623,18 @@ public class DigitalEntities {
                                     , MobCategory.CREATURE)
                     .sized(1f,2f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "octomon").toString()));
+
+    public static final RegistryObject<EntityType<CustomDigimon>> ARCHELOMON = DIGIMONS.register("archelomon",
+            () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
+                                    String getDefaultSpMove(){return "ocean_storm";}}
+                                    .setSpecies("Archelomon")
+                                    .setEvoStage(2)
+                                    .setSwimmerDigimon()
+                                    .setBabyAndXpDrop(DigiItems.AQUAN_DATA, DigiItems.DATIRIMON)
+                                    .setAnimations("idle3", "sit2", "walk5","swim2","attack5","shoot3")
+                            , MobCategory.CREATURE)
+                    .sized(2f,1f)
+                    .build(new ResourceLocation(TheDigiMod.MOD_ID, "archelomon").toString()));
 
     public static final RegistryObject<EntityType<CustomDigimon>> GESOMON = DIGIMONS.register("gesomon",
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
@@ -1092,10 +1107,11 @@ public class DigitalEntities {
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
                                     String getDefaultSpMove(){return  "heavens_knuckle";}}
                                     .setSpecies("Angemon")
-                    .setEvoStage(2)
-                    .setRank("super")
-                    .setBabyAndXpDrop(DigiItems.HOLY_DATA, DigiItems.POYOMON)
-                    .setAnimations("idle8","sit9","walk7","float","attack8","attack8")
+                                    .setEvoStage(2)
+                                    .setFlyingDigimon()
+                                    .setRank("super")
+                                    .setBabyAndXpDrop(DigiItems.HOLY_DATA, DigiItems.POYOMON)
+                                    .setAnimations("idle8","sit9","walk7","float","attack8","attack8")
                     , MobCategory.CREATURE)
                     .sized(1.25f,2f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "angemon").toString()));

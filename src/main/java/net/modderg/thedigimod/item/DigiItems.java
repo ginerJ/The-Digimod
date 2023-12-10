@@ -133,6 +133,7 @@ public class DigiItems {
     public static final RegistryObject<Item> CHIP_BEAST_SLASH = ITEMS.register("chip_beast_slash", () -> new SpMoveItem(new Item.Properties(),"beast_slash"));
     public static final RegistryObject<Item> CHIP_INK_GUN = ITEMS.register("chip_ink_gun", () -> new SpMoveItem(new Item.Properties(),"ink_gun").addEffect(" Poisons"));
     public static final RegistryObject<Item> CHIP_SNOW_BULLET = ITEMS.register("chip_snow_bullet", () -> new SpMoveItem(new Item.Properties(),"snow_bullet").setRepeat(4));
+    public static final RegistryObject<Item> CHIP_OCEAN_STORM = ITEMS.register("chip_ocean_storm", () -> new SpMoveItem(new Item.Properties(),"ocean_storm").setRepeat(2));
     public static final RegistryObject<Item> CHIP_PETIT_THUNDER = ITEMS.register("chip_petit_thunder", () -> new SpMoveItem(new Item.Properties(),"petit_thunder").addEffect(" Speed Up"));
     public static final RegistryObject<Item> CHIP_MEGA_BLASTER = ITEMS.register("chip_mega_blaster", () -> new SpMoveItem(new Item.Properties(),"mega_blaster").addEffect(" Speed Up"));
     public static final RegistryObject<Item> CHIP_THUNDERBOLT = ITEMS.register("chip_thunderbolt", () -> new SpMoveItem(new Item.Properties(),"thunderbolt").addEffect(" Speed Up"));

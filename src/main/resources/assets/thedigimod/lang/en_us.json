@@ -106,6 +106,7 @@
   "item.thedigimod.chip_petit_twister" : "Petit Twister Chip",
   "item.thedigimod.chip_night_of_fire" : "Night of Fire Chip",
   "item.thedigimod.chip_disc_attack" : "Disc Attack Chip",
+  "item.thedigimod.chip_ocean_storm" : "Disc Ocean Storm",
 
   "entity.thedigimod.koromon" : "Koromon",
   "entity.thedigimod.koromonb" : "Koromon",
@@ -172,6 +173,8 @@
   "entity.thedigimod.kamemon" : "Kamemon",
   "entity.thedigimod.chapmon" : "Chapmon",
   "entity.thedigimod.gawappamon" : "Gawappamon",
+  "entity.thedigimod.archelomon" : "Archelomon",
+  "entity.thedigimod.goromon" : "Goromon",
   "entity.thedigimod.sunarizamon" : "Sunarizamon",
   "entity.thedigimod.tortamon" : "Tortamon",
   "entity.thedigimod.baboongamon" : "Baboongamon",

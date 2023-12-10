@@ -35,13 +35,7 @@ public class CustomDigimonModel<D extends CustomDigimon> extends GeoModel<Custom
         CoreGeoBone head = getAnimationProcessor().getBone("head");
         CoreGeoBone entity = getAnimationProcessor().getBone("entity");
 
-        if(entity != null && !animatable.isOrderedToSit() && animatable.canSwimDigimon && animatable.isInWater()){
-            EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
-
-            entity.setRotX((float) (entityData.headPitch() * Mth.DEG_TO_RAD - Math.PI/4));
-            entity.setRotY(entityData.netHeadYaw() * Mth.DEG_TO_RAD);
-        }
-        else if (head != null) {
+        if (head != null) {
             EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
 
             head.setRotX(entityData.headPitch() * Mth.DEG_TO_RAD);
