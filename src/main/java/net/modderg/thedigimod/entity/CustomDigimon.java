@@ -27,8 +27,6 @@ import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
-import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
-import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
@@ -63,6 +61,7 @@ import software.bernie.geckolib.core.object.PlayState;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.SortedMap;
 import java.util.stream.IntStream;
 
 import static net.minecraft.world.entity.ai.attributes.Attributes.FLYING_SPEED;
@@ -580,10 +579,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
             switchNavigation(2);
         }
         if(!this.isTame()){
+
             this.setHealthStat(Math.min(getMaxStat(),
                     random.nextInt(this.isBaby2() ? 1 : (this.isRookie() ? 25: (this.isChampion() ? 100: (this.isUltimate() ? MAXADULT : MAXULTIMATE))),getMaxStat())));
+
             this.setHealth((float)this.getHealthStat());
-            this.setCurrentLevel(Math.max(1,(int) (MAXLEVEL * (getHealth()/getMaxStat()*1.0))));
+            this.setCurrentLevel((int) Math.max(1, MAXLEVEL/100f * getHealth()/250f*100f));
             this.setAttackStat((int)getHealth());
             this.setDefenceStat((int)getHealth());
             this.setSpAttackStat((int)getHealth());
@@ -594,10 +595,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
     @Override
     public void setCustomName(@Nullable Component component) {
-        if(component != null && !component.getString().isEmpty()){
-            this.setNickName(component.getString());
-        } else {
-            component = Component.literal(I18n.get("entity.thedigimod." + this.getLowerCaseSpecies()));
+        if(level().isClientSide){
+            if(component != null && !component.getString().isEmpty()){
+                this.setNickName(component.getString());
+            } else {
+                component = Component.literal(I18n.get("entity.thedigimod." + this.getLowerCaseSpecies()));
+            }
         }
         super.setCustomName(Component.literal(component.getString() +  " (" + Integer.toString(this.getCurrentLevel()) + "Lv)"));
     }
@@ -829,8 +832,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
                     this.yRotO = getYRot();
                     this.xRotO = getXRot();
 
-                    this.getAttribute(ForgeMod.STEP_HEIGHT.get()).setBaseValue(1.0f);
-
                     setYRot(passenger.getYRot());
                     setXRot(passenger.getXRot() * 0.5f);
                     setRot(getYRot(), getXRot());
@@ -846,7 +847,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
                     if (getMovementID() == 2)
                     {
-                        float speed = (float) getAttributeValue(FLYING_SPEED) * 0.6f;
+                        float speed = (float) getAttributeValue(FLYING_SPEED);
                         moveDist = moveDist > 0? moveDist : 0;
                         float movY = (float) (-this.getControllingPassenger().getXRot() * (Math.PI / 180));
                         pos = new Vec3(x, movY, z);

@@ -7,20 +7,22 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.modderg.thedigimod.entity.CustomDigimon;
+import org.jetbrains.annotations.NotNull;
 
 public class StatUpItem extends Item {
 
     private String stat;
+
     private int addition;
 
     public StatUpItem(Properties p_41383_, String st, int addition) {
         super(p_41383_);
-        stat = st;
+        this.stat = st;
         this.addition = addition;
     }
 
     @Override
-    public InteractionResult interactLivingEntity(ItemStack item, Player player, LivingEntity entity, InteractionHand hand) {
+    public @NotNull InteractionResult interactLivingEntity(ItemStack item, Player player, LivingEntity entity, InteractionHand hand) {
         if(entity instanceof CustomDigimon cd){
             if(stat == "attack"){
                 cd.setAttackStat(cd.getAttackStat() + addition);
@@ -38,9 +40,8 @@ public class StatUpItem extends Item {
                 cd.setCareMistakesStat(cd.getCareMistakesStat() + 1);
             } else if(stat == "lifes"){
                 cd.addLife();
-                item.shrink(1);
             }
-            cd.eatItem(new ItemStack(this), 0);
+            cd.eatItem(item, 0);
         }
         return super.interactLivingEntity(item, player, entity, hand);
     }

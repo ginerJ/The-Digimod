@@ -211,6 +211,7 @@ public class DigitalEntities {
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
                                     String getDefaultSpMove(){return "petit_thunder";}}
                                     .setSpecies("Kamemon")
+                                    .setEvoStage(1)
                                     .setBabyAndXpDrop(DigiItems.AQUAN_DATA, DigiItems.DATIRIMON)
                                     .setAnimations("idle3", null, "walk7",null,"attack8",null)
                                     .setEvos("archelomon","karatukinumemon","tortamon","gawappamon",null,null)
@@ -402,7 +403,7 @@ public class DigitalEntities {
                     .sized(0.75f,1.25f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "tentomon").toString()));
 
-    public static final RegistryObject<EntityType<CustomDigimon>> KUWAGAMON = DIGIMONS.register("kuwagamon",
+    public static final RegistryObject<EntityType<CustomDigimon>> º = DIGIMONS.register("kuwagamon",
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
                                     String getDefaultSpMove(){return  "deadly_sting";}}
                                     .setSpecies("Kuwagamon")
@@ -596,7 +597,7 @@ public class DigitalEntities {
                                             new EvolutionCondition().moodCheck("Sad").maxMistakes(5).minWins(10).xpOver(7,50),
                                             new EvolutionCondition().moodCheck("Joyful").maxMistakes(0).minWins(15).xpOver(3,50)
                                     ), MobCategory.CREATURE)
-                    .sized(1f,1.25f)
+                    .sized(1f,1.55f)
                     .build(new ResourceLocation(TheDigiMod.MOD_ID, "jellymon").toString()));
 
     public static final RegistryObject<EntityType<CustomDigimon>> TESLAJELLYMON = DIGIMONS.register("teslajellymon",
