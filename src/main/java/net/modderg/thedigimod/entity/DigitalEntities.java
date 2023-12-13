@@ -196,7 +196,7 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<CustomDigimon>> CHAPMON = DIGIMONS.register("chapmon",
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
-                                    String getDefaultSpMove(){return "petit_thunder";}}
+                                    String getDefaultSpMove(){return "bullet";}}
                                     .setSpecies("Chapmon")
                                     .setBabyAndXpDrop(DigiItems.AQUAN_DATA, DigiItems.DATIRIMON)
                                     .setAnimations("idle6", "sit7", "walk4",null,"attack2","shoot4")
@@ -900,7 +900,7 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<CustomDigimon>> IMPMON = DIGIMONS.register("impmon",
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
-                                    String getDefaultSpMove(){return  "fire_tower";}}
+                                    String getDefaultSpMove(){return "night_of_fire";}}
                                     .setSpecies("Impmon")
                                     .setEvoStage(1)
                                     .setBabyAndXpDrop(DigiItems.NIGHTMARE_DATA, DigiItems.KIIMON)

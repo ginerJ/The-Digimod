@@ -49,7 +49,7 @@ public class DigiItems {
     public static final RegistryObject<Item> KIIMON = ITEMS.register("kiimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.KEEMON, "Yaamon"));
     public static final RegistryObject<Item> SUNAMON = ITEMS.register("sunamon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.GOROMON, "Goromon"));
     public static final RegistryObject<Item> POYOMON = ITEMS.register("poyomon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.TOKOMON, "Tokomon"));
-    public static final RegistryObject<Item> DATIRIMON = ITEMS.register("datirimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.CHAPMON, "Tokomon"));
+    public static final RegistryObject<Item> DATIRIMON = ITEMS.register("datirimon", () -> new BabyDigimonItem(new Item.Properties().stacksTo(16).fireResistant(), DigitalEntities.CHAPMON, "Chapmon"));
 
     //Digivices
     public static final RegistryObject<Item> VITALBRACELET = ITEMS.register("vitalbracelet", () -> new DigiviceItem(new Item.Properties().stacksTo(1)));

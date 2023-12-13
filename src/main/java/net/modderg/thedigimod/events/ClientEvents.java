@@ -2,6 +2,8 @@ package net.modderg.thedigimod.events;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -116,6 +118,15 @@ public class ClientEvents {
 
         @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, value = Dist.CLIENT)
         public static class ClientDistEvents {
+
+            @SubscribeEvent
+            public static void registerParticleFactories(final RenderNameTagEvent event){
+                if(event.getEntity() instanceof CustomDigimon cd){
+                    event.setContent(Component.literal(
+                            event.getContent().getString().replace(cd.getSpecies(),I18n.get("entity.thedigimod." + cd.getLowerCaseSpecies()))
+                    ));
+                }
+            }
 
             @SubscribeEvent
             public static void  onPlayerTick(TickEvent.PlayerTickEvent event){

@@ -7,6 +7,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
@@ -40,7 +41,9 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
         } else if (entity.isChampion()){
             stack.scale(1.1f,1.1f,1.1f);
         }
+
         if(!entity.isControlledByLocalInstance()){
+
             var renderNameTagEvent = new net.minecraftforge.client.event.RenderNameTagEvent(entity, entity.getDisplayName(), this, stack, bufferIn, packedLightIn, partialTicks);
             net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(renderNameTagEvent);
             MutableComponent mp = MutableComponent.create(Component.literal(xpBarMath( entity.getNeededXp(), entity.getLevelXp(), 30)).getContents());
@@ -50,6 +53,7 @@ public class CustomDigimonRender<D extends CustomDigimon> extends GeoEntityRende
             MutableComponent mp3 = MutableComponent.create(Component.literal(Integer.toString(Math.round(entity.getHealth())) + "/" + (int)entity.getAttribute(Attributes.MAX_HEALTH).getValue() + "Hp").getContents());
             int lifes = entity.getLifes();
             mp3.setStyle(XpStyle.withColor(TextColor.fromRgb(entity.getLifes() == 3 ? 8704641 : (entity.getLifes() == 2 ? 0xFFFF00 : 0xFF0000))));
+
             if (renderNameTagEvent.getResult() != net.minecraftforge.eventbus.api.Event.Result.DENY && (renderNameTagEvent.getResult() == net.minecraftforge.eventbus.api.Event.Result.ALLOW || this.shouldShowName(entity))) {
                 if(entity.isTame()){
                     this.renderXp(entity, mp, stack, bufferIn, packedLightIn);

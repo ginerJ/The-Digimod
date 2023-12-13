@@ -61,7 +61,6 @@ import software.bernie.geckolib.core.object.PlayState;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.SortedMap;
 import java.util.stream.IntStream;
 
 import static net.minecraft.world.entity.ai.attributes.Attributes.FLYING_SPEED;
@@ -197,7 +196,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     public String getNickName(){
         return this.getEntityData().get(NICKNAME);
     }
-    private boolean activateName = false;
 
     public CustomDigimon setAnimations(String ia, String sa, String wa, String fa, String ata, String sha){
         if(ia != null){ idleAnim = ia;}
@@ -371,12 +369,12 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
     protected static final EntityDataAccessor<Integer> CURRENTLEVEL = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
     public void addCurrentLevel(){
-        this.getEntityData().set(CURRENTLEVEL, Math.min(getCurrentLevel() + 1, MAXLEVEL));
-        setCustomName(Component.literal(this.getNickName()));
+        this.setCurrentLevel(Math.min(getCurrentLevel() + 1, MAXLEVEL));
         if(this.evolutionLevelAchieved()){this.setEvoCount(200);}
     }
     public void setCurrentLevel(int i){
         this.getEntityData().set(CURRENTLEVEL, i);
+        this.setCustomName(Component.literal(this.getNickName()));
     }
     public int getCurrentLevel(){
         return this.getEntityData().get(CURRENTLEVEL);
@@ -398,10 +396,18 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     protected CustomDigimon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.switchNavigation(getMovementID());
-        this.setCustomName(Component.literal(getNickName()));
         resetAttackGoals();
     }
 
+    @Override
+    public void setCustomName(@Nullable Component component) {
+        if(component != null && !component.getString().isEmpty()){
+            this.setNickName(component.getString());
+        } else {
+            component = Component.literal(this.getSpecies());
+        }
+        super.setCustomName(Component.literal(component.getString() +  " (" + Integer.toString(this.getCurrentLevel()) + "Lv)"));
+    }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
@@ -460,9 +466,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     public void copyOtherDigi(CustomDigimon d){
         if(d.getOwner() != null){this.tame((Player) d.getOwner());}
         if(d.getNickName().equals(d.getDisplayName().toString())){this.setNickName(this.getDisplayName().toString());}
-        else {this.setNickName(d.getNickName());}
         this.setMovementID(1);
-        this.setCustomName(Component.literal(this.getNickName()));
+        this.setNickName(d.getNickName());
         this.moodManager.setMoodPoints(d.moodManager.getMoodPoints());
         this.setPos(d.position());
         this.setExperienceTotal(d.getExperienceTotal());
@@ -591,18 +596,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
             this.setSpDefenceStat((int)getHealth());
         }
         return super.finalizeSpawn(p_146746_, p_146747_, p_146748_, p_146749_, p_146750_);
-    }
-
-    @Override
-    public void setCustomName(@Nullable Component component) {
-        if(level().isClientSide){
-            if(component != null && !component.getString().isEmpty()){
-                this.setNickName(component.getString());
-            } else {
-                component = Component.literal(I18n.get("entity.thedigimod." + this.getLowerCaseSpecies()));
-            }
-        }
-        super.setCustomName(Component.literal(component.getString() +  " (" + Integer.toString(this.getCurrentLevel()) + "Lv)"));
     }
 
     @Override
@@ -740,12 +733,14 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
                 if(this.isMountDigimon){
                     player.startRiding(this);
                     if(this.getMovementID() == -1) this.setMovementID(1);
+
                 } else if(this.isBaby2()){
                     if(player.getPassengers().isEmpty())this.startRiding(player);
                     else if(player.getPassengers().stream().anyMatch(p -> p instanceof CustomDigimon))
                         player.getPassengers().stream()
                             .filter(p -> p instanceof CustomDigimon)
                                 .forEach(e -> e.startRiding(this));
+
                 }
                 return InteractionResult.SUCCESS;
             }
@@ -774,6 +769,8 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         if(lifes != this.getLifes()){particleManager.spawnStatUpParticles(DigitalParticles.LIFE_PARTICLE,7, this);
             lifes = this.getLifes();}
     }
+
+    private boolean setName = false;
 
     @Override
     public void tick() {
@@ -807,11 +804,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         if(ticksToShootAnim > 0) ticksToShootAnim--;
         else ticksToShootAnim++;
 
-        if(!activateName){
-            activateName = true;
-            setCustomName(Component.literal(this.getNickName()));
-        }
-
         if(this.canSwimDigimon){
             if(this.isInWater()){
                 if(!(this.moveControl instanceof WaterMoveControl)) this.switchNavigation(3);
@@ -820,7 +812,20 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
             }
         }
 
+        if(!setName){
+            this.setCustomName(Component.literal(this.getSpecies()));
+            setName = true;
+        }
+
         super.tick();
+    }
+
+    @Override
+    protected boolean canRide(Entity entity) {
+        if(this.isBaby2()){
+            return entity instanceof Player;
+        }
+        return super.canRide(entity);
     }
 
     @Override
@@ -986,9 +991,10 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
 
     @Override
     public void setTarget(@Nullable LivingEntity entity) {
-        if(entity instanceof CustomDigimon cd && cd.getOwner() != null && this.getOwner() != null && cd.isOwnedBy(this.getOwner())){
+        if(entity instanceof Player || (entity instanceof CustomDigimon cd && cd.getOwner() != null && this.getOwner() != null && cd.isOwnedBy(this.getOwner()))){
             return;
         }
+
         super.setTarget(entity);
     }
 
@@ -1001,6 +1007,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
                 cd.getDefenceStat() + cd.getCurrentLevel()))
         : super.doHurtTarget(target);
     }
+
 
     @Override
     public void setHealth(float value) {
