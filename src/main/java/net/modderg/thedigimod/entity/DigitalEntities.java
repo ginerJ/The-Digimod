@@ -929,7 +929,7 @@ public class DigitalEntities {
 
     public static final RegistryObject<EntityType<CustomDigimon>> ICEDEVIMON = DIGIMONS.register("icedevimon",
             () -> EntityType.Builder.<CustomDigimon>of((type, world) -> new CustomDigimon(type, world){
-                                    String getDefaultSpMove(){return  "ice_needle";}}
+                                    String getDefaultSpMove(){return  "death_claw";}}
                                     .setSpecies("Icedevimon")
                                     .setEvoStage(2)
                                     .setRank("super")
