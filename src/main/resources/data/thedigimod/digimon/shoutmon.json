@@ -1,0 +1,46 @@
+{
+  "profession": "lumberjack",
+
+  "evolutions": {
+    "redveedramon": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "shoutmonx2": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "15",
+        "xp": [
+          "0:50",
+          "2:25",
+          "5:25"
+        ],
+        "rank": "super"
+      }
+    },
+    "kingshoutmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "0:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "numemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    }
+  }
+}

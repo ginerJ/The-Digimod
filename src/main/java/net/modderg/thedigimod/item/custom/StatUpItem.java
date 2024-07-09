@@ -1,15 +1,21 @@
 package net.modderg.thedigimod.item.custom;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class StatUpItem extends Item {
+import java.util.List;
+
+public class StatUpItem extends DigimonItem {
 
     private String stat;
 
@@ -23,7 +29,7 @@ public class StatUpItem extends Item {
 
     @Override
     public @NotNull InteractionResult interactLivingEntity(ItemStack item, Player player, LivingEntity entity, InteractionHand hand) {
-        if(entity instanceof CustomDigimon cd){
+        if(entity instanceof CustomDigimon cd && (player.isCreative() || cd.isTame())){
             if(stat == "attack"){
                 cd.setAttackStat(cd.getAttackStat() + addition);
             } else if(stat == "spattack"){
@@ -41,8 +47,16 @@ public class StatUpItem extends Item {
             } else if(stat == "lifes"){
                 cd.addLife();
             }
-            cd.eatItem(item, 0);
+            cd.eatItemAnim(item);
         }
         return super.interactLivingEntity(item, player, entity, hand);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack p_41421_, @Nullable Level p_41422_, List<Component> components, TooltipFlag p_41424_) {
+        components.add(Component.empty());
+        components.add(Component.literal(" Provides " + stat + " to a digimon"));
+
+        super.appendHoverText(p_41421_, p_41422_, components, p_41424_);
     }
 }

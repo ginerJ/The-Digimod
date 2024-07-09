@@ -3,6 +3,7 @@ package net.modderg.thedigimod.entity.goals;
 
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.modderg.thedigimod.entity.CustomDigimon;
+import net.modderg.thedigimod.entity.CustomSwimmerDigimon;
 
 public class DigimonFloatGoal extends FloatGoal {
 
@@ -15,6 +16,6 @@ public class DigimonFloatGoal extends FloatGoal {
 
     @Override
     public boolean canUse() {
-        return super.canUse() && !digimon.isSwimmerDigimon();
+        return super.canUse() && !(digimon instanceof CustomSwimmerDigimon);
     }
 }

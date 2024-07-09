@@ -1,0 +1,17 @@
+{
+  "evolutions": {
+    "garudamon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "2:200",
+          "4:300"
+        ],
+        "rank": "super"
+      }
+    }
+  }
+}

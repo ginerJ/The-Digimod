@@ -1,0 +1,20 @@
+{
+  "profession": "miner",
+
+  "evolutions": {
+    "cyberdramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:200",
+          "5:150",
+          "7:150"
+        ],
+        "rank" : "super"
+      }
+    }
+  }
+}

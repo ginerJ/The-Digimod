@@ -1,0 +1,20 @@
+{
+  "profession": "farmer",
+
+  "evolutions": {
+    "manticoremon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "2:150",
+          "7:150",
+          "8:200"
+        ],
+        "rank": "super"
+      }
+    }
+  }
+}

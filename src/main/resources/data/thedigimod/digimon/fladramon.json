@@ -1,0 +1,20 @@
+{
+  "profession": "tree_lover",
+
+  "evolutions": {
+    "saggitarimon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:150",
+          "1:150",
+          "8:200"
+        ],
+        "rank" : "super"
+      }
+    }
+  }
+}

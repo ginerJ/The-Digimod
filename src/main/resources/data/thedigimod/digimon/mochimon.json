@@ -1,0 +1,18 @@
+{
+  "evolutions": {
+    "kunemon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "tentomon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": []
+      }
+    }
+  }
+}

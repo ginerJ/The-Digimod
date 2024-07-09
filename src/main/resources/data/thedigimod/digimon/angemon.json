@@ -1,0 +1,32 @@
+{
+  "profession": "tree_lover",
+
+  "evolutions": {
+    "holyangemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "4:350",
+          "8:150"
+        ],
+        "rank": "super"
+      }
+    },
+    "manticoremon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "45",
+        "xp": [
+          "2:350",
+          "8:150"
+        ],
+        "rank": "super"
+      }
+    }
+  }
+}

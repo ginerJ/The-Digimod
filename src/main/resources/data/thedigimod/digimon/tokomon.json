@@ -1,0 +1,9 @@
+{
+  "evolutions": {
+    "patamon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  }
+}

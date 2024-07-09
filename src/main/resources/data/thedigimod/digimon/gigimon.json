@@ -1,0 +1,18 @@
+{
+  "evolutions": {
+    "shoutmon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "guilmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": []
+      }
+    }
+  }
+}

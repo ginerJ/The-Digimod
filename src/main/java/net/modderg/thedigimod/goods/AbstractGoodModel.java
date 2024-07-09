@@ -9,12 +9,12 @@ public class AbstractGoodModel<D extends AbstractTrainingGood> extends GeoModel<
 
     @Override
     public ResourceLocation getModelResource(AbstractTrainingGood good) {
-        return new ResourceLocation(TheDigiMod.MOD_ID, "geo/training_goods/"+good.goodName()+".geo.json");
+        return new ResourceLocation(TheDigiMod.MOD_ID, "geo/training_goods/"+good.getGoodName()+".geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(AbstractTrainingGood good) {
-        return new ResourceLocation(TheDigiMod.MOD_ID, "textures/training_goods/"+good.goodName()+".png");
+        return new ResourceLocation(TheDigiMod.MOD_ID, "textures/training_goods/"+good.getGoodName()+".png");
     }
 
     @Override

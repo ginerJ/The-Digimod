@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:warped_forest"
+  ],
+  "spawners": {
+    "type": "thedigimod:ball_good",
+    "weight": 10,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

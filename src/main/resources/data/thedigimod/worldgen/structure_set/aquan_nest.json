@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "thedigimod:aquan_nest",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1645050513,
+
+    "spacing": 40,
+
+    "separation": 10,
+
+    "type": "minecraft:random_spread"
+  }
+}

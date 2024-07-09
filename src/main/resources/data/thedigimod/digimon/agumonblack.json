@@ -1,0 +1,51 @@
+{
+  "profession": "miner",
+
+  "evolutions": {
+    "darklizardmon": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "numemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "blackgrowlmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "0:100"
+        ]
+      }
+    },
+    "greymonvirus": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["7:50", "0:50"],
+        "rank": "super"
+      }
+    },
+    "darktyrannomon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": ["7:100"],
+        "rank": "super"
+      }
+    }
+  }
+}

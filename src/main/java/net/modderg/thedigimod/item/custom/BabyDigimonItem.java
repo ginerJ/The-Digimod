@@ -13,13 +13,14 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.RegistryObject;
+import net.modderg.thedigimod.config.ModCommonConfigs;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
 
-public class BabyDigimonItem extends Item {
+public class BabyDigimonItem extends DigimonItem {
 
     private RegistryObject<? extends EntityType<?>> DimDigi;
 
@@ -43,7 +44,7 @@ public class BabyDigimonItem extends Item {
         CustomDigimon digi = (CustomDigimon) DimDigi.get().create(context.getLevel());
         digi.tame(Objects.requireNonNull(context.getPlayer()));
         digi.setPos(context.getPlayer().position());
-        digi.setLifes(3);
+        digi.setLifes(ModCommonConfigs.MAX_DIGIMON_LIVES.get());
         context.getLevel().addFreshEntity(digi);
         return InteractionResult.CONSUME;
     }

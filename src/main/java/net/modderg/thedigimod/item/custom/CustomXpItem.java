@@ -7,9 +7,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.modderg.thedigimod.entity.CustomDigimon;
-import net.modderg.thedigimod.item.DigiItems;
 
-public class CustomXpItem extends Item {
+public class CustomXpItem extends DigimonItem {
     public int xpId;
     public int charges;
 
@@ -29,26 +28,13 @@ public class CustomXpItem extends Item {
             CustomDigimon digimon = (CustomDigimon) entity;
             if(!digimon.isEvolving()){
                 for(int i = 0; i < charges; i++){
-                    digimon.useXpItem(xpId);
+                    if(!digimon.level().isClientSide())
+                        digimon.gainSpecificXp(xpId);
                 }
-                digimon.eatItem(item, 0);
+                item.shrink(1);
                 return InteractionResult.CONSUME;
             }
         }
         return super.interactLivingEntity(item, player, entity, hand);
-    }
-
-    public static String getXpItem(int id) {
-        switch (id) {
-            case 0: return "dragon_data";
-            case 1: return "beast_data";
-            case 2: return "plantinsect_data";
-            case 3: return "aquan_data";
-            case 4: return "wind_data";
-            case 5: return "machine_data";
-            case 6: return "earth_data";
-            case 7: return "nightmare_data";
-        }
-        return "holy_data";
     }
 }

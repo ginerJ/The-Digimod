@@ -1,0 +1,41 @@
+{
+  "profession": "transporter",
+
+  "evolutions": {
+    "grizzlymon": {
+      "conditions": {
+        "always_can": "true",
+        "rank": "super"
+      }
+    },
+    "numemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "blackgaogamon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": ["7:100"]
+      }
+    },
+    "chakmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["3:100"],
+        "rank": "super"
+      }
+    }
+  }
+}

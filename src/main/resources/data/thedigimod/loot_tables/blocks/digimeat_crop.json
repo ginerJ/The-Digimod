@@ -1,69 +1,57 @@
 {
   "type": "minecraft:block",
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
-  ],
   "pools": [
     {
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "minecraft:alternatives",
-          "children": [
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "block": "thedigimod:digimeat_crop",
-                  "condition": "minecraft:block_state_property",
-                  "properties": {
-                    "age": "6"
-                  }
-                }
-              ],
-              "name": "thedigimod:digi_meat"
-            },
-            {
-              "type": "minecraft:item",
-              "name": "thedigimod:digi_meat"
-            }
-          ]
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "block": "thedigimod:digimeat_crop",
-          "condition": "minecraft:block_state_property",
-          "properties": {
-            "age": "6"
-          }
-        }
-      ],
-      "entries": [
-        {
           "type": "minecraft:item",
-          "functions": [
+          "conditions": [
             {
-              "enchantment": "minecraft:fortune",
-              "formula": "minecraft:binomial_with_bonus_count",
-              "function": "minecraft:apply_bonus",
-              "parameters": {
-                "extra": 3,
-                "probability": 0.5714286
+              "block": "thedigimod:digimeat_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "6"
               }
             }
           ],
-          "name": "thedigimod:digi_meat"
+          "name": "thedigimod:digi_meat",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "thedigimod:digimeat_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "6"
+              }
+            }
+          ],
+          "name": "thedigimod:digi_meat_rotten",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "thedigimod:digimeat_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "6"
+              }
+            }
+          ],
+          "name": "thedigimod:digi_meat_big",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 3
         }
       ],
-      "rolls": 1.0
+      "rolls": 2.0
     }
-  ],
-  "random_sequence": "minecraft:blocks/wheat"
+  ]
 }

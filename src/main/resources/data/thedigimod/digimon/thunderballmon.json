@@ -1,0 +1,18 @@
+{
+  "profession": "miner",
+
+  "evolutions": {
+    "mamemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "5:500"
+        ],
+        "rank": "super"
+      }
+    }
+  }
+}

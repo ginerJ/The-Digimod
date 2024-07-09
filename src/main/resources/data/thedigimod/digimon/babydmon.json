@@ -1,0 +1,9 @@
+{
+  "evolutions": {
+    "dracomon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  }
+}

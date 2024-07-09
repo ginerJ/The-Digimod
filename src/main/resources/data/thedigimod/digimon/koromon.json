@@ -1,0 +1,18 @@
+{
+  "evolutions": {
+    "agumon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "agumonblack": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": []
+      }
+    }
+  }
+}

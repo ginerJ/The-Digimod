@@ -1,0 +1,9 @@
+{
+  "evolutions": {
+    "pulsemon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  }
+}

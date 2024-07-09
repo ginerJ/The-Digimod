@@ -10,12 +10,6 @@ public class DigitalHurtByTargetGoal extends HurtByTargetGoal {
 
     @Override
     public boolean canContinueToUse() {
-        return super.canContinueToUse() && this.mob.getTarget() != null;
-    }
-
-    @Override
-    public boolean canUse() {
-        this.targetMob = this.mob.getTarget();
-        return super.canUse();
+        return this.mob.getTarget() != null && super.canContinueToUse();
     }
 }

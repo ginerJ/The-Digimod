@@ -7,9 +7,13 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.modderg.thedigimod.entity.CustomDigimon;
@@ -21,7 +25,7 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
-public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
+public class AbstractTrainingGood extends Animal implements GeoEntity {
 
     protected float statMultiplier = 1.0f;
     public AbstractTrainingGood setStatMultiplier(float f){statMultiplier = f; return this;}
@@ -31,19 +35,36 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
         this.setCustomName(Component.literal("LOL"));
     }
 
-    public int getXpId(){
-        return -1;
+    public static AttributeSupplier.Builder setCustomAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 500.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3D)
+                .add(Attributes.ATTACK_DAMAGE, 1D)
+                .add(Attributes.FLYING_SPEED, 0.3D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 100D);
     }
 
-    public ItemStack goodItem(){
-        return null;
+    private int xpId = -1;
+    public int getXpId(){
+        return xpId;
     }
-    public String statName(){
-        return null;
+    public AbstractTrainingGood setXpId(int id){xpId = id; return this;}
+
+    private Item goodItem;
+    public ItemStack getGoodItem(){
+        return new ItemStack(goodItem);
     }
-    public String goodName(){
-        return null;
-    }
+    public AbstractTrainingGood setItem(Item item){goodItem = item; return this;}
+
+    private String statName;
+    public String getStatName(){return statName;}
+    public AbstractTrainingGood setStatTrain(String name){statName = name; return this;}
+
+    private String goodName;
+    public String getGoodName(){return goodName;}
+    public AbstractTrainingGood setName(String name){goodName = name; return this;}
+
+
 
     @Override
     public boolean isCustomNameVisible() {
@@ -53,23 +74,30 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
     @Override
     public boolean hurt(DamageSource source, float p_27568_) {
         if(source.getDirectEntity() instanceof CustomDigimon digimon && this.random.nextInt(6) == 2){
+
             int add = random.nextInt(digimon.minStatGain(), digimon.maxStatGain());
             add = (int) (add * statMultiplier);
+
             digimon.moodManager.restMoodPoints(10);
-            if(statName().equals("attack")){
+
+            if(getStatName().equals("attack"))
                 digimon.setAttackStat(digimon.getAttackStat() + add);
-            }else if(statName().equals("defence")){
+
+            else if(getStatName().equals("defence"))
                 digimon.setDefenceStat(digimon.getDefenceStat() + add);
-            }else if(statName().equals("spattack")){
+
+            else if(getStatName().equals("spattack"))
                 digimon.setSpAttackStat(digimon.getSpAttackStat() + add);
-            }else if(statName().equals("spdefence")){
+
+            else if(getStatName().equals("spdefence"))
                 digimon.setSpDefenceStat(digimon.getSpDefenceStat() + add);
-            } else if(statName().equals("health")){
+
+            else if(getStatName().equals("health"))
                 digimon.setHealthStat(digimon.getHealthStat() + add);
-            }
-            if(getXpId() >= 0 && random.nextInt(0,20) == 1){
-                digimon.useXpItem(getXpId());
-            }
+
+            if(getXpId() >= 0 && random.nextInt(0,20) == 1)
+                digimon.gainSpecificXp(getXpId());
+
         }
         return super.hurt(source, p_27568_);
     }
@@ -77,10 +105,13 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
     @Override
     public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand p_27585_) {
         if(player.isShiftKeyDown()){
-            ItemStack itemstack = this.goodItem();
+            ItemStack itemstack = this.getGoodItem();
+
             itemstack.getOrCreateTag().putInt("USES", (int)this.getHealth());
+
             this.level().addFreshEntity(new ItemEntity(level(),
                     this.getX(),this.getY(),this.getZ(), itemstack));
+
             this.remove(RemovalReason.UNLOADED_TO_CHUNK);
             return InteractionResult.CONSUME;
         }
@@ -128,7 +159,7 @@ public abstract class AbstractTrainingGood extends Animal implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<AbstractTrainingGood>(this, "controller", 0, this::animController));
+        controllers.add(new AnimationController<>(this, "controller", 0, this::animController));
     }
 
     @Override

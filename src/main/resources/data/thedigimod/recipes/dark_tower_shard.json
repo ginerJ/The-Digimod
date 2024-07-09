@@ -1,18 +1,13 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "iii",
-    "ioi",
-    "iii"
-  ],
-  "key": {
-    "i": {
-      "item": "thedigimod:nightmare_data"
-    },
-    "o": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
       "item": "minecraft:glass"
+    },
+    {
+      "item": "thedigimod:black_digitron"
     }
-  },
+  ],
   "result": {
     "item": "thedigimod:dark_tower_shard",
     "count": 1

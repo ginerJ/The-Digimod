@@ -1,0 +1,9 @@
+{
+  "evolutions": {
+    "jellymon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  }
+}

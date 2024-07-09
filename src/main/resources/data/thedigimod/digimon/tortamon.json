@@ -1,0 +1,19 @@
+{
+  "profession": "miner",
+
+  "evolutions": {
+    "brachimon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:300",
+          "6:100"
+        ],
+        "rank": "super"
+      }
+    }
+  }
+}

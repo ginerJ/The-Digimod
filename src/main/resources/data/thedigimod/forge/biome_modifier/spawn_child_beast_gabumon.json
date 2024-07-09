@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:warped_forest"
+  ],
+  "spawners": {
+    "type": "thedigimod:gabumon",
+    "weight": 16,
+    "minCount": 4,
+    "maxCount": 8
+  }
+}

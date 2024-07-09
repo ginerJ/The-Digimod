@@ -1,0 +1,39 @@
+{
+  "profession": "transporter",
+
+  "evolutions": {
+    "octomon": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "karatukinumemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "gesomon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": ["7:50", "3:50"]
+      }
+    },
+    "teslajellymon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["3:100"],
+        "rank": "super"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "profession": "miner",
+
+  "evolutions": {
+    "aeroveedramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:400",
+          "4:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "goldveedramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "45",
+        "xp": [
+          "0:250",
+          "7:250"
+        ],
+        "rank": "super"
+      }
+    }
+  }
+}

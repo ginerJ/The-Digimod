@@ -1,0 +1,47 @@
+{
+  "evolutions": {
+    "boogiemon": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "bakemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "icedevimon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": ["3:50", "7:50"],
+        "rank": "super"
+      }
+    },
+    "wizardmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["7:100"],
+        "rank": "super"
+      }
+    },
+    "devidramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": ["7:50", "1:50"]
+      }
+    }
+  }
+}

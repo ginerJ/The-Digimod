@@ -1,0 +1,9 @@
+{
+  "evolutions": {
+    "sunarizamon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  }
+}

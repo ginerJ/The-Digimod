@@ -1,0 +1,18 @@
+{
+  "profession": "tree_lover",
+
+  "evolutions": {
+    "okuwamon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "2:350",
+          "5:150"
+        ]
+      }
+    }
+  }
+}

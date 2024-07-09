@@ -13,7 +13,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.CustomDigimon;
 
-public class EvolutionTriggerItem extends Item {
+public class EvolutionTriggerItem extends DigimonItem {
 
     RegistryObject<SimpleParticleType> particle;
 

@@ -1,0 +1,18 @@
+{
+  "profession": "lumberjack",
+
+  "evolutions": {
+    "megalogrowlmondata": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:200",
+          "5:200"
+        ]
+      }
+    }
+  }
+}

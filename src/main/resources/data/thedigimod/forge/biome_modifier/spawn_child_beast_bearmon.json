@@ -7,7 +7,7 @@
   ],
   "spawners": {
     "type": "thedigimod:bearmon",
-    "weight": 25,
+    "weight": 16,
     "minCount": 4,
     "maxCount": 8
   }

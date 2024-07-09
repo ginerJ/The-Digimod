@@ -1,7 +1,9 @@
 package net.modderg.thedigimod.entity;
 
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.modderg.thedigimod.TheDigiMod;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
@@ -13,7 +15,7 @@ public class CustomDigimonModel<D extends CustomDigimon> extends GeoModel<Custom
 
     @Override
     public ResourceLocation getModelResource(CustomDigimon digimon) {
-        return new ResourceLocation(TheDigiMod.MOD_ID, "geo/" +
+        return new ResourceLocation(TheDigiMod.MOD_ID, "geo/digimon/" +
                 digimon.getLowerCaseSpecies()
                 + ".geo.json");
     }
@@ -30,17 +32,33 @@ public class CustomDigimonModel<D extends CustomDigimon> extends GeoModel<Custom
         return new ResourceLocation(TheDigiMod.MOD_ID, "animations/digimons_anims.json");
     }
 
+
     @Override
     public void setCustomAnimations(CustomDigimon animatable, long instanceId, AnimationState<CustomDigimon> animationState) {
         CoreGeoBone head = getAnimationProcessor().getBone("head");
-        CoreGeoBone entity = getAnimationProcessor().getBone("entity");
 
-        if (head != null) {
+        if (head != null && !animatable.isControlledByLocalInstance()) {
             EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+            float headPitch = entityData.headPitch();
+            float headYaw = entityData.netHeadYaw();
 
-            head.setRotX(entityData.headPitch() * Mth.DEG_TO_RAD);
-            head.setRotY(entityData.netHeadYaw() * Mth.DEG_TO_RAD);
+            float pitchRadians = headPitch * Mth.DEG_TO_RAD;
+            float yawRadians = headYaw * Mth.DEG_TO_RAD;
+
+            head.setRotX(pitchRadians);
+            head.setRotY(yawRadians);
         }
+
         super.setCustomAnimations(animatable, instanceId, animationState);
+    }
+
+
+
+
+    @Override
+    public RenderType getRenderType(CustomDigimon animatable, ResourceLocation texture) {
+        if(animatable.isEvolving())
+            return CustomRenderType.getEvolvingBlend(texture);
+        return super.getRenderType(animatable, texture);
     }
 }

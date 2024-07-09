@@ -1,0 +1,9 @@
+{
+  "evolutions": {
+    "impmon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  }
+}

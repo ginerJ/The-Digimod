@@ -8,7 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.modderg.thedigimod.entity.CustomDigimon;
 
-public class TameItem extends Item {
+public class TameItem extends DigimonItem {
     public TameItem(Properties p_41383_) {
         super(p_41383_);
     }
@@ -17,6 +17,7 @@ public class TameItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack p_41398_, Player player, LivingEntity entity, InteractionHand p_41401_) {
         if(entity instanceof CustomDigimon cd && cd.getOwner() == null){
             cd.tame(player);
+            p_41398_.shrink(1);
         }
         return super.interactLivingEntity(p_41398_, player, entity, p_41401_);
     }

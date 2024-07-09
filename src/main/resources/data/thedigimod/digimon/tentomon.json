@@ -1,0 +1,45 @@
+{
+  "profession": "tree_lover",
+
+  "evolutions": {
+    "kuwagamon": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "roachmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "kabuterimon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "2:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "ballistamon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "6:50",
+          "2:50"
+        ],
+        "rank": "super"
+      }
+    }
+  }
+}

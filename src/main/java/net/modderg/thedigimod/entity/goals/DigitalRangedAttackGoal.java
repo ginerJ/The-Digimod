@@ -12,33 +12,30 @@ import net.modderg.thedigimod.entity.CustomDigimon;
 
 public class DigitalRangedAttackGoal<T extends net.minecraft.world.entity.Mob & RangedAttackMob> extends Goal {
     private final CustomDigimon mob;
-    private final double speedModifier;
     private int attackIntervalMin;
-    private final float attackRadiusSqr;
-    private int attackTime = -1;
-    private int seeTime;
-    private boolean strafingClockwise;
-    private boolean strafingBackwards;
-    private int strafingTime = -1;
+    private int attackTime = 1;
+    private final double speedTowardsTarget;
+    private final float maxAttackDistance;
+    private final float minAttackDistance;
 
-    public void setAttackTime(int attackTime) {
-        this.attackTime = attackTime;
-    }
+    private int changeDirectionTicks = 0;
+    private boolean strafeLeft = false;
 
-    public DigitalRangedAttackGoal(CustomDigimon p_25792_, double p_25793_, int p_25794_, float p_25795_) {
-        this.mob = p_25792_;
-        this.speedModifier = p_25793_;
-        this.attackIntervalMin = p_25794_;
-        this.attackRadiusSqr = p_25795_ * p_25795_;
+    public DigitalRangedAttackGoal(CustomDigimon mob, double speedTowardsTarget, int attackIntervalMin, float maxAttackDistance) {
+        this.mob = mob;
+        this.speedTowardsTarget = speedTowardsTarget;
+        this.attackIntervalMin = attackIntervalMin;
+        this.maxAttackDistance = maxAttackDistance * maxAttackDistance; // Store as squared for performance
+        this.minAttackDistance = (maxAttackDistance-1.5f) * (maxAttackDistance-1.5f); // Define a minimum distance to keep from the target
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
     }
 
     public boolean canUse() {
-        return this.mob.getTarget() != null && !mob.canBeControlledByRider();
+        return this.mob.getMovementID() != 0  && this.mob.getTarget() != null && this.mob.getTarget().isAddedToWorld() && mob.getControllingPassenger() == null;
     }
 
     public boolean canContinueToUse() {
-        return (this.canUse() || !this.mob.getNavigation().isDone()) && !this.mob.isInSittingPose() && !mob.canBeControlledByRider();
+        return this.canUse();
     }
 
     public void start() {
@@ -50,7 +47,6 @@ public class DigitalRangedAttackGoal<T extends net.minecraft.world.entity.Mob & 
         super.stop();
         this.mob.getMoveControl().strafe(0f,0f);
         this.mob.setAggressive(false);
-        this.seeTime = 0;
         this.attackTime = -1;
     }
 
@@ -58,70 +54,40 @@ public class DigitalRangedAttackGoal<T extends net.minecraft.world.entity.Mob & 
         return true;
     }
 
+    public void setAttackTime(int attackTime) {
+        this.attackTime = attackTime;
+    }
+
+    @Override
     public void tick() {
-        LivingEntity livingentity = this.mob.getTarget();
-        if (livingentity != null) {
-            double d0 = this.mob.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ());
-            boolean flag = this.mob.getSensing().hasLineOfSight(livingentity);
-            boolean flag1 = this.seeTime > 0;
-            if (flag != flag1) {
-                this.seeTime = 0;
-            }
+        LivingEntity target = this.mob.getTarget();
+        if (target != null) {
+            double distanceSq = this.mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
+            this.mob.getLookControl().setLookAt(target, 30.0F, 30.0F);
 
-            if (flag) {
-                ++this.seeTime;
+            if (distanceSq > this.maxAttackDistance) {
+                this.mob.getNavigation().moveTo(target, this.speedTowardsTarget);
             } else {
-                --this.seeTime;
-            }
-
-            if (!(d0 > (double)this.attackRadiusSqr) && this.seeTime >= 20) {
-                this.mob.getNavigation().stop();
-                ++this.strafingTime;
-            } else {
-                this.mob.getNavigation().moveTo(livingentity, this.speedModifier);
-                this.strafingTime = -1;
-            }
-
-            if (this.strafingTime >= 20) {
-                if ((double)this.mob.getRandom().nextFloat() < 0.3D) {
-                    this.strafingClockwise = !this.strafingClockwise;
+                if (--changeDirectionTicks <= 0) {
+                    strafeLeft = !strafeLeft;
+                    changeDirectionTicks = 20;
                 }
 
-                if ((double)this.mob.getRandom().nextFloat() < 0.3D) {
-                    this.strafingBackwards = !this.strafingBackwards;
-                }
+                float strafe = strafeLeft ? 0.5F : -0.5F;
+                float backward = 0.5F;
 
-                this.strafingTime = 0;
+                if (distanceSq < this.minAttackDistance) {
+                    this.mob.getMoveControl().strafe(-backward, strafe);
+                } else {
+                    this.mob.getMoveControl().strafe(0.0F, strafe);
+                }
             }
 
-            if (this.strafingTime > -1) {
-                if (d0 > (double)(this.attackRadiusSqr * 0.75F)) {
-                    this.strafingBackwards = false;
-                } else if (d0 < (double)(this.attackRadiusSqr * 0.25F)) {
-                    this.strafingBackwards = true;
-                }
-
-                this.mob.getMoveControl().strafe(this.strafingBackwards ? -0.5F : 0.5F, this.strafingClockwise ? 0.5F : -0.5F);
-                Entity entity = this.mob.getControlledVehicle();
-                if (entity instanceof Mob) {
-                    Mob mob = (Mob)entity;
-                    mob.lookAt(livingentity, 30.0F, 30.0F);
-                }
-
-                this.mob.lookAt(livingentity, 30.0F, 30.0F);
-            } else {
-                this.mob.getLookControl().setLookAt(livingentity, 30.0F, 30.0F);
-            }
-
-            if(--this.attackTime == 60){
-                this.mob.performRangedAttack(livingentity, 1f);
-            } else if (this.attackTime == 0) {
-                this.attackTime = this.attackIntervalMin;//was trying to make this shit shoot
-            } else if (this.attackTime < 0) {
+            if (--this.attackTime == 60) {
+                this.mob.performRangedAttack(target, 1f);
+            } else if (this.attackTime <= 0) {
                 this.attackTime = this.attackIntervalMin;
             }
-
         }
     }
 }
-

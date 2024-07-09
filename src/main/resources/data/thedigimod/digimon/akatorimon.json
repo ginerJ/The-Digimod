@@ -1,0 +1,17 @@
+{
+  "profession": "farmer",
+
+  "evolutions": {
+    "monzaemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "7:400"
+        ]
+      }
+    }
+  }
+}

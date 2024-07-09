@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public class SpMoveItem extends Item {
+public class SpMoveItem extends DigimonItem {
 
     private String itemName;
 
@@ -43,29 +43,31 @@ public class SpMoveItem extends Item {
         return this;
     }
 
-    public String attackName(){
-        return itemName;
-    }
-
-    public SpMoveItem(Properties p_41383_, String itemName) {
+    public SpMoveItem(Properties p_41383_) {
         super(p_41383_);
-        this.itemName = itemName;
     }
 
     @Override
-    public @NotNull InteractionResult interactLivingEntity(@NotNull ItemStack p_41398_, @NotNull Player player, @NotNull LivingEntity entity, @NotNull InteractionHand p_41401_) {
+    protected String getOrCreateDescriptionId() {
+        String create = super.getOrCreateDescriptionId();
+        itemName = create.replace("item.thedigimod.chip_", "");;
+        return create;
+    }
+
+    @Override
+    public @NotNull InteractionResult interactLivingEntity(@NotNull ItemStack itemStack, @NotNull Player player, @NotNull LivingEntity entity, @NotNull InteractionHand p_41401_) {
         if(entity instanceof CustomDigimon cd && cd.isOwnedBy(player)){
             cd.setSpMoveName(itemName);
-            cd.eatItem(new ItemStack(this),0);
+            cd.eatItemAnim(itemStack);
         }
-        return super.interactLivingEntity(p_41398_, player, entity, p_41401_);
+        return super.interactLivingEntity(itemStack, player, entity, p_41401_);
     }
 
     @Override
     public void appendHoverText(ItemStack p_41421_, @org.jetbrains.annotations.Nullable Level p_41422_, List<Component> p_41423_, TooltipFlag p_41424_) {
         p_41423_.add(Component.literal(""));
-        p_41423_.add(Component.literal((isPhysical?"Half Attack":"Sp. Attack" + " move")).withStyle(ChatFormatting.BLUE));
-        if(timesRepeat>1)p_41423_.add(Component.translatable(" Attacks "+ String.valueOf(timesRepeat)+ " times").withStyle(ChatFormatting.GREEN));
+        p_41423_.add(Component.literal((isPhysical?"Half Physical Attack":"Sp. Attack") + " Move").withStyle(ChatFormatting.BLUE));
+        if(timesRepeat>1)p_41423_.add(Component.translatable(" Attacks "+ String.valueOf(timesRepeat)+ " Times").withStyle(ChatFormatting.GREEN));
         for(String s:effects)p_41423_.add(Component.translatable(s).withStyle(ChatFormatting.GREEN));
         super.appendHoverText(p_41421_, p_41422_, p_41423_, p_41424_);
     }

@@ -12,7 +12,7 @@
   ],
   "spawners": {
     "type": "thedigimod:agumonblack",
-    "weight": 25,
+    "weight": 16,
     "minCount": 4,
     "maxCount": 8
   }

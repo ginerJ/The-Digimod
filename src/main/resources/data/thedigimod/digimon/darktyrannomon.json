@@ -1,0 +1,41 @@
+{
+  "evolutions": {
+    "metaltyrannomon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:250",
+          "5:250"
+        ],
+        "rank" : "super"
+      }
+    },
+    "mametyramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:200",
+          "6:200"
+        ]
+      }
+    },
+    "gigadramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "5:200",
+          "7:200"
+        ]
+      }
+    }
+  }
+}

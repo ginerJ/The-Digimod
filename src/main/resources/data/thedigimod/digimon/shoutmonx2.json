@@ -1,0 +1,19 @@
+{
+  "profession": "lumberjack",
+
+  "evolutions": {
+    "shoutmonx3": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:250",
+          "5:250"
+        ],
+        "rank" : "super"
+      }
+    }
+  }
+}

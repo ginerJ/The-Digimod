@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "thedigimod:nightmare_nest",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1645050509,
+
+    "spacing": 40,
+
+    "separation": 10,
+
+    "type": "minecraft:random_spread"
+  }
+}

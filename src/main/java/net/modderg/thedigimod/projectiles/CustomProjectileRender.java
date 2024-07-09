@@ -7,45 +7,50 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
-import net.modderg.thedigimod.entity.CustomDigimon;
-import net.modderg.thedigimod.projectiles.CustomProjectile;
-import net.modderg.thedigimod.projectiles.CustomProjectileModel;
-import org.joml.Quaternionf;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
-import software.bernie.geckolib.util.RenderUtils;
 
-public class CustomProjectileRender<D extends CustomProjectile> extends GeoEntityRenderer<CustomProjectile> {
+public class CustomProjectileRender<D extends ProjectileDefault> extends GeoEntityRenderer<ProjectileDefault> {
 
     public CustomProjectileRender(EntityRendererProvider.Context renderManager) {
-        super(renderManager, (GeoModel<CustomProjectile>) new CustomProjectileModel());
+        super(renderManager, (GeoModel<ProjectileDefault>) new CustomProjectileModel());
     }
 
     @Override
-    public void renderRecursively(PoseStack poseStack, CustomProjectile animatable, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        pointEntityTowardsDeltaMovement(poseStack, animatable);
+    public void render(ProjectileDefault entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+        if(entity instanceof ProjectileParticleStreamDefault)
+            return;
+        super.render(entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
+    }
+
+    @Override
+    public void renderRecursively(PoseStack poseStack, ProjectileDefault animatable, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        if(!(animatable instanceof ProjectileSkyFallingDefault))
+            pointEntityTowardsDeltaMovement(poseStack, animatable);
         if(animatable.bright){
             packedLight = LightTexture.FULL_BRIGHT;
         }
         super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
     }
 
-    public static void pointEntityTowardsDeltaMovement(PoseStack poseStack, Entity entity) {
-        Vec3 deltaMovement = entity.getDeltaMovement();
+    public static void pointEntityTowardsDeltaMovement(PoseStack poseStack, Entity projectile) {
+
+        Vec3 deltaMovement = projectile.getDeltaMovement();
+
         double deltaX = deltaMovement.x;
         double deltaY = deltaMovement.y;
         double deltaZ = deltaMovement.z;
 
         double horizontalDistance = Math.sqrt(deltaX * deltaX + deltaZ * deltaZ);
+
         float yaw = (float) Math.toDegrees(Math.atan2(deltaZ, deltaX));
         float pitch = (float) Math.toDegrees(Math.atan2(deltaY, horizontalDistance));
 
         poseStack.mulPose(Axis.YP.rotationDegrees(-yaw + 90.0F));
-        poseStack.mulPose(Axis.XP.rotationDegrees(pitch));
+
+        if(!(projectile instanceof ProjectileExplosion)) poseStack.mulPose(Axis.XP.rotationDegrees(pitch));
     }
 }

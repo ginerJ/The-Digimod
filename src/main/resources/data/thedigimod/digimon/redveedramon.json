@@ -1,0 +1,19 @@
+{
+  "profession": "miner",
+
+  "evolutions": {
+    "aeroveedramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:400",
+          "4:100"
+        ]
+      }
+    }
+  }
+
+}

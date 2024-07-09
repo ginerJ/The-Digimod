@@ -10,7 +10,7 @@
   ],
   "spawners": {
     "type": "thedigimod:tentomon",
-    "weight": 25,
+    "weight": 16,
     "minCount": 4,
     "maxCount": 8
   }

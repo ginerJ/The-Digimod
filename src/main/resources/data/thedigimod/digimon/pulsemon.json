@@ -1,0 +1,51 @@
+{
+  "profession": "transporter",
+
+  "evolutions": {
+    "runnermon": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "namakemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "exermon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "2:100"
+        ]
+      }
+    },
+    "thunderballmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": ["5:100"],
+        "rank": "super"
+      }
+    },
+    "bulkmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["0:100"],
+        "rank": "super"
+      }
+    }
+  }
+}

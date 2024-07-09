@@ -1,0 +1,40 @@
+{
+  "profession": "farmer",
+
+  "evolutions": {
+    "saberdramon": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "akatorimon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "birdramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["4:100"],
+        "rank": "super"
+      }
+    },
+    "mailbirdramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["5:100"],
+        "rank": "super"
+      }
+    }
+  }
+}

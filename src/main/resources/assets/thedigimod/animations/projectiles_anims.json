@@ -59,6 +59,78 @@
 							"vector": [1, 1, 1]
 						}
 					}
+				},
+				"z_spin": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.04": {
+							"vector": [0, 0, 1257.5]
+						}
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"sissors": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.44": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						},
+						"0.52": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.04": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"sissors2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.44": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						},
+						"0.52": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.04": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"sissor": {
+					"position": {
+						"0.0": {
+							"vector": [0, 3, 0]
+						},
+						"0.44": {
+							"vector": [0, -2, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.52": {
+							"vector": [0, 11, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.68": {
+							"vector": [0, 17, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.04": {
+							"vector": [0, 3, 0],
+							"easing": "easeInOutSine"
+						}
+					}
 				}
 			}
 		}

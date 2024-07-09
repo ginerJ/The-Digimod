@@ -1,0 +1,27 @@
+{
+  "evolutions": {
+    "bearmon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "gabumon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": []
+      }
+    },
+    "blackgabumon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": []
+      }
+    }
+  }
+}

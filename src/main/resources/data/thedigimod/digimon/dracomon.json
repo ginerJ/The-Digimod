@@ -1,0 +1,51 @@
+{
+  "profession": "miner",
+
+  "evolutions": {
+    "airdramon": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "numemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "growlmondata": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "0:100"
+        ]
+      }
+    },
+    "coredramongreen": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "15",
+        "xp": ["6:100"],
+        "rank": "super"
+      }
+    },
+    "coredramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["0:100"],
+        "rank": "super"
+      }
+    }
+  }
+}

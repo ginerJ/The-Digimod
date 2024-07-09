@@ -2,11 +2,13 @@ package net.modderg.thedigimod.item.custom;
 
 import com.google.common.collect.Maps;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -33,6 +35,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.goods.AbstractTrainingGood;
+import net.modderg.thedigimod.sound.DigiSounds;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -40,7 +43,7 @@ import java.util.Map;
 import java.util.Objects;
 
 
-public class SpawnGoodItem extends Item {
+public class SpawnGoodItem extends DigimonItem {
     private static final Map<EntityType<? extends Animal>, SpawnEggItem> BY_ID = Maps.newIdentityHashMap();
     private final RegistryObject<? extends EntityType<?>> defaultType;
 
@@ -48,7 +51,7 @@ public class SpawnGoodItem extends Item {
 
     private static final int DEFAULT_INTEGER_VALUE = 500;
 
-    public SpawnGoodItem(RegistryObject<? extends EntityType<?>> p_43207_, int p_43208_, int p_43209_, Item.Properties p_43210_, String stat) {
+    public SpawnGoodItem(RegistryObject<? extends EntityType<?>> p_43207_, Item.Properties p_43210_, String stat) {
         super(p_43210_);
         this.stat = stat;
         this.defaultType = p_43207_;
@@ -74,6 +77,7 @@ public class SpawnGoodItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext p_43223_) {
+
         Level level = p_43223_.getLevel();
         if (!(level instanceof ServerLevel)) {
             return InteractionResult.SUCCESS;
@@ -111,6 +115,7 @@ public class SpawnGoodItem extends Item {
                 itemstack.shrink(1);
                 level.gameEvent(p_43223_.getPlayer(), GameEvent.ENTITY_PLACE, blockpos);
             }
+            p_43223_.getPlayer().playNotifySound(DigiSounds.PLACE_GOOD_SOUND.get(), SoundSource.PLAYERS, 1F, 1.0F);
 
             return InteractionResult.CONSUME;
         }

@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.CommonColors;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.entity.CustomDigimon;
+import net.modderg.thedigimod.gui.StatsGui;
 import net.modderg.thedigimod.item.custom.CustomXpItem;
 
 import java.util.LinkedList;
@@ -14,11 +15,17 @@ public class EvolutionCondition {
     private CustomDigimon digimon = null;
     private boolean alwaysTrue = false;
 
+    private String evolution;
+
+    private String rank = "zero";
+
     public EvolutionCondition(CustomDigimon cd){
         this.digimon = cd;
     }
 
-    public EvolutionCondition(){}
+    public EvolutionCondition(String cd){
+        this.evolution = cd;
+    }
 
     public EvolutionCondition setDigimon(CustomDigimon cd){
         this.digimon = cd;
@@ -31,10 +38,25 @@ public class EvolutionCondition {
         return alwaysTrue || conditions.stream().allMatch(EvolutionCondition::checkConditions);
     }
 
+    public String getEvolution(){
+        return evolution;
+    }
+
+    public EvolutionCondition setRank(String rank){
+        this.rank = rank;
+        return this;
+    }
+
+    public String getRank(){
+        return rank;
+    }
+
     public EvolutionCondition moodCheck(String mood){
         conditions.add(new MoodEvolutionCondition(digimon, mood));
         return this;
     }
+
+    //dragon-0 beast-1 insectplant-2 aquan-3 wind-4 machine-5 earth-6 nightmare-7 holy-8
 
     public EvolutionCondition xpOver(int xpId, int min){
         conditions.add(new SpecificXpOverCondition(digimon, xpId, min));
@@ -64,13 +86,13 @@ public class EvolutionCondition {
         public SpecificXpOverCondition(CustomDigimon cd, int xpId, int min) {super(cd);this.xpId = xpId;this.min = min;}
 
         @Override
-        public boolean checkConditions(){return digimon.getSpecificXps(xpId) >= min;}
+        public boolean checkConditions(){return digimon.getSpecificGainedXps(xpId) >= min;}
 
         @Override
         public void renderCondition(GuiGraphics guiGraphics, int x, int y) {
             guiGraphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/gui/condition_xp.png"),
                     x,y,0,0,69,11, 69,11);
-            guiGraphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/item/"+ CustomXpItem.getXpItem(xpId) +".png"),
+            guiGraphics.blit(new ResourceLocation(TheDigiMod.MOD_ID, "textures/item/"+ StatsGui.getXpItem(xpId) +".png"),
                     x+2,y,0,0,12,12, 12,12);
             guiGraphics.drawString(Minecraft.getInstance().font, ">"+Integer.toString(min), x+16, y+3,CommonColors.WHITE);
         }

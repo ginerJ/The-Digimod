@@ -1,0 +1,9 @@
+{
+  "evolutions": {
+    "lopmon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  }
+}

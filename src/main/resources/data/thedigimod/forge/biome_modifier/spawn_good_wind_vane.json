@@ -1,0 +1,16 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:windswept_hills",
+    "minecraft:windswept_gravelly_hills",
+    "minecraft:windswept_forest",
+    "minecraft:grove",
+    "minecraft:stony_peaks"
+  ],
+  "spawners": {
+    "type": "thedigimod:wind_vane",
+    "weight": 10,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

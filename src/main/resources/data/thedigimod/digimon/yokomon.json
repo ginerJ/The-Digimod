@@ -1,0 +1,9 @@
+{
+  "evolutions": {
+    "piyomon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  }
+}

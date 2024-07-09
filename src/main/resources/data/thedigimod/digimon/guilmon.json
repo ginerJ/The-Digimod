@@ -1,0 +1,49 @@
+{
+  "profession": "lumberjack",
+
+  "evolutions": {
+    "growlmondata": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "numemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "growlmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["0:100"],
+        "rank": "super"
+      }
+    },
+    "blackgrowlmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": ["7:100"]
+      }
+    },
+    "devidramon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["7:100"],
+        "rank": "super"
+      }
+    }
+  }
+}

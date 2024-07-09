@@ -19,7 +19,7 @@
   ],
   "spawners": {
     "type": "thedigimod:goromon",
-    "weight": 30,
+    "weight": 15,
     "minCount": 6,
     "maxCount": 10
   }

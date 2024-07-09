@@ -9,7 +9,7 @@
   ],
   "spawners": {
     "type": "thedigimod:pulsemon",
-    "weight": 25,
+    "weight": 16,
     "minCount": 4,
     "maxCount": 8
   }

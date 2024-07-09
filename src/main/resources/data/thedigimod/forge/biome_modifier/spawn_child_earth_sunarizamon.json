@@ -13,8 +13,8 @@
     "minecraft:basalt_deltas"
   ],
   "spawners": {
-    "type": "thedigimod:dracomon",
-    "weight": 25,
+    "type": "thedigimod:sunarizamon",
+    "weight": 16,
     "minCount": 4,
     "maxCount": 8
   }

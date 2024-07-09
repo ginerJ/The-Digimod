@@ -1,0 +1,41 @@
+{
+  "profession": "farmer",
+
+  "evolutions": {
+    "archelomon": {
+      "conditions": {
+        "always_can": "true"}
+    },
+    "karatukinumemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Sad",
+        "max_mistakes": "",
+        "min_wins": "",
+        "xp": [],
+        "rank": "fail"
+      }
+    },
+    "tortamon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "6:100"
+        ]
+      }
+    },
+    "gawappamon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": ["3:100"],
+        "rank": "super"
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 package net.modderg.thedigimod.entity.managers;
 
 import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
@@ -12,11 +13,10 @@ import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.entity.CustomDigimon;
 import net.modderg.thedigimod.particles.DigitalParticles;
 
-import java.util.Objects;
 import java.util.Random;
 
 public class ParticleManager {
-    
+
     private Random random = new Random();
 
     public void spawnStatUpParticles(RegistryObject<SimpleParticleType> particle, int multiplier, Entity digimon) {
@@ -30,12 +30,73 @@ public class ParticleManager {
         }
     }
 
-    public void spawnEvoParticles(RegistryObject<SimpleParticleType> particle, Entity digimon) {
+    public void eatData(ParticleOptions particle,  Entity digimon) {
+        for(int i = 0; i < 360; i++) {
+            if (random.nextInt(0, 20) == 5) {
+                digimon.level().addParticle(particle,
+                        digimon.blockPosition().getX() + 1d, digimon.blockPosition().getY() + 0.5, digimon.blockPosition().getZ() + 1d,
+                        Math.cos(i) * 0.3d, 0.1d + random.nextDouble() * 0.1d, Math.sin(i) * 0.3d);
+            }
+        }
+    }
+
+    public void spawnEvoParticles(CustomDigimon digimon) {
         for(int i = 0; i < 360; i++) {
             if(random.nextInt(0,20) == 5) {
-                digimon.level().addParticle(particle.get(),
-                        digimon.blockPosition().getX() + 1d, digimon.blockPosition().getY(), digimon.blockPosition().getZ() + 1d,
-                        Math.cos(i) * 0.3d, 0.15d + random.nextDouble()*0.1d, Math.sin(i) * 0.3d);
+                digimon.level().addParticle(DigitalParticles.EVO_PARTICLES.get(),
+                        digimon.blockPosition().getX() + 1d, digimon.blockPosition().getY() + 0.5, digimon.blockPosition().getZ() + 1d,
+                        Math.cos(i) * 0.3d, 0.1d + random.nextDouble()*0.1d, Math.sin(i) * 0.3d);
+
+                if(digimon.isRookie())
+                    digimon.level().addParticle(DigitalParticles.EVO_PARTICLES_CHAMPION.get(),
+                            digimon.blockPosition().getX() + 1d, digimon.blockPosition().getY() + 0.5, digimon.blockPosition().getZ() + 1d,
+                            Math.cos(i) * 0.6d, 0, Math.sin(i) * 0.6d);
+                else if (digimon.isChampion()){
+
+                    digimon.level().addParticle(DigitalParticles.EVO_PARTICLES_CHAMPION.get(),
+                            digimon.blockPosition().getX() + 1d, digimon.blockPosition().getY() + 0.5, digimon.blockPosition().getZ() + 1d,
+                            Math.cos(i) * 0.6d, 0, Math.sin(i) * 0.6d);
+
+                    digimon.level().addParticle(DigitalParticles.EVO_PARTICLES_ULTIMATE.get(),
+                            digimon.blockPosition().getX() + 1d, digimon.blockPosition().getY() + 0.5, digimon.blockPosition().getZ() + 1d,
+                            Math.cos(i) * 0.8d, 0, Math.sin(i) * 0.8d);
+
+                    digimon.level().addParticle(DigitalParticles.EVO_PARTICLES_ULTIMATE.get(),
+                            digimon.blockPosition().getX() + 1d, digimon.blockPosition().getY() + 1, digimon.blockPosition().getZ() + 1d,
+                            Math.cos(i) * 0.1d, 0.1d + random.nextDouble()*0.5d, Math.sin(i) * 0.1d);
+                }
+            }
+        }
+    }
+
+    public void finishEvoParticles(CustomDigimon digimon){
+
+        ParticleOptions particle = DigitalParticles.EVO_PARTICLES.get();
+        double multiplier = 0.2d;
+
+        if(digimon.isRookie()){
+            particle = DigitalParticles.EVO_PARTICLES_CHAMPION.get();
+            multiplier = 0.3d;
+        }
+        else if (digimon.isChampion()){
+            particle = DigitalParticles.EVO_PARTICLES_ULTIMATE.get();
+            multiplier = 0.4d;
+        }
+
+        for(int i = 0; i < 360; i++) {
+            if(random.nextInt(0,20) == 5) {
+
+                digimon.level().addParticle(particle,
+                        digimon.position().x + 2d, digimon.position().y + 2, digimon.position().z + 2d,
+                        Math.cos(i) * multiplier, 0, Math.sin(i) * multiplier);
+
+                digimon.level().addParticle(particle,
+                        digimon.position().x + 2d, digimon.position().y + 1, digimon.position().z + 2d,
+                        Math.cos(i) * multiplier * 1.5d, 0, Math.sin(i) * multiplier * 1.5d);
+
+                digimon.level().addParticle(particle,
+                        digimon.position().x + 2d, digimon.position().y + 0.5, digimon.position().z + 2d,
+                        Math.cos(i) * multiplier * 2d, 0, Math.sin(i) * multiplier * 2d);
 
             }
         }
@@ -68,4 +129,5 @@ public class ParticleManager {
                 digimon.level().addParticle(new ItemParticleOption(ParticleTypes.ITEM, p_21061_), vec31.x, vec31.y, vec31.z, vec3.x, vec3.y + 0.05D, vec3.z);
         }
     }
+
 }

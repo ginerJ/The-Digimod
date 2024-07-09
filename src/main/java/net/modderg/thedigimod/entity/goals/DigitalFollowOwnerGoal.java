@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.modderg.thedigimod.entity.CustomDigimon;
+import net.modderg.thedigimod.entity.CustomSwimmerDigimon;
 
 import java.util.EnumSet;
 
@@ -41,11 +42,11 @@ public class DigitalFollowOwnerGoal extends Goal {
 
     public boolean canUse() {
         LivingEntity livingentity = this.tamable.getOwner();
-        if (livingentity == null) {
+        if (livingentity == null || this.tamable.isAggressive()) {
             return false;
         } else if (livingentity.isSpectator()) {
             return false;
-        } else if (this.tamable.isOrderedToSit() || this.tamable.getMovementID() == -1) {
+        } else if (this.tamable.isOrderedToSit() || this.tamable.getMovementID() == -1 || this.tamable.getMovementID() == -2) {
             return false;
         } else if (this.tamable.distanceToSqr(livingentity) < (double)(this.startDistance * this.startDistance)) {
             return false;
@@ -67,7 +68,7 @@ public class DigitalFollowOwnerGoal extends Goal {
 
     public void start() {
         this.timeToRecalcPath = 0;
-        if(!tamable.isSwimmerDigimon()){
+        if(!(tamable instanceof CustomSwimmerDigimon)){
             this.oldWaterCost = this.tamable.getPathfindingMalus(BlockPathTypes.WATER);
             this.tamable.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
         }
@@ -76,7 +77,7 @@ public class DigitalFollowOwnerGoal extends Goal {
     public void stop() {
         this.owner = null;
         this.navigation.stop();
-        if(!tamable.isSwimmerDigimon()){
+        if(!(tamable instanceof CustomSwimmerDigimon)){
             this.tamable.setPathfindingMalus(BlockPathTypes.WATER, this.oldWaterCost);
         }
     }
@@ -126,7 +127,7 @@ public class DigitalFollowOwnerGoal extends Goal {
 
     private boolean canTeleportTo(BlockPos p_25308_) {
         BlockPathTypes blockpathtypes = WalkNodeEvaluator.getBlockPathTypeStatic(this.level, p_25308_.mutable());
-        if ((!tamable.isSwimmerDigimon() || blockpathtypes != BlockPathTypes.WATER) && blockpathtypes != BlockPathTypes.WALKABLE) {
+        if ((!(tamable instanceof CustomSwimmerDigimon) || blockpathtypes != BlockPathTypes.WATER) && blockpathtypes != BlockPathTypes.WALKABLE) {
             return false;
         } else {
             BlockState blockstate = this.level.getBlockState(p_25308_.below());

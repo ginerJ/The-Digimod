@@ -10,8 +10,8 @@
   ],
   "spawners": {
     "type": "thedigimod:kuwagamon",
-    "weight": 20,
-    "minCount": 3,
+    "weight": 5,
+    "minCount": 1,
     "maxCount": 5
   }
 }

@@ -1,439 +1,535 @@
 package net.modderg.thedigimod.entity;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.*;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.FlyingMoveControl;
-import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
-import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
-import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.RangedAttackMob;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.fluids.FluidType;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.registries.RegistryObject;
+import net.modderg.thedigimod.config.ModCommonConfigs;
 import net.modderg.thedigimod.entity.goals.*;
+import net.modderg.thedigimod.gui.inventory.DigimonMenu;
+import net.modderg.thedigimod.gui.inventory.DigimonInventory;
+import net.modderg.thedigimod.entity.managers.DigimonJsonDataManager;
 import net.modderg.thedigimod.entity.managers.EvolutionCondition;
 import net.modderg.thedigimod.entity.managers.MoodManager;
 import net.modderg.thedigimod.entity.managers.ParticleManager;
 import net.modderg.thedigimod.goods.AbstractTrainingGood;
+import net.modderg.thedigimod.gui.StatsGui;
 import net.modderg.thedigimod.item.*;
-import net.modderg.thedigimod.item.custom.DigiviceItem;
+import net.modderg.thedigimod.item.custom.DigiFoodBlockItem;
+import net.modderg.thedigimod.item.custom.DigiFoodItem;
+import net.modderg.thedigimod.packet.PacketInit;
+import net.modderg.thedigimod.packet.SToCSGainXpPacket;
 import net.modderg.thedigimod.particles.DigitalParticles;
-import net.modderg.thedigimod.projectiles.CustomProjectile;
-import net.modderg.thedigimod.projectiles.DigitalProjectiles;
+import net.modderg.thedigimod.projectiles.ProjectileDefault;
+import net.modderg.thedigimod.projectiles.InitProjectiles;
+import net.modderg.thedigimod.sound.DigiSounds;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-import static net.minecraft.world.entity.ai.attributes.Attributes.FLYING_SPEED;
-import static net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED;
+import static net.minecraft.world.entity.ai.attributes.Attributes.*;
+import static net.modderg.thedigimod.config.ModCommonConfigs.*;
 
-public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteerable, PlayerRideableJumping, RangedAttackMob {
+public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteerable, RangedAttackMob, MenuProvider {
 
-    protected String rank = "zero";
-    public String getRank(){return rank;}
-    public CustomDigimon setRank(String rank){
-        this.rank = rank;
+    public MoodManager moodManager = new MoodManager(this);
+
+    public ParticleManager particleManager = new ParticleManager();
+
+    public DigimonJsonDataManager jsonManager = new DigimonJsonDataManager();
+
+    protected static final EntityDataAccessor<String> RANK = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
+
+    public String getRank() {
+        return this.getEntityData().get(RANK);
+    }
+
+    public CustomDigimon setRank(String rank) {
+        this.getEntityData().set(RANK, rank);
         return this;
     }
 
-    public int maxStatGain(){
-        return rank.equals("zero")?3:(rank.equals("super")?5:2);
-    }
-    public int minStatGain(){
-        return rank.equals("zero")?1:(rank.equals("super")?2:0);
+    public String profession;
+
+    public int maxStatGain() {
+        return getRank().equals("zero") ? 6 : (getRank().equals("super") ? 10 : 4);
     }
 
-    protected String species = "";
-    public String getSpecies(){return species;}
-    public String getLowerCaseSpecies(){return getSpecies().toLowerCase().replace("(", "").replace(")","");}
-    public CustomDigimon setSpecies(String species){
-        this.species = species;
-        return this;
+    public int minStatGain() {
+        return getRank().equals("zero") ? 2 : (getRank().equals("super") ? 3 : 1);
+    }
+
+    public String getLowerCaseSpecies() {
+        return this.getType().getDescriptionId().replace("entity.thedigimod.", "");
     }
 
     protected double riderOffSet = 0;
     protected boolean isMountDigimon = false;
+    public boolean isMountDigimon() {return isMountDigimon;}
+
     protected CustomDigimon setMountDigimon(double riderOff) {
         isMountDigimon = true;
         this.riderOffSet = riderOff;
         return this;
     }
 
-    protected RegistryObject<?>[] reincarnateTo = new RegistryObject[]{DigiItems.BOTAMON};
-    public RegistryObject<?>[] getReincarnateTo(){
+    protected RegistryObject<?>[] reincarnateTo = new RegistryObject[]{BabyDigimonItems.BOTAMON};
+
+    public RegistryObject<?>[] getReincarnateTo() {
         return reincarnateTo;
     }
 
-    public CustomDigimon setBabyAndXpDrop (RegistryObject<?> xp, RegistryObject<?>... babies){
+    public CustomDigimon setBabyAndXpDrop(RegistryObject<?>... babies) {
         reincarnateTo = babies;
+        return this;
+    }
+
+    protected int xpDrop = 0;
+
+    public int getXpDrop() {
+        return xpDrop;
+    }
+
+    public CustomDigimon setXpDrop(int xp) {
         xpDrop = xp;
         return this;
     }
 
-    protected RegistryObject<?> xpDrop = DigiItems.DRAGON_DATA;
-    public Item getXpDrop(){
-        return (Item) xpDrop.get();
-    }
-
-    protected static final int MAXLEVEL = 30;
+    protected static final int MAXLEVEL = 65;
     protected static final int MAXADULT = 250;
     protected static final int MAXULTIMATE = 500;
     public static final int MAXMEGASTAT = 999;
 
     protected int evoStage;
-    public int getEvoStage(){return evoStage;}
-    public CustomDigimon setEvoStage(int evoStage){
+
+    public int getEvoStage() {
+        return evoStage;
+    }
+
+    public CustomDigimon setEvoStage(int evoStage) {
         this.evoStage = evoStage;
         return this;
     }
 
-    public Boolean isBaby2(){return getEvoStage() == 0;}
-    public Boolean isRookie(){return getEvoStage() == 1;}
-    public Boolean isChampion(){return getEvoStage() == 2;}
-    public Boolean isUltimate(){return getEvoStage() == 3;}
-
-    //public Boolean isMega(){return evoStage().equals("mega");}
-
-    public int getMaxStat(){
-        return this.isBaby2() ? 25 : (this.isRookie() ? 100: (this.isChampion() ? MAXADULT: (this.isUltimate() ? MAXULTIMATE : MAXMEGASTAT)));
+    public Boolean isBaby2() {
+        return getEvoStage() == 0;
     }
 
-    protected boolean canFlyDigimon = false;
-    public CustomDigimon setFlyingDigimon(){
-        canFlyDigimon = true;
-        return this;
+    public Boolean isRookie() {
+        return getEvoStage() == 1;
     }
 
-    protected boolean canSwimDigimon = false;
-
-    public boolean isSwimmerDigimon() {
-        return canSwimDigimon;
+    public Boolean isChampion() {
+        return getEvoStage() == 2;
     }
 
-    public CustomDigimon setSwimmerDigimon(){
-        canSwimDigimon = true;
-        return this;
+    public Boolean isUltimate() {
+        return getEvoStage() == 3;
     }
 
-    public Boolean evolutionLevelAchieved(){return (isRookie() && this.getCurrentLevel() > 15) || (isBaby2() && this.getCurrentLevel() > 5);}
+    public int getMaxStat() {
+        return this.isBaby2() ? 25 : (this.isRookie() ? 100 : (this.isChampion() ? MAXADULT : (this.isUltimate() ? MAXULTIMATE : MAXMEGASTAT)));
+    }
+
+    public int getMaxLevel() {
+        return this.isBaby2() ? 5 : (this.isRookie() ? 15 : (this.isChampion() ? 35 : (this.isUltimate() ? 70 : 100)));
+    }
+
+    public int getMinLevel() {
+        return this.isBaby2() ? 1 : (this.isRookie() ? 6 : (this.isChampion() ? 16 : (this.isUltimate() ? 36 : 71)));
+    }
+
+    public Boolean evolutionLevelAchieved() {
+        return
+                (isBaby2() && this.getCurrentLevel() >= ROOKIE_EVOLUTION_LEVEL.get()) ||
+                        (isRookie() && this.getCurrentLevel() >= CHAMPION_EVOLUTION_LEVEL.get()) ||
+                        (isChampion() && this.getCurrentLevel() >= ULTIMATE_EVOLUTION_LEVEL.get());
+    }
 
     public Boolean isEvolving() {
-        return getEvoCount() > 0;
+        return evoCount > 0;
     }
 
-    public CustomDigimon setEvos(String... evos){
-        getEvoPaths = Arrays.stream(evos)
-                        .map(evo -> evo == null ? null :DigitalEntities.digimonMap.get(evo).get().create(this.level()))
-                        .toArray(CustomDigimon[]::new);
-        return this;
+    public EvolutionCondition[] evolutionConditions = {null, null, null, null, null, null};
+
+    protected Boolean canEvoToPath(int i) {
+        return evolutionConditions[i] != null && evolutionConditions[i].checkConditions();
     }
-
-    public EvolutionCondition[] evolutionConditions = {null,null,null,null,null,null};
-
-    public CustomDigimon setEvoConditions(EvolutionCondition... evoConditions) {
-        Arrays.stream(evoConditions).forEach(evoCondition -> evoCondition.setDigimon(this));
-        evolutionConditions = evoConditions;
-        return this;
-    }
-
-    public CustomDigimon[] getEvoPaths = {null,null,null,null,null,null};
-
-    protected Boolean canEvoToPath(int i){return evolutionConditions[i] != null && evolutionConditions[i].checkConditions();}
 
     public String digitronEvo;
-    public CustomDigimon setDigitronEvo(String evo){
+
+    public CustomDigimon setDigitronEvo(String evo) {
         digitronEvo = evo;
         return this;
     }
 
     protected static final EntityDataAccessor<String> PREEVO = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
-    public void setPreEvo(String i){this.getEntityData().set(PREEVO, i);}
-    public String getPreEvo(){return this.getEntityData().get(PREEVO);}
+
+    public void setPreEvo(String i) {
+        this.getEntityData().set(PREEVO, i);
+    }
+
+    public String getPreEvo() {
+        return this.getEntityData().get(PREEVO);
+    }
 
     protected static final EntityDataAccessor<String> NICKNAME = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
-    public void setNickName(String i){
+
+    public void setNickName(String i) {
         this.getEntityData().set(NICKNAME, i);
     }
-    public String getNickName(){
+
+    public String getNickName() {
         return this.getEntityData().get(NICKNAME);
     }
 
-    public CustomDigimon setAnimations(String ia, String sa, String wa, String fa, String ata, String sha){
-        if(ia != null){ idleAnim = ia;}
-        if(sa != null){ sitAnim = sa;}
-        if(wa != null){ walkAnim = wa;}
-        if(fa != null){ flyAnim = fa;}
-        if(ata != null){ attackAnim = ata;}
-        if(sha != null){ shootAnim = sha;}
+    public CustomDigimon setAnimations(String ia, String sa, String wa, String fa, String ata, String sha) {
+        if (ia != null) {
+            idleAnim = ia;
+        }
+        if (sa != null) {
+            sitAnim = sa;
+        }
+        if (wa != null) {
+            walkAnim = wa;
+        }
+        if (fa != null) {
+            flyAnim = fa;
+        }
+        if (ata != null) {
+            attackAnim = ata;
+        }
+        if (sha != null) {
+            shootAnim = sha;
+        }
         return this;
     }
 
-    protected String idleAnim= "idle";
-    protected String sitAnim= "sit";
-    protected String walkAnim="walk";
-    protected String flyAnim= "fly";
-    protected String attackAnim= "attack";
-    protected String shootAnim= "shoot";
+    protected String idleAnim = "idle";
+    protected String sitAnim = "sit";
+    protected String walkAnim = "walk";
+    protected String flyAnim = "fly";
+    protected String attackAnim = "attack";
+    protected String shootAnim = "shoot";
 
     protected static final EntityDataAccessor<String> SPMOVENAME = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
-    public void setSpMoveName(String i){
+    String defaultSpMove;
+
+    public void setSpMoveName(String i) {
         this.getEntityData().set(SPMOVENAME, i);
     }
-    public String getSpMoveName(){
+
+    public String getSpMoveName() {
+        if(this.getEntityData().get(SPMOVENAME).equals("unnamed")){
+            setSpMoveName(defaultSpMove);
+        }
         return this.getEntityData().get(SPMOVENAME);
     }
 
-    public MoodManager moodManager = new MoodManager(this);
-    public ParticleManager particleManager = new ParticleManager();
+    public CustomDigimon setDefaultSpMove(String move) {
+        defaultSpMove = move;
+        return this;
+    }
 
     protected static final EntityDataAccessor<Integer> MOVEMENTID = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    public void setMovementID(int i){
+
+    public void setMovementID(int i) {
         this.getEntityData().set(MOVEMENTID, i);
-        this.switchNavigation(i);
         this.setOrderedToSit(i == 0);
     }
-    public int getMovementID(){return this.getEntityData().get(MOVEMENTID);}
-    public void changeMovementID(){
+
+    public int getMovementID() {
+        return this.getEntityData().get(MOVEMENTID);
+    }
+
+    public void changeMovementID() {
         int i = this.getMovementID();
-        if(i == 0){
+
+        if (i == 0) {
             messageState("following");
             setMovementID(1);
-        } else if(i == 1 && this.canFlyDigimon){
-            messageState("flying");
-            setMovementID(2);
-        } else if(i == 2 || (i == 1 && !this.canFlyDigimon)){
+        } else if (i == 1) {
             messageState("wandering");
             setMovementID(1);
             setMovementID(-1);
-        } else if (i == -1){
+        } else if (i == -1) {
+            messageState("working");
+            setMovementID(1);
+            setMovementID(-2);
+        } else if (i == -2) {
+            this.spawnAtLocation(this.getPickedItem());
+            this.setPickedItem(ItemStack.EMPTY);
             messageState("sitting");
             this.setTarget(null);
             this.navigation.stop();
+            this.playStepSound(this.blockPosition(), this.getBlockStateOn());
             setMovementID(0);
         }
     }
 
-    public void messageState(String txt){
-        if (Objects.requireNonNull(getOwner()).level().isClientSide && getOwner().level() instanceof ClientLevel) {
+    public void messageState(String txt) {
+        if (this.level().isClientSide) {
             Minecraft.getInstance().gui.setOverlayMessage(Component.literal(txt), false);
         }
     }
 
     //dragon-0 beast-1 insectplant-2 aquan-3 wind-4 machine-5 earth-6 nightmare-7 holy-8
     protected static final EntityDataAccessor<String> SPECIFICXPS = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.STRING);
-    public void addSpecificXps(int s){
-        String[]ss = this.getSpecificXps().split("-");
+
+    public void saveGainedXp(int s) {
+
+        String[] ss = this.getGainedXps().split("-");
+
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < ss.length; i++){
-            if(i == s){
-                sb.append(Integer.parseInt(ss[i]) + 1 +"-");
+
+        for (int i = 0; i < ss.length; i++) {
+            if (i == s) {
+                sb.append(Integer.parseInt(ss[i]) + 1 + "-");
             } else {
-                sb.append(ss[i]+"-");
+                sb.append(ss[i] + "-");
             }
         }
+
         this.getEntityData().set(SPECIFICXPS, sb.toString());
     }
-    public void setSpecificXps(String s){
+
+    public void setGainedXps(String s) {
         this.getEntityData().set(SPECIFICXPS, s);
     }
-    public String getSpecificXps(){
+
+    public String getGainedXps() {
         return this.getEntityData().get(SPECIFICXPS);
     }
-    public int getSpecificXps(int i){
-        String[]ss = this.getSpecificXps().split("-");
+
+    public int getSpecificGainedXps(int i) {
+        String[] ss = this.getGainedXps().split("-");
         return Integer.parseInt(ss[i]);
     }
 
     protected static final EntityDataAccessor<Integer> LIFES = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    public void setLifes(int i){
-        this.getEntityData().set(LIFES,i);
+
+    public void setLifes(int i) {
+        this.getEntityData().set(LIFES, Math.min(Math.min(3, ModCommonConfigs.MAX_DIGIMON_LIVES.get()),i));
     }
-    public int getLifes(){
+
+    public int getLifes() {
         return this.getEntityData().get(LIFES);
     }
-    public void addLife(){
-        this.getEntityData().set(LIFES,Math.min(3,this.getLifes()+1));
+
+    public void addLife() {
+        this.getEntityData().set(LIFES, Math.min(Math.min(3, ModCommonConfigs.MAX_DIGIMON_LIVES.get()), this.getLifes() + 1));
         this.setHealth(MAXMEGASTAT);
     }
-    public void restLifes(){
+
+    public void restLife() {
         this.setCareMistakesStat(this.getCareMistakesStat() + 1);
-        this.setMovementID(0);
-        this.getEntityData().set(LIFES,Math.max(0,this.getLifes()-1));
+        this.getEntityData().set(LIFES, Math.max(0, this.getLifes() - 1));
         this.setHealth(MAXMEGASTAT);
     }
 
     protected static final EntityDataAccessor<Integer> ATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
-    DEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
-    SPATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
-    SPDEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
-    BATTLES_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
-    CARE_MISTAKES_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
+            DEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
+            SPATTACK_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
+            SPDEFENCE_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
+            BATTLES_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT),
+            CARE_MISTAKES_STAT = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
 
-    public void setAttackStat(int i){
+    public void setAttackStat(int i) {
         this.getEntityData().set(ATTACK_STAT, Math.min(i, getMaxStat()));
-        Objects.requireNonNull(this.getAttribute(Attributes.ATTACK_DAMAGE)).setBaseValue((double) this.getCurrentLevel() /2);
     }
-    public void setDefenceStat(int i){this.getEntityData().set(DEFENCE_STAT, Math.min(i, getMaxStat()));}
-    public void setSpAttackStat(int i){
+
+    public void setDefenceStat(int i) {
+        this.getEntityData().set(DEFENCE_STAT, Math.min(i, getMaxStat()));
+    }
+
+    public void setSpAttackStat(int i) {
         this.getEntityData().set(SPATTACK_STAT, Math.min(i, getMaxStat()));
     }
-    public void setSpDefenceStat(int i){this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, getMaxStat()));}
-    public void setBattlesStat(int i){
+
+    public void setSpDefenceStat(int i) {
+        this.getEntityData().set(SPDEFENCE_STAT, Math.min(i, getMaxStat()));
+    }
+
+    public void setBattlesStat(int i) {
         this.getEntityData().set(BATTLES_STAT, i);
     }
-    public void setCareMistakesStat(int i){
+
+    public void setCareMistakesStat(int i) {
         this.getEntityData().set(CARE_MISTAKES_STAT, i);
     }
-    public void setHealthStat(int i){
+
+    public void setHealthStat(int i) {
         Objects.requireNonNull(getAttribute(Attributes.MAX_HEALTH)).setBaseValue(Math.min(i, getMaxStat()));
     }
 
-    public int getAttackStat(){
+    public int getAttackStat() {
         return this.getEntityData().get(ATTACK_STAT);
     }
-    public int getDefenceStat(){
+
+    public int getDefenceStat() {
         return this.getEntityData().get(DEFENCE_STAT);
     }
-    public int getSpAttackStat(){
+
+    public int getSpAttackStat() {
         return this.getEntityData().get(SPATTACK_STAT);
     }
-    public int getSpDefenceStat(){
+
+    public int getSpDefenceStat() {
         return this.getEntityData().get(SPDEFENCE_STAT);
     }
-    public int getBattlesStat(){return this.getEntityData().get(BATTLES_STAT);}
-    public int getCareMistakesStat(){return this.getEntityData().get(CARE_MISTAKES_STAT);}
-    public int getHealthStat(){
+
+    public int getBattlesStat() {
+        return this.getEntityData().get(BATTLES_STAT);
+    }
+
+    public int getCareMistakesStat() {
+        return this.getEntityData().get(CARE_MISTAKES_STAT);
+    }
+
+    public int getHealthStat() {
         return (int) Objects.requireNonNull(getAttribute(Attributes.MAX_HEALTH)).getValue();
     }
 
     protected static final EntityDataAccessor<Integer> EXPERIENCETOTAL = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    public void addExperienceTotal(){
+
+    public void addExperienceTotal() {
         this.getEntityData().set(EXPERIENCETOTAL, getExperienceTotal() + 1);
     }
-    public void setExperienceTotal(int i){
+
+    public void setExperienceTotal(int i) {
         this.getEntityData().set(EXPERIENCETOTAL, i);
     }
-    public int getExperienceTotal(){
+
+    public int getExperienceTotal() {
         return this.getEntityData().get(EXPERIENCETOTAL);
     }
 
     protected static final EntityDataAccessor<Integer> LEVELXP = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    public void addLevelXp(){
+
+    public void addLevelXp() {
         this.getEntityData().set(LEVELXP, getLevelXp() + 1);
     }
-    public void setLevelXp(int i){
+
+    public void setLevelXp(int i) {
         this.getEntityData().set(LEVELXP, i);
     }
-    public int getLevelXp(){
+
+    public int getLevelXp() {
         return this.getEntityData().get(LEVELXP);
     }
 
     protected static final EntityDataAccessor<Integer> CURRENTLEVEL = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.INT);
-    public void addCurrentLevel(){
+
+    public void levelUp() {
+        this.playSound(DigiSounds.LEVEL_UP_SOUND.get(), 0.05F, 1.0F);
         this.setCurrentLevel(Math.min(getCurrentLevel() + 1, MAXLEVEL));
-        if(this.evolutionLevelAchieved()){this.setEvoCount(200);}
+        if (this.evolutionLevelAchieved() && getNextEvolution() != null) {
+            this.evoCount = 200;
+            this.setPos(this.blockPosition().getCenter());
+            this.playSound(DigiSounds.EVOLUTION_SOUND.get(), 0.25F, 1.0F);
+        }
     }
-    public void setCurrentLevel(int i){
+
+    public void setCurrentLevel(int i) {
         this.getEntityData().set(CURRENTLEVEL, i);
         this.setCustomName(Component.literal(this.getNickName()));
     }
-    public int getCurrentLevel(){
+
+    public int getCurrentLevel() {
         return this.getEntityData().get(CURRENTLEVEL);
     }
 
     protected int evoCount = 0;
-    public int getEvoCount() {
-        return evoCount;
-    }
-    public void setEvoCount(int e) {
-        evoCount = e;
-    }
 
     public int ticksToShootAnim = this.random.nextInt(150, 250);
 
-    DigitalRangedAttackGoal<CustomDigimon> rangedGoal = new DigitalRangedAttackGoal<>(this, 1.0D, 65, 10f);
-    DigitalMeleeAttackGoal meleeGoal = new DigitalMeleeAttackGoal(this,1.0D, true);
+    DigitalRangedAttackGoal<CustomDigimon> rangedGoal = new DigitalRangedAttackGoal<>(this, 1.3D, 65, 10f);
+    DigitalMeleeAttackGoal meleeGoal = new DigitalMeleeAttackGoal(this, 1.0D, true);
 
     protected CustomDigimon(EntityType<? extends TamableAnimal> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
-        this.switchNavigation(getMovementID());
         resetAttackGoals();
-    }
-
-    @Override
-    public void setCustomName(@Nullable Component component) {
-        if(component != null && !component.getString().isEmpty()){
-            this.setNickName(component.getString());
-        } else {
-            component = Component.literal(this.getSpecies());
-        }
-        super.setCustomName(Component.literal(component.getString() +  " (" + Integer.toString(this.getCurrentLevel()) + "Lv)"));
+        this.setCustomName(Component.empty());
     }
 
     public static AttributeSupplier.Builder setCustomAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 5.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
-                .add(Attributes.ATTACK_DAMAGE, 1D)
-                .add(Attributes.FLYING_SPEED, 0.15D);
+                .add(Attributes.ATTACK_DAMAGE, 0.5D)
+                .add(Attributes.FLYING_SPEED, 0.1D)
+                .add(ATTACK_KNOCKBACK, 4.0D);
     }
 
-
-    public static boolean checkDigimonSpawnRules(EntityType<? extends Mob> p_217058_, LevelAccessor p_217059_, MobSpawnType p_217060_, BlockPos p_217061_, RandomSource p_217062_) {
-        return true;
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new SitWhenOrderedToGoal(this));
+        this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+        this.targetSelector.addGoal(3, new DigitalHurtByTargetGoal(this));
+        this.goalSelector.addGoal(4, new DigitalFollowOwnerGoal(this, 1.1D, 10.0F, 2.0F, true));
+        this.goalSelector.addGoal(5, new DigimonFloatGoal(this));
+        this.goalSelector.addGoal(6, new WaterAvoidingRandomFlyingGoal(this, 1.0D));
+        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
     }
 
-    public static boolean checkWaterDigimonSpawnRules(EntityType<? extends CustomDigimon> p_218283_, LevelAccessor p_218284_, MobSpawnType p_218285_, BlockPos p_218286_, RandomSource p_218287_) {
-        int i = p_218284_.getSeaLevel();
-        int j = i - 13;
-        return p_218286_.getY() >= j && p_218286_.getY() <= i && p_218284_.getFluidState(p_218286_.below()).is(FluidTags.WATER) && p_218284_.getBlockState(p_218286_.above()).is(Blocks.WATER);
+    @Override
+    public void setCustomName(@Nullable Component component) {
+        if (component != null && !component.getString().isEmpty()) {
+            this.setNickName(component.getString());
+        } else {
+            component = Component.literal("Digimon");
+        }
+        super.setCustomName(Component.literal(component.getString() + " (" + this.getCurrentLevel() + "Lv)"));
     }
 
-    public void evolveDigimon(){
-        CustomDigimon evoD = IntStream.range(0, (int) Arrays.stream(getEvoPaths).filter(Objects::nonNull).count())
-                .filter(this::canEvoToPath)
-                .mapToObj(i -> getEvoPaths[i])
-                .reduce((first, second) -> second)
-                .get();
+    public void evolveDigimon() {
+        CustomDigimon evoD = getNextEvolution();
 
         evoD.copyOtherDigi(this);
 
@@ -445,27 +541,45 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         this.remove(RemovalReason.UNLOADED_TO_CHUNK);
     }
 
-    public void deEvolveDigimon(){
-        if(this.getEvoStage()-1 >= 0 && !this.getPreEvo().split("-")[this.getEvoStage()-1].equals("a")){
+    public CustomDigimon getNextEvolution() {
+        EvolutionCondition condition = IntStream.range(0, (int) Arrays.stream(evolutionConditions).filter(Objects::nonNull).count())
+                .filter(this::canEvoToPath)
+                .mapToObj(i -> evolutionConditions[i])
+                .reduce((first, second) -> second)
+                .orElse(null);
 
-            CustomDigimon prevo = (CustomDigimon) DigitalEntities.digimonMap.get(this.getPreEvo().split("-")[this.getEvoStage()-1]).get().create(this.level());
+        return ((CustomDigimon) InitDigimons.digimonMap.get(condition.getEvolution()).get().create(this.level())).setRank(condition.getRank());
+    }
 
+    public void deEvolveDigimon() {
+        if (this.getEvoStage() - 1 >= 0 && !this.getPreEvo().split("-")[this.getEvoStage() - 1].equals("a")) {
+
+            CustomDigimon prevo = (CustomDigimon) InitDigimons.digimonMap.get(this.getPreEvo().split("-")[this.getEvoStage() - 1]).get().create(this.level());
+
+            assert prevo != null;
             prevo.copyOtherDigi(this);
 
-            prevo.setAttackStat(prevo.getMaxStat()/4);
-            prevo.setDefenceStat(prevo.getMaxStat()/4);
-            prevo.setSpAttackStat(prevo.getMaxStat()/4);
-            prevo.setSpDefenceStat(prevo.getMaxStat()/4);
-            prevo.setHealthStat(prevo.getMaxStat()/4);
+            prevo.setAttackStat(prevo.getMaxStat() / 4);
+            prevo.setDefenceStat(prevo.getMaxStat() / 4);
+            prevo.setSpAttackStat(prevo.getMaxStat() / 4);
+            prevo.setSpDefenceStat(prevo.getMaxStat() / 4);
+            prevo.setHealthStat(prevo.getMaxStat() / 4);
 
             this.level().addFreshEntity(prevo);
             this.remove(RemovalReason.UNLOADED_TO_CHUNK);
         }
     }
 
-    public void copyOtherDigi(CustomDigimon d){
-        if(d.getOwner() != null){this.tame((Player) d.getOwner());}
-        if(d.getNickName().equals(d.getDisplayName().toString())){this.setNickName(this.getDisplayName().toString());}
+    public void copyOtherDigiAndData(CustomDigimon d) {
+        this.setGainedXps(d.getGainedXps());
+        this.copyOtherDigi(d);
+    }
+
+    public void copyOtherDigi(CustomDigimon d) {
+        if (d.getOwner() != null) {
+            this.tame((Player) d.getOwner());
+        }
+
         this.setMovementID(1);
         this.setNickName(d.getNickName());
         this.moodManager.setMoodPoints(d.moodManager.getMoodPoints());
@@ -473,7 +587,6 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         this.setExperienceTotal(d.getExperienceTotal());
         this.setLevelXp(d.getLevelXp());
         this.setCurrentLevel(d.getCurrentLevel());
-        this.setSpecificXps(d.getSpecificXps());
         this.setPreEvo(d.getPreEvo());
 
         int evoAdd = d.isBaby2() ? 5 : d.isRookie() ? 15 :
@@ -484,68 +597,79 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         this.setSpAttackStat(d.getSpAttackStat() + evoAdd);
         this.setSpDefenceStat(d.getSpDefenceStat() + evoAdd);
         this.setHealthStat(d.getHealthStat() + evoAdd);
+        this.inventory.inventoryReplace(d.inventory.getStackHandler(), this.inventory.getStackHandler());
 
         this.setHealth(d.getHealth());
         this.setLifes(d.getLifes());
     }
 
-    public boolean canBeControlledByRider() {
-        return this.getControllingPassenger() instanceof Player p && this.isOwnedBy(p);
-    }
-
-    public void useXpItem(int id){
-        addExperienceTotal();
-        addLevelXp();
-        if(getLevelXp() >= getNeededXp()){
-            setLevelXp(0);
-            addCurrentLevel();
+    public void gainSpecificXp(int id) {
+        if(!this.isEvolving()){
+            this.playSound(DigiSounds.XP_GAIN_SOUND.get(), 0.01F, 1.0F);
+            addExperienceTotal();
+            addLevelXp();
+            if (getLevelXp() >= getNeededXp()) {
+                setLevelXp(0);
+                levelUp();
+            }
+            saveGainedXp(id);
+            if(level().isClientSide())
+                particleManager.eatData(
+                        new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(AdminItems.adminmMap.get(StatsGui.getXpItem(id)).get())), this);
+            else
+                PacketInit.sendToAll(new SToCSGainXpPacket(this.getId(), id));
         }
-        addSpecificXps(id);
     }
 
-    public int getNeededXp(){
+    public int getNeededXp() {
         int i = getCurrentLevel();
-        return i <= 3 ? 2: (i <= 5 ? 5 : (i <= 10 ? 10:(i <= 15 ? 20:(i <= 20 ? 30: (i <= 30 ? 40: 50)))));
+        float calc = (((i / 24f) * (i / 24f) * (i / 24f) * (150f - i)) / 150f + i / 10f) * (i < 20 ? 10 : 8);
+        return (int) Math.max(1, calc);
     }
 
-    protected void switchNavigation(int b){
-        if(b == 2  && !(moveControl instanceof FlyingMoveControl)){
-            this.moveControl = new FlyingMoveControl(this, 20, true);
-            this.navigation = new FlyingPathNavigation(this, this.level());
-        } else if ((b == 3 && !(moveControl instanceof WaterMoveControl))){
-            this.moveControl = new WaterMoveControl(this);
-            this.navigation = new DigitalWaterPathNavigation(this, this.level());
-            this.setNoGravity(false);
-        } else if ((b != 2 && b != 3 && ((moveControl instanceof FlyingMoveControl)||(moveControl instanceof WaterMoveControl)))){
-            this.moveControl = new MoveControl(this);
-            this.navigation = new GroundPathNavigation(this, this.level());
-            this.setNoGravity(false);
-        }
+    public int calculateDamage(int attack, int defense) {
+        return Math.max(1, attack / Math.max(1, defense/10));
     }
 
+    public void eatItem(ItemStack itemStack, int moodAdd, int heal) {
 
-    public int calculateDamage(int attack, int defense){return Math.max(1, attack/((defense+100)/100)/2);}
-
-    public void eatItem(ItemStack itemStack,int moodAdd){
+        this.playSound(itemStack.getItem().getEatingSound(), 0.15F, 1.0F);
         this.moodManager.addMoodPoints(moodAdd);
+
+        if(canHeal())
+            this.heal(heal);
+
+        eatItemAnim(itemStack);
+    }
+
+    public void eatItemAnim(ItemStack itemStack){
         particleManager.spawnItemParticles(itemStack, 16, this);
         itemStack.shrink(1);
+        this.playSound(itemStack.getItem().getEatingSound(), 0.20F, 1.0F);
+
         if (this.level() instanceof ServerLevel)
-            triggerAnim("feedController", "feed");
+            triggerAnim("movement", "feed");
     }
 
+    boolean wasMelee = random.nextBoolean();
     public void resetAttackGoals() {
+
         if (!this.level().isClientSide) {
+
             this.goalSelector.removeGoal(this.meleeGoal);
             this.goalSelector.removeGoal(this.rangedGoal);
 
-            if(ticksToShootAnim > 0){
-                this.ticksToShootAnim = -this.random.nextInt(50,this.getAttackStat()<this.getSpAttackStat()?500:250);
+            boolean isMeleeDominant = this.getAttackStat() > this.getSpAttackStat();
+
+            if (wasMelee) {
+                this.ticksToShootAnim = this.random.nextInt(50, isMeleeDominant ? 250 : 500);
                 this.goalSelector.addGoal(1, this.rangedGoal);
-            }else {
-                this.ticksToShootAnim = this.random.nextInt(50,this.getAttackStat()>this.getSpAttackStat()?500:250);
+            } else {
+                this.ticksToShootAnim = this.random.nextInt(50, isMeleeDominant ? 500 : 250);
                 this.goalSelector.addGoal(1, this.meleeGoal);
             }
+
+            wasMelee = !wasMelee;
         }
     }
 
@@ -555,63 +679,124 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     }
 
     @Override
-    public boolean isFood(ItemStack item) {
-        if(isFoodBool(item)){
-            eatItem(item, 20);
-            this.playSound(item.getItem().getEatingSound(), 0.15F, 1.0F);
-            if(!this.isAggressive() || this.getTarget() instanceof AbstractTrainingGood){
-                this.heal(20);
-            }
+    public boolean isFood(@NotNull ItemStack item) {
+        if(item.getItem() instanceof DigiFoodItem food){
+            eatItem(item, food.getCalories(), food.getHeal());
+            return true;
+        } else if(item.getItem() instanceof DigiFoodBlockItem food){
+            eatItem(item, food.getCalories(), food.getHeal());
             return true;
         }
         return false;
     }
 
-    public boolean isFoodBool(ItemStack item){
-        return item.is(DigiItems.DIGI_MEAT.get())||item.is(DigiItems.GUILMON_BREAD.get());
+    public boolean canHeal() {return !this.isAggressive() || this.getTarget() instanceof AbstractTrainingGood;}
+
+    private final ServerBossEvent bossEvent = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS);
+
+    protected static final EntityDataAccessor<Boolean> BOSS = SynchedEntityData.defineId(CustomDigimon.class, EntityDataSerializers.BOOLEAN);
+
+    public boolean isBoss(){
+        return entityData.get(BOSS);
     }
 
-    @ParametersAreNonnullByDefault
-    @Override
-    public boolean causeFallDamage(float p_147187_, float p_147188_, DamageSource p_147189_) {
-        return !this.canFlyDigimon && super.causeFallDamage(p_147187_, p_147188_, p_147189_);
+    public void setBoss(boolean b){
+        entityData.set(BOSS, b);
+        if(b)
+            this.setBoundingBox(this.getBoundingBox().inflate(1.5f));
     }
 
     @Override
     public SpawnGroupData finalizeSpawn(@NotNull ServerLevelAccessor p_146746_, @NotNull DifficultyInstance p_146747_, @NotNull MobSpawnType p_146748_, @Nullable SpawnGroupData p_146749_, @Nullable CompoundTag p_146750_) {
-        if(canFlyDigimon && this.getOwner() == null) {
-            setMovementID(2);
-            switchNavigation(2);
-        }
-        if(!this.isTame()){
+        if (!this.isTame()) {
 
             this.setHealthStat(Math.min(getMaxStat(),
-                    random.nextInt(this.isBaby2() ? 1 : (this.isRookie() ? 25: (this.isChampion() ? 100: (this.isUltimate() ? MAXADULT : MAXULTIMATE))),getMaxStat())));
+                    random.nextInt(this.isBaby2() ? 1 : (this.isRookie() ? 25 : (this.isChampion() ? 100 : (this.isUltimate() ? MAXADULT : MAXULTIMATE))), getMaxStat())));
 
-            this.setHealth((float)this.getHealthStat());
-            this.setCurrentLevel((int) Math.max(1, MAXLEVEL/100f * getHealth()/250f*100f));
-            this.setAttackStat((int)getHealth());
-            this.setDefenceStat((int)getHealth());
-            this.setSpAttackStat((int)getHealth());
-            this.setSpDefenceStat((int)getHealth());
+            this.setHealth((float) this.getHealthStat());
+            this.setCurrentLevel((int) Math.max(getMinLevel(), getMaxLevel() * getHealth() / getMaxStat()));
+            this.setAttackStat((int) getHealth());
+            this.setDefenceStat((int) getHealth());
+            this.setSpAttackStat((int) getHealth());
+            this.setSpDefenceStat((int) getHealth());
+
+            if(chanceOverHundred(1) && chanceOverHundred(50)){
+                this.setBoss(true);
+                this.setCurrentLevel(this.getMaxLevel());
+                this.setAttackStat(MAXMEGASTAT);
+                this.setDefenceStat(MAXMEGASTAT);
+                this.setSpDefenceStat(MAXMEGASTAT);
+                this.setSpAttackStat(MAXMEGASTAT);
+                this.setHealthStat(MAXMEGASTAT);
+
+                this.setHealth(this.getMaxHealth());
+                this.setSpMoveName(InitProjectiles.projectileMap.keySet().toArray()[random.nextInt(InitProjectiles.projectileMap.size())].toString());
+            }
+
+            CustomDigimon rider = null;
+
+            if(chanceOverHundred(5))
+                if(this.isMountDigimon)
+                    rider = GroupsDigimon.riderDigimon.get(random.nextInt(GroupsDigimon.riderDigimon.size())).get()
+                            .create(this.level());
+                else if(this.isBaby2())
+                    rider = GroupsDigimon.baby2Digimon.get(random.nextInt(GroupsDigimon.baby2Digimon.size())).get()
+                            .create(this.level());
+
+            if(rider != null){
+                rider.setPos(this.position());
+                rider.startRiding(this);
+            }
+
         }
         return super.finalizeSpawn(p_146746_, p_146747_, p_146748_, p_146749_, p_146750_);
     }
 
-    @Override
-    protected void registerGoals() {
-        super.registerGoals();
-        this.goalSelector.addGoal(0, new SitWhenOrderedToGoal(this));
-        this.goalSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
-        this.goalSelector.addGoal(2, new OwnerHurtTargetGoal(this));
-        this.goalSelector.addGoal(3, new DigitalHurtByTargetGoal(this));
-        this.goalSelector.addGoal(4, new DigitalFollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, true));
-        this.goalSelector.addGoal(5, new DigimonFloatGoal(this));
-        this.goalSelector.addGoal(6, new WaterAvoidingRandomFlyingGoal(this, 1.0D));
-        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
+    public static boolean checkDigimonSpawnRules() {
+        return ModCommonConfigs.CAN_SPAWN_DIGIMON.get();
     }
 
-    String getDefaultSpMove(){return null;}
+    @Override
+    protected void customServerAiStep() {
+        super.customServerAiStep();
+        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+    }
+
+    @Override
+    public void startSeenByPlayer(@NotNull ServerPlayer player) {
+        super.startSeenByPlayer(player);
+        if(isBoss())
+            this.bossEvent.addPlayer(player);
+    }
+
+    @Override
+    public void stopSeenByPlayer(@NotNull ServerPlayer p_31488_) {
+        super.stopSeenByPlayer(p_31488_);
+        if(isBoss())
+            this.bossEvent.removePlayer(p_31488_);
+    }
+
+    public void setPickedItem(ItemStack item) {
+        CompoundTag entityTag = this.getPersistentData();
+
+        CompoundTag itemStackTag = new CompoundTag();
+        item.save(itemStackTag);
+
+        entityTag.put("PickedItemStack", itemStackTag);
+    }
+
+    public ItemStack getPickedItem() {
+        ItemStack retrievedItemStack = ItemStack.EMPTY;
+
+        CompoundTag entityTag = this.getPersistentData();
+
+        if (entityTag.contains("PickedItemStack", Tag.TAG_COMPOUND)) {
+            CompoundTag itemStackTag = entityTag.getCompound("PickedItemStack");
+
+            retrievedItemStack = ItemStack.of(itemStackTag);
+        }
+        return retrievedItemStack;
+    }
 
     @Override
     protected void defineSynchedData() {
@@ -622,7 +807,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         this.entityData.define(LEVELXP, 0);
         this.entityData.define(EXPERIENCETOTAL, 0);
         this.entityData.define(SPECIFICXPS, "0-0-0-0-0-0-0-0-0");
-        this.entityData.define(MoodManager.getMoodAccessor(), 249);
+        this.entityData.define(MoodManager.MOODPOINTS, 249);
         this.entityData.define(ATTACK_STAT, 1);
         this.entityData.define(DEFENCE_STAT, 1);
         this.entityData.define(SPATTACK_STAT, 1);
@@ -631,60 +816,73 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         this.entityData.define(CARE_MISTAKES_STAT, 0);
         this.entityData.define(LIFES, 1);
         this.entityData.define(PREEVO, "a-a-a-a-a");
-        this.entityData.define(SPMOVENAME, this.getDefaultSpMove());
+        this.entityData.define(SPMOVENAME, "unnamed");
+        this.entityData.define(BOSS, false);
+        this.entityData.define(RANK, "zero");
     }
 
     @Override
     public void readAdditionalSaveData(@NotNull CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        if (compound.contains("NAME")) {
+
+        if (compound.contains("NAME"))
             this.setNickName(compound.getString("NAME"));
-        }
-        if (compound.contains("MOVEMENTID")) {
+
+        if (compound.contains("MOVEMENTID"))
             this.setMovementID(compound.getInt("MOVEMENTID"));
-        }
-        if (compound.contains("CURRENTLEVEL")) {
+
+        if (compound.contains("CURRENTLEVEL"))
             this.setCurrentLevel(compound.getInt("CURRENTLEVEL"));
-        }
-        if (compound.contains("LEVELXP")) {
+
+        if (compound.contains("LEVELXP"))
             this.setLevelXp(compound.getInt("LEVELXP"));
-        }
-        if (compound.contains("EXPERIENCETOTAL")) {
+
+        if (compound.contains("EXPERIENCETOTAL"))
             this.setExperienceTotal(compound.getInt("EXPERIENCETOTAL"));
-        }
-        if (compound.contains("SPECIFICXPS")) {
-            this.setSpecificXps(compound.getString("SPECIFICXPS"));
-        }
-        if (compound.contains("MOODPOINTS")) {
+
+        if (compound.contains("SPECIFICXPS"))
+            this.setGainedXps(compound.getString("SPECIFICXPS"));
+
+        if (compound.contains("MOODPOINTS"))
             this.moodManager.setMoodPoints(compound.getInt("MOODPOINTS"));
-        }
-        if (compound.contains("ATTACK_STAT")) {
+
+        if (compound.contains("ATTACK_STAT"))
             this.setAttackStat(compound.getInt("ATTACK_STAT"));
-        }
-        if (compound.contains("DEFENCE_STAT")) {
+
+        if (compound.contains("DEFENCE_STAT"))
             this.setDefenceStat(compound.getInt("DEFENCE_STAT"));
-        }
-        if (compound.contains("SPATTACK_STAT")) {
+
+        if (compound.contains("SPATTACK_STAT"))
             this.setSpAttackStat(compound.getInt("SPATTACK_STAT"));
-        }
-        if (compound.contains("SPDEFENCE_STAT")) {
+
+        if (compound.contains("SPDEFENCE_STAT"))
             this.setSpDefenceStat(compound.getInt("SPDEFENCE_STAT"));
-        }
-        if (compound.contains("BATTLES_STAT")) {
+
+        if (compound.contains("BATTLES_STAT"))
             this.setBattlesStat(compound.getInt("BATTLES_STAT"));
-        }
-        if (compound.contains("CARE_MISTAKES_STAT")) {
+
+        if (compound.contains("CARE_MISTAKES_STAT"))
             this.setCareMistakesStat(compound.getInt("CARE_MISTAKES_STAT"));
-        }
-        if (compound.contains("LIFES")) {
+
+        if (compound.contains("LIFES"))
             this.setLifes(compound.getInt("LIFES"));
-        }
-        if (compound.contains("PREEVO")) {
+
+        if (compound.contains("PREEVO"))
             this.setPreEvo(compound.getString("PREEVO"));
-        }
-        if (compound.contains("SPMOVENAME")) {
+
+        if (compound.contains("SPMOVENAME"))
             this.setSpMoveName(compound.getString("SPMOVENAME"));
-        }
+
+        if (compound.contains("BOSS"))
+            this.setBoss(compound.getBoolean("BOSS"));
+
+        if (compound.contains("RANK"))
+            this.setRank(compound.getString("RANK"));
+
+        if (compound.contains("RANK"))
+            this.setRank(compound.getString("RANK"));
+
+        inventory.deserializeNBT(compound);
     }
 
     @Override
@@ -695,7 +893,7 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         compound.putInt("CURRENTLEVEL", this.getCurrentLevel());
         compound.putInt("LEVELXP", this.getLevelXp());
         compound.putInt("EXPERIENCETOTAL", this.getExperienceTotal());
-        compound.putString("SPECIFICXPS", this.getSpecificXps());
+        compound.putString("SPECIFICXPS", this.getGainedXps());
         compound.putInt("MOODPOINTS", this.moodManager.getMoodPoints());
         compound.putInt("ATTACK_STAT", this.getAttackStat());
         compound.putInt("DEFENCE_STAT", this.getDefenceStat());
@@ -706,214 +904,218 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         compound.putInt("LIFES", this.getLifes());
         compound.putString("PREEVO", this.getPreEvo());
         compound.putString("SPMOVENAME", this.getSpMoveName());
+        compound.putString("SPMOVENAME", this.getSpMoveName());
+        compound.putBoolean("BOSS", this.isBoss());
+        compound.putString("RANK", this.getRank());
+        compound.put("Inventory", inventory.serializeNBT());
+    }
+
+    private final DigimonInventory inventory = new DigimonInventory(this, 5);
+
+    public void initInventory(){
+        inventory.genSlots(0);
+    }
+
+    public DigimonInventory getInventory() {
+        return inventory;
+    }
+
+    @Nullable
+    @Override
+    public AbstractContainerMenu createMenu(int p_39954_, Inventory p_39955_, Player p_39956_) {
+        return new DigimonMenu(p_39954_, p_39955_, this);
+    }
+
+    @Override
+    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction facing) {
+        if (capability == ForgeCapabilities.ITEM_HANDLER)
+            return inventory.getInventoryCapability().cast();
+
+        return super.getCapability(capability, facing);
+    }
+
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        inventory.getInventoryCapability().invalidate();
+    }
+
+    public void openMenu(Player player){
+        if(player instanceof ServerPlayer sPlayer)
+            NetworkHooks.openScreen(sPlayer, new SimpleMenuProvider(
+                    (id, playerInventory, playerEntity) -> new DigimonMenu(id, playerInventory, this),
+                    Component.literal("Digimon Inventory")
+            ), buffer -> buffer.writeInt(this.getId()));
+
     }
 
     @Override
     public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
+        ItemStack otherItemStack = player.getItemInHand(hand.equals(InteractionHand.MAIN_HAND) ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND);
         Item item = itemStack.getItem();
 
-        if (item instanceof DigiviceItem && this.getOwner() != null && getOwner().level().isClientSide){
-            return InteractionResult.CONSUME;
-        }
-
-        if(item.isEdible() && !isFoodBool(itemStack)){
-            eatItem(itemStack, 5);
-            this.playSound(itemStack.getItem().getEatingSound(), 0.15F, 1.0F);
+        if (item.isEdible() && !isFood(itemStack)) {
+            eatItem(itemStack, 1, 1);
             return InteractionResult.CONSUME;
         }
 
         if (this.isTame() && Objects.equals(this.getOwnerUUID(), player.getUUID())) {
-            if(player.isShiftKeyDown()){
+
+            if (player.isShiftKeyDown()) {
                 this.changeMovementID();
-                return InteractionResult.CONSUME;
+                return InteractionResult.SUCCESS;
             }
-            if(!this.isInSittingPose()){
-                if(!itemStack.isEmpty()) return super.mobInteract(player, hand);
-                if(this.isMountDigimon){
+
+            if ((this.getMovementID() != 0) && itemStack.isEmpty() && otherItemStack.isEmpty()) {
+
+                if (this.isMountDigimon && (RIDE_ALLOWED.get() && !(this instanceof CustomFlyingDigimon)) || (FLIGHT_ALLOWED.get() && this instanceof CustomFlyingDigimon)) {
+
                     player.startRiding(this);
-                    if(this.getMovementID() == -1) this.setMovementID(1);
+                    if (this.getMovementID() != 2) this.setMovementID(1);
 
-                } else if(this.isBaby2()){
-                    if(player.getPassengers().isEmpty())this.startRiding(player);
-                    else if(player.getPassengers().stream().anyMatch(p -> p instanceof CustomDigimon))
-                        player.getPassengers().stream()
-                            .filter(p -> p instanceof CustomDigimon)
-                                .forEach(e -> e.startRiding(this));
-
+                } else if (this.isBaby2()) {
+                    getInPlayerHead(player);
                 }
                 return InteractionResult.SUCCESS;
             }
         }
+
         return super.mobInteract(player, hand);
+    }
+
+    public void getInPlayerHead(Entity player){
+        if (player.getPassengers().isEmpty()) this.startRiding(player);
+        else getInPlayerHead(player.getPassengers().get(0));
+    }
+
+    public void getOffPlayerHead(){
+        if(this.getVehicle() != null)
+            this.getVehicle().ejectPassengers();
+        if(!this.getPassengers().isEmpty() && this.getPassengers().get(0) instanceof CustomDigimon cd)
+            cd.getOffPlayerHead();
     }
 
     int attack = this.getAttackStat(), defence = this.getDefenceStat(), spattack = this.getSpAttackStat(), spdefence = this.getSpDefenceStat(),
             battles = this.getBattlesStat(), health = this.getHealthStat(), mistakes = this.getCareMistakesStat(), lifes = this.getLifes();
 
-    public void checkChangeStats(){
-        if(attack != this.getAttackStat()){particleManager.spawnStatUpParticles(DigitalParticles.ATTACK_UP,1, this);
-            attack = this.getAttackStat();}
-        if(defence != this.getDefenceStat()){particleManager.spawnStatUpParticles(DigitalParticles.DEFENCE_UP,1, this);
-            defence = this.getDefenceStat();}
-        if(spattack != this.getSpAttackStat()){particleManager.spawnStatUpParticles(DigitalParticles.SPATTACK_UP,1, this);
-            spattack = this.getSpAttackStat();}
-        if(spdefence != this.getSpDefenceStat()){particleManager.spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP,1, this);
-            spdefence = this.getSpDefenceStat();}
-        if(battles != this.getBattlesStat()){particleManager.spawnStatUpParticles(DigitalParticles.BATTLES_UP,1, this);
-            battles = this.getBattlesStat();}
-        if(health != this.getHealthStat()){particleManager.spawnStatUpParticles(DigitalParticles.HEALTH_UP,1, this);
-            health = this.getHealthStat();}
-        if(mistakes != this.getCareMistakesStat()){particleManager.spawnBubbleParticle(DigitalParticles.MISTAKE_BUBBLE, this);
-            mistakes = this.getCareMistakesStat();}
-        if(lifes != this.getLifes()){particleManager.spawnStatUpParticles(DigitalParticles.LIFE_PARTICLE,7, this);
-            lifes = this.getLifes();}
+    public void checkChangeStats() {
+        if (attack != this.getAttackStat()) {
+            particleManager.spawnStatUpParticles(DigitalParticles.ATTACK_UP, 1, this);
+            attack = this.getAttackStat();
+        }
+        if (defence != this.getDefenceStat()) {
+            particleManager.spawnStatUpParticles(DigitalParticles.DEFENCE_UP, 1, this);
+            defence = this.getDefenceStat();
+        }
+        if (spattack != this.getSpAttackStat()) {
+            particleManager.spawnStatUpParticles(DigitalParticles.SPATTACK_UP, 1, this);
+            spattack = this.getSpAttackStat();
+        }
+        if (spdefence != this.getSpDefenceStat()) {
+            particleManager.spawnStatUpParticles(DigitalParticles.SPDEFENCE_UP, 1, this);
+            spdefence = this.getSpDefenceStat();
+        }
+        if (battles != this.getBattlesStat()) {
+            particleManager.spawnStatUpParticles(DigitalParticles.BATTLES_UP, 1, this);
+            battles = this.getBattlesStat();
+        }
+        if (health != this.getHealthStat()) {
+            particleManager.spawnStatUpParticles(DigitalParticles.HEALTH_UP, 1, this);
+            health = this.getHealthStat();
+        }
+        if (mistakes != this.getCareMistakesStat()) {
+            particleManager.spawnBubbleParticle(DigitalParticles.MISTAKE_BUBBLE, this);
+            mistakes = this.getCareMistakesStat();
+        }
+        if (lifes != this.getLifes()) {
+            particleManager.spawnStatUpParticles(DigitalParticles.LIFE_PARTICLE, 7, this);
+            lifes = this.getLifes();
+        }
     }
 
-    private boolean setName = false;
+    @Override
+    public boolean hasCustomName() {
+        return true;
+    }
+
 
     @Override
     public void tick() {
         checkChangeStats();
 
-        if(getEvoCount() == 1){this.evolveDigimon();}
+        if(this.isVehicle())
+            moving = updateMovingState();
 
-        if(evoCount > 0){
-            particleManager.spawnEvoParticles(DigitalParticles.EVO_PARTICLES, this);
-            evoCount--;
+        if(this.getMovementID() == -2 && !this.level().getGameRules().getRule(GameRules.RULE_MOBGRIEFING).get())
+            this.changeMovementID();
+
+        if(this.isBaby2() && this.getVehicle() instanceof Player player && player.isShiftKeyDown())
+            getOffPlayerHead();
+
+        if (evoCount == 1)
+            this.evolveDigimon();
+
+        if (evoCount-- > 0) {
+            if(evoCount < 5)
+                particleManager.finishEvoParticles(this);
+            particleManager.spawnEvoParticles(this);
         }
 
-        if(this.moodManager.getMoodPoints() < 100 && this.isTame() && random.nextInt(0,150) == 1){
+        if (this.moodManager.getMoodPoints() < 100 && this.isTame() && random.nextInt(0, 150) == 1) {
             particleManager.spawnBubbleParticle(DigitalParticles.MEAT_BUBBLE, this);
         }
 
-        if(this.getTarget()instanceof AbstractTrainingGood){
-            if(ticksToShootAnim < 0){
-                ticksToShootAnim = -100;
-                resetAttackGoals();
-            }
-        } else {
-            if(ticksToShootAnim == 1 || ticksToShootAnim == -1) resetAttackGoals();
+        if(this.isAggressive() && !(this.getTarget() instanceof AbstractTrainingGood) && ticksToShootAnim-- < 0) resetAttackGoals();
 
-            if(ticksToShootAnim > 0) ticksToShootAnim--;
-            else ticksToShootAnim++;
-        }
-
-        if(ticksToShootAnim == 1 || ticksToShootAnim == -1) resetAttackGoals();
-
-        if(ticksToShootAnim > 0) ticksToShootAnim--;
-        else ticksToShootAnim++;
-
-        if(this.canSwimDigimon){
-            if(this.isInWater()){
-                if(!(this.moveControl instanceof WaterMoveControl)) this.switchNavigation(3);
-            } else {
-                if(this.moveControl instanceof WaterMoveControl) this.switchNavigation(1);
-            }
-        }
-
-        if(!setName){
-            this.setCustomName(Component.literal(this.getSpecies()));
-            setName = true;
-        }
+        if (this.isTame() && this.random.nextInt(200) == 2)
+            moodManager.spawnMoodParticle();
 
         super.tick();
     }
 
+    public boolean canBeControlledByRider() {
+        return this.getFirstPassenger() != null;
+    }
+
+    @Nullable
     @Override
-    protected boolean canRide(Entity entity) {
-        if(this.isBaby2()){
-            return entity instanceof Player;
-        }
-        return super.canRide(entity);
+    public LivingEntity getControllingPassenger() {
+        if (this.getFirstPassenger() instanceof LivingEntity lv)
+            return lv;
+        return null;
     }
 
     @Override
     public void travel(@NotNull Vec3 pos) {
-        if(!this.isEvolving()){
+        if (!this.isEvolving()) {
             if (this.isAlive()) {
-                if (this.canBeControlledByRider()) {
-                    LivingEntity passenger = getControllingPassenger();
+                if (this.getFirstPassenger() instanceof Player passenger) {
+
                     this.yRotO = getYRot();
                     this.xRotO = getXRot();
 
                     setYRot(passenger.getYRot());
                     setXRot(passenger.getXRot() * 0.5f);
-                    setRot(getYRot(), getXRot());
 
                     this.yBodyRot = this.getYRot();
                     this.yHeadRot = this.yBodyRot;
                     float x = passenger.xxa * 0.25F;
-                    float z = passenger.zza/2;
+                    float z = passenger.zza / 2;
 
                     if (z <= 0) z *= 0.25f;
 
-                    this.setSpeed((float)this.getAttribute(MOVEMENT_SPEED).getValue()*(float)this.getAttribute(MOVEMENT_SPEED).getValue()/0.2f);
+                    this.setSpeed(travelRideSpeed());
 
-                    if (getMovementID() == 2)
-                    {
-                        float speed = (float) getAttributeValue(FLYING_SPEED);
-                        moveDist = moveDist > 0? moveDist : 0;
-                        float movY = (float) (-this.getControllingPassenger().getXRot() * (Math.PI / 180));
-                        pos = new Vec3(x, movY, z);
-                        moveRelative(speed, pos);
-                        move(MoverType.SELF, getDeltaMovement());
-                        if (getDeltaMovement().lengthSqr() < 0.1)
-                            setDeltaMovement(getDeltaMovement().add(0, Math.sin(tickCount / 4f) * 0.03, 0));
-                        setDeltaMovement(getDeltaMovement().scale(0.9f));
+                    super.travel(new Vec3(x, pos.y, z));
 
-                    } else {
-                        super.travel(new Vec3(x, pos.y,  z));
-                    }
-
-                } else {
-                    if(getMovementID() == 2){
-                        if (this.isEffectiveAi() || this.isControlledByLocalInstance()) {
-                            if (this.isInWater()) {
-                                this.moveRelative(0.02F, pos);
-                                this.move(MoverType.SELF, this.getDeltaMovement());
-                                this.setDeltaMovement(this.getDeltaMovement().scale( 0.8F));
-                            } else if (this.isInLava()) {
-                                this.moveRelative(0.02F, pos);
-                                this.move(MoverType.SELF, this.getDeltaMovement());
-                                this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
-                            } else {
-                                this.moveRelative(this.getSpeed(), pos);
-                                this.move(MoverType.SELF, this.getDeltaMovement());
-                                this.setDeltaMovement(this.getDeltaMovement().scale( 0.91F));
-                            }
-                        }
-                    } else {
-                        super.travel(pos);
-                    }
-                }
+                } else super.travel(pos);
             }
         }
     }
 
-    @Override
-    public boolean isPushedByFluid() {
-        if(this.canSwimDigimon){
-            return false;
-        }
-        return super.isPushedByFluid();
-    }
-
-    @Override
-    public boolean isNoGravity() {
-        if(canSwimDigimon) return this.isInWater();
-        return super.isNoGravity();
-    }
-
-    @Override
-    public boolean canDrownInFluidType(FluidType type) {
-        if (type == ForgeMod.WATER_TYPE.get()) return !this.canSwimDigimon;
-        return super.canDrownInFluidType(type);
-    }
-
-    @javax.annotation.Nullable
-    public LivingEntity getControllingPassenger() {
-        return this.getPassengers().isEmpty() ? null : (LivingEntity) this.getPassengers().get(0);
+    protected float travelRideSpeed(){
+        return (float) Objects.requireNonNull(this.getAttribute(MOVEMENT_SPEED)).getValue() * (this.isChampion() ? 1.7f: this.isUltimate() ? 2f : 2.2f);
     }
 
     @Override
@@ -921,98 +1123,101 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         return false;
     }
 
-
-    @Override
-    public void onPlayerJump(int p_21696_) {
-        if (this.getMovementID() == 2) this.setMovementID(1);
-        else this.changeMovementID();
-    }
-
-    @Override
-    public boolean canJump() {
-        return this.canFlyDigimon;
-    }
-
-    @Override
-    public void handleStartJump(int p_21695_) {
-
-    }
-
-    @Override
-    public void handleStopJump() {
-
-    }
-
     @Override
     public boolean canBeLeashed(@NotNull Player player) {
-        return super.canBeLeashed(player)&&this.isOwnedBy(player);
+        return super.canBeLeashed(player) && this.isOwnedBy(player);
     }
 
-    public boolean chanceOverHundred(int chance){
+    public boolean chanceOverHundred(int chance) {
         return random.nextInt(100) <= chance;
     }
 
-    public void dropItem(Item item, int chance){
-        if(chanceOverHundred(chance))
+    public void dropItem(Item item, int chance) {
+        if (chanceOverHundred(chance))
             this.level().addFreshEntity(new ItemEntity(level(), this.getX(), this.getY(), this.getZ(), new ItemStack(item)));
     }
 
     @Override
     public void die(@NotNull DamageSource source) {
+        if(!level().isClientSide()){
+            if (this.isTame()) {
+                dropItem((Item) getReincarnateTo()[random.nextInt(getReincarnateTo().length)].get(), 101);
+            } else {
+                if (source.getEntity() instanceof CustomDigimon killer) {
 
-        if(this.isTame()){
-            dropItem((Item) getReincarnateTo()[random.nextInt(getReincarnateTo().length)].get(), 101);
-        } else{
-            if(source.getEntity() instanceof CustomDigimon digimon) {
-                if (digimon.getEvoStage() == this.getEvoStage()) {
-                    digimon.setBattlesStat(digimon.getBattlesStat() + 1);
-                }
+                    int bossMultiplier = (this.isBoss() && killer.getEvoStage() == this.getEvoStage()) ? 3 : 1;
 
-                dropItem((Item) getReincarnateTo()[random.nextInt(getReincarnateTo().length)].get(), 3);
-                dropItem(DigiItems.itemMap.get("chip_"+this.getSpMoveName()).get(), 5);
-
-                dropItem(DigiItems.DIGI_MEAT.get(), 10);
-
-                if(!this.isBaby2()) {
-                    dropItem(DigiItems.ATTACK_BYTE.get(), 7);
-                    dropItem(DigiItems.DEFENSE_BYTE.get(), 7);
-                    dropItem(DigiItems.SPATTACK_BYTE.get(), 7);
-                    dropItem(DigiItems.SPDEFENSE_BYTE.get(), 7);
-                    dropItem(DigiItems.HEALTH_BYTE.get(), 7);
-                }
-
-                for (int i = 0; i < (this.isBaby2() ? 1 : this.isRookie() ? 5 : 15); i++) {
-                    dropItem(this.getXpDrop(), 85);
+                    dropDigiLoot(killer, bossMultiplier, bossMultiplier);
                 }
             }
         }
         super.die(source);
     }
 
+    public void dropDigiLoot(CustomDigimon killer, int repeat, int multiplier){
+
+        for (int i = 0; i < repeat; i++) {
+
+            if (killer.getEvoStage() <= this.getEvoStage()) {
+                killer.setBattlesStat(killer.getBattlesStat() + 1);
+            }
+
+            dropItem((Item) getReincarnateTo()[random.nextInt(getReincarnateTo().length)].get(), (CHANCE_DROP_BABY.get() * multiplier));
+
+            dropItem(InitItems.itemMap.get("chip_" + this.getSpMoveName()).get(), (CHANCE_DROP_MOVE_CHIP.get() * multiplier));
+
+            dropItem(InitItems.DIGI_MEAT.get(), (CHANCE_DROP_FOOD.get() * multiplier));
+            dropItem(InitItems.GUILMON_BREAD.get(), (CHANCE_DROP_FOOD.get() * multiplier));
+
+            dropItem(InitItems.DIGIMON_CARD.get(), (CHANCE_DROP_CARD.get() * multiplier));
+
+            if (!this.isBaby2()) {
+                dropItem(InitItems.ATTACK_BYTE.get(), (CHANCE_DROP_BYTES.get() * multiplier));
+                dropItem(InitItems.DEFENSE_BYTE.get(), (CHANCE_DROP_BYTES.get() * multiplier));
+                dropItem(InitItems.SPATTACK_BYTE.get(), (CHANCE_DROP_BYTES.get() * multiplier));
+                dropItem(InitItems.SPDEFENSE_BYTE.get(), (CHANCE_DROP_BYTES.get() * multiplier));
+                dropItem(InitItems.HEALTH_BYTE.get(), (CHANCE_DROP_BYTES.get() * multiplier));
+            }
+
+            for (int j = 0; j <= (this.isBaby2() ? 2 : this.isRookie() ? 7 : this.isChampion() ? 20 : this.isUltimate() ? 40 : 60); j++) {
+                if ((chanceOverHundred(80 * multiplier))) {
+                    killer.gainSpecificXp(this.getXpDrop());
+                }
+            }
+        }
+    }
+
     @Override
     public void setTarget(@Nullable LivingEntity entity) {
-        if(entity instanceof Player || (entity instanceof CustomDigimon cd && cd.getOwner() != null && this.getOwner() != null && cd.isOwnedBy(this.getOwner()))){
+        if ((entity instanceof TamableAnimal animal && animal.getOwner() != null && this.getOwner() != null && animal.isOwnedBy(this.getOwner()))) {
             return;
         }
-
+        if(entity instanceof AbstractTrainingGood && !this.wasMelee) resetAttackGoals();
         super.setTarget(entity);
     }
 
     @Override
     public boolean doHurtTarget(@NotNull Entity target) {
         if (this.level() instanceof ServerLevel)
-            triggerAnim("attackController", "attack");
-        return target instanceof CustomDigimon cd ? cd.hurt(this.damageSources().mobAttack(this), calculateDamage(
-                this.getAttackStat() + this.getCurrentLevel(),
-                cd.getDefenceStat() + cd.getCurrentLevel()))
-        : super.doHurtTarget(target);
+            triggerAnim("movement", "attack");
+
+        DamageSource source = this.damageSources().mobAttack(this);
+
+        if(target instanceof CustomDigimon cd)
+            cd.hurt(source, calculateDamage(
+                    this.getAttackStat() + this.getCurrentLevel(),
+                    cd.getDefenceStat() + cd.getCurrentLevel()));
+        else
+            target.hurt(source, this.getCurrentLevel()/2F);
+
+        return super.doHurtTarget(target);
     }
 
 
     @Override
     public void setHealth(float value) {
-        if(value <= 0 && this.getLifes() > 1){
-            this.restLifes();
+        if (value <= 0 && this.getLifes() > 1) {
+            this.restLife();
         } else {
             super.setHealth(value);
         }
@@ -1025,32 +1230,47 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
     }
 
     private int repeat = 0;
+
     @Override
-    public void performRangedAttack(@NotNull LivingEntity mob, float p_33318_){
-        if(mob != null){
-            CustomProjectile bullet = (CustomProjectile) DigitalProjectiles.projectileMap.get(this.getSpMoveName()).get().create(this.level());
-            if (repeat == 0) repeat = bullet.getRepeatTimes();
+    public void performRangedAttack(@NotNull LivingEntity mob, float p_33318_) {
+        ProjectileDefault bullet = (ProjectileDefault) InitProjectiles.projectileMap.get(this.getSpMoveName()).get().create(this.level());
+        if (bullet != null) {
+            if (repeat <= 0) repeat = bullet.getRepeatTimes() + 1;
+
             if (mob.level() instanceof ServerLevel)
-                triggerAnim("shootController", "shoot");
+                triggerAnim("movement", "shoot");
             bullet.performRangedAttack(this, mob);
-            if (repeat > 1 && this.ticksToShootAnim < 0) this.rangedGoal.setAttackTime(5);
+
+            if (repeat > 1 && !this.wasMelee) this.rangedGoal.setAttackTime(5);
             --repeat;
-            for(MobEffectInstance effect : bullet.oEffects) {
-                    this.addEffect(effect, this);
-            }
         }
+    }
+
+    public List<Float> scalesList = List.of(
+        BABY_SCALE.get() * 0.01F * 0.85F,
+        ROOKIE_SCALE.get() * 0.01F,
+        CHAMPION_SCALE.get() * 0.01F * 1.15F,
+        ULTIMATE_SCALE.get() * 0.01F,
+        BOSS_SCALE.get() * 0.01F * 1.5F
+    );
+
+    @Override
+    public float getScale() {
+        int index = this.isBoss() ? 4 : this.getEvoStage();
+
+        return scalesList.get(index);
     }
 
     @Override
     public void setOrderedToSit(boolean p_21840_) {
-        this.moveControl.strafe(0f,0f);
+        this.moveControl.strafe(0f, 0f);
         super.setOrderedToSit(p_21840_);
     }
 
     @Override
     public double getPassengersRidingOffset() {
         return super.getPassengersRidingOffset() + riderOffSet
-                + (!this.getPassengers().isEmpty()&&this.getPassengers().get(0)instanceof CustomDigimon ?-0.55:0);
+                + (!this.getPassengers().isEmpty() && this.getPassengers().get(0) instanceof CustomDigimon ? -0.55 : 0);
     }
 
     @Override
@@ -1058,48 +1278,83 @@ public class CustomDigimon extends TamableAnimal implements GeoEntity, ItemSteer
         return super.getMyRidingOffset() + 0.3d;
     }
 
+
+    //Sounds
+
+    protected void playStepSound(@NotNull BlockPos p_28254_, @NotNull BlockState p_28255_) {
+        if(this.isBoss() || this.isUltimate())
+            this.playSound(DigiSounds.ULTIMATE_STEPS.get(), 0.30F, 1.0F);
+        else if (this.isBaby2())
+            this.playSound(DigiSounds.BABY_STEPS.get(), 0.25F, 1.0F);
+        else if (this.isRookie() || this.getType().equals(InitDigimons.MAMEMON.get()) || this.getType().equals(InitDigimons.MAMETYRAMON.get()))
+            this.playSound(DigiSounds.ROOKIE_STEPS.get(), 0.20F, 1.0F);
+        else
+            this.playSound(DigiSounds.CHAMPION_STEPS.get(), 0.20F, 1.0F);
+    }
+
     //Animations
-    protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
+
+    protected AnimationController<CustomDigimon> getMovementController(){
+        return animController(this);
+    }
+
 
     public static <T extends CustomDigimon & GeoEntity> AnimationController<T> animController(T digimon) {
-        return new AnimationController<>(digimon,"movement", 10, event ->{
-            if(digimon.isEvolving()){
+        return new AnimationController<>(digimon, "movement", 7, event -> {
+
+            event.setControllerSpeed(1.25f);
+
+            if (digimon.isEvolving()) {
                 event.getController().setAnimation(RawAnimation.begin().then("show", Animation.LoopType.LOOP));
                 return PlayState.CONTINUE;
             }
-            if(digimon.isInSittingPose()){
-                event.getController().setAnimation(RawAnimation.begin().then(digimon.sitAnim, Animation.LoopType.HOLD_ON_LAST_FRAME));
-                return PlayState.CONTINUE;
-            }
 
-            if (digimon.getMovementID() == 2){
-                event.getController().setAnimation(RawAnimation.begin().then(digimon.flyAnim, Animation.LoopType.LOOP));
-                return PlayState.CONTINUE;
+            if (digimon.isMoving(event)) {
+                event.getController().setAnimation(RawAnimation.begin().then(digimon.walkAnim, Animation.LoopType.LOOP));
             } else {
-                if (event.isMoving()) {
-                    if(digimon.isInWater() && digimon.canSwimDigimon) event.getController().setAnimation(RawAnimation.begin().then(digimon.flyAnim, Animation.LoopType.LOOP));
-                    else event.getController().setAnimation(RawAnimation.begin().then(digimon.walkAnim, Animation.LoopType.LOOP));
+                if (digimon.isInSittingPose() || digimon.getVehicle() != null) {
+                    event.getController().setAnimation(RawAnimation.begin().then(digimon.sitAnim, Animation.LoopType.HOLD_ON_LAST_FRAME));
                     return PlayState.CONTINUE;
                 } else {
                     event.getController().setAnimation(RawAnimation.begin().then(digimon.idleAnim, Animation.LoopType.LOOP));
                     return PlayState.CONTINUE;
                 }
             }
+            return PlayState.CONTINUE;
         });
     }
 
+    <T extends CustomDigimon & GeoEntity> boolean  isMoving(AnimationState<T> event){
+        if(this.isVehicle()){
+            event.setControllerSpeed(2.25f);
+            return moving;
+        }
+        event.setControllerSpeed(1.5f);
+        return event.isMoving();
+    }
+
+    public boolean moving = false;
+
+    Vec3 previousPosition = this.position();
+
+    public boolean updateMovingState() {
+        Vec3 currentPosition = this.position();
+        boolean flag = !currentPosition.equals(this.previousPosition);
+        previousPosition = currentPosition;
+        return flag;
+    }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(animController(this));
-
-        controllers.add(new AnimationController<>(this, "shootController", state -> PlayState.STOP)
-                .triggerableAnim("shoot", RawAnimation.begin().then(this.shootAnim, Animation.LoopType.PLAY_ONCE)));
-        controllers.add(new AnimationController<>(this, "attackController", state -> PlayState.STOP)
-                .triggerableAnim("attack", RawAnimation.begin().then(this.attackAnim, Animation.LoopType.PLAY_ONCE)));
-        controllers.add(new AnimationController<>(this, "feedController", state -> PlayState.STOP)
-                .triggerableAnim("feed", RawAnimation.begin().then("xp", Animation.LoopType.PLAY_ONCE)));
+        controllers.add(
+                getMovementController()
+                        .triggerableAnim("shoot", RawAnimation.begin().then(this.shootAnim, Animation.LoopType.PLAY_ONCE))
+                        .triggerableAnim("attack", RawAnimation.begin().then(this.attackAnim, Animation.LoopType.PLAY_ONCE))
+                        .triggerableAnim("feed", RawAnimation.begin().then("xp", Animation.LoopType.PLAY_ONCE))
+        );
     }
+
+    protected AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.factory;

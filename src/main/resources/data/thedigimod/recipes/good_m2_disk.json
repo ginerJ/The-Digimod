@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "i0i",
+    "idi",
+    "idi"
+  ],
+  "key": {
+    "0": {
+      "item": "thedigimod:blue_card"
+    },
+    "i": {
+      "item": "minecraft:iron_nugget"
+    },
+    "d": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "item": "thedigimod:m2_disk_item",
+    "count": 1
+  }
+}

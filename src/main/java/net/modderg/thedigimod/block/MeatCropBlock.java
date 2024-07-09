@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.modderg.thedigimod.item.DigiItems;
+import net.modderg.thedigimod.item.InitItems;
 
 public class MeatCropBlock extends CropBlock {
 
@@ -21,7 +21,7 @@ public class MeatCropBlock extends CropBlock {
     }
 
     protected static float getGrowthSpeed(Block p_52273_, BlockGetter p_52274_, BlockPos p_52275_) {
-        return CropBlock.getGrowthSpeed(p_52273_,p_52274_,p_52275_) * 4f;
+        return CropBlock.getGrowthSpeed(p_52273_,p_52274_,p_52275_);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class MeatCropBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return DigiItems.DIGI_MEAT.get();
+        return InitItems.DIGI_MEAT.get();
     }
 
     @Override

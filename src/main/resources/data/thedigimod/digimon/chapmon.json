@@ -1,0 +1,9 @@
+{
+  "evolutions": {
+    "kamemon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  }
+}

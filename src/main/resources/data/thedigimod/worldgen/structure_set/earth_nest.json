@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "thedigimod:earth_nest",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1645050512,
+
+    "spacing": 40,
+
+    "separation": 10,
+
+    "type": "minecraft:random_spread"
+  }
+}
