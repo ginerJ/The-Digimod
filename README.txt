@@ -1,2 +1,1 @@
-The Digimod 
-A mod that adds digimon to raise in Minecraft
+https://www.curseforge.com/minecraft/mc-mods/the-digimod-beta
