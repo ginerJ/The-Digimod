@@ -1,4 +1,5 @@
 {
+  "diet": "seafood",
   "profession": "farmer",
   "evolutions": {
     "shawujinmon": {
@@ -15,5 +16,26 @@
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    3
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.2
+  },
+  "default_sp_move": "disc_attack",
+  "anims": [
+    "idle8",
+    "sit6",
+    "walk7",
+    "fly",
+    "attack8",
+    "shoot5"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "datirimon"
+  ]
 }

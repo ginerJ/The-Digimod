@@ -2,7 +2,8 @@
   "evolutions": {
     "boogiemon": {
       "conditions": {
-        "always_can": "true"}
+        "always_can": "true"
+      }
     },
     "bakemon": {
       "conditions": {
@@ -20,7 +21,10 @@
         "mood": "Joyful",
         "max_mistakes": "10",
         "min_wins": "10",
-        "xp": ["3:50", "7:50"],
+        "xp": [
+          "3:50",
+          "7:50"
+        ],
         "rank": "super"
       }
     },
@@ -30,7 +34,9 @@
         "mood": "Joyful",
         "max_mistakes": "0",
         "min_wins": "15",
-        "xp": ["7:100"],
+        "xp": [
+          "7:100"
+        ],
         "rank": "super"
       }
     },
@@ -40,8 +46,32 @@
         "mood": "Sad",
         "max_mistakes": "10",
         "min_wins": "10",
-        "xp": ["7:50", "1:50"]
+        "xp": [
+          "7:50",
+          "1:50"
+        ]
       }
     }
-  }
+  },
+  "xps": [
+    7
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "night_of_fire",
+  "anims": [
+    "idle3",
+    "sit3",
+    "walk5",
+    "fly",
+    "attack7",
+    "shoot2"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "kiimon"
+  ]
 }

@@ -1,0 +1,14 @@
+{
+  "type": "thedigimod:add_tag_spawns",
+  "biomes": [
+    "minecraft:jungle",
+    "minecraft:flower_forest",
+    "minecraft:sparse_jungle",
+    "minecraft:bamboo_jungle",
+    "minecraft:cherry_grove"
+  ],
+  "weight": 10,
+  "minCount": 1,
+  "maxCount": 6,
+  "entity_tag": "thedigimod:spawns/planinsect_adult"
+}

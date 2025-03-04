@@ -1,3 +1,27 @@
 {
-  "profession": "lumberjack"
+  "diet": "carnivore",
+  "profession": "lumberjack",
+  "xps": [
+    0,
+    5
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.9
+  },
+  "default_sp_move": "hyper_heat",
+  "anims": [
+    "idle9",
+    "sit",
+    "walk9",
+    "fly",
+    "attack7",
+    "shoot5"
+  ],
+  "rider_offset": -0.2,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "jyarimon"
+  ]
 }

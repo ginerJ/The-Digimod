@@ -1,10 +1,11 @@
 {
+  "diet": "seafood",
   "profession": "farmer",
-
   "evolutions": {
     "archelomon": {
       "conditions": {
-        "always_can": "true"}
+        "always_can": "true"
+      }
     },
     "karatukinumemon": {
       "conditions": {
@@ -33,9 +34,32 @@
         "mood": "Joyful",
         "max_mistakes": "0",
         "min_wins": "15",
-        "xp": ["3:100"],
+        "xp": [
+          "3:100"
+        ],
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    3
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "petit_thunder",
+  "anims": [
+    "idle3",
+    "sit",
+    "walk7",
+    "fly",
+    "attack8",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "datirimon"
+  ]
 }

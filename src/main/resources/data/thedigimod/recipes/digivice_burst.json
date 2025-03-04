@@ -1,13 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " ii",
+    " ic",
     " oi",
-    " ii"
+    " ic"
   ],
   "key": {
     "i": {
       "item": "minecraft:iron_ingot"
+    },
+    "c": {
+      "item": "thedigimod:chrondigizoit"
     },
     "o": {
       "item": "thedigimod:digimon_card"

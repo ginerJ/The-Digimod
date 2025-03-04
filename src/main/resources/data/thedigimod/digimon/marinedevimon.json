@@ -1,3 +1,28 @@
 {
-  "profession": "miner"
+  "has_emissive_texture": true,
+  "diet": "seafood",
+  "profession": "miner",
+  "xps": [
+    7,
+    3
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.25,
+    "height": 3.5
+  },
+  "default_sp_move": "doctase",
+  "anims": [
+    "idle",
+    "sit9",
+    "walk9",
+    "fly",
+    "attack6",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "puyomon",
+    "kiimon"
+  ]
 }

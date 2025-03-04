@@ -1,6 +1,6 @@
 {
+  "diet": "scrap",
   "profession": "miner",
-
   "evolutions": {
     "mamemon": {
       "conditions": {
@@ -14,5 +14,26 @@
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    5
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 1.5
+  },
+  "default_sp_move": "thunderbolt",
+  "anims": [
+    "idle9",
+    "sit3",
+    "walk5",
+    "fly",
+    "attack",
+    "shoot5"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "dokimon"
+  ]
 }

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:stone"
+        },
+        "state": {
+          "Name": "thedigimod:digi_card_ore"
+        }
+      }
+    ],
+    "size": 5,
+    "discard_chance_on_air_exposure": 0.3
+  }
+}

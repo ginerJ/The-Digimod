@@ -2,9 +2,10 @@
   "evolutions": {
     "blackgalgomon": {
       "conditions": {
-        "always_can": "true"}
+        "always_can": "true"
+      }
     },
-    "numemon": {
+    "goldnumemon": {
       "conditions": {
         "always_can": "false",
         "mood": "Sad",
@@ -20,7 +21,9 @@
         "mood": "Sad",
         "max_mistakes": "10",
         "min_wins": "10",
-        "xp": ["7:100"],
+        "xp": [
+          "7:100"
+        ],
         "rank": "super"
       }
     },
@@ -30,9 +33,33 @@
         "mood": "Joyful",
         "max_mistakes": "0",
         "min_wins": "15",
-        "xp": ["8:50","1:50"],
+        "xp": [
+          "8:50",
+          "1:50"
+        ],
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    8
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "petit_twister",
+  "anims": [
+    "idle3",
+    "sit8",
+    "walk7",
+    "fly",
+    "attack8",
+    "shoot5"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "conomon"
+  ]
 }

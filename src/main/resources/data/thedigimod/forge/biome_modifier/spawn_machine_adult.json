@@ -1,0 +1,14 @@
+{
+  "type": "thedigimod:add_tag_spawns",
+  "biomes": [
+    "minecraft:taiga",
+    "minecraft:old_growth_spruce_taiga",
+    "minecraft:old_growth_pine_taiga",
+    "minecraft:snowy_taiga",
+    "minecraft:grove"
+  ],
+  "weight": 10,
+  "minCount": 1,
+  "maxCount": 6,
+  "entity_tag": "thedigimod:spawns/machine_adult"
+}

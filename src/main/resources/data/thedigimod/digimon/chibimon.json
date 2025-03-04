@@ -1,9 +1,31 @@
 {
+  "diet": "baby",
   "evolutions": {
     "vmon": {
       "conditions": {
         "always_can": "true"
       }
     }
-  }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 1,
+  "hitbox": {
+    "width": 0.9,
+    "height": 1.2
+  },
+  "default_sp_move": "bullet",
+  "anims": [
+    "idle5",
+    "sit7",
+    "walk7",
+    "fly",
+    "attack8",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "chicomon"
+  ]
 }

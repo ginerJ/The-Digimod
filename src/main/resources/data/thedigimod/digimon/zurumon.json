@@ -1,0 +1,31 @@
+{
+  "diet": "baby",
+  "evolutions": {
+    "pagumon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  },
+  "xps": [
+    7
+  ],
+  "evo_stage": 0,
+  "hitbox": {
+    "width": 0.8,
+    "height": 0.8
+  },
+  "default_sp_move": "bullet",
+  "anims": [
+    "idle6",
+    "sit7",
+    "walk8",
+    "fly",
+    "attack2",
+    "shoot4"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "zurumon"
+  ]
+}

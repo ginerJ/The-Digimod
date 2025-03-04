@@ -1,6 +1,6 @@
 {
+  "diet": "bug",
   "evolutions": {
-
     "alturkabuterimon": {
       "conditions": {
         "always_can": "false",
@@ -13,7 +13,6 @@
         "rank": "super"
       }
     },
-
     "alturkabuterimonblue": {
       "conditions": {
         "always_can": "false",
@@ -26,5 +25,27 @@
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    2
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "mega_blaster",
+  "anims": [
+    "idle3",
+    "sit6",
+    "walk7",
+    "fly7",
+    "attack5",
+    "shoot"
+  ],
+  "rider_offset": 0.0,
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "bubbmon"
+  ]
 }

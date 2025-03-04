@@ -1,0 +1,17 @@
+{
+  "feature": "thedigimod:huanglong_deepslate_ore_ore",
+  "placement": [
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": { "absolute": -64 },
+        "max_inclusive": { "absolute": 64 }
+      }
+    },
+    {
+      "type": "minecraft:count",
+      "count": 20
+    }
+  ]
+}

@@ -1,14 +1,10 @@
 {
+  "diet": "carnivore",
   "profession": "miner",
-
   "evolutions": {
     "veedramon": {
       "conditions": {
-        "always_can": "false",
-        "mood": "Joyful",
-        "max_mistakes": "5",
-        "min_wins": "10",
-        "xp": ["6:100"]
+        "always_can": "true"
       }
     },
     "xvmon": {
@@ -17,7 +13,9 @@
         "mood": "Joyful",
         "max_mistakes": "0",
         "min_wins": "15",
-        "xp": ["0:100"],
+        "xp": [
+          "0:100"
+        ],
         "rank": "super"
       }
     },
@@ -27,7 +25,9 @@
         "mood": "Meh",
         "max_mistakes": "5",
         "min_wins": "10",
-        "xp": ["8:100"],
+        "xp": [
+          "8:100"
+        ],
         "rank": "super"
       }
     },
@@ -37,7 +37,10 @@
         "mood": "Joyful",
         "max_mistakes": "0",
         "min_wins": "15",
-        "xp": ["8:50", "0:50"],
+        "xp": [
+          "8:50",
+          "0:50"
+        ],
         "rank": "super"
       }
     },
@@ -47,7 +50,10 @@
         "mood": "Joyful",
         "max_mistakes": "0",
         "min_wins": "15",
-        "xp": ["8:50", "1:50"],
+        "xp": [
+          "8:50",
+          "1:50"
+        ],
         "rank": "super"
       }
     },
@@ -61,5 +67,26 @@
         "rank": "fail"
       }
     }
-  }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "pepper_breath",
+  "anims": [
+    "idle8",
+    "sit",
+    "walk9",
+    "fly",
+    "attack12",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "chicomon"
+  ]
 }

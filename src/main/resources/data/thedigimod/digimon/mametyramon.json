@@ -1,3 +1,26 @@
 {
-  "profession": "transporter"
+  "diet": "carnivore",
+  "profession": "transporter",
+  "xps": [
+    0,
+    5
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 0.8,
+    "height": 0.95
+  },
+  "default_sp_move": "beast_slash",
+  "anims": [
+    "idle9",
+    "sit3",
+    "walk7",
+    "fly",
+    "attack12",
+    "shoot8"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ]
 }

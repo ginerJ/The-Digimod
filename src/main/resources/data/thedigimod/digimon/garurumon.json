@@ -10,8 +10,30 @@
           "1:400",
           "7:100"
         ],
-        "rank" : "super"
+        "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    1
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.75,
+    "height": 1.5
+  },
+  "default_sp_move": "snow_bullet",
+  "anims": [
+    "idle8",
+    "sit11",
+    "walk7",
+    "fly",
+    "attack3",
+    "shoot6"
+  ],
+  "rider_offset": -0.15,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "punimon"
+  ]
 }

@@ -1,0 +1,69 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 160,
+				"texture_height": 144,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 5.5,
+				"visible_bounds_offset": [0, 2.25, 0]
+			},
+			"bones": [
+				{
+					"name": "entity",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "body",
+					"parent": "entity",
+					"pivot": [-3.40519, -0.39861, -0.08363],
+					"cubes": [
+						{"origin": [-12, 0, -12.5], "size": [25, 49, 25], "uv": [0, 46]},
+						{"origin": [-22, 0, -23], "size": [46, 0, 46], "uv": [0, 0]},
+						{"origin": [-9, 2, -20], "size": [0, 13, 10], "pivot": [-10, 7, -13], "rotation": [0, 12.5, 0], "uv": [0, 34]},
+						{"origin": [-10, 48, 2], "size": [4, 8, 0], "pivot": [-9, 48, 3], "rotation": [0, 0, -15], "uv": [0, 0]},
+						{"origin": [-19, 32, -1], "size": [38, 12, 0], "pivot": [14, 42, -2], "rotation": [-17.5, 0, 0], "uv": [75, 46]}
+					]
+				},
+				{
+					"name": "arm2",
+					"parent": "body",
+					"pivot": [-11, 19, -5],
+					"cubes": [
+						{"origin": [-22, 13, -16.4], "size": [8, 10, 17], "pivot": [-21, 13, -12.4], "rotation": [0, 42.5, 0], "uv": [100, 85]},
+						{"origin": [-22, 6, -16.4], "size": [8, 7, 17], "pivot": [-21, 3, -12.4], "rotation": [0, 42.5, 0], "uv": [0, 120]},
+						{"origin": [-21, 23, -17.4], "size": [4, 3, 4], "uv": [28, 0]}
+					]
+				},
+				{
+					"name": "arm",
+					"parent": "body",
+					"pivot": [12, 21, -5],
+					"cubes": [
+						{"origin": [18, 13, -9], "size": [8, 10, 17], "pivot": [25, 13, -5], "rotation": [0, -75, 0], "uv": [100, 58]},
+						{"origin": [18, 5, -9], "size": [8, 8, 17], "pivot": [25, 3, -5], "rotation": [0, -75, 0], "uv": [83, 112]},
+						{"origin": [23.7, 23, -9.4], "size": [4, 3, 4], "pivot": [26.7, 23, -8.4], "rotation": [0, -22.5, 0], "uv": [28, 7]}
+					]
+				},
+				{
+					"name": "arm3",
+					"parent": "body",
+					"pivot": [9, 10, -7],
+					"cubes": [
+						{"origin": [7, 7, -24], "size": [7, 8, 14], "pivot": [10, 9, -15], "rotation": [0, -10, 0], "uv": [0, 22]}
+					]
+				},
+				{
+					"name": "arm5",
+					"parent": "body",
+					"pivot": [8, 12, 11],
+					"cubes": [
+						{"origin": [7.6, 7.5, 10], "size": [7, 8, 14], "pivot": [10.6, 9.5, 15], "rotation": [0, 30, 0], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

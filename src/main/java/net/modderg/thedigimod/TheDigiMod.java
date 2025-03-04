@@ -4,7 +4,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -18,19 +18,22 @@ import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.registries.RegistryObject;
-import net.modderg.thedigimod.block.BlocksInit;
-import net.modderg.thedigimod.config.ModClientConfigs;
-import net.modderg.thedigimod.config.ModCommonConfigs;
-import net.modderg.thedigimod.entity.CustomDigimon;
-import net.modderg.thedigimod.entity.InitDigimons;
-import net.modderg.thedigimod.gui.inventory.InitMenu;
-import net.modderg.thedigimod.goods.AbstractTrainingGood;
-import net.modderg.thedigimod.goods.InitGoods;
-import net.modderg.thedigimod.item.*;
-import net.modderg.thedigimod.packet.PacketInit;
-import net.modderg.thedigimod.particles.DigitalParticles;
-import net.modderg.thedigimod.projectiles.InitProjectiles;
-import net.modderg.thedigimod.sound.DigiSounds;
+import net.modderg.thedigimod.server.block.BlocksInit;
+import net.modderg.thedigimod.client.ModClientConfigs;
+import net.modderg.thedigimod.server.ModCommonConfigs;
+import net.modderg.thedigimod.server.entity.DigimonEntity;
+import net.modderg.thedigimod.server.entity.TDEntities;
+import net.modderg.thedigimod.client.gui.inventory.InitMenu;
+import net.modderg.thedigimod.server.events.EventsBus;
+import net.modderg.thedigimod.server.goods.AbstractTrainingGood;
+import net.modderg.thedigimod.server.goods.InitGoods;
+import net.modderg.thedigimod.server.item.*;
+import net.modderg.thedigimod.server.item.custom.DigiviceItem;
+import net.modderg.thedigimod.server.packet.PacketInit;
+import net.modderg.thedigimod.client.particles.DigitalParticles;
+import net.modderg.thedigimod.server.projectiles.InitProjectiles;
+import net.modderg.thedigimod.server.sound.DigiSounds;
+import net.modderg.thedigimod.server.worldgen.DMBiomeModifier;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -42,6 +45,8 @@ import static org.antlr.runtime.debug.DebugEventListener.PROTOCOL_VERSION;
 public class TheDigiMod {
     public static final String MOD_ID = "thedigimod";
 
+    public static final int MAX_DIGIMON_STAGE = 4;
+
     public TheDigiMod() {
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -51,18 +56,20 @@ public class TheDigiMod {
 
         DigitalCreativeTab.CREATIVE_TABS.register(bus);
 
-        InitItems.register(bus);
-        BabyDigimonItems.register(bus);
-        DigivicesItems.register(bus);
-        AdminItems.register(bus);
-
         BlocksInit.BLOCKS.register(bus);
+
+        TDItems.register(bus);
+        TDItemsBabyDigimon.register(bus);
+        TDItemsDigivices.register(bus);
+        TDItemsAdmin.register(bus);
 
         InitProjectiles.register(bus);
 
         InitGoods.register(bus);
 
-        InitDigimons.register(bus);
+        TDEntities.register(bus);
+
+        DMBiomeModifier.BIOME_MODIFIERS.register(bus);
 
         DigiSounds.SOUNDS.register(bus);
 
@@ -79,15 +86,18 @@ public class TheDigiMod {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-
         event.enqueueWork(PacketInit::register);
+        ComposterBlock.COMPOSTABLES.put(TDItems.POOP.get(), 0.7f);
+        ComposterBlock.COMPOSTABLES.put(TDItems.GOLD_POOP.get(), 1f);
+
+        TheDigiMod.addNetworkMessage(EventsBus.PlayerVariablesSyncMessage.class, EventsBus.PlayerVariablesSyncMessage::buffer, EventsBus.PlayerVariablesSyncMessage::new, EventsBus.PlayerVariablesSyncMessage::handler);
     }
 
     private void setAttributes(final EntityAttributeCreationEvent event) {
 
-        InitDigimons.DIGIMONS.getEntries()
+        TDEntities.DIGIMONS.getEntries()
                 .forEach(digimon -> event.put((EntityType<? extends LivingEntity>) digimon.get(),
-                        CustomDigimon.setCustomAttributes().build()));
+                        DigimonEntity.setCustomAttributes().build()));
 
         InitGoods.GOODS.getEntries()
                 .forEach(good -> event.put((EntityType<? extends LivingEntity>) good.get(),
@@ -97,88 +107,113 @@ public class TheDigiMod {
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
         if(event.getTab() == DigitalCreativeTab.DIGITAL_TAB.get()){
 
-            for(RegistryObject<Item> item : DigivicesItems.vicesMap.values())
+            for(RegistryObject<DigiviceItem> item : TDItemsDigivices.vicesMap)
                 event.accept(item.get());
 
-            event.accept(InitItems.DIGIMON_CARD);
-            event.accept(InitItems.DIGIMON_BLUE_CARD);
+            event.accept(BlocksInit.CARD_ORE_ITEM);
+            event.accept(BlocksInit.CARD_DEEPSLATE_ORE_ITEM);
+            event.accept(BlocksInit.HUANGLONG_DEEPSLATE_ORE_ITEM);
+            event.accept(TDItems.HUANGLONG_ORE);
+            event.accept(TDItems.CHRONDIGIZOIT);
+            event.accept(TDItems.CHROME_DIGIZOID);
+            event.accept(TDItems.DIGIMON_CARD);
+            event.accept(TDItems.DIGIMON_BLUE_CARD);
 
-            for(RegistryObject<Item> item : BabyDigimonItems.babiesMap.values())
-                event.accept(item.get());
+            event.accept(TDItemsBabyDigimon.BOTAMON);
+            event.accept(TDItemsBabyDigimon.CHICOMON);
+            event.accept(TDItemsBabyDigimon.JYARIMON);
+            event.accept(TDItemsBabyDigimon.PETITMON);
+            event.accept(TDItemsBabyDigimon.DATIRIMON);
+            event.accept(TDItemsBabyDigimon.PUYOMON);
+            event.accept(TDItemsBabyDigimon.CONOMON);
+            event.accept(TDItemsBabyDigimon.POYOMON);
+            event.accept(TDItemsBabyDigimon.BUBBMON);
+            event.accept(TDItemsBabyDigimon.PUNIMON);
+            event.accept(TDItemsBabyDigimon.DOKIMON);
+            event.accept(TDItemsBabyDigimon.NYOKIMON);
+            event.accept(TDItemsBabyDigimon.KIIMON);
+            event.accept(TDItemsBabyDigimon.ZURUMON);
+            event.accept(TDItemsBabyDigimon.SUNAMON);
 
-            event.accept(InitItems.DIGI_MEAT);
-            event.accept(InitItems.BIG_DIGI_MEAT);
-            event.accept(InitItems.ROTTEN_DIGI_MEAT);
-            event.accept(InitItems.GUILMON_BREAD);
-            event.accept(InitItems.DIGI_CAKE);
+            event.accept(TDItems.DIGI_MEAT_ROTTEN);
+            event.accept(TDItems.DIGI_MEAT);
+            event.accept(TDItems.DIGI_MEAT_BIG);
+            event.accept(TDItems.DIGI_RIBS);
+            event.accept(TDItems.GUILMON_BREAD);
+            event.accept(TDItems.DIGI_CAKE);
+            event.accept(TDItems.DIGI_SUSHI);
+            event.accept(BlocksInit.LED_SHROOM_ITEM);
+            event.accept(TDItems.POOP);
+            event.accept(TDItems.GOLD_POOP);
 
-            event.accept(InitItems.BLACK_DIGITRON);
-            event.accept(InitItems.DARK_TOWER_SHARD);
+            event.accept(TDItems.BLACK_DIGITRON);
+            event.accept(TDItems.DARK_TOWER_SHARD);
 
-            event.accept(InitItems.ATTACK_BYTE);
-            event.accept(InitItems.DEFENSE_BYTE);
-            event.accept(InitItems.SPATTACK_BYTE);
-            event.accept(InitItems.SPDEFENSE_BYTE);
-            event.accept(InitItems.HEALTH_BYTE);
+            event.accept(TDItems.ATTACK_BYTE);
+            event.accept(TDItems.DEFENSE_BYTE);
+            event.accept(TDItems.SPATTACK_BYTE);
+            event.accept(TDItems.SPDEFENSE_BYTE);
+            event.accept(TDItems.HEALTH_BYTE);
 
-            event.accept(InitItems.TRAINING_BAG);
-            event.accept(InitItems.BAG_ITEM);
-            event.accept(InitItems.TABLE_ITEM);
-            event.accept(InitItems.TARGET_ITEM);
-            event.accept(InitItems.SHIELD_ITEM);
-            event.accept(InitItems.UPDATE_ITEM);
-            event.accept(InitItems.DRAGON_BONE_ITEM);
-            event.accept(InitItems.BALL_GOOD_ITEM);
-            event.accept(InitItems.CLOWN_BOX);
-            event.accept(InitItems.FLYTRAP_GOOD);
-            event.accept(InitItems.OLD_PC_GOOD);
-            event.accept(InitItems.LIRA_GOOD);
-            event.accept(InitItems.RED_FREEZER);
-            event.accept(InitItems.WIND_VANE);
-            event.accept(InitItems.TRAINING_ROCK);
-            event.accept(InitItems.M2_HEALTH_DISK);
+            event.accept(TDItems.TRAINING_BAG);
+            event.accept(TDItems.BAG_ITEM);
+            event.accept(TDItems.TABLE_ITEM);
+            event.accept(TDItems.TARGET_ITEM);
+            event.accept(TDItems.SHIELD_ITEM);
+            event.accept(TDItems.UPDATE_ITEM);
+            event.accept(TDItems.DRAGON_BONE_ITEM);
+            event.accept(TDItems.BALL_GOOD_ITEM);
+            event.accept(TDItems.CLOWN_BOX);
+            event.accept(TDItems.FLYTRAP_GOOD);
+            event.accept(TDItems.OLD_PC_GOOD);
+            event.accept(TDItems.LIRA_GOOD);
+            event.accept(TDItems.RED_FREEZER);
+            event.accept(TDItems.WIND_VANE);
+            event.accept(TDItems.TRAINING_ROCK);
+            event.accept(TDItems.M2_HEALTH_DISK);
 
-            event.accept(InitItems.DIGI_CORE);
+            event.accept(TDItems.DIGI_CORE);
 
-            event.accept(InitItems.CHIP_BULLET);
-            event.accept(InitItems.CHIP_PEPPER_BREATH);
-            event.accept(InitItems.CHIP_MEGA_FLAME);
-            event.accept(InitItems.CHIP_V_ARROW);
-            event.accept(InitItems.CHIP_GOLD_ARROW);
-            event.accept(InitItems.CHIP_HYPER_HEAT);
-            event.accept(InitItems.CHIP_METEOR_WING);
-            event.accept(InitItems.CHIP_BEAST_SLASH);
-            event.accept(InitItems.CHIP_INK_GUN);
-            event.accept(InitItems.CHIP_SNOW_BULLET);
-            event.accept(InitItems.CHIP_PETIT_THUNDER);
-            event.accept(InitItems.CHIP_OCEAN_STORM);
-            event.accept(InitItems.CHIP_MEGA_BLASTER);
-            event.accept(InitItems.CHIP_THUNDERBOLT);
-            event.accept(InitItems.CHIP_GATLING_ARM);
-            event.accept(InitItems.CHIP_DEADLY_STING);
-            event.accept(InitItems.CHIP_TRON_FLAME);
-            event.accept(InitItems.CHIP_DEATH_CLAW);
-            event.accept(InitItems.CHIP_POISON_BREATH);
-            event.accept(InitItems.CHIP_HEAVENS_KNUCKLE);
-            event.accept(InitItems.CHIP_HOLY_SHOOT);
-            event.accept(InitItems.CHIP_GLIDING_ROCKS);
-            event.accept(InitItems.CHIP_POOP_THROW);
-            event.accept(InitItems.CHIP_SAND_BLAST);
-            event.accept(InitItems.CHIP_BEAR_PUNCH);
-            event.accept(InitItems.CHIP_PETIT_TWISTER);
-            event.accept(InitItems.CHIP_NIGHT_OF_FIRE);
-            event.accept(InitItems.CHIP_DISC_ATTACK);
-            event.accept(InitItems.CHIP_SMILEY_BOMB);
-            event.accept(InitItems.CHIP_GIGA_DESTROYER);
-            event.accept(InitItems.CHIP_DOCTASE);
-            event.accept(InitItems.CHIP_MAGMA_SPIT);
-            event.accept(InitItems.CHIP_CRYSTAL_RAIN);
-            event.accept(InitItems.CHIP_LOVE_SONG);
-            event.accept(InitItems.CHIP_MACH_TORNADO);
-            event.accept(InitItems.CHIP_DIVINE_AXE);
-            event.accept(InitItems.CHIP_CRUEL_SISSORS);
-            event.accept(InitItems.CHIP_X_ATTACK);
-            event.accept(InitItems.CHIP_WORLD_SLASH);
+            event.accept(TDItems.CHIP_BULLET);
+            event.accept(TDItems.CHIP_PEPPER_BREATH);
+            event.accept(TDItems.CHIP_MEGA_FLAME);
+            event.accept(TDItems.CHIP_V_ARROW);
+            event.accept(TDItems.CHIP_GOLD_ARROW);
+            event.accept(TDItems.CHIP_HYPER_HEAT);
+            event.accept(TDItems.CHIP_METEOR_WING);
+            event.accept(TDItems.CHIP_BEAST_SLASH);
+            event.accept(TDItems.CHIP_INK_GUN);
+            event.accept(TDItems.CHIP_SNOW_BULLET);
+            event.accept(TDItems.CHIP_PETIT_THUNDER);
+            event.accept(TDItems.CHIP_OCEAN_STORM);
+            event.accept(TDItems.CHIP_MEGA_BLASTER);
+            event.accept(TDItems.CHIP_THUNDERBOLT);
+            event.accept(TDItems.CHIP_GATLING_ARM);
+            event.accept(TDItems.CHIP_DEADLY_STING);
+            event.accept(TDItems.CHIP_TRON_FLAME);
+            event.accept(TDItems.CHIP_DEATH_CLAW);
+            event.accept(TDItems.CHIP_POISON_BREATH);
+            event.accept(TDItems.CHIP_HEAVENS_KNUCKLE);
+            event.accept(TDItems.CHIP_HOLY_SHOOT);
+            event.accept(TDItems.CHIP_GLIDING_ROCKS);
+            event.accept(TDItems.CHIP_POOP_THROW);
+            event.accept(TDItems.CHIP_SAND_BLAST);
+            event.accept(TDItems.CHIP_BEAR_PUNCH);
+            event.accept(TDItems.CHIP_PETIT_TWISTER);
+            event.accept(TDItems.CHIP_NIGHT_OF_FIRE);
+            event.accept(TDItems.CHIP_DISC_ATTACK);
+            event.accept(TDItems.CHIP_SMILEY_BOMB);
+            event.accept(TDItems.CHIP_GIGA_DESTROYER);
+            event.accept(TDItems.CHIP_DOCTASE);
+            event.accept(TDItems.CHIP_MAGMA_SPIT);
+            event.accept(TDItems.CHIP_CRYSTAL_RAIN);
+            event.accept(TDItems.CHIP_LOVE_SONG);
+            event.accept(TDItems.CHIP_MACH_TORNADO);
+            event.accept(TDItems.CHIP_DIVINE_AXE);
+            event.accept(TDItems.CHIP_CRUEL_SISSORS);
+            event.accept(TDItems.CHIP_X_ATTACK);
+            event.accept(TDItems.CHIP_WORLD_SLASH);
+            event.accept(TDItems.CHIP_SECRET_IDENTITY);
 
             event.accept(BlocksInit.DIGITAMA_DRAGON_ITEM);
             event.accept(BlocksInit.DIGITAMA_BEAST_ITEM);
@@ -191,34 +226,36 @@ public class TheDigiMod {
             event.accept(BlocksInit.DIGITAMA_MACHINE_ITEM);
         }
         if(event.getTab() == DigitalCreativeTab.ADMIN_TAB.get()){
-            event.accept(AdminItems.ATTACK_GB);
-            event.accept(AdminItems.SPATTACK_GB);
-            event.accept(AdminItems.DEFENCE_GB);
-            event.accept(AdminItems.SPDEFENCE_GB);
-            event.accept(AdminItems.HEALTH_DRIVES);
-            event.accept(AdminItems.BATTLE_CHIP);
-            event.accept(AdminItems.TAMER_LEASH);
-            event.accept(AdminItems.GOBLIMON_BAT);
-            event.accept(AdminItems.BOSS_CUBE);
+            event.accept(TDItemsAdmin.ATTACK_GB);
+            event.accept(TDItemsAdmin.SPATTACK_GB);
+            event.accept(TDItemsAdmin.DEFENCE_GB);
+            event.accept(TDItemsAdmin.SPDEFENCE_GB);
+            event.accept(TDItemsAdmin.HEALTH_DRIVES);
+            event.accept(TDItemsAdmin.BATTLE_CHIP);
+            event.accept(TDItemsAdmin.TAMER_LEASH);
+            event.accept(TDItemsAdmin.GOBLIMON_BAT);
+            event.accept(TDItemsAdmin.BOSS_CUBE);
 
-            event.accept(AdminItems.DRAGON_DATA);
-            event.accept(AdminItems.BEAST_DATA);
-            event.accept(AdminItems.PLANTINSECT_DATA);
-            event.accept(AdminItems.AQUAN_DATA);
-            event.accept(AdminItems.WIND_DATA);
-            event.accept(AdminItems.MACHINE_DATA);
-            event.accept(AdminItems.EARTH_DATA);
-            event.accept(AdminItems.NIGHTMARE_DATA);
-            event.accept(AdminItems.HOLY_DATA);
-            event.accept(AdminItems.DRAGON_PACK);
-            event.accept(AdminItems.BEAST_PACK);
-            event.accept(AdminItems.PLANTINSECT_PACK);
-            event.accept(AdminItems.AQUAN_PACK);
-            event.accept(AdminItems.WIND_PACK);
-            event.accept(AdminItems.MACHINE_PACK);
-            event.accept(AdminItems.EARTH_PACK);
-            event.accept(AdminItems.NIGHTMARE_PACK);
-            event.accept(AdminItems.HOLY_PACK);
+            event.accept(TDItemsAdmin.DRAGON_DATA);
+            event.accept(TDItemsAdmin.BEAST_DATA);
+            event.accept(TDItemsAdmin.PLANTINSECT_DATA);
+            event.accept(TDItemsAdmin.AQUAN_DATA);
+            event.accept(TDItemsAdmin.WIND_DATA);
+            event.accept(TDItemsAdmin.MACHINE_DATA);
+            event.accept(TDItemsAdmin.EARTH_DATA);
+            event.accept(TDItemsAdmin.NIGHTMARE_DATA);
+            event.accept(TDItemsAdmin.HOLY_DATA);
+            event.accept(TDItemsAdmin.POOP_DATA);
+            event.accept(TDItemsAdmin.DRAGON_PACK);
+            event.accept(TDItemsAdmin.BEAST_PACK);
+            event.accept(TDItemsAdmin.PLANTINSECT_PACK);
+            event.accept(TDItemsAdmin.AQUAN_PACK);
+            event.accept(TDItemsAdmin.WIND_PACK);
+            event.accept(TDItemsAdmin.MACHINE_PACK);
+            event.accept(TDItemsAdmin.EARTH_PACK);
+            event.accept(TDItemsAdmin.NIGHTMARE_PACK);
+            event.accept(TDItemsAdmin.HOLY_PACK);
+            event.accept(TDItemsAdmin.POOP_PACK);
         }
     }
 

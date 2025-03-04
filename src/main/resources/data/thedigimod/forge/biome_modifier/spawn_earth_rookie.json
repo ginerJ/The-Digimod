@@ -1,0 +1,18 @@
+{
+  "type": "thedigimod:add_tag_spawns",
+  "biomes": [
+    "minecraft:desert",
+    "minecraft:badlands",
+    "minecraft:eroded_badlands",
+    "minecraft:wooded_badlands",
+    "minecraft:dripstone_caves",
+    "minecraft:lush_caves",
+    "minecraft:deep_dark",
+    "minecraft:soul_sand_valley",
+    "minecraft:basalt_deltas"
+  ],
+  "weight": 16,
+  "minCount": 1,
+  "maxCount": 8,
+  "entity_tag": "thedigimod:spawns/earth_rookie"
+}

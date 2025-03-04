@@ -1,3 +1,25 @@
 {
-  "profession": "miner"
+  "diet": "poop",
+  "profession": "miner",
+  "xps": [
+    6
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.75,
+    "height": 1.5
+  },
+  "default_sp_move": "deadly_sting",
+  "anims": [
+    "idle6",
+    "sit2",
+    "walk7",
+    "fly",
+    "attack3",
+    "shoot3"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "punimon"
+  ]
 }

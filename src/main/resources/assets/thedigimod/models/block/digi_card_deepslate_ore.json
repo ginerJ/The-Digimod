@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "thedigimod:block/digi_card_deepslate_ore"
+  }
+}

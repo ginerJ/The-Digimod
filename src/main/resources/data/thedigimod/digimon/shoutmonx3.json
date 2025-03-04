@@ -1,4 +1,28 @@
 {
-  "profession": "miner"
-
+  "diet": "scrap",
+  "profession": "miner",
+  "xps": [
+    5,
+    0
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 3.5
+  },
+  "default_sp_move": "x_attack",
+  "anims": [
+    "idle5",
+    "sit14",
+    "walk5",
+    "fly",
+    "attack12",
+    "attack6"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "jyarimon",
+    "bubbmon",
+    "punimon"
+  ]
 }

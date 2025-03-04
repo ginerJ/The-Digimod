@@ -1,0 +1,10 @@
+{
+  "type": "thedigimod:add_tag_spawns",
+  "biomes": [
+    "minecraft:swamp"
+  ],
+  "weight": 10,
+  "minCount": 1,
+  "maxCount": 6,
+  "entity_tag": "thedigimod:spawns/shit_rookie"
+}

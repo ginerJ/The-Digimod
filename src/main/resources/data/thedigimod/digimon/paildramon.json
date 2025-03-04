@@ -1,3 +1,26 @@
 {
-  "profession": "miner"
+  "diet": "carnivore",
+  "profession": "miner",
+  "xps": [
+    0,
+    2
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.0,
+    "height": 3.0
+  },
+  "default_sp_move": "gatling_arm",
+  "anims": [
+    "idle3",
+    "sit13",
+    "walk10",
+    "fly",
+    "attack13",
+    "shoot3"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "chicomon"
+  ]
 }

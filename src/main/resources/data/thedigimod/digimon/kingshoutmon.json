@@ -1,6 +1,6 @@
 {
+  "diet": "carnivore",
   "profession": "lumberjack",
-
   "evolutions": {
     "omegashoutmon": {
       "conditions": {
@@ -12,8 +12,29 @@
           "0:250",
           "8:250"
         ],
-        "rank" : "super"
+        "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.0
+  },
+  "default_sp_move": "disc_attack",
+  "anims": [
+    "idle8",
+    "sit6",
+    "walk7",
+    "fly",
+    "attack5",
+    "attack12"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "jyarimon"
+  ]
 }

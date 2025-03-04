@@ -1,4 +1,5 @@
 {
+  "diet": "rock",
   "evolutions": {
     "gogmamon": {
       "conditions": {
@@ -13,5 +14,28 @@
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    6,
+    1
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.5
+  },
+  "default_sp_move": "gliding_rocks",
+  "anims": [
+    "idle8",
+    "sit5",
+    "walk9",
+    "fly",
+    "attack7",
+    "shoot"
+  ],
+  "rider_offset": 0.1,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "sunamon"
+  ]
 }

@@ -1,6 +1,5 @@
 {
   "profession": "farmer",
-
   "evolutions": {
     "manticoremon": {
       "conditions": {
@@ -16,5 +15,26 @@
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    7
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.2
+  },
+  "default_sp_move": "holy_shoot",
+  "anims": [
+    "idle8",
+    "sit4",
+    "walk10",
+    "fly4",
+    "attack13",
+    "shoot"
+  ],
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "chicomon"
+  ]
 }

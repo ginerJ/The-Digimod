@@ -16,7 +16,7 @@
             }
           ],
           "name": "thedigimod:digi_meat",
-          "weight": 5
+          "weight": 6
         },
         {
           "type": "minecraft:item",
@@ -30,7 +30,7 @@
             }
           ],
           "name": "thedigimod:digi_meat_rotten",
-          "weight": 3
+          "weight": 2
         },
         {
           "type": "minecraft:item",
@@ -48,10 +48,10 @@
         },
         {
           "type": "minecraft:empty",
-          "weight": 3
+          "weight": 2
         }
       ],
-      "rolls": 2.0
+      "rolls": 4.0
     }
   ]
 }

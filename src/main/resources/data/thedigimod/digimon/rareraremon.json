@@ -1,0 +1,27 @@
+{
+  "has_emissive_texture": true,
+  "diet": "poop",
+  "xps": [
+    9,
+    5
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.75,
+    "height": 3
+  },
+  "default_sp_move": "poop_throw",
+  "anims": [
+    "idle3",
+    "sit2",
+    "walk8",
+    "fly",
+    "attack14",
+    "attack14"
+  ],
+  "profession": "farmer",
+  "movement_type": "ground",
+  "baby_digimon": [
+    "zurumon"
+  ]
+}

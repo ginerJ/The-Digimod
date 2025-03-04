@@ -1,0 +1,53 @@
+{
+  "diet": "poop",
+  "evolutions": {
+    "monzaemon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "7:400"
+        ],
+        "rank": "super"
+      }
+    },
+    "cerberumon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "7:200",
+          "1:200"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    9,
+    1
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 1.7
+  },
+  "default_sp_move": "poop_throw",
+  "anims": [
+    "idle9",
+    "sit3",
+    "walk13",
+    "fly",
+    "attack6",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "punimon",
+    "zurumon"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent" : "minecraft:item/generated",
+  "textures" : {
+    "layer0" : "thedigimod:item/digivice2020",
+    "layer1" : "thedigimod:item/digivice2020_overlay"
+  }
+}

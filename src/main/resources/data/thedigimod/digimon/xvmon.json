@@ -1,6 +1,6 @@
 {
+  "diet": "carnivore",
   "profession": "miner",
-
   "evolutions": {
     "paildramon": {
       "conditions": {
@@ -13,7 +13,7 @@
           "2:150",
           "5:200"
         ],
-        "rank" : "super"
+        "rank": "super"
       }
     },
     "cyberdramon": {
@@ -29,5 +29,26 @@
         ]
       }
     }
-  }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "x_attack",
+  "anims": [
+    "idle8",
+    "sit5",
+    "walk9",
+    "fly",
+    "attack13",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "chicomon"
+  ]
 }

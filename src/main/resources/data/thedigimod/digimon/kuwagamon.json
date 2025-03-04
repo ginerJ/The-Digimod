@@ -1,4 +1,5 @@
 {
+  "diet": "bug",
   "evolutions": {
     "okuwamon": {
       "conditions": {
@@ -13,5 +14,27 @@
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    2
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.0
+  },
+  "default_sp_move": "deadly_sting",
+  "anims": [
+    "idle3",
+    "sit6",
+    "walk9",
+    "fly7",
+    "attack6",
+    "shoot"
+  ],
+  "rider_offset": 0.0,
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "bubbmon"
+  ]
 }

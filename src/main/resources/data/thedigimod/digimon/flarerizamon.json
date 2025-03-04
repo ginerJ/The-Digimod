@@ -1,6 +1,7 @@
 {
+  "has_emissive_texture": true,
+  "diet": "carnivore",
   "profession": "lumberjack",
-
   "evolutions": {
     "megalogrowlmondata": {
       "conditions": {
@@ -14,5 +15,27 @@
         ]
       }
     }
-  }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.0
+  },
+  "default_sp_move": "mega_flame",
+  "anims": [
+    "idle7",
+    "sit5",
+    "walk9",
+    "fly",
+    "attack6",
+    "attack6"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon",
+    "sunamon"
+  ]
 }

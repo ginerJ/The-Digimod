@@ -1,3 +1,28 @@
 {
-  "profession": "miner"
+  "diet": "carnivore",
+  "profession": "miner",
+  "xps": [
+    6,
+    0
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.7,
+    "height": 1.9
+  },
+  "default_sp_move": "magma_spit",
+  "anims": [
+    "idle5",
+    "sit5",
+    "walk7",
+    "fly",
+    "attack4",
+    "shoot3"
+  ],
+  "rider_offset": 0.0,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon",
+    "petitmon"
+  ]
 }

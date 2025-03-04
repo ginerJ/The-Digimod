@@ -1,0 +1,26 @@
+{
+  "xps": [
+    8,
+    1
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.25,
+    "height": 3.5
+  },
+  "default_sp_move": "gold_arrow",
+  "anims": [
+    "idle9",
+    "sit5",
+    "walk7",
+    "fly",
+    "attack3",
+    "shoot10"
+  ],
+  "rider_offset": -0.2,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "chicomon",
+    "poyomon"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-
+  "diet": "scrap",
   "evolutions": {
     "saggitarimon": {
       "conditions": {
@@ -12,8 +12,31 @@
           "1:150",
           "8:200"
         ],
-        "rank" : "super"
+        "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    5,
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 1.75
+  },
+  "default_sp_move": "mega_blaster",
+  "anims": [
+    "idle5",
+    "sit11",
+    "walk7",
+    "fly",
+    "attack3",
+    "shoot"
+  ],
+  "rider_offset": -0.6,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "chicomon"
+  ]
 }

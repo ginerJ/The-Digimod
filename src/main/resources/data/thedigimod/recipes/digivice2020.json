@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " c ",
+    "ioi",
+    " c "
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "c": {
+      "item": "thedigimod:chrondigizoit"
+    },
+    "o": {
+      "item": "thedigimod:digimon_card"
+    }
+  },
+  "result": {
+    "item": "thedigimod:digivice2020",
+    "count": 1
+  }
+}

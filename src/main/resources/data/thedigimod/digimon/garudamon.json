@@ -1,3 +1,25 @@
 {
-  "profession": "tree_Lover"
+  "profession": "tree_Lover",
+  "xps": [
+    4
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.9,
+    "height": 3.9
+  },
+  "default_sp_move": "mach_tornado",
+  "anims": [
+    "idle3",
+    "sit13",
+    "walk9",
+    "float2",
+    "attack6",
+    "shoot7"
+  ],
+  "rider_offset": 1.0,
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "nyokimon"
+  ]
 }

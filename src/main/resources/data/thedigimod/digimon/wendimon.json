@@ -12,5 +12,27 @@
         ]
       }
     }
-  }
+  },
+  "xps": [
+    7
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.5
+  },
+  "default_sp_move": "death_claw",
+  "anims": [
+    "idle3",
+    "sit5",
+    "walk9",
+    "fly",
+    "attack6",
+    "shoot"
+  ],
+  "rider_offset": 0.2,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "conomon"
+  ]
 }

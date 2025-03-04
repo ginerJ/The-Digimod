@@ -1,0 +1,27 @@
+{
+  "diet": "carnivore",
+  "xps": [
+    8,
+    7
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.25,
+    "height": 2.75
+  },
+  "default_sp_move": "death_claw",
+  "anims": [
+    "idle8",
+    "sit6",
+    "walk9",
+    "fly",
+    "attack7",
+    "shoot8"
+  ],
+  "rider_offset": -0.2,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "chicomon",
+    "poyomon"
+  ]
+}

@@ -1,4 +1,5 @@
 {
+  "diet": "carnivore",
   "evolutions": {
     "metaltyrannomon": {
       "conditions": {
@@ -10,7 +11,7 @@
           "0:250",
           "5:250"
         ],
-        "rank" : "super"
+        "rank": "super"
       }
     },
     "mametyramon": {
@@ -23,7 +24,7 @@
           "0:300",
           "6:200"
         ],
-        "rank" : "super"
+        "rank": "super"
       }
     },
     "brachimon": {
@@ -37,6 +38,42 @@
           "6:100"
         ]
       }
+    },
+    "extyrannomon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "7:100",
+          "9:100",
+          "0:200"
+        ],
+        "rank": "zero"
+      }
     }
-  }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.2
+  },
+  "default_sp_move": "mega_flame",
+  "anims": [
+    "idle9",
+    "sit6",
+    "walk9",
+    "fly",
+    "attack7",
+    "shoot"
+  ],
+  "rider_offset": 0.2,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ]
 }

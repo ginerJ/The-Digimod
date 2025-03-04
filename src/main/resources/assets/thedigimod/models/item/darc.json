@@ -1,6 +1,7 @@
 {
   "parent" : "minecraft:item/generated",
   "textures" : {
-    "layer0" : "thedigimod:item/darc"
+    "layer0" : "thedigimod:item/darc",
+    "layer1" : "thedigimod:item/darc_overlay"
   }
 }

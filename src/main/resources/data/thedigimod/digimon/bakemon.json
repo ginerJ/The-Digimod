@@ -1,4 +1,5 @@
 {
+  "has_emissive_texture": true,
   "profession": "farmer",
   "evolutions": {
     "monzaemon": {
@@ -12,5 +13,27 @@
         ]
       }
     }
-  }
+  },
+  "xps": [
+    7
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 1.75
+  },
+  "default_sp_move": "poison_breath",
+  "anims": [
+    "idle8",
+    "sit7",
+    "fly4",
+    "fly4",
+    "attack7",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "kiimon",
+    "zurumon"
+  ]
 }

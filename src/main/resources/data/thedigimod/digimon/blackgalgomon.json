@@ -1,3 +1,40 @@
 {
-  "profession": "miner"
+  "profession": "miner",
+  "evolutions": {
+    "blackrapidmon": {
+      "conditions": {
+        "always_can": "false",
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "1:250",
+          "5:250"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    7,
+    1
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "gatling_arm",
+  "anims": [
+    "idle10",
+    "sit16",
+    "walk12",
+    "fly",
+    "attack13",
+    "shoot8"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "conomon"
+  ]
 }

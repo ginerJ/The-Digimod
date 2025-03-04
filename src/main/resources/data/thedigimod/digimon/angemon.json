@@ -1,6 +1,5 @@
 {
   "profession": "tree_lover",
-
   "evolutions": {
     "holyangemon": {
       "conditions": {
@@ -28,5 +27,26 @@
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    8
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.0
+  },
+  "default_sp_move": "heavens_knuckle",
+  "anims": [
+    "idle8",
+    "sit9",
+    "walk7",
+    "float",
+    "attack8",
+    "attack8"
+  ],
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "poyomon"
+  ]
 }

@@ -1,6 +1,6 @@
 {
+  "diet": "bug",
   "profession": "tree_lover",
-
   "evolutions": {
     "okuwamon": {
       "conditions": {
@@ -14,5 +14,27 @@
         ]
       }
     }
-  }
+  },
+  "xps": [
+    2,
+    5
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "thunderbolt",
+  "anims": [
+    "idle8",
+    "sit7",
+    "walk8",
+    "fly",
+    "attack5",
+    "shoot6"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "dokimon"
+  ]
 }

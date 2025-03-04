@@ -1,6 +1,6 @@
 {
+  "diet": "poop",
   "profession": "tree_lover",
-
   "evolutions": {
     "monzaemon": {
       "conditions": {
@@ -13,5 +13,27 @@
         ]
       }
     }
-  }
+  },
+  "xps": [
+    2
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.0
+  },
+  "default_sp_move": "poop_throw",
+  "anims": [
+    "idle8",
+    "sit3",
+    "walk9",
+    "fly",
+    "attack5",
+    "attack"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "bubbmon",
+    "zurumon"
+  ]
 }

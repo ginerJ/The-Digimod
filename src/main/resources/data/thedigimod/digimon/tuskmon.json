@@ -1,4 +1,5 @@
 {
+  "diet": "carnivore",
   "evolutions": {
     "groundramon": {
       "conditions": {
@@ -13,5 +14,28 @@
         ]
       }
     }
-  }
+  },
+  "xps": [
+    6,
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "mega_flame",
+  "anims": [
+    "idle9",
+    "sit6",
+    "walk7",
+    "fly",
+    "attack6",
+    "shoot"
+  ],
+  "rider_offset": -0.4,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ]
 }

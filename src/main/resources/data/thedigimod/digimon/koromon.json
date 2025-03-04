@@ -1,4 +1,5 @@
 {
+  "diet": "baby",
   "evolutions": {
     "agumon": {
       "conditions": {
@@ -14,5 +15,26 @@
         "xp": []
       }
     }
-  }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 1,
+  "hitbox": {
+    "width": 0.9,
+    "height": 0.9
+  },
+  "default_sp_move": "bullet",
+  "anims": [
+    "idle6",
+    "sit7",
+    "walk4",
+    "fly",
+    "attack2",
+    "shoot4"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ]
 }

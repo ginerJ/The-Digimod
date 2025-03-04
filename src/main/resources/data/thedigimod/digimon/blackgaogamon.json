@@ -1,6 +1,5 @@
 {
   "evolutions": {
-
     "blackmachgaogamon": {
       "conditions": {
         "always_can": "false",
@@ -15,7 +14,6 @@
         "rank": "super"
       }
     },
-
     "blackweregarurumon": {
       "conditions": {
         "always_can": "false",
@@ -28,5 +26,28 @@
         ]
       }
     }
-  }
+  },
+  "xps": [
+    7,
+    1
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 1.75
+  },
+  "default_sp_move": "tron_flame",
+  "anims": [
+    "idle8",
+    "sit11",
+    "walk7",
+    "fly",
+    "attack3",
+    "shoot6"
+  ],
+  "rider_offset": 0.0,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "punimon"
+  ]
 }

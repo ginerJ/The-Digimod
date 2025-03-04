@@ -1,3 +1,25 @@
 {
-  "profession": "transporter"
+  "diet": "seafood",
+  "profession": "transporter",
+  "xps": [
+    3
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 1.5
+  },
+  "default_sp_move": "snow_bullet",
+  "anims": [
+    "idle3",
+    "sit",
+    "walk7",
+    "fly",
+    "attack8",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "punimon"
+  ]
 }

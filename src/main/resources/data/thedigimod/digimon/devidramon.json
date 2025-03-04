@@ -1,6 +1,7 @@
 {
+  "has_emissive_texture": true,
+  "diet": "carnivore",
   "profession": "miner",
-
   "evolutions": {
     "cyberdramon": {
       "conditions": {
@@ -13,8 +14,31 @@
           "5:150",
           "7:150"
         ],
-        "rank" : "super"
+        "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    7,
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.2
+  },
+  "default_sp_move": "death_claw",
+  "anims": [
+    "idle8",
+    "sit6",
+    "walk9",
+    "fly6",
+    "attack13",
+    "shoot7"
+  ],
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "jyarimon",
+    "kiimon"
+  ]
 }

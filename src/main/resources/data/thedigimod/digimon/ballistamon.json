@@ -1,6 +1,6 @@
 {
+  "diet": "scrap",
   "profession": "miner",
-
   "evolutions": {
     "shoutmonx3": {
       "conditions": {
@@ -14,5 +14,27 @@
         ]
       }
     }
-  }
+  },
+  "xps": [
+    5,
+    2
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.0
+  },
+  "default_sp_move": "mega_blaster",
+  "anims": [
+    "idle3",
+    "sit6",
+    "walk12",
+    "fly",
+    "attack12",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "bubbmon"
+  ]
 }

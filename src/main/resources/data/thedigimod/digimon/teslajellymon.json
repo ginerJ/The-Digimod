@@ -1,6 +1,7 @@
 {
+  "has_emissive_texture": true,
+  "diet": "seafood",
   "profession": "transporter",
-
   "evolutions": {
     "thetismon": {
       "conditions": {
@@ -15,5 +16,26 @@
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    3
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 1.8
+  },
+  "default_sp_move": "thunderbolt",
+  "anims": [
+    "idle",
+    "sit",
+    "walk",
+    "fly",
+    "attack",
+    "shoot"
+  ],
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "puyomon"
+  ]
 }

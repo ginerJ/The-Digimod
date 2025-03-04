@@ -1,0 +1,26 @@
+{
+  "xps": [
+    7,
+    1
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 2,
+    "height": 1.75
+  },
+  "default_sp_move": "world_slash",
+  "anims": [
+    "idle5",
+    "sit17",
+    "walk7",
+    "fly",
+    "attack3",
+    "shoot"
+  ],
+  "rider_offset": 0.2,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "punimon",
+    "zurumon"
+  ]
+}

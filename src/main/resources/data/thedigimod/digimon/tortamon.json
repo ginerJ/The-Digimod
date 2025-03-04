@@ -1,6 +1,5 @@
 {
   "profession": "miner",
-
   "evolutions": {
     "brachimon": {
       "conditions": {
@@ -15,5 +14,27 @@
         "rank": "super"
       }
     }
-  }
+  },
+  "xps": [
+    6
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.5
+  },
+  "default_sp_move": "gliding_rocks",
+  "anims": [
+    "idle5",
+    "sit6",
+    "walk7",
+    "fly",
+    "attack3",
+    "shoot6"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "datirimon",
+    "sunamon"
+  ]
 }
