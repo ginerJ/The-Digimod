@@ -1,0 +1,110 @@
+{
+  "profession": "lumberjack",
+  "diet": "carnivore",
+  "evolutions": {
+    "tyrannomon": {
+      "conditions": {
+        "always_can": "true",
+        "rank": "super"
+      }
+    },
+    "numemon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "greymon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "0:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "flarerizamon": {
+      "conditions": {
+        "mood": "Meh",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "0:100"
+        ]
+      }
+    },
+    "veedramon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "6:100"
+        ]
+      }
+    },
+    "tuskmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "6:50",
+          "0:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "cyclomon": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "5",
+        "min_wins": "15",
+        "xp": [
+          "6:50",
+          "0:50"
+        ],
+        "rank": "zero"
+      }
+    },
+    "greymonvirus": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "0:100"
+        ],
+        "item": {
+          "thedigimod:black_digitron": 5
+        }
+      }
+    }
+  },
+
+  "digitron" : "agumonblack",
+
+  "xps": [
+    0
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "pepper_breath",
+  "anims": [
+    "idle11",
+    "sit3",
+    "walk5",
+    "fly",
+    "attack",
+    "attack13"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ]
+}

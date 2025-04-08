@@ -1,0 +1,10 @@
+{
+  "type": "thedigimod:add_tag_ambient_spawns",
+  "biomes": [
+    "minecraft:lush_caves"
+  ],
+  "weight": 1,
+  "minCount": 1,
+  "maxCount": 6,
+  "entity_tag": "thedigimod:spawns/planinsect_adult"
+}

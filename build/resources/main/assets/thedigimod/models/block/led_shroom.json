@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "thedigimod:block/led_shroom"
+  },
+  "render_type": "cutout"
+}

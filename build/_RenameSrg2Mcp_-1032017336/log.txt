@@ -1,0 +1,15 @@
+Java Launcher: C:\Users\juanc\.gradle\jdks\eclipse_adoptium-17-amd64-windows\jdk-17.0.9+9\bin\java.exe
+Arguments: '--task, SRG_TO_MCP, --input, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\software.bernie.geckolib\geckolib-forge-1.20\4.2\f2e964b2cbb27b8dffb5d8130d901350d6b27914\geckolib-forge-1.20-4.2.jar, --output, C:\Users\juanc\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.20\4.2_mapped_official_1.20\geckolib-forge-1.20-4.2_mapped_official_1.20.jar, --mcp, C:\Users\juanc\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\mapping\1.20\mapping-1.20-mapping.zip, --strip-signatures'
+Classpath:
+ - C:\Users\juanc\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\installertools\1.3.2\installertools-1.3.2-fatjar.jar
+Working directory: C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod\build\_RenameSrg2Mcp_-1032017336
+Main class: net.minecraftforge.installertools.ConsoleTool
+====================================
+Task: SRG_TO_MCP
+Input:  C:\Users\juanc\.gradle\caches\modules-2\files-2.1\software.bernie.geckolib\geckolib-forge-1.20\4.2\f2e964b2cbb27b8dffb5d8130d901350d6b27914\geckolib-forge-1.20-4.2.jar
+Output: C:\Users\juanc\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.20\4.2_mapped_official_1.20\geckolib-forge-1.20-4.2_mapped_official_1.20.jar
+MCP:    C:\Users\juanc\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\mapping\1.20\mapping-1.20-mapping.zip
+Loading MCP Data
+Processing ZIP file
+Stripped Manifest of sha digests
+Process complete

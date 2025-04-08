@@ -1,0 +1,10 @@
+{
+  "type": "thedigimod:add_tag_spawns",
+  "biomes": [
+    "minecraft:warped_forest"
+  ],
+  "weight": 10,
+  "minCount": 1,
+  "maxCount": 1,
+  "entity_tag": "thedigimod:spawns/warped_forest"
+}

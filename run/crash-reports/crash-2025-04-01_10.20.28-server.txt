@@ -1,0 +1,189 @@
+---- Minecraft Crash Report ----
+// Don't be sad, have a hug! <3
+
+Time: 2025-04-01 10:20:28
+Description: Ticking entity
+
+java.lang.NumberFormatException: For input string: ""
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?] {}
+	at java.lang.Integer.parseInt(Integer.java:678) ~[?:?] {}
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?] {}
+	at com.google.gson.JsonPrimitive.getAsInt(JsonPrimitive.java:219) ~[gson-2.10.jar%23130!/:?] {}
+	at net.modderg.thedigimod.server.entity.managers.DigimonJsonDataManager.getEvConditionFromJson(DigimonJsonDataManager.java:118) ~[%23196!/:?] {re:classloading}
+	at net.modderg.thedigimod.server.entity.managers.DigimonJsonDataManager.lambda$applyJsonData$1(DigimonJsonDataManager.java:70) ~[%23196!/:?] {re:classloading}
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[?:?] {}
+	at java.util.Iterator.forEachRemaining(Iterator.java:133) ~[?:?] {}
+	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845) ~[?:?] {}
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[?:?] {}
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[?:?] {}
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575) ~[?:?] {}
+	at java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260) ~[?:?] {}
+	at java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616) ~[?:?] {}
+	at java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622) ~[?:?] {}
+	at java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627) ~[?:?] {}
+	at net.modderg.thedigimod.server.entity.managers.DigimonJsonDataManager.applyJsonData(DigimonJsonDataManager.java:72) ~[%23196!/:?] {re:classloading}
+	at net.modderg.thedigimod.server.entity.TDEntities.createDigimonWithJsonData(TDEntities.java:73) ~[%23196!/:?] {re:classloading}
+	at net.modderg.thedigimod.server.entity.TDEntities.lambda$registerEntitesFromJsonData$0(TDEntities.java:52) ~[%23196!/:?] {re:classloading}
+	at net.minecraft.world.entity.EntityType.create(EntityType.java:525) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,xf:fml:forge:forge_method_redirector}
+	at net.modderg.thedigimod.server.entity.DigimonEntity.trySpawnDigimonRider(DigimonEntity.java:817) ~[%23196!/:?] {re:classloading}
+	at net.modderg.thedigimod.server.entity.DigimonEntity.tick(DigimonEntity.java:1186) ~[%23196!/:?] {re:classloading}
+	at net.minecraft.server.level.ServerLevel.tickNonPassenger(ServerLevel.java:693) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.world.level.Level.guardEntityTick(Level.java:479) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerLevel.lambda$tick$6(ServerLevel.java:343) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:323) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:893) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:814) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:89) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:661) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:251) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?] {}
+	at java.lang.Integer.parseInt(Integer.java:678) ~[?:?] {}
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?] {}
+	at com.google.gson.JsonPrimitive.getAsInt(JsonPrimitive.java:219) ~[gson-2.10.jar%23130!/:?] {}
+	at net.modderg.thedigimod.server.entity.managers.DigimonJsonDataManager.getEvConditionFromJson(DigimonJsonDataManager.java:118) ~[%23196!/:?] {re:classloading}
+	at net.modderg.thedigimod.server.entity.managers.DigimonJsonDataManager.lambda$applyJsonData$1(DigimonJsonDataManager.java:70) ~[%23196!/:?] {re:classloading}
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) ~[?:?] {}
+	at java.util.Iterator.forEachRemaining(Iterator.java:133) ~[?:?] {}
+	at java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845) ~[?:?] {}
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[?:?] {}
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[?:?] {}
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575) ~[?:?] {}
+	at java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260) ~[?:?] {}
+	at java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616) ~[?:?] {}
+	at java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622) ~[?:?] {}
+	at java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627) ~[?:?] {}
+	at net.modderg.thedigimod.server.entity.managers.DigimonJsonDataManager.applyJsonData(DigimonJsonDataManager.java:72) ~[%23196!/:?] {re:classloading}
+	at net.modderg.thedigimod.server.entity.TDEntities.createDigimonWithJsonData(TDEntities.java:73) ~[%23196!/:?] {re:classloading}
+	at net.modderg.thedigimod.server.entity.TDEntities.lambda$registerEntitesFromJsonData$0(TDEntities.java:52) ~[%23196!/:?] {re:classloading}
+	at net.minecraft.world.entity.EntityType.create(EntityType.java:525) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,xf:fml:forge:forge_method_redirector}
+	at net.modderg.thedigimod.server.entity.DigimonEntity.trySpawnDigimonRider(DigimonEntity.java:817) ~[%23196!/:?] {re:classloading}
+	at net.modderg.thedigimod.server.entity.DigimonEntity.tick(DigimonEntity.java:1186) ~[%23196!/:?] {re:classloading}
+	at net.minecraft.server.level.ServerLevel.tickNonPassenger(ServerLevel.java:693) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.world.level.Level.guardEntityTick(Level.java:479) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerLevel.lambda$tick$6(ServerLevel.java:343) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:323) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+-- Entity being ticked --
+Details:
+	Entity Type: thedigimod:darktyrannomon (net.modderg.thedigimod.server.entity.DigimonEntity)
+	Entity ID: 511
+	Entity Name: Digimon (21Lv)
+	Entity's Exact location: -197.00, 69.00, -78.00
+	Entity's Block location: World: (-197,69,-78), Section: (at 11,5,2 in -13,4,-5; chunk contains blocks -208,-64,-80 to -193,319,-65), Region: (-1,-1; contains chunks -32,-32 to -1,-1, blocks -512,-64,-512 to -1,319,-1)
+	Entity's Momentum: 0.00, 0.00, 0.00
+	Entity's Passengers: []
+	Entity's Vehicle: null
+Stacktrace:
+	at net.minecraft.world.level.Level.guardEntityTick(Level.java:479) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerLevel.lambda$tick$6(ServerLevel.java:343) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:323) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:893) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:814) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:89) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:661) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:251) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+
+
+-- Affected level --
+Details:
+	All players: 0 total; []
+	Chunk stats: 2209
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (-160,68,16), Section: (at 0,4,0 in -10,4,1; chunk contains blocks -160,-64,16 to -145,319,31), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,-64,0 to -1,319,511)
+	Level time: 1 game time, 1 day time
+	Level name: New World
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+	Level weather: Rain time: 149139 (now: false), thunder time: 62196 (now: false)
+	Known server brands: forge
+	Removed feature flags: 
+	Level was modded: true
+	Level storage version: 0x04ABD - Anvil
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:893) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:814) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:89) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:661) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:251) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.20.1
+	Minecraft Version ID: 1.20.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.9, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 1549139568 bytes (1477 MiB) / 4152360960 bytes (3960 MiB) up to 8573157376 bytes (8176 MiB)
+	CPUs: 12
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 5 5600 6-Core Processor              
+	Identifier: AuthenticAMD Family 25 Model 33 Stepping 2
+	Microarchitecture: Zen 3
+	Frequency (GHz): 3.49
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 12
+	Graphics card #0 name: NVIDIA GeForce RTX 3090
+	Graphics card #0 vendor: NVIDIA (0x10de)
+	Graphics card #0 VRAM (MB): 4095.00
+	Graphics card #0 deviceId: 0x2204
+	Graphics card #0 versionInfo: DriverVersion=32.0.15.7283
+	Memory slot #0 capacity (MB): 16384.00
+	Memory slot #0 clockSpeed (GHz): 2.40
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 16384.00
+	Memory slot #1 clockSpeed (GHz): 2.40
+	Memory slot #1 type: DDR4
+	Virtual memory max (MB): 37555.70
+	Virtual memory used (MB): 27644.24
+	Swap memory total (MB): 4864.00
+	Swap memory used (MB): 238.35
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Server Running: true
+	Player Count: 0 / 8; []
+	Data Packs: vanilla, mod:forge, mod:thedigimod (incompatible), mod:xaerominimap, mod:geckolib
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Stable
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'; Server brand changed to 'forge'
+	Launched Version: MOD_DEV
+	ModLauncher: 10.0.10+10.0.10+main.22f00f84
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		mixin-0.8.5.jar mixin PLUGINSERVICE 
+		eventbus-6.0.5.jar eventbus PLUGINSERVICE 
+		loader-47.1.47.jar slf4jfixer PLUGINSERVICE 
+		loader-47.1.47.jar object_holder_definalize PLUGINSERVICE 
+		loader-47.1.47.jar runtime_enum_extender PLUGINSERVICE 
+		loader-47.1.47.jar capability_token_subclass PLUGINSERVICE 
+		accesstransformers-8.0.4.jar accesstransformer PLUGINSERVICE 
+		loader-47.1.47.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-10.0.10.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-10.0.10.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		lowcodefml@47.1
+		minecraft@47.1
+		javafml@47.1
+	Mod List: 
+		forge-1.20.1-47.1.79_mapped_official_1.20-recomp.j|Minecraft                     |minecraft                     |1.20.1              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |NeoForge                      |forge                         |47.1.79             |DONE      |Manifest: NOSIGNATURE
+		main                                              |The Digimod                   |thedigimod                    |1.20-1.0.0          |DONE      |Manifest: NOSIGNATURE
+		Xaeros-263420-4812568_mapped_official_1.20.jar    |Xaero's Minimap               |xaerominimap                  |23.8.4              |DONE      |Manifest: NOSIGNATURE
+		geckolib-forge-1.20.1-4.7_mapped_official_1.20.jar|GeckoLib 4                    |geckolib                      |4.7                 |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 8f9c3880-c8f6-4041-a3f2-5622a9c48e16
+	FML: 47.1
+	NeoForge: net.neoforged:47.1.79

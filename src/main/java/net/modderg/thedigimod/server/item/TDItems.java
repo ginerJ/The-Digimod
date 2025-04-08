@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
-import net.modderg.thedigimod.server.block.BlocksInit;
+import net.modderg.thedigimod.server.block.TDBlocks;
 import net.modderg.thedigimod.server.goods.InitGoods;
 import net.modderg.thedigimod.client.particles.DigitalParticles;
 import net.modderg.thedigimod.server.item.custom.*;
@@ -49,9 +49,9 @@ public class TDItems {
     public static final RegistryObject<Item> DIGIMON_BLUE_CARD = ITEMS.register("blue_card", () -> new DigimonItem(new Item.Properties().stacksTo(16)));
 
     //Food(? Items
-    public static final RegistryObject<Item> DIGI_MEAT = ITEMS.register("digi_meat", () -> new ItemNameBlockItem(BlocksInit.MEAT_CROP.get(), new Item.Properties().food(Foods.POTATO)));
+    public static final RegistryObject<Item> DIGI_MEAT = ITEMS.register("digi_meat", () -> new DigitalItemNameBlockItem(TDBlocks.MEAT_CROP.get(), new Item.Properties().food(Foods.POTATO)));
     public static final RegistryObject<Item> DIGI_MEAT_ROTTEN = ITEMS.register("digi_meat_rotten", () -> new Item(new Item.Properties().food(Foods.POTATO)));
-    public static final RegistryObject<Item> DIGI_MEAT_BIG = ITEMS.register("digi_meat_big", () -> new ItemNameBlockItem(BlocksInit.MEAT_CROP.get(), new Item.Properties().food(Foods.BAKED_POTATO)));
+    public static final RegistryObject<Item> DIGI_MEAT_BIG = ITEMS.register("digi_meat_big", () -> new DigitalItemNameBlockItem(TDBlocks.MEAT_CROP.get(), new Item.Properties().food(Foods.BAKED_POTATO)));
     public static final RegistryObject<Item> DIGI_RIBS = ITEMS.register("digi_ribs", () -> new Item(new Item.Properties().food(Foods.COOKED_BEEF)));
 
     public static final RegistryObject<Item> DIGI_SUSHI = ITEMS.register("digi_sushi", () -> new Item(new Item.Properties().food(Foods.COOKED_SALMON)));

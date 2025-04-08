@@ -1,0 +1,172 @@
+---- Minecraft Crash Report ----
+// Don't be sad, have a hug! <3
+
+Time: 2024-05-08 21:47:05
+Description: Unexpected error
+
+java.lang.IllegalArgumentException: duplicate element: digi_meat
+	at java.util.ImmutableCollections$SetN.<init>(ImmutableCollections.java:918) ~[?:?] {}
+	at java.util.Set.of(Set.java:544) ~[?:?] {}
+	at net.modderg.thedigimod.item.InitItems.digiFood(InitItems.java:36) ~[main/:?] {re:classloading}
+	at net.modderg.thedigimod.entity.CustomDigimon.isDigiFood(CustomDigimon.java:673) ~[main/:?] {re:classloading}
+	at net.modderg.thedigimod.entity.CustomDigimon.mobInteract(CustomDigimon.java:897) ~[main/:?] {re:classloading}
+	at net.minecraft.world.entity.Mob.interact(Mob.java:1122) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.world.entity.player.Player.interactOn(Player.java:979) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_playerentity_iswearing}
+	at net.minecraft.client.multiplayer.MultiPlayerGameMode.interact(MultiPlayerGameMode.java:405) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.startUseItem(Minecraft.java:1684) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.handleKeybinds(Minecraft.java:1976) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.tick(Minecraft.java:1795) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1112) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:718) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:126) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:114) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.runService(ForgeClientUserdevLaunchHandler.java:19) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:108) ~[loader-47.1.47.jar:47.1] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at java.util.ImmutableCollections$SetN.<init>(ImmutableCollections.java:918) ~[?:?] {}
+	at java.util.Set.of(Set.java:544) ~[?:?] {}
+	at net.modderg.thedigimod.item.InitItems.digiFood(InitItems.java:36) ~[%23194!/:?] {re:classloading}
+	at net.modderg.thedigimod.entity.CustomDigimon.isDigiFood(CustomDigimon.java:673) ~[%23194!/:?] {re:classloading}
+	at net.modderg.thedigimod.entity.CustomDigimon.mobInteract(CustomDigimon.java:897) ~[%23194!/:?] {re:classloading}
+	at net.minecraft.world.entity.Mob.interact(Mob.java:1122) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.world.entity.player.Player.interactOn(Player.java:979) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_playerentity_iswearing}
+	at net.minecraft.client.multiplayer.MultiPlayerGameMode.interact(MultiPlayerGameMode.java:405) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.startUseItem(Minecraft.java:1684) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.handleKeybinds(Minecraft.java:1976) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+-- Affected level --
+Details:
+	All players: 1 total; [LocalPlayer['Dev'/2, l='ClientLevel', x=-10.42, y=-58.50, z=16.82]]
+	Chunk stats: 729, 453
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (0,-61,0), Section: (at 0,3,0 in 0,-4,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Level time: 146689 game time, 2595 day time
+	Server brand: forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.ClientLevel.fillReportDetails(ClientLevel.java:455) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,xf:fml:xaerominimap:xaero_clientworldclass,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.fillReport(Minecraft.java:2319) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:740) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:126) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:114) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.runService(ForgeClientUserdevLaunchHandler.java:19) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:108) ~[loader-47.1.47.jar:47.1] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: Yes
+	Packs: vanilla, mod_resources
+
+-- System Details --
+Details:
+	Minecraft Version: 1.20.1
+	Minecraft Version ID: 1.20.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.9, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 946095600 bytes (902 MiB) / 1994391552 bytes (1902 MiB) up to 4276092928 bytes (4078 MiB)
+	CPUs: 12
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 5 3600 6-Core Processor              
+	Identifier: AuthenticAMD Family 23 Model 113 Stepping 0
+	Microarchitecture: Zen 2
+	Frequency (GHz): 3.59
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 12
+	Graphics card #0 name: AMD Radeon RX 7600 XT
+	Graphics card #0 vendor: Advanced Micro Devices, Inc. (0x1002)
+	Graphics card #0 VRAM (MB): 4095.00
+	Graphics card #0 deviceId: 0x7480
+	Graphics card #0 versionInfo: DriverVersion=31.0.24031.5001
+	Memory slot #0 capacity (MB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 2.67
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 2.67
+	Memory slot #1 type: DDR4
+	Virtual memory max (MB): 26034.19
+	Virtual memory used (MB): 19031.46
+	Swap memory total (MB): 9728.00
+	Swap memory used (MB): 683.40
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Launched Version: MOD_DEV
+	Backend library: LWJGL version 3.3.1 build 7
+	Backend API: AMD Radeon RX 7600 XT GL version 4.6.0 Core Profile Context 24.4.1.240409, ATI Technologies Inc.
+	Window size: 1920x1017
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: 
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'forge'; Server brand changed to 'forge'
+	Type: Integrated Server (map_client.txt)
+	Graphics mode: fancy
+	Resource Packs: vanilla, mod_resources
+	Current Language: en_us
+	CPU: 12x AMD Ryzen 5 3600 6-Core Processor 
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/2, l='ServerLevel[PROFESSION TESTS]', x=-10.42, y=-58.50, z=16.82]]
+	Data Packs: vanilla, mod:forge, mod:thedigimod (incompatible), mod:xaerominimap, mod:geckolib
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Stable
+	ModLauncher: 10.0.10+10.0.10+main.22f00f84
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		mixin-0.8.5.jar mixin PLUGINSERVICE 
+		eventbus-6.0.5.jar eventbus PLUGINSERVICE 
+		loader-47.1.47.jar slf4jfixer PLUGINSERVICE 
+		loader-47.1.47.jar object_holder_definalize PLUGINSERVICE 
+		loader-47.1.47.jar runtime_enum_extender PLUGINSERVICE 
+		loader-47.1.47.jar capability_token_subclass PLUGINSERVICE 
+		accesstransformers-8.0.4.jar accesstransformer PLUGINSERVICE 
+		loader-47.1.47.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-10.0.10.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-10.0.10.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		lowcodefml@47.1
+		minecraft@47.1
+		javafml@47.1
+	Mod List: 
+		forge-1.20.1-47.1.79_mapped_official_1.20-recomp.j|Minecraft                     |minecraft                     |1.20.1              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |NeoForge                      |forge                         |47.1.79             |DONE      |Manifest: NOSIGNATURE
+		main                                              |The Digimod                   |thedigimod                    |1.20-1.0.0          |DONE      |Manifest: NOSIGNATURE
+		Xaeros-263420-4812568_mapped_official_1.20.jar    |Xaero's Minimap               |xaerominimap                  |23.8.4              |DONE      |Manifest: NOSIGNATURE
+		geckolib-forge-1.20-4.2_mapped_official_1.20.jar  |GeckoLib 4                    |geckolib                      |4.2                 |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 60fbf9c7-f491-4d5f-bf7d-07b2d52b8847
+	FML: 47.1
+	NeoForge: net.neoforged:47.1.79

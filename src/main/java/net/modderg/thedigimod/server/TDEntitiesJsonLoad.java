@@ -3,51 +3,72 @@ package net.modderg.thedigimod.server;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.loading.moddiscovery.ModFile;
+import net.minecraftforge.fml.loading.moddiscovery.ModFileInfo;
+import net.minecraftforge.fml.loading.moddiscovery.ModInfo;
+import net.minecraftforge.forgespi.language.IModFileInfo;
+import net.minecraftforge.forgespi.language.IModInfo;
+import net.minecraftforge.forgespi.locating.IModFile;
+import oshi.util.tuples.Pair;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class TDEntitiesJsonLoad {
-    private static final Map<String, JsonObject> DIGIMON_DATA = new HashMap<>();
 
-    public static Map<String, JsonObject> getDigimonData() {
-        return DIGIMON_DATA;
-    }
+    public static List<Pair<String, JsonObject>> getAllDigimonJsons() {
+        List<Pair<String, JsonObject>> results = new ArrayList<>();
 
-    public static void loadDigimonData() {
+        List<IModInfo> modInfos = ModList.get().getMods();
 
-        for (String file : getDigimonFiles()) {
-            String path = "/data/thedigimod/digimon/" + file + ".json";
-            try (InputStream stream = TDEntitiesJsonLoad.class.getResourceAsStream(path);
-                 InputStreamReader reader = new InputStreamReader(stream)) {
-                JsonElement element = JsonParser.parseReader(reader);
-                if (element.isJsonObject())
-                    DIGIMON_DATA.put(file, element.getAsJsonObject());
-            } catch (Exception e) {
-                System.err.println("Failed to load Digimon JSON: " + file + ".json");
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static List<String> getDigimonFiles() {
-
-        try (InputStream stream = TDEntitiesJsonLoad.class.getResourceAsStream("/data/thedigimod/digimon/digimon.json");
-             InputStreamReader reader = new InputStreamReader(stream)) {
-            JsonObject element = JsonParser.parseReader(reader).getAsJsonObject();
-
-            return element.get("digimon").getAsJsonArray().asList().stream().map(JsonElement::getAsString).toList();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        int theDigimodIdx = 0;
+        for(IModInfo modInfo : modInfos) {
+            if (modInfo.getModId().equals("thedigimod"))
+                break;
+            theDigimodIdx++;
         }
 
-        return new ArrayList<>();
+        modInfos.add(modInfos.remove(theDigimodIdx));
+
+        for (IModInfo modInfo : modInfos) {
+            String modId = modInfo.getModId();
+            IModFile modFile = modInfo.getOwningFile().getFile();
+
+            Path digimonDir = modFile.findResource("data/thedigimod/digimon");
+
+            if (Files.exists(digimonDir))
+                try (Stream<Path> paths = Files.walk(digimonDir)) {
+                    paths.filter(Files::isRegularFile)
+                            .filter(path -> path.toString().endsWith(".json"))
+                            .forEach(path -> {
+                                try (InputStream is = Files.newInputStream(path);
+                                     InputStreamReader reader = new InputStreamReader(is)) {
+                                    JsonElement json = JsonParser.parseReader(reader);
+                                    if (json.isJsonObject()) {
+                                        String name = path.getFileName().toString().replace(".json", "");
+                                        if(!containsKey(results, name))
+                                            results.add(new Pair(name, json.getAsJsonObject()));
+                                    }
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
+        return results;
     }
 
-    public static JsonObject getDigimonData(String name) {
-        return DIGIMON_DATA.get(name);
+    public static boolean containsKey(List<Pair<String, JsonObject>> list, String key) {
+        return list.stream().anyMatch(pair -> pair.getA().equals(key));
     }
 
 }

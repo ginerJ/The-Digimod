@@ -7,7 +7,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.phys.BlockHitResult;
-import net.modderg.thedigimod.server.ModCommonConfigs;
+import net.modderg.thedigimod.server.TDConfig;
 
 public class ProjectileEffectFire extends ProjectileEffect{
 
@@ -26,7 +26,7 @@ public class ProjectileEffectFire extends ProjectileEffect{
 
     @Override
     public void applyBlockEffects(BlockHitResult target) {
-        if((ModCommonConfigs.FIRE_ATTACKS.get() && projectile.level().getGameRules().getRule(GameRules.RULE_MOBGRIEFING).get()) && !projectile.level().players().isEmpty())
+        if((TDConfig.FIRE_ATTACKS.get() && projectile.level().getGameRules().getRule(GameRules.RULE_MOBGRIEFING).get()) && !projectile.level().players().isEmpty())
             flint.useOn(new UseOnContext(projectile.level(), projectile.level().players().get(0), InteractionHand.MAIN_HAND, flint, target));
     }
 }

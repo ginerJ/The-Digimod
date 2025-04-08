@@ -1,0 +1,10 @@
+{
+  "type": "thedigimod:add_tag_spawns",
+  "biomes": [
+    "minecraft:crimson_forest"
+  ],
+  "weight": 1,
+  "minCount": 1,
+  "maxCount": 1,
+  "entity_tag": "thedigimod:spawns/crimson_forest"
+}

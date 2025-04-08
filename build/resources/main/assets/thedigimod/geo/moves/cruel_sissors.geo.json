@@ -1,0 +1,37 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "sissor",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "sissors2",
+					"parent": "sissor",
+					"pivot": [0, 10, -0.2],
+					"cubes": [
+						{"origin": [-5, 0, -0.2], "size": [16, 32, 0], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "sissors",
+					"parent": "sissor",
+					"pivot": [0, 10, 0.1],
+					"cubes": [
+						{"origin": [-11, 0, 0.1], "size": [16, 32, 0], "uv": [0, 0], "mirror": true}
+					]
+				}
+			]
+		}
+	]
+}

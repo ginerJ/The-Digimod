@@ -1,0 +1,39 @@
+{
+  "diet": "poop",
+  "profession": "farmer",
+  "evolutions": {
+    "monzaemon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "7:400"
+        ]
+      }
+    }
+  },
+  "xps": [
+    1,
+    9
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "poop_throw",
+  "anims": [
+    "idle8",
+    "sit",
+    "walk7",
+    "fly",
+    "attack5",
+    "shoot5"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "dokimon",
+    "zurumon"
+  ]
+}

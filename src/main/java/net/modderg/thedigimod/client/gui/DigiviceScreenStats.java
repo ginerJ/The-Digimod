@@ -262,7 +262,7 @@ public class DigiviceScreenStats {
 
         for (EvolutionCondition cond : conditions.conditions) {
             cond.renderCondition(guiGraphics, x, yMultiplier);
-            yMultiplier -= 11;
+            yMultiplier -= cond.getGuiHeight();
         }
 
         if (conditions.conditions.isEmpty()) {

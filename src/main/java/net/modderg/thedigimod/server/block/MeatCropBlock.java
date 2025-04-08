@@ -6,6 +6,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -21,12 +22,12 @@ public class MeatCropBlock extends CropBlock {
         super(properties);
     }
 
-    protected static float getGrowthSpeed(Block p_52273_, BlockGetter p_52274_, BlockPos p_52275_) {
+    protected static float getGrowthSpeed(@NotNull Block p_52273_, BlockGetter p_52274_, BlockPos p_52275_) {
         return CropBlock.getGrowthSpeed(p_52273_,p_52274_,p_52275_)*1.5f;
     }
 
     @Override
-    public void randomTick(BlockState p_221050_, ServerLevel p_221051_, @NotNull BlockPos p_221052_, @NotNull RandomSource p_221053_) {
+    public void randomTick(@NotNull BlockState p_221050_, ServerLevel p_221051_, @NotNull BlockPos p_221052_, @NotNull RandomSource p_221053_) {
         if (!p_221051_.isAreaLoaded(p_221052_, 1)) return;
         if (p_221051_.getRawBrightness(p_221052_, 0) >= 9) {
             int i = this.getAge(p_221050_);
@@ -38,16 +39,15 @@ public class MeatCropBlock extends CropBlock {
                 }
             }
         }
-
     }
 
     @Override
-    protected ItemLike getBaseSeedId() {
+    protected @NotNull ItemLike getBaseSeedId() {
         return TDItems.DIGI_MEAT.get();
     }
 
     @Override
-    public IntegerProperty getAgeProperty() {
+    public @NotNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 

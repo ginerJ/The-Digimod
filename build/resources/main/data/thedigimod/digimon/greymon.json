@@ -1,0 +1,82 @@
+{
+  "diet": "carnivore",
+  "evolutions": {
+    "metalgreymon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:250",
+          "5:250"
+        ],
+        "item": {
+          "thedigimod:chrome_digizoid": 10
+        },
+        "rank": "super"
+      }
+    },
+    "metalgreymonvirus": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:250",
+          "5:250"
+        ],
+        "item": {
+          "thedigimod:chrome_digizoid": 10,
+          "thedigimod:black_digitron": 5
+        },
+        "rank": "super"
+      }
+    },
+    "skullgreymon": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "20",
+        "min_wins": "45",
+        "xp": [
+          "0:250",
+          "7:250"
+        ],
+        "rank": "super"
+      }
+    },
+    "brachimon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:300",
+          "6:100"
+        ]
+      }
+    }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "mega_flame",
+  "anims": [
+    "idle5",
+    "sit4",
+    "walk7",
+    "fly",
+    "attack",
+    "attack6"
+  ],
+  "rider_offset": 0.25,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ],
+  "digitron" : "greymonvirus"
+}

@@ -1,0 +1,2121 @@
+Java Launcher: C:\Users\juanc\.gradle\jdks\eclipse_adoptium-17-amd64-windows\jdk-17.0.9+9\bin\java.exe
+Arguments: '--input, C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod-private\build\libs\thedigimod-0.0.1-1.19.jar, --output, C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod-private\build\reobfJar\output.jar, --names, C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod-private\build\reobfJar\mappings.tsrg, --lib, C:\Users\juanc\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.20.1\4.7_mapped_official_1.20\geckolib-forge-1.20.1-4.7_mapped_official_1.20.jar, --lib, C:\Users\juanc\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\Xaeros-263420\4812568_mapped_official_1.20\Xaeros-263420-4812568_mapped_official_1.20.jar, --lib, C:\Users\juanc\.gradle\caches\forge_gradle\minecraft_user_repo\net\neoforged\forge\1.20.1-47.1.79_mapped_official_1.20\forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar, --lib, C:\Users\juanc\.gradle\caches\forge_gradle\minecraft_repo\versions\1.20.1\client-extra.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\loader\47.1.47\69ee070bf404064508f5d7ce76b85787eeea7f54\loader-47.1.47.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarSelector\0.3.19\376cc9c8ea60720cf027c01fc033de915699801c\JarJarSelector-0.3.19.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarMetadata\0.3.19\83feaa9b770e6ac0e96ee4fc23fa89325c5fe2\JarJarMetadata-0.3.19.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\31.1-jre\60458f877d055d0c9114d9e1a2efb737b4bc282c\guava-31.1-jre.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\ca.weblite\java-objc-bridge\1.1\1227f9e0666314f9de41477e3ec277e542ed7f7b\java-objc-bridge-1.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\forgespi\7.0.1\3b4972a0cdb135853dba219be61a79b22cff1309\forgespi-7.0.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mergetool\1.1.5\f3da18e12c696d35a47c82cbb2cc8b5aa15e1154\mergetool-1.1.5-api.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\24.0.1\13c5c75c4206580aa4d683bffee658caae6c9f43\annotations-24.0.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\earlydisplay\47.1.47\46509b19504a71e25b115383e900aade5088598a\earlydisplay-47.1.47.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\2.1.10\51e6a22c6c716beb11e244bf5b8be480f51dd6b5\securejarhandler-2.1.10.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\cpw.mods\modlauncher\10.0.9\6d9443f56f50bb85cea383686ff9c867391458b\modlauncher-10.0.9.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.openjdk.nashorn\nashorn-core\15.3\43977e804697048fc8d81d333a36c17d07a5b3dd\nashorn-core-15.3.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.5\19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0\asm-commons-9.5.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.5\64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe\asm-util-9.5.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.5\490bacc77de7cbc0be1a30bb3471072d705be4a4\asm-analysis-9.5.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.5\fd33c8b6373abaa675be407082fdfda35021254a\asm-tree-9.5.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.5\dc6ea1875f4d64fbc85e1691c95b96a3d8569c90\asm-9.5.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\accesstransformers\8.0.4\272d240aa73f42195b2a68e2ebd8b701ecf41f63\accesstransformers-8.0.4.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.antlr\antlr4\4.9.1\e92af8ab33e428461927b484e90bb155a4f3a052\antlr4-4.9.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.antlr\antlr4-runtime\4.9.1\428664f05d2b7f7b7610204b5aa7c1763f62011a\antlr4-runtime-4.9.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\events\47.1.47\d6bf266eabb0c7e353d3a2e47a47e6ba6392ab96\events-47.1.47.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\core\47.1.47\915a0dc36418f3c3bf74e56015d1cb79ef5430f0\core-47.1.47.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\eventbus\6.0.5\699143dd438431d06b57416944f7cedbe52e1475\eventbus-6.0.5.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\coremods\5.0.1\386b00279628b105b2d507539c46e134e96f6237\coremods-5.0.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\unsafe\0.2.0\54d7a0a5e8fdb71b973025caa46f341ae5904f39\unsafe-0.2.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.electronwill.night-config\toml\3.6.4\51d6cefb2b55ee55ee26b16391212fb2c7dfb4f4\toml-3.6.4.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.electronwill.night-config\core\3.6.4\510f174abbf1c947494db50ef2445683bd52c230\core-3.6.4.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.maven\maven-artifact\3.8.5\4433f50c07debefaed0553bd0068f4f48d449313\maven-artifact-3.8.5.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.jodah\typetools\0.6.3\a01aaa6ddaea9ec07ec4f209487b7a46a526283a\typetools-0.6.3.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecrell\terminalconsoleappender\1.2.0\96d02cd3b384ff015a8fef4223bcb4ccf1717c95\terminalconsoleappender-1.2.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.jline\jline-reader\3.12.1\4382ab1382c7b6f379377ed5f665dc2f6e1218bc\jline-reader-3.12.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.jline\jline-terminal\3.12.1\c777448314e050d980a6b697c140f3bfe9eb7416\jline-terminal-3.12.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.spongepowered\mixin\0.8.5\9d1c0c3a304ae6697ecd477218fa61b850bf57fc\mixin-0.8.5.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\language-java\47.1.47\9f5f057de5fea5106fca0df2b0faea12a85bc283\language-java-47.1.47.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\language-lowcode\47.1.47\b9cb4bc84722dc99e902883f8ea5a952c0415d5c\language-lowcode-47.1.47.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\language-minecraft\47.1.47\70c137579710b203f0220b80a90eff3db19b32a2\language-minecraft-47.1.47.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\1.1.2\c546e00443d8432cda6baa1c860346980742628\bootstraplauncher-1.1.2.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarFileSystems\0.3.19\2464eb7d6b9ddb9db36a82cf8a95193e5c6fe020\JarJarFileSystems-0.3.19.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.github.oshi\oshi-core\6.2.2\54f5efc19bca95d709d9a37d19ffcbba3d21c1a6\oshi-core-6.2.2.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.10\dd9b193aef96e973d5a11ab13cd17430c2e4306b\gson-2.10.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.guava\failureaccess\1.0.1\1dcf1de382a0bf95a3d8b0849546c88bac1292c9\failureaccess-1.0.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j\71.1\9e7d3304c23f9ba5cb71915f7cce23231a57a445\icu4j-71.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\4.0.43\2ff9d747a77570a07a60d32ac77eb6162ad2a2d9\authlib-4.0.43.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\blocklist\1.0.10\5c685c5ffa94c4cd39496c7184c1d122e515ecef\blocklist-1.0.10.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\brigadier\1.1.8\5244ce82c3337bba4a196a3ce858bfaecc74404a\brigadier-1.1.8.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\datafixerupper\6.0.8\3ba4a30557a9b057760af4011f909ba619fc5125\datafixerupper-6.0.8.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\logging\1.1.1\832b8e6674a9b325a5175a3a6267dfaf34c85139\logging-1.1.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\patchy\2.2.10\da05971b07cbb379d002cf7eaec6a2048211fefc\patchy-2.2.10.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\text2speech\1.17.9\3cad216e3a7f0c19b4b394388bc9ffc446f13b14\text2speech-1.17.9.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.5.13\e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada\httpclient-4.5.13.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.15\49d94806b6e3dc933dacbd8acb0fdbab8ebd1e5d\commons-codec-1.15.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.11.0\a2503f302b11ebde7ebc3df41daebe0e4eea3689\commons-io-2.11.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.2\4bfc12adfe4842bf07b657f0369c4cb522955686\commons-logging-1.2.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-handler\4.1.82.Final\644041d1fa96a5d3130a29e8978630d716d76e38\netty-handler-4.1.82.Final.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-codec\4.1.82.Final\b77200379acb345a9ffdece1c605e591ac3e4e0a\netty-codec-4.1.82.Final.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-classes-epoll\4.1.82.Final\e7c7dd18deac93105797f30057c912651ea76521\netty-transport-classes-epoll-4.1.82.Final.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-unix-common\4.1.82.Final\3e895b35ca1b8a0eca56cacff4c2dde5d2c6abce\netty-transport-native-unix-common-4.1.82.Final.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport\4.1.82.Final\e431a218d91acb6476ccad5f5aafde50aa3945ca\netty-transport-4.1.82.Final.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-buffer\4.1.82.Final\a544270cf1ae8b8077082f5036436a9a9971ea71\netty-buffer-4.1.82.Final.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-resolver\4.1.82.Final\38f665ae8dcd29032eea31245ba7806bed2e0fa8\netty-resolver-4.1.82.Final.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-common\4.1.82.Final\22d148e85c3f5ebdacc0ce1f5aabb1d420f73f3\netty-common-4.1.82.Final.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\it.unimi.dsi\fastutil\8.5.9\bb7ea75ecdb216654237830b3a96d87ad91f8cc5\fastutil-8.5.9.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.java.dev.jna\jna-platform\5.12.1\97406a297c852f4a41e688a176ec675f72e8329\jna-platform-5.12.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.java.dev.jna\jna\5.12.1\b1e93a735caea94f503e95e6fe79bf9cdc1e985d\jna-5.12.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\5.0.4\4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c\jopt-simple-5.0.4.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.21\4ec95b60d4e86b5c95a0e919cb172a0af98011ef\commons-compress-1.21.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.12.0\c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e\commons-lang3-3.12.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.4.15\7f2e0c573eaa7a74bac2e89b359e1f73d92a0a1d\httpcore-4.4.15.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.19.0\3b6eeb4de4c49c0fe38a4ee27188ff5fee44d0bb\log4j-core-2.19.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-slf4j2-impl\2.19.0\5c04bfdd63ce9dceb2e284b81e96b6a70010ee10\log4j-slf4j2-impl-2.19.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.19.0\ea1b37f38c327596b216542bc636cfdc0b8036fa\log4j-api-2.19.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.joml\joml\1.10.5\22566d58af70ad3d72308bab63b8339906deb649\joml-1.10.5.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\cbac1b8d30cb4795149c1ef540f912671a8616d0\lwjgl-glfw-3.3.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\ed892f945cf7e79c8756796f32d00fa4ceaf573b\lwjgl-glfw-3.3.1-natives-windows.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\beda65ee503443e60aa196d58ed31f8d001dc22a\lwjgl-glfw-3.3.1-natives-windows-arm64.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\b997e3391d6ce8f05487e7335d95c606043884a1\lwjgl-glfw-3.3.1-natives-windows-x86.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\a817bcf213db49f710603677457567c37d53e103\lwjgl-jemalloc-3.3.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\948a89b76a16aa324b046ae9308891216ffce5f9\lwjgl-jemalloc-3.3.1-natives-windows.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\cae85c4edb219c88b6a0c26a87955ad98dc9519d\lwjgl-jemalloc-3.3.1-natives-windows-arm64.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\fb476c8ec110e1c137ad3ce8a7f7bfe6b11c6324\lwjgl-jemalloc-3.3.1-natives-windows-x86.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\2623a6b8ae1dfcd880738656a9f0243d2e6840bd\lwjgl-openal-3.3.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\30a474d0e57193d7bc128849a3ab66bc9316fdb1\lwjgl-openal-3.3.1-natives-windows.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\40d65f1a7368a2aa47336f9cb69f5a190cf9975a\lwjgl-openal-3.3.1-natives-windows-arm64.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\888349f7b1be6fbae58bf8edfb9ef12def04c4e3\lwjgl-openal-3.3.1-natives-windows-x86.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\831a5533a21a5f4f81bbc51bb13e9899319b5411\lwjgl-opengl-3.3.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\c1807e9bd571402787d7e37e3029776ae2513bb8\lwjgl-opengl-3.3.1-natives-windows.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\527d78f1e9056aff3ed02ce93019c73c5e8f1721\lwjgl-opengl-3.3.1-natives-windows-arm64.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\deef3eb9b178ff2ff3ce893cc72ae741c3a17974\lwjgl-opengl-3.3.1-natives-windows-x86.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\b119297cf8ed01f247abe8685857f8e7fcf5980f\lwjgl-stb-3.3.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\86315914ac119efdb02dc9e8e978ade84f1702af\lwjgl-stb-3.3.1-natives-windows.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\fde63cdd2605c00636721a6c8b961e41d1f6b247\lwjgl-stb-3.3.1-natives-windows-arm64.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\a8d41f419eecb430b7c91ea2ce2c5c451cae2091\lwjgl-stb-3.3.1-natives-windows-x86.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\ff1914111ef2e3e0110ef2dabc8d8cdaad82347\lwjgl-tinyfd-3.3.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\a5d830475ec0958d9fdba1559efa99aef211e6ff\lwjgl-tinyfd-3.3.1-natives-windows.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\83a5e780df610829ff3a737822b4f931cffecd91\lwjgl-tinyfd-3.3.1-natives-windows-arm64.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\842eedd876fae354abc308c98a263f6bbc9e8a4d\lwjgl-tinyfd-3.3.1-natives-windows-x86.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\ae58664f88e18a9bb2c77b063833ca7aaec484cb\lwjgl-3.3.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\36c37f16ab611b3aa11f3bcf80b1d509b4ce6b\lwjgl-3.3.1-natives-windows.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\f46cadcf95675908fd3a550d63d9d709cb68998\lwjgl-3.3.1-natives-windows-arm64.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\3b14f4beae9dd39791ec9e12190a9380cd8a3ce6\lwjgl-3.3.1-natives-windows-x86.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.machinezoo.noexception\noexception\1.7.1\b65330c98e38a1f915fa54a6e5eca496505e3f0a\noexception-1.7.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\2.0.1\f48d81adce2abf5ad3cfe463df517952749e03bc\slf4j-api-2.0.1.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.codehaus.plexus\plexus-utils\3.3.0\cf43b5391de623b36fe066a21127baef82c64022\plexus-utils-3.3.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\b421526c5f297295adef1c886e5246c39d4ac629\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-qual\3.12.0\d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5\checker-qual-3.12.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.11.0\c5a0ace696d3f8b1c1d8cc036d8c03cc0cbe6b69\error_prone_annotations-2.11.0.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.3\ba035118bc8bac37d7eff77700720999acd9986d\j2objc-annotations-1.3.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.antlr\ST4\4.3\92f2c1ad8d84abcbeead6cf7f2c53a04166293c2\ST4-4.3.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.antlr\antlr-runtime\3.5.2\cd9cd41361c155f3af0f653009dcecb08d8b4afd\antlr-runtime-3.5.2.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.abego.treelayout\org.abego.treelayout.core\1.0.3\457216e8e6578099ae63667bb1e4439235892028\org.abego.treelayout.core-1.0.3.jar, --lib, C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.glassfish\javax.json\1.0.4\3178f73569fd7a1e5ffc464e680f7a8cc784b85a\javax.json-1.0.4.jar, --disable-abstract-param'
+Classpath:
+ - C:\Users\juanc\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\ForgeAutoRenamingTool\1.0.2\ForgeAutoRenamingTool-1.0.2-all.jar
+Working directory: C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod-private\build\reobfJar
+Main class: net.minecraftforge.fart.Main
+====================================
+Forge Auto Renaming Tool v1.0.2
+lib: C:\Users\juanc\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.20.1\4.7_mapped_official_1.20\geckolib-forge-1.20.1-4.7_mapped_official_1.20.jar
+lib: C:\Users\juanc\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\Xaeros-263420\4812568_mapped_official_1.20\Xaeros-263420-4812568_mapped_official_1.20.jar
+lib: C:\Users\juanc\.gradle\caches\forge_gradle\minecraft_user_repo\net\neoforged\forge\1.20.1-47.1.79_mapped_official_1.20\forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar
+lib: C:\Users\juanc\.gradle\caches\forge_gradle\minecraft_repo\versions\1.20.1\client-extra.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\loader\47.1.47\69ee070bf404064508f5d7ce76b85787eeea7f54\loader-47.1.47.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarSelector\0.3.19\376cc9c8ea60720cf027c01fc033de915699801c\JarJarSelector-0.3.19.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarMetadata\0.3.19\83feaa9b770e6ac0e96ee4fc23fa89325c5fe2\JarJarMetadata-0.3.19.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\31.1-jre\60458f877d055d0c9114d9e1a2efb737b4bc282c\guava-31.1-jre.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\ca.weblite\java-objc-bridge\1.1\1227f9e0666314f9de41477e3ec277e542ed7f7b\java-objc-bridge-1.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\forgespi\7.0.1\3b4972a0cdb135853dba219be61a79b22cff1309\forgespi-7.0.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mergetool\1.1.5\f3da18e12c696d35a47c82cbb2cc8b5aa15e1154\mergetool-1.1.5-api.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\24.0.1\13c5c75c4206580aa4d683bffee658caae6c9f43\annotations-24.0.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\earlydisplay\47.1.47\46509b19504a71e25b115383e900aade5088598a\earlydisplay-47.1.47.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\2.1.10\51e6a22c6c716beb11e244bf5b8be480f51dd6b5\securejarhandler-2.1.10.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\cpw.mods\modlauncher\10.0.9\6d9443f56f50bb85cea383686ff9c867391458b\modlauncher-10.0.9.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.openjdk.nashorn\nashorn-core\15.3\43977e804697048fc8d81d333a36c17d07a5b3dd\nashorn-core-15.3.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.5\19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0\asm-commons-9.5.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.5\64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe\asm-util-9.5.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.5\490bacc77de7cbc0be1a30bb3471072d705be4a4\asm-analysis-9.5.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.5\fd33c8b6373abaa675be407082fdfda35021254a\asm-tree-9.5.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.5\dc6ea1875f4d64fbc85e1691c95b96a3d8569c90\asm-9.5.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\accesstransformers\8.0.4\272d240aa73f42195b2a68e2ebd8b701ecf41f63\accesstransformers-8.0.4.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.antlr\antlr4\4.9.1\e92af8ab33e428461927b484e90bb155a4f3a052\antlr4-4.9.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.antlr\antlr4-runtime\4.9.1\428664f05d2b7f7b7610204b5aa7c1763f62011a\antlr4-runtime-4.9.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\events\47.1.47\d6bf266eabb0c7e353d3a2e47a47e6ba6392ab96\events-47.1.47.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\core\47.1.47\915a0dc36418f3c3bf74e56015d1cb79ef5430f0\core-47.1.47.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\eventbus\6.0.5\699143dd438431d06b57416944f7cedbe52e1475\eventbus-6.0.5.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\coremods\5.0.1\386b00279628b105b2d507539c46e134e96f6237\coremods-5.0.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\unsafe\0.2.0\54d7a0a5e8fdb71b973025caa46f341ae5904f39\unsafe-0.2.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.electronwill.night-config\toml\3.6.4\51d6cefb2b55ee55ee26b16391212fb2c7dfb4f4\toml-3.6.4.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.electronwill.night-config\core\3.6.4\510f174abbf1c947494db50ef2445683bd52c230\core-3.6.4.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.maven\maven-artifact\3.8.5\4433f50c07debefaed0553bd0068f4f48d449313\maven-artifact-3.8.5.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.jodah\typetools\0.6.3\a01aaa6ddaea9ec07ec4f209487b7a46a526283a\typetools-0.6.3.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecrell\terminalconsoleappender\1.2.0\96d02cd3b384ff015a8fef4223bcb4ccf1717c95\terminalconsoleappender-1.2.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.jline\jline-reader\3.12.1\4382ab1382c7b6f379377ed5f665dc2f6e1218bc\jline-reader-3.12.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.jline\jline-terminal\3.12.1\c777448314e050d980a6b697c140f3bfe9eb7416\jline-terminal-3.12.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.spongepowered\mixin\0.8.5\9d1c0c3a304ae6697ecd477218fa61b850bf57fc\mixin-0.8.5.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\language-java\47.1.47\9f5f057de5fea5106fca0df2b0faea12a85bc283\language-java-47.1.47.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\language-lowcode\47.1.47\b9cb4bc84722dc99e902883f8ea5a952c0415d5c\language-lowcode-47.1.47.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.neoforged.fancymodloader\language-minecraft\47.1.47\70c137579710b203f0220b80a90eff3db19b32a2\language-minecraft-47.1.47.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\1.1.2\c546e00443d8432cda6baa1c860346980742628\bootstraplauncher-1.1.2.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.minecraftforge\JarJarFileSystems\0.3.19\2464eb7d6b9ddb9db36a82cf8a95193e5c6fe020\JarJarFileSystems-0.3.19.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.github.oshi\oshi-core\6.2.2\54f5efc19bca95d709d9a37d19ffcbba3d21c1a6\oshi-core-6.2.2.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.10\dd9b193aef96e973d5a11ab13cd17430c2e4306b\gson-2.10.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.guava\failureaccess\1.0.1\1dcf1de382a0bf95a3d8b0849546c88bac1292c9\failureaccess-1.0.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.ibm.icu\icu4j\71.1\9e7d3304c23f9ba5cb71915f7cce23231a57a445\icu4j-71.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\authlib\4.0.43\2ff9d747a77570a07a60d32ac77eb6162ad2a2d9\authlib-4.0.43.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\blocklist\1.0.10\5c685c5ffa94c4cd39496c7184c1d122e515ecef\blocklist-1.0.10.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\brigadier\1.1.8\5244ce82c3337bba4a196a3ce858bfaecc74404a\brigadier-1.1.8.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\datafixerupper\6.0.8\3ba4a30557a9b057760af4011f909ba619fc5125\datafixerupper-6.0.8.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\logging\1.1.1\832b8e6674a9b325a5175a3a6267dfaf34c85139\logging-1.1.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\patchy\2.2.10\da05971b07cbb379d002cf7eaec6a2048211fefc\patchy-2.2.10.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.mojang\text2speech\1.17.9\3cad216e3a7f0c19b4b394388bc9ffc446f13b14\text2speech-1.17.9.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.5.13\e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada\httpclient-4.5.13.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.15\49d94806b6e3dc933dacbd8acb0fdbab8ebd1e5d\commons-codec-1.15.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.11.0\a2503f302b11ebde7ebc3df41daebe0e4eea3689\commons-io-2.11.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.2\4bfc12adfe4842bf07b657f0369c4cb522955686\commons-logging-1.2.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-handler\4.1.82.Final\644041d1fa96a5d3130a29e8978630d716d76e38\netty-handler-4.1.82.Final.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-codec\4.1.82.Final\b77200379acb345a9ffdece1c605e591ac3e4e0a\netty-codec-4.1.82.Final.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-classes-epoll\4.1.82.Final\e7c7dd18deac93105797f30057c912651ea76521\netty-transport-classes-epoll-4.1.82.Final.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport-native-unix-common\4.1.82.Final\3e895b35ca1b8a0eca56cacff4c2dde5d2c6abce\netty-transport-native-unix-common-4.1.82.Final.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport\4.1.82.Final\e431a218d91acb6476ccad5f5aafde50aa3945ca\netty-transport-4.1.82.Final.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-buffer\4.1.82.Final\a544270cf1ae8b8077082f5036436a9a9971ea71\netty-buffer-4.1.82.Final.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-resolver\4.1.82.Final\38f665ae8dcd29032eea31245ba7806bed2e0fa8\netty-resolver-4.1.82.Final.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\io.netty\netty-common\4.1.82.Final\22d148e85c3f5ebdacc0ce1f5aabb1d420f73f3\netty-common-4.1.82.Final.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\it.unimi.dsi\fastutil\8.5.9\bb7ea75ecdb216654237830b3a96d87ad91f8cc5\fastutil-8.5.9.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.java.dev.jna\jna-platform\5.12.1\97406a297c852f4a41e688a176ec675f72e8329\jna-platform-5.12.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.java.dev.jna\jna\5.12.1\b1e93a735caea94f503e95e6fe79bf9cdc1e985d\jna-5.12.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\net.sf.jopt-simple\jopt-simple\5.0.4\4fdac2fbe92dfad86aa6e9301736f6b4342a3f5c\jopt-simple-5.0.4.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-compress\1.21\4ec95b60d4e86b5c95a0e919cb172a0af98011ef\commons-compress-1.21.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.12.0\c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e\commons-lang3-3.12.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.4.15\7f2e0c573eaa7a74bac2e89b359e1f73d92a0a1d\httpcore-4.4.15.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-core\2.19.0\3b6eeb4de4c49c0fe38a4ee27188ff5fee44d0bb\log4j-core-2.19.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-slf4j2-impl\2.19.0\5c04bfdd63ce9dceb2e284b81e96b6a70010ee10\log4j-slf4j2-impl-2.19.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.apache.logging.log4j\log4j-api\2.19.0\ea1b37f38c327596b216542bc636cfdc0b8036fa\log4j-api-2.19.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.joml\joml\1.10.5\22566d58af70ad3d72308bab63b8339906deb649\joml-1.10.5.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\cbac1b8d30cb4795149c1ef540f912671a8616d0\lwjgl-glfw-3.3.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\ed892f945cf7e79c8756796f32d00fa4ceaf573b\lwjgl-glfw-3.3.1-natives-windows.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\beda65ee503443e60aa196d58ed31f8d001dc22a\lwjgl-glfw-3.3.1-natives-windows-arm64.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-glfw\3.3.1\b997e3391d6ce8f05487e7335d95c606043884a1\lwjgl-glfw-3.3.1-natives-windows-x86.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\a817bcf213db49f710603677457567c37d53e103\lwjgl-jemalloc-3.3.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\948a89b76a16aa324b046ae9308891216ffce5f9\lwjgl-jemalloc-3.3.1-natives-windows.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\cae85c4edb219c88b6a0c26a87955ad98dc9519d\lwjgl-jemalloc-3.3.1-natives-windows-arm64.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-jemalloc\3.3.1\fb476c8ec110e1c137ad3ce8a7f7bfe6b11c6324\lwjgl-jemalloc-3.3.1-natives-windows-x86.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\2623a6b8ae1dfcd880738656a9f0243d2e6840bd\lwjgl-openal-3.3.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\30a474d0e57193d7bc128849a3ab66bc9316fdb1\lwjgl-openal-3.3.1-natives-windows.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\40d65f1a7368a2aa47336f9cb69f5a190cf9975a\lwjgl-openal-3.3.1-natives-windows-arm64.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-openal\3.3.1\888349f7b1be6fbae58bf8edfb9ef12def04c4e3\lwjgl-openal-3.3.1-natives-windows-x86.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\831a5533a21a5f4f81bbc51bb13e9899319b5411\lwjgl-opengl-3.3.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\c1807e9bd571402787d7e37e3029776ae2513bb8\lwjgl-opengl-3.3.1-natives-windows.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\527d78f1e9056aff3ed02ce93019c73c5e8f1721\lwjgl-opengl-3.3.1-natives-windows-arm64.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-opengl\3.3.1\deef3eb9b178ff2ff3ce893cc72ae741c3a17974\lwjgl-opengl-3.3.1-natives-windows-x86.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\b119297cf8ed01f247abe8685857f8e7fcf5980f\lwjgl-stb-3.3.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\86315914ac119efdb02dc9e8e978ade84f1702af\lwjgl-stb-3.3.1-natives-windows.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\fde63cdd2605c00636721a6c8b961e41d1f6b247\lwjgl-stb-3.3.1-natives-windows-arm64.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-stb\3.3.1\a8d41f419eecb430b7c91ea2ce2c5c451cae2091\lwjgl-stb-3.3.1-natives-windows-x86.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\ff1914111ef2e3e0110ef2dabc8d8cdaad82347\lwjgl-tinyfd-3.3.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\a5d830475ec0958d9fdba1559efa99aef211e6ff\lwjgl-tinyfd-3.3.1-natives-windows.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\83a5e780df610829ff3a737822b4f931cffecd91\lwjgl-tinyfd-3.3.1-natives-windows-arm64.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl-tinyfd\3.3.1\842eedd876fae354abc308c98a263f6bbc9e8a4d\lwjgl-tinyfd-3.3.1-natives-windows-x86.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\ae58664f88e18a9bb2c77b063833ca7aaec484cb\lwjgl-3.3.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\36c37f16ab611b3aa11f3bcf80b1d509b4ce6b\lwjgl-3.3.1-natives-windows.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\f46cadcf95675908fd3a550d63d9d709cb68998\lwjgl-3.3.1-natives-windows-arm64.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.lwjgl\lwjgl\3.3.1\3b14f4beae9dd39791ec9e12190a9380cd8a3ce6\lwjgl-3.3.1-natives-windows-x86.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.machinezoo.noexception\noexception\1.7.1\b65330c98e38a1f915fa54a6e5eca496505e3f0a\noexception-1.7.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\2.0.1\f48d81adce2abf5ad3cfe463df517952749e03bc\slf4j-api-2.0.1.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.codehaus.plexus\plexus-utils\3.3.0\cf43b5391de623b36fe066a21127baef82c64022\plexus-utils-3.3.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\b421526c5f297295adef1c886e5246c39d4ac629\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-qual\3.12.0\d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5\checker-qual-3.12.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.11.0\c5a0ace696d3f8b1c1d8cc036d8c03cc0cbe6b69\error_prone_annotations-2.11.0.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.3\ba035118bc8bac37d7eff77700720999acd9986d\j2objc-annotations-1.3.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.antlr\ST4\4.3\92f2c1ad8d84abcbeead6cf7f2c53a04166293c2\ST4-4.3.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.antlr\antlr-runtime\3.5.2\cd9cd41361c155f3af0f653009dcecb08d8b4afd\antlr-runtime-3.5.2.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.abego.treelayout\org.abego.treelayout.core\1.0.3\457216e8e6578099ae63667bb1e4439235892028\org.abego.treelayout.core-1.0.3.jar
+lib: C:\Users\juanc\.gradle\caches\modules-2\files-2.1\org.glassfish\javax.json\1.0.4\3178f73569fd7a1e5ffc464e680f7a8cc784b85a\javax.json-1.0.4.jar
+log: null
+input: C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod-private\build\libs\thedigimod-0.0.1-1.19.jar
+output: C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod-private\build\reobfJar\output.jar
+threads: 12
+Names: C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod-private\build\reobfJar\mappings.tsrg(reversed: false)
+Fix Annotations: false
+Fix Records: false
+Fix Identifiers: false
+Fix SourceFile: false
+Fix Line Numbers: false
+Strip codesigning signatures: false
+Adding Libraries to Inheritance
+Reading Input: C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod-private\build\libs\thedigimod-0.0.1-1.19.jar
+Adding input to inheritance map
+Processing entries
+Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoEntityRenderer/shouldShowName(Lnet/minecraft/world/entity/Entity;)Z from net/minecraft/client/renderer/entity/EntityRenderer/shouldShowName(Lnet/minecraft/world/entity/Entity;)Z: shouldShowName -> m_6512_
+Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoEntityRenderer/getTextureLocation(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/resources/ResourceLocation; from net/minecraft/client/renderer/entity/EntityRenderer/getTextureLocation(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/resources/ResourceLocation;: getTextureLocation -> m_5478_
+Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoEntityRenderer/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V from net/minecraft/client/renderer/entity/EntityRenderer/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V: render -> m_7392_
+Conflicting propagated mapping for net/modderg/thedigimod/client/entity/CustomDigimonRender/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V from software/bernie/geckolib/renderer/GeoEntityRenderer/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V: render -> m_7392_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceEvoTreeScreen/keyPressed(III)Z from net/minecraft/client/gui/screens/Screen/keyPressed(III)Z: keyPressed -> m_7933_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceEvoTreeScreen/isPauseScreen()Z from net/minecraft/client/gui/screens/Screen/isPauseScreen()Z: isPauseScreen -> m_7043_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceEvoTreeScreen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from net/minecraft/client/gui/screens/Screen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceEvoTreeScreen/mouseScrolled(DDD)Z from net/minecraft/client/gui/components/events/ContainerEventHandler/mouseScrolled(DDD)Z: mouseScrolled -> m_6050_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceScreen/keyPressed(III)Z from net/minecraft/client/gui/screens/Screen/keyPressed(III)Z: keyPressed -> m_7933_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceScreen/addRenderableWidget(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener; from net/minecraft/client/gui/screens/Screen/addRenderableWidget(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;: addRenderableWidget -> m_142416_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceScreen/isPauseScreen()Z from net/minecraft/client/gui/screens/Screen/isPauseScreen()Z: isPauseScreen -> m_7043_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceScreen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from net/minecraft/client/gui/screens/Screen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceScreen/init()V from net/minecraft/client/gui/screens/Screen/init()V: init -> m_7856_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceScreen/handleDelayedNarration()V from net/minecraft/client/gui/screens/Screen/handleDelayedNarration()V: handleDelayedNarration -> m_169417_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/DigiviceEvoTreeScreen/handleDelayedNarration()V from net/minecraft/client/gui/screens/Screen/handleDelayedNarration()V: handleDelayedNarration -> m_169417_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/CommandImageButton/onClick(DD)V from net/minecraft/client/gui/components/AbstractButton/onClick(DD)V: onClick -> m_5716_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/CommandImageButton/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from net/minecraft/client/gui/components/AbstractWidget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/CommandImageButton/onRelease(DD)V from net/minecraft/client/gui/components/AbstractWidget/onRelease(DD)V: onRelease -> m_7691_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/RegularDigitalParticle$Provider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle; from net/minecraft/client/particle/ParticleProvider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle;: createParticle -> m_6966_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/RegularDigitalParticle/tick()V from net/minecraft/client/particle/Particle/tick()V: tick -> m_5989_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/RegularDigitalParticle/getRenderType()Lnet/minecraft/client/particle/ParticleRenderType; from net/minecraft/client/particle/Particle/getRenderType()Lnet/minecraft/client/particle/ParticleRenderType;: getRenderType -> m_7556_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/BubbleParticle$Provider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle; from net/minecraft/client/particle/ParticleProvider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle;: createParticle -> m_6966_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/BubbleParticle/tick()V from net/minecraft/client/particle/Particle/tick()V: tick -> m_5989_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/BubbleParticle/setSprite(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;)V from net/minecraft/client/particle/TextureSheetParticle/setSprite(Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;)V: setSprite -> m_108337_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/BubbleParticle/getRenderType()Lnet/minecraft/client/particle/ParticleRenderType; from net/minecraft/client/particle/Particle/getRenderType()Lnet/minecraft/client/particle/ParticleRenderType;: getRenderType -> m_7556_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/LifeParticle$Provider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle; from net/minecraft/client/particle/ParticleProvider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle;: createParticle -> m_6966_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/NegativeDigitalParticle$Provider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle; from net/minecraft/client/particle/ParticleProvider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle;: createParticle -> m_6966_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/NegativeDigitalParticle/tick()V from net/minecraft/client/particle/Particle/tick()V: tick -> m_5989_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/NegativeDigitalParticle/getRenderType()Lnet/minecraft/client/particle/ParticleRenderType; from net/minecraft/client/particle/Particle/getRenderType()Lnet/minecraft/client/particle/ParticleRenderType;: getRenderType -> m_7556_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/BrightParticle$Provider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle; from net/minecraft/client/particle/ParticleProvider/createParticle(Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)Lnet/minecraft/client/particle/Particle;: createParticle -> m_6966_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/inventory/DigimonInventoryScreen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/BrightParticle/tick()V from net/minecraft/client/particle/Particle/tick()V: tick -> m_5989_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/inventory/DigimonInventoryScreen/renderBg(Lnet/minecraft/client/gui/GuiGraphics;FII)V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/renderBg(Lnet/minecraft/client/gui/GuiGraphics;FII)V: renderBg -> m_7286_
+Conflicting propagated mapping for net/modderg/thedigimod/client/particles/custom/BrightParticle/getRenderType()Lnet/minecraft/client/particle/ParticleRenderType; from net/minecraft/client/particle/Particle/getRenderType()Lnet/minecraft/client/particle/ParticleRenderType;: getRenderType -> m_7556_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/inventory/DigimonMenu/stillValid(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/world/inventory/AbstractContainerMenu/stillValid(Lnet/minecraft/world/entity/player/Player;)Z: stillValid -> m_6875_
+Conflicting propagated mapping for net/modderg/thedigimod/client/gui/inventory/DigimonMenu/quickMoveStack(Lnet/minecraft/world/entity/player/Player;I)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/inventory/AbstractContainerMenu/quickMoveStack(Lnet/minecraft/world/entity/player/Player;I)Lnet/minecraft/world/item/ItemStack;: quickMoveStack -> m_7648_
+Conflicting propagated mapping for net/modderg/thedigimod/server/goods/AbstractTrainingGood/getBreedOffspring(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/AgeableMob;)Lnet/minecraft/world/entity/AgeableMob; from net/minecraft/world/entity/AgeableMob/getBreedOffspring(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/AgeableMob;)Lnet/minecraft/world/entity/AgeableMob;: getBreedOffspring -> m_142606_
+Conflicting propagated mapping for net/modderg/thedigimod/server/goods/AbstractTrainingGood/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/entity/animal/Animal/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: mobInteract -> m_6071_
+Conflicting propagated mapping for net/modderg/thedigimod/server/goods/AbstractTrainingGood/actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)V from net/minecraft/world/entity/LivingEntity/actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)V: actuallyHurt -> m_6475_
+Conflicting propagated mapping for net/modderg/thedigimod/server/goods/AbstractTrainingGood/canBeLeashed(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/world/entity/Mob/canBeLeashed(Lnet/minecraft/world/entity/player/Player;)Z: canBeLeashed -> m_6573_
+Conflicting propagated mapping for net/modderg/thedigimod/server/goods/AbstractTrainingGood/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/animal/Animal/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
+Conflicting propagated mapping for net/modderg/thedigimod/server/goods/AbstractTrainingGood/getCustomName()Lnet/minecraft/network/chat/Component; from net/minecraft/world/entity/Entity/getCustomName()Lnet/minecraft/network/chat/Component;: getCustomName -> m_7770_
+Conflicting propagated mapping for net/modderg/thedigimod/server/goods/AbstractTrainingGood/isCustomNameVisible()Z from net/minecraft/world/entity/Entity/isCustomNameVisible()Z: isCustomNameVisible -> m_20151_
+Conflicting propagated mapping for net/modderg/thedigimod/server/goods/AbstractTrainingGood/isPushable()Z from net/minecraft/world/entity/LivingEntity/isPushable()Z: isPushable -> m_6094_
+Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/stopSeenByPlayer(Lnet/minecraft/server/level/ServerPlayer;)V from net/minecraft/world/entity/Entity/stopSeenByPlayer(Lnet/minecraft/server/level/ServerPlayer;)V: stopSeenByPlayer -> m_6452_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/getBreedOffspring(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/AgeableMob;)Lnet/minecraft/world/entity/AgeableMob; from net/minecraft/world/entity/AgeableMob/getBreedOffspring(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/AgeableMob;)Lnet/minecraft/world/entity/AgeableMob;: getBreedOffspring -> m_142606_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/finalizeSpawn(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData; from net/minecraft/world/entity/AgeableMob/finalizeSpawn(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData;: finalizeSpawn -> m_6518_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/TamableAnimal/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/setOrderedToSit(Z)V from net/minecraft/world/entity/TamableAnimal/setOrderedToSit(Z)V: setOrderedToSit -> m_21839_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/customServerAiStep()V from net/minecraft/world/entity/animal/Animal/customServerAiStep()V: customServerAiStep -> m_8024_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/die(Lnet/minecraft/world/damagesource/DamageSource;)V from net/minecraft/world/entity/TamableAnimal/die(Lnet/minecraft/world/damagesource/DamageSource;)V: die -> m_6667_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/isInWater()Z from net/minecraft/world/entity/Entity/isInWater()Z: isInWater -> m_20069_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/tick()V from net/minecraft/world/entity/Mob/tick()V: tick -> m_8119_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/entity/animal/Animal/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: mobInteract -> m_6071_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/defineSynchedData()V from net/minecraft/world/entity/TamableAnimal/defineSynchedData()V: defineSynchedData -> m_8097_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/getControllingPassenger()Lnet/minecraft/world/entity/LivingEntity; from net/minecraft/world/entity/Mob/getControllingPassenger()Lnet/minecraft/world/entity/LivingEntity;: getControllingPassenger -> m_6688_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/hasCustomName()Z from net/minecraft/world/entity/Entity/hasCustomName()Z: hasCustomName -> m_8077_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/TamableAnimal/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/canBeLeashed(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/world/entity/TamableAnimal/canBeLeashed(Lnet/minecraft/world/entity/player/Player;)Z: canBeLeashed -> m_6573_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/travel(Lnet/minecraft/world/phys/Vec3;)V from net/minecraft/world/entity/LivingEntity/travel(Lnet/minecraft/world/phys/Vec3;)V: travel -> m_7023_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/canFallInLove()Z from net/minecraft/world/entity/animal/Animal/canFallInLove()Z: canFallInLove -> m_5957_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/doHurtTarget(Lnet/minecraft/world/entity/Entity;)Z from net/minecraft/world/entity/Mob/doHurtTarget(Lnet/minecraft/world/entity/Entity;)Z: doHurtTarget -> m_7327_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/startSeenByPlayer(Lnet/minecraft/server/level/ServerPlayer;)V from net/minecraft/world/entity/Entity/startSeenByPlayer(Lnet/minecraft/server/level/ServerPlayer;)V: startSeenByPlayer -> m_6457_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/playStepSound(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V from net/minecraft/world/entity/Entity/playStepSound(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V: playStepSound -> m_7355_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/setTarget(Lnet/minecraft/world/entity/LivingEntity;)V from net/minecraft/world/entity/Mob/setTarget(Lnet/minecraft/world/entity/LivingEntity;)V: setTarget -> m_6710_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/tame(Lnet/minecraft/world/entity/player/Player;)V from net/minecraft/world/entity/TamableAnimal/tame(Lnet/minecraft/world/entity/player/Player;)V: tame -> m_21828_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/getScale()F from net/minecraft/world/entity/LivingEntity/getScale()F: getScale -> m_6134_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/getMyRidingOffset()D from net/minecraft/world/entity/animal/Animal/getMyRidingOffset()D: getMyRidingOffset -> m_6049_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/isFood(Lnet/minecraft/world/item/ItemStack;)Z from net/minecraft/world/entity/animal/Animal/isFood(Lnet/minecraft/world/item/ItemStack;)Z: isFood -> m_6898_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/getPassengersRidingOffset()D from net/minecraft/world/entity/Entity/getPassengersRidingOffset()D: getPassengersRidingOffset -> m_6048_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/setCustomName(Lnet/minecraft/network/chat/Component;)V from net/minecraft/world/entity/Entity/setCustomName(Lnet/minecraft/network/chat/Component;)V: setCustomName -> m_6593_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/isBaby()Z from net/minecraft/world/entity/AgeableMob/isBaby()Z: isBaby -> m_6162_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/setHealth(F)V from net/minecraft/world/entity/LivingEntity/setHealth(F)V: setHealth -> m_21153_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/boost()Z from net/minecraft/world/entity/ItemSteerable/boost()Z: boost -> m_6746_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/performRangedAttack(Lnet/minecraft/world/entity/LivingEntity;F)V from net/minecraft/world/entity/monster/RangedAttackMob/performRangedAttack(Lnet/minecraft/world/entity/LivingEntity;F)V: performRangedAttack -> m_6504_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/DigimonEntity/createMenu(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/entity/player/Player;)Lnet/minecraft/world/inventory/AbstractContainerMenu; from net/minecraft/world/inventory/MenuConstructor/createMenu(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/entity/player/Player;)Lnet/minecraft/world/inventory/AbstractContainerMenu;: createMenu -> m_7208_
+Conflicting propagated mapping for net/minecraftforge/network/IContainerFactory/create(ILnet/minecraft/world/entity/player/Inventory;)Lnet/minecraft/world/inventory/AbstractContainerMenu; from net/minecraft/world/inventory/MenuType$MenuSupplier/create(ILnet/minecraft/world/entity/player/Inventory;)Lnet/minecraft/world/inventory/AbstractContainerMenu;: create -> m_39994_
+Conflicting propagated mapping for net/modderg/thedigimod/server/events/RelaodListener/apply(Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V from net/minecraft/server/packs/resources/SimplePreparableReloadListener/apply(Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V: apply -> m_5787_
+Conflicting propagated mapping for net/modderg/thedigimod/client/projectile/CustomProjectileRender/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V from software/bernie/geckolib/renderer/GeoEntityRenderer/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V: render -> m_7392_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/DigiMemory/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V from net/minecraft/world/item/Item/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V: appendHoverText -> m_7373_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/DigiMemory/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/FlyingDigimonEntity/finalizeSpawn(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData; from net/modderg/thedigimod/server/entity/DigimonEntity/finalizeSpawn(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData;: finalizeSpawn -> m_6518_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/FlyingDigimonEntity/isNoGravity()Z from net/minecraft/world/entity/Entity/isNoGravity()Z: isNoGravity -> m_20068_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/FlyingDigimonEntity/travel(Lnet/minecraft/world/phys/Vec3;)V from net/modderg/thedigimod/server/entity/DigimonEntity/travel(Lnet/minecraft/world/phys/Vec3;)V: travel -> m_7023_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/FlyingDigimonEntity/causeFallDamage(FFLnet/minecraft/world/damagesource/DamageSource;)Z from net/minecraft/world/entity/LivingEntity/causeFallDamage(FFLnet/minecraft/world/damagesource/DamageSource;)Z: causeFallDamage -> m_142535_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/FlyingDigimonEntity/canJump()Z from net/minecraft/world/entity/PlayerRideableJumping/canJump()Z: canJump -> m_7132_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/FlyingDigimonEntity/handleStopJump()V from net/minecraft/world/entity/PlayerRideableJumping/handleStopJump()V: handleStopJump -> m_8012_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/FlyingDigimonEntity/handleStartJump(I)V from net/minecraft/world/entity/PlayerRideableJumping/handleStartJump(I)V: handleStartJump -> m_7199_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/FlyingDigimonEntity/onPlayerJump(I)V from net/minecraft/world/entity/PlayerRideableJumping/onPlayerJump(I)V: onPlayerJump -> m_7888_
+Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/set(Lnet/minecraft/world/item/ItemStack;)V from net/minecraft/world/inventory/Slot/set(Lnet/minecraft/world/item/ItemStack;)V: set -> m_5852_
+Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/mayPlace(Lnet/minecraft/world/item/ItemStack;)Z from net/minecraft/world/inventory/Slot/mayPlace(Lnet/minecraft/world/item/ItemStack;)Z: mayPlace -> m_5857_
+Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/remove(I)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/inventory/Slot/remove(I)Lnet/minecraft/world/item/ItemStack;: remove -> m_6201_
+Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/onQuickCraft(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)V from net/minecraft/world/inventory/Slot/onQuickCraft(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)V: onQuickCraft -> m_40234_
+Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/getItem()Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/inventory/Slot/getItem()Lnet/minecraft/world/item/ItemStack;: getItem -> m_7993_
+Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/getMaxStackSize(Lnet/minecraft/world/item/ItemStack;)I from net/minecraft/world/inventory/Slot/getMaxStackSize(Lnet/minecraft/world/item/ItemStack;)I: getMaxStackSize -> m_5866_
+Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/mayPickup(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/world/inventory/Slot/mayPickup(Lnet/minecraft/world/entity/player/Player;)Z: mayPickup -> m_8010_
+Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/getMaxStackSize()I from net/minecraft/world/inventory/Slot/getMaxStackSize()I: getMaxStackSize -> m_6641_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileDefault/getPickupItem()Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/entity/projectile/AbstractArrow/getPickupItem()Lnet/minecraft/world/item/ItemStack;: getPickupItem -> m_7941_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileDefault/onHitEntity(Lnet/minecraft/world/phys/EntityHitResult;)V from net/minecraft/world/entity/projectile/AbstractArrow/onHitEntity(Lnet/minecraft/world/phys/EntityHitResult;)V: onHitEntity -> m_5790_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileDefault/tick()V from net/minecraft/world/entity/projectile/AbstractArrow/tick()V: tick -> m_8119_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileDefault/getWaterInertia()F from net/minecraft/world/entity/projectile/AbstractArrow/getWaterInertia()F: getWaterInertia -> m_6882_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileDefault/isNoGravity()Z from net/minecraft/world/entity/Entity/isNoGravity()Z: isNoGravity -> m_20068_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileDefault/getDefaultHitGroundSoundEvent()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/projectile/AbstractArrow/getDefaultHitGroundSoundEvent()Lnet/minecraft/sounds/SoundEvent;: getDefaultHitGroundSoundEvent -> m_7239_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileDefault/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V from net/minecraft/world/entity/projectile/AbstractArrow/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V: onHitBlock -> m_8060_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileParticleStreamDefault/tick()V from net/modderg/thedigimod/server/projectiles/ProjectileDefault/tick()V: tick -> m_8119_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigimonFloatGoal/canUse()Z from net/minecraft/world/entity/ai/goal/FloatGoal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileLaserDefault/onHitEntity(Lnet/minecraft/world/phys/EntityHitResult;)V from net/modderg/thedigimod/server/projectiles/ProjectileDefault/onHitEntity(Lnet/minecraft/world/phys/EntityHitResult;)V: onHitEntity -> m_5790_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileLaserDefault/tick()V from net/modderg/thedigimod/server/projectiles/ProjectileDefault/tick()V: tick -> m_8119_
+Conflicting propagated mapping for net/modderg/thedigimod/server/block/MeatCropBlock/getMaxAge()I from net/minecraft/world/level/block/CropBlock/getMaxAge()I: getMaxAge -> m_7419_
+Conflicting propagated mapping for net/modderg/thedigimod/server/block/MeatCropBlock/getGrowthSpeed(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F from net/minecraft/world/level/block/CropBlock/getGrowthSpeed(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)F: getGrowthSpeed -> m_52272_
+Conflicting propagated mapping for net/modderg/thedigimod/server/block/MeatCropBlock/getAgeProperty()Lnet/minecraft/world/level/block/state/properties/IntegerProperty; from net/minecraft/world/level/block/CropBlock/getAgeProperty()Lnet/minecraft/world/level/block/state/properties/IntegerProperty;: getAgeProperty -> m_7959_
+Conflicting propagated mapping for net/modderg/thedigimod/server/block/MeatCropBlock/getBaseSeedId()Lnet/minecraft/world/level/ItemLike; from net/minecraft/world/level/block/CropBlock/getBaseSeedId()Lnet/minecraft/world/level/ItemLike;: getBaseSeedId -> m_6404_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileSkyFallingDefault/isNoGravity()Z from net/modderg/thedigimod/server/projectiles/ProjectileDefault/isNoGravity()Z: isNoGravity -> m_20068_
+Conflicting propagated mapping for net/modderg/thedigimod/server/block/MeatCropBlock/randomTick(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V from net/minecraft/world/level/block/CropBlock/randomTick(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V: randomTick -> m_213898_
+Conflicting propagated mapping for net/modderg/thedigimod/server/block/MeatCropBlock/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V from net/minecraft/world/level/block/CropBlock/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V: createBlockStateDefinition -> m_7926_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileLaserDefault/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V from net/modderg/thedigimod/server/projectiles/ProjectileDefault/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V: onHitBlock -> m_8060_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/SwimmerDigimonEntity/tick()V from net/modderg/thedigimod/server/entity/DigimonEntity/tick()V: tick -> m_8119_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/SwimmerDigimonEntity/isAffectedByFluids()Z from net/minecraft/world/entity/LivingEntity/isAffectedByFluids()Z: isAffectedByFluids -> m_6129_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/SwimmerDigimonEntity/isNoGravity()Z from net/minecraft/world/entity/Entity/isNoGravity()Z: isNoGravity -> m_20068_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/SwimmerDigimonEntity/travel(Lnet/minecraft/world/phys/Vec3;)V from net/modderg/thedigimod/server/entity/DigimonEntity/travel(Lnet/minecraft/world/phys/Vec3;)V: travel -> m_7023_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileExplosion/remove(Lnet/minecraft/world/entity/Entity$RemovalReason;)V from net/minecraft/world/entity/Entity/remove(Lnet/minecraft/world/entity/Entity$RemovalReason;)V: remove -> m_142687_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalMeleeAttackGoal/canUse()Z from net/minecraft/world/entity/ai/goal/MeleeAttackGoal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalMeleeAttackGoal/stop()V from net/minecraft/world/entity/ai/goal/MeleeAttackGoal/stop()V: stop -> m_8041_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalMeleeAttackGoal/canContinueToUse()Z from net/minecraft/world/entity/ai/goal/MeleeAttackGoal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalFollowOwnerGoal/canUse()Z from net/minecraft/world/entity/ai/goal/Goal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalFollowOwnerGoal/start()V from net/minecraft/world/entity/ai/goal/Goal/start()V: start -> m_8056_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalFollowOwnerGoal/tick()V from net/minecraft/world/entity/ai/goal/Goal/tick()V: tick -> m_8037_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalHurtByTargetGoal/canContinueToUse()Z from net/minecraft/world/entity/ai/goal/target/TargetGoal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalFollowOwnerGoal/stop()V from net/minecraft/world/entity/ai/goal/Goal/stop()V: stop -> m_8041_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalFollowOwnerGoal/canContinueToUse()Z from net/minecraft/world/entity/ai/goal/Goal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalRangedAttackGoal/canUse()Z from net/minecraft/world/entity/ai/goal/Goal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalRangedAttackGoal/start()V from net/minecraft/world/entity/ai/goal/Goal/start()V: start -> m_8056_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalRangedAttackGoal/requiresUpdateEveryTick()Z from net/minecraft/world/entity/ai/goal/Goal/requiresUpdateEveryTick()Z: requiresUpdateEveryTick -> m_183429_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalRangedAttackGoal/tick()V from net/minecraft/world/entity/ai/goal/Goal/tick()V: tick -> m_8037_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalRangedAttackGoal/stop()V from net/minecraft/world/entity/ai/goal/Goal/stop()V: stop -> m_8041_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalRangedAttackGoal/canContinueToUse()Z from net/minecraft/world/entity/ai/goal/Goal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/block/DigitamaBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/EatShitGoal/canUse()Z from net/minecraft/world/entity/ai/goal/Goal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileExplosion/getDefaultHitGroundSoundEvent()Lnet/minecraft/sounds/SoundEvent; from net/modderg/thedigimod/server/projectiles/ProjectileDefault/getDefaultHitGroundSoundEvent()Lnet/minecraft/sounds/SoundEvent;: getDefaultHitGroundSoundEvent -> m_7239_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/EatShitGoal/tick()V from net/minecraft/world/entity/ai/goal/Goal/tick()V: tick -> m_8037_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/EatShitGoal/canContinueToUse()Z from net/minecraft/world/entity/ai/goal/Goal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalWaterPathNavigation/canUpdatePath()Z from net/minecraft/world/entity/ai/navigation/WaterBoundPathNavigation/canUpdatePath()Z: canUpdatePath -> m_7632_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalWaterPathNavigation/createPathFinder(I)Lnet/minecraft/world/level/pathfinder/PathFinder; from net/minecraft/world/entity/ai/navigation/WaterBoundPathNavigation/createPathFinder(I)Lnet/minecraft/world/level/pathfinder/PathFinder;: createPathFinder -> m_5532_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileExplosion/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V from net/modderg/thedigimod/server/projectiles/ProjectileDefault/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V: onHitBlock -> m_8060_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canUse()Z from net/minecraft/world/entity/ai/goal/Goal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/tick()V from net/minecraft/world/entity/ai/goal/Goal/tick()V: tick -> m_8037_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canContinueToUse()Z from net/minecraft/world/entity/ai/goal/Goal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/DigitalWaterPathNavigation/canMoveDirectly(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)Z from net/minecraft/world/entity/ai/navigation/WaterBoundPathNavigation/canMoveDirectly(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)Z: canMoveDirectly -> m_183431_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionFarmerGoal/canUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionFarmerGoal/tick()V from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/tick()V: tick -> m_8037_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionFarmerGoal/stop()V from net/minecraft/world/entity/ai/goal/Goal/stop()V: stop -> m_8041_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionFarmerGoal/canContinueToUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionLumberjackGoal/canUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionLumberjackGoal/tick()V from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/tick()V: tick -> m_8037_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionLumberjackGoal/stop()V from net/minecraft/world/entity/ai/goal/Goal/stop()V: stop -> m_8041_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionLumberjackGoal/canContinueToUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionMinerGoal/canUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionMinerGoal/tick()V from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/tick()V: tick -> m_8037_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionMinerGoal/stop()V from net/minecraft/world/entity/ai/goal/Goal/stop()V: stop -> m_8041_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionMinerGoal/canContinueToUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionTransporterGoal/canUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionTransporterGoal/tick()V from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/tick()V: tick -> m_8037_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionTransporterGoal/stop()V from net/minecraft/world/entity/ai/goal/Goal/stop()V: stop -> m_8041_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionTransporterGoal/canContinueToUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionTreeGrower/canUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canUse()Z: canUse -> m_8036_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionTreeGrower/tick()V from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/tick()V: tick -> m_8037_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionTreeGrower/stop()V from net/minecraft/world/entity/ai/goal/Goal/stop()V: stop -> m_8041_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/ProfessionTreeGrower/canContinueToUse()Z from net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal/canContinueToUse()Z: canContinueToUse -> m_8045_
+Conflicting propagated mapping for net/modderg/thedigimod/server/entity/goals/WaterMoveControl/tick()V from net/minecraft/world/entity/ai/control/MoveControl/tick()V: tick -> m_8126_
+Conflicting propagated mapping for net/minecraft/world/level/block/entity/ChestBlockEntity/setBlockState(Lnet/minecraft/world/level/block/state/BlockState;)V from net/minecraft/world/level/block/entity/BlockEntity/setBlockState(Lnet/minecraft/world/level/block/state/BlockState;)V: setBlockState -> m_155250_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/BabyDigimonItem/canBeHurtBy(Lnet/minecraft/world/damagesource/DamageSource;)Z from net/minecraft/world/item/Item/canBeHurtBy(Lnet/minecraft/world/damagesource/DamageSource;)Z: canBeHurtBy -> m_41386_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/BabyDigimonItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/DigiviceItem/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder; from net/minecraft/world/item/Item/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;: use -> m_7203_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/DigiviceItem/getColor(Lnet/minecraft/world/item/ItemStack;)I from net/minecraft/world/item/DyeableLeatherItem/getColor(Lnet/minecraft/world/item/ItemStack;)I: getColor -> m_41121_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/BossCubeItem/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: interactLivingEntity -> m_6880_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/ContainerItem/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder; from net/minecraft/world/item/Item/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;: use -> m_7203_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/CustomXpItem/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: interactLivingEntity -> m_6880_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/isInvulnerableTo(Lnet/minecraft/world/damagesource/DamageSource;)Z from net/minecraft/server/level/ServerPlayer/isInvulnerableTo(Lnet/minecraft/world/damagesource/DamageSource;)Z: isInvulnerableTo -> m_6673_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/canHarmPlayer(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/server/level/ServerPlayer/canHarmPlayer(Lnet/minecraft/world/entity/player/Player;)Z: canHarmPlayer -> m_7099_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/updateOptions(Lnet/minecraft/network/protocol/game/ServerboundClientInformationPacket;)V from net/minecraft/server/level/ServerPlayer/updateOptions(Lnet/minecraft/network/protocol/game/ServerboundClientInformationPacket;)V: updateOptions -> m_9156_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V from net/minecraft/server/level/ServerPlayer/displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V: displayClientMessage -> m_5661_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/die(Lnet/minecraft/world/damagesource/DamageSource;)V from net/minecraft/server/level/ServerPlayer/die(Lnet/minecraft/world/damagesource/DamageSource;)V: die -> m_6667_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/tick()V from net/minecraft/server/level/ServerPlayer/tick()V: tick -> m_8119_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/DarkTowerShardItem/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: interactLivingEntity -> m_6880_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/DigitalItemNameBlockItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/BlockItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/EvolutionTriggerItem/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: interactLivingEntity -> m_6880_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/DigitronItem/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/modderg/thedigimod/server/item/custom/EvolutionTriggerItem/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: interactLivingEntity -> m_6880_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/getServer()Lnet/minecraft/server/MinecraftServer; from net/minecraft/world/entity/Entity/getServer()Lnet/minecraft/server/MinecraftServer;: getServer -> m_20194_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/SpawnGoodItem/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V from net/minecraft/world/item/Item/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V: appendHoverText -> m_7373_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/SpawnGoodItem/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder; from net/minecraft/world/item/Item/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;: use -> m_7203_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/SpawnGoodItem/getPlayerPOVHitResult(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/ClipContext$Fluid;)Lnet/minecraft/world/phys/BlockHitResult; from net/minecraft/world/item/Item/getPlayerPOVHitResult(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/ClipContext$Fluid;)Lnet/minecraft/world/phys/BlockHitResult;: getPlayerPOVHitResult -> m_41435_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/SpawnGoodItem/inventoryTick(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;IZ)V from net/minecraft/world/item/Item/inventoryTick(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;IZ)V: inventoryTick -> m_6883_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/SpawnGoodItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/SpMoveItem/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V from net/minecraft/world/item/Item/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V: appendHoverText -> m_7373_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/SpMoveItem/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: interactLivingEntity -> m_6880_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/StatUpItem/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V from net/minecraft/world/item/Item/appendHoverText(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V: appendHoverText -> m_7373_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/StatUpItem/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: interactLivingEntity -> m_6880_
+Conflicting propagated mapping for net/modderg/thedigimod/server/item/custom/TameItem/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/Item/interactLivingEntity(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: interactLivingEntity -> m_6880_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/awardStat(Lnet/minecraft/stats/Stat;I)V from net/minecraft/server/level/ServerPlayer/awardStat(Lnet/minecraft/stats/Stat;I)V: awardStat -> m_6278_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileUnderTarget/onHitEntity(Lnet/minecraft/world/phys/EntityHitResult;)V from net/modderg/thedigimod/server/projectiles/ProjectileDefault/onHitEntity(Lnet/minecraft/world/phys/EntityHitResult;)V: onHitEntity -> m_5790_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileUnderTarget/tick()V from net/modderg/thedigimod/server/projectiles/ProjectileDefault/tick()V: tick -> m_8119_
+Conflicting propagated mapping for net/modderg/thedigimod/server/projectiles/ProjectileUnderTarget/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V from net/modderg/thedigimod/server/projectiles/ProjectileDefault/onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V: onHitBlock -> m_8060_
+Conflicting propagated mapping for net/minecraftforge/event/BuildCreativeModeTabContentsEvent/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V from net/minecraft/world/item/CreativeModeTab$Output/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V: accept -> m_246267_
+Adding extras
+Sorting
+Writing Output: C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod-private\build\reobfJar\output.jar
+  META-INF/
+  META-INF/MANIFEST.MF
+  META-INF/mods.toml
+  assets/
+  assets/thedigimod/
+  assets/thedigimod/animations/
+  assets/thedigimod/animations/blackmachgaogamon_anims.json
+  assets/thedigimod/animations/digimons_anims.json
+  assets/thedigimod/animations/good_anims.json
+  assets/thedigimod/animations/holyangemon_anims.json
+  assets/thedigimod/animations/projectiles_anims.json
+  assets/thedigimod/animations/teslajellymon_anims.json
+  assets/thedigimod/blockstates/
+  assets/thedigimod/blockstates/digi_card_deepslate_ore.json
+  assets/thedigimod/blockstates/digi_card_ore.json
+  assets/thedigimod/blockstates/digimeat_crop.json
+  assets/thedigimod/blockstates/digitama_aquan.json
+  assets/thedigimod/blockstates/digitama_beast.json
+  assets/thedigimod/blockstates/digitama_dragon.json
+  assets/thedigimod/blockstates/digitama_earth.json
+  assets/thedigimod/blockstates/digitama_holy.json
+  assets/thedigimod/blockstates/digitama_machine.json
+  assets/thedigimod/blockstates/digitama_nightmare.json
+  assets/thedigimod/blockstates/digitama_plantinsect.json
+  assets/thedigimod/blockstates/digitama_wind.json
+  assets/thedigimod/blockstates/huanglong_deepslate_ore.json
+  assets/thedigimod/blockstates/led_shroom.json
+  assets/thedigimod/geo/
+  assets/thedigimod/geo/digimon/
+  assets/thedigimod/geo/digimon/aeroveedramon.geo.json
+  assets/thedigimod/geo/digimon/agumon.geo.json
+  assets/thedigimod/geo/digimon/agumonblack.geo.json
+  assets/thedigimod/geo/digimon/airdramon.geo.json
+  assets/thedigimod/geo/digimon/akatorimon.geo.json
+  assets/thedigimod/geo/digimon/alturkabuterimon.geo.json
+  assets/thedigimod/geo/digimon/alturkabuterimonblue.geo.json
+  assets/thedigimod/geo/digimon/andiramon.geo.json
+  assets/thedigimod/geo/digimon/angemon.geo.json
+  assets/thedigimod/geo/digimon/archelomon.geo.json
+  assets/thedigimod/geo/digimon/baboongamon.geo.json
+  assets/thedigimod/geo/digimon/babydmon.geo.json
+  assets/thedigimod/geo/digimon/bakemon.geo.json
+  assets/thedigimod/geo/digimon/ballistamon.geo.json
+  assets/thedigimod/geo/digimon/bearmon.geo.json
+  assets/thedigimod/geo/digimon/bibimon.geo.json
+  assets/thedigimod/geo/digimon/birdramon.geo.json
+  assets/thedigimod/geo/digimon/blackgabumon.geo.json
+  assets/thedigimod/geo/digimon/blackgalgomon.geo.json
+  assets/thedigimod/geo/digimon/blackgaogamon.geo.json
+  assets/thedigimod/geo/digimon/blackgrowlmon.geo.json
+  assets/thedigimod/geo/digimon/blackgrowlmon.json
+  assets/thedigimod/geo/digimon/blackmachgaogamon.geo.json
+  assets/thedigimod/geo/digimon/blackmegalogrowlmon.geo.json
+  assets/thedigimod/geo/digimon/blackrapidmon.geo.json
+  assets/thedigimod/geo/digimon/blackweregarurumon.geo.json
+  assets/thedigimod/geo/digimon/boogiemon.geo.json
+  assets/thedigimod/geo/digimon/botamon.geo.json
+  assets/thedigimod/geo/digimon/brachimon.geo.json
+  assets/thedigimod/geo/digimon/bubbmon.geo.json
+  assets/thedigimod/geo/digimon/bulkmon.geo.json
+  assets/thedigimod/geo/digimon/centalmon.geo.json
+  assets/thedigimod/geo/digimon/cerberumon.geo.json
+  assets/thedigimod/geo/digimon/chakmon.geo.json
+  assets/thedigimod/geo/digimon/chapmon.geo.json
+  assets/thedigimod/geo/digimon/chibimon.geo.json
+  assets/thedigimod/geo/digimon/chicomon.geo.json
+  assets/thedigimod/geo/digimon/chocomon.geo.json
+  assets/thedigimod/geo/digimon/conomon.geo.json
+  assets/thedigimod/geo/digimon/coredramon.geo.json
+  assets/thedigimod/geo/digimon/coredramongreen.geo.json
+  assets/thedigimod/geo/digimon/cyberdramon.geo.json
+  assets/thedigimod/geo/digimon/cyclomon.geo.json
+  assets/thedigimod/geo/digimon/darklizardmon.geo.json
+  assets/thedigimod/geo/digimon/darktyrannomon.geo.json
+  assets/thedigimod/geo/digimon/datirimon.geo.json
+  assets/thedigimod/geo/digimon/devidramon.geo.json
+  assets/thedigimod/geo/digimon/digitamamon.geo.json
+  assets/thedigimod/geo/digimon/doggymon.geo.json
+  assets/thedigimod/geo/digimon/dokimon.geo.json
+  assets/thedigimod/geo/digimon/dolurumon.geo.json
+  assets/thedigimod/geo/digimon/dracomon.geo.json
+  assets/thedigimod/geo/digimon/drimogemon.geo.json
+  assets/thedigimod/geo/digimon/etemon.geo.json
+  assets/thedigimod/geo/digimon/exermon.geo.json
+  assets/thedigimod/geo/digimon/extyrannomon.geo.json
+  assets/thedigimod/geo/digimon/fladramon.geo.json
+  assets/thedigimod/geo/digimon/flarerizamon.geo.json
+  assets/thedigimod/geo/digimon/flymon.geo.json
+  assets/thedigimod/geo/digimon/gabumon.geo.json
+  assets/thedigimod/geo/digimon/gargomon.geo.json
+  assets/thedigimod/geo/digimon/garudamon.geo.json
+  assets/thedigimod/geo/digimon/garurumon.geo.json
+  assets/thedigimod/geo/digimon/garurumonblack.geo.json
+  assets/thedigimod/geo/digimon/gawappamon.geo.json
+  assets/thedigimod/geo/digimon/gesomon.geo.json
+  assets/thedigimod/geo/digimon/gigadramon.geo.json
+  assets/thedigimod/geo/digimon/gigimon.geo.json
+  assets/thedigimod/geo/digimon/gogmamon.geo.json
+  assets/thedigimod/geo/digimon/goldnumemon.geo.json
+  assets/thedigimod/geo/digimon/goldveedramon.geo.json
+  assets/thedigimod/geo/digimon/golemon.geo.json
+  assets/thedigimod/geo/digimon/goromon.geo.json
+  assets/thedigimod/geo/digimon/greymon.geo.json
+  assets/thedigimod/geo/digimon/greymonvirus.geo.json
+  assets/thedigimod/geo/digimon/grizzlymon.geo.json
+  assets/thedigimod/geo/digimon/groundramon.geo.json
+  assets/thedigimod/geo/digimon/growlmon.geo.json
+  assets/thedigimod/geo/digimon/growlmondata.geo.json
+  assets/thedigimod/geo/digimon/guilmon.geo.json
+  assets/thedigimod/geo/digimon/holyangemon.geo.json
+  assets/thedigimod/geo/digimon/icedevimon.geo.json
+  assets/thedigimod/geo/digimon/impmon.geo.json
+  assets/thedigimod/geo/digimon/jellymon.geo.json
+  assets/thedigimod/geo/digimon/jyarimon.geo.json
+  assets/thedigimod/geo/digimon/kabuterimon.geo.json
+  assets/thedigimod/geo/digimon/kamemon.geo.json
+  assets/thedigimod/geo/digimon/karatukinumemon.geo.json
+  assets/thedigimod/geo/digimon/keemon.geo.json
+  assets/thedigimod/geo/digimon/kiimon.geo.json
+  assets/thedigimod/geo/digimon/kingscumon.geo.json
+  assets/thedigimod/geo/digimon/kingshoutmon.geo.json
+  assets/thedigimod/geo/digimon/koromon.geo.json
+  assets/thedigimod/geo/digimon/kunemon.geo.json
+  assets/thedigimod/geo/digimon/kuwagamon.geo.json
+  assets/thedigimod/geo/digimon/lighdramon.geo.json
+  assets/thedigimod/geo/digimon/lopmon.geo.json
+  assets/thedigimod/geo/digimon/mailbirdramon.geo.json
+  assets/thedigimod/geo/digimon/mamemon.geo.json
+  assets/thedigimod/geo/digimon/mametyramon.geo.json
+  assets/thedigimod/geo/digimon/manticoremon.geo.json
+  assets/thedigimod/geo/digimon/marinedevimon.geo.json
+  assets/thedigimod/geo/digimon/megadramon.geo.json
+  assets/thedigimod/geo/digimon/megalogrowlmon.geo.json
+  assets/thedigimod/geo/digimon/megalogrowlmondata.geo.json
+  assets/thedigimod/geo/digimon/metalgreymon.geo.json
+  assets/thedigimod/geo/digimon/metalgreymonvirus.geo.json
+  assets/thedigimod/geo/digimon/metaltyrannomon.geo.json
+  assets/thedigimod/geo/digimon/mimicmon.geo.json
+  assets/thedigimod/geo/digimon/mochimon.geo.json
+  assets/thedigimod/geo/digimon/monzaemon.geo.json
+  assets/thedigimod/geo/digimon/namakemon.geo.json
+  assets/thedigimod/geo/digimon/nanimon.geo.json
+  assets/thedigimod/geo/digimon/numemon.geo.json
+  assets/thedigimod/geo/digimon/nyokimon.geo.json
+  assets/thedigimod/geo/digimon/octomon.geo.json
+  assets/thedigimod/geo/digimon/okuwamon.geo.json
+  assets/thedigimod/geo/digimon/omega_shoutmon.geo.json
+  assets/thedigimod/geo/digimon/omegashoutmon.geo.json
+  assets/thedigimod/geo/digimon/pagumon.geo.json
+  assets/thedigimod/geo/digimon/paildramon.geo.json
+  assets/thedigimod/geo/digimon/patamon.geo.json
+  assets/thedigimod/geo/digimon/pegasmon.geo.json
+  assets/thedigimod/geo/digimon/petitmon.geo.json
+  assets/thedigimod/geo/digimon/piyomon.geo.json
+  assets/thedigimod/geo/digimon/poyomon.geo.json
+  assets/thedigimod/geo/digimon/pulsemon.geo.json
+  assets/thedigimod/geo/digimon/punimon.geo.json
+  assets/thedigimod/geo/digimon/puyomon.geo.json
+  assets/thedigimod/geo/digimon/puyoyomon.geo.json
+  assets/thedigimod/geo/digimon/raremon.geo.json
+  assets/thedigimod/geo/digimon/rareraremon.geo.json
+  assets/thedigimod/geo/digimon/redveedramon.geo.json
+  assets/thedigimod/geo/digimon/roachmon.geo.json
+  assets/thedigimod/geo/digimon/runnermon.geo.json
+  assets/thedigimod/geo/digimon/saberdramon.geo.json
+  assets/thedigimod/geo/digimon/saggitarimon.geo.json
+  assets/thedigimod/geo/digimon/scumon.geo.json
+  assets/thedigimod/geo/digimon/shawujinmon.geo.json
+  assets/thedigimod/geo/digimon/shoutmon.geo.json
+  assets/thedigimod/geo/digimon/shoutmonx2.geo.json
+  assets/thedigimod/geo/digimon/shoutmonx3.geo.json
+  assets/thedigimod/geo/digimon/skullgreymon.geo.json
+  assets/thedigimod/geo/digimon/sunamon.geo.json
+  assets/thedigimod/geo/digimon/sunarizamon.geo.json
+  assets/thedigimod/geo/digimon/tentomon.geo.json
+  assets/thedigimod/geo/digimon/teslajellymon.geo.json
+  assets/thedigimod/geo/digimon/thetismon.geo.json
+  assets/thedigimod/geo/digimon/thunderballmon.geo.json
+  assets/thedigimod/geo/digimon/tokomon.geo.json
+  assets/thedigimod/geo/digimon/tortamon.geo.json
+  assets/thedigimod/geo/digimon/tsunomon.geo.json
+  assets/thedigimod/geo/digimon/turuiemon.geo.json
+  assets/thedigimod/geo/digimon/tuskmon.geo.json
+  assets/thedigimod/geo/digimon/tyrannomon.geo.json
+  assets/thedigimod/geo/digimon/tyumon.geo.json
+  assets/thedigimod/geo/digimon/unimon.geo.json
+  assets/thedigimod/geo/digimon/veedramon.geo.json
+  assets/thedigimod/geo/digimon/veedramonblack.geo.json
+  assets/thedigimod/geo/digimon/vegiemon.geo.json
+  assets/thedigimod/geo/digimon/vmon.geo.json
+  assets/thedigimod/geo/digimon/wendimon.geo.json
+  assets/thedigimod/geo/digimon/weregarurumon.geo.json
+  assets/thedigimod/geo/digimon/wizardmon.geo.json
+  assets/thedigimod/geo/digimon/xvmon.geo.json
+  assets/thedigimod/geo/digimon/yokomon.geo.json
+  assets/thedigimod/geo/digimon/zurumon.geo.json
+  assets/thedigimod/geo/moves/
+  assets/thedigimod/geo/moves/bear_punch.geo.json
+  assets/thedigimod/geo/moves/beast_slash.geo.json
+  assets/thedigimod/geo/moves/bullet.geo.json
+  assets/thedigimod/geo/moves/cruel_sissors.geo.json
+  assets/thedigimod/geo/moves/crystal_rain.geo.json
+  assets/thedigimod/geo/moves/deadly_sting.geo.json
+  assets/thedigimod/geo/moves/death_claw.geo.json
+  assets/thedigimod/geo/moves/disc_attack.geo.json
+  assets/thedigimod/geo/moves/divine_axe.geo.json
+  assets/thedigimod/geo/moves/gatling_arm.geo.json
+  assets/thedigimod/geo/moves/giga_destroyer.geo.json
+  assets/thedigimod/geo/moves/gliding_rocks.geo.json
+  assets/thedigimod/geo/moves/gold_arrow.geo.json
+  assets/thedigimod/geo/moves/heavens_knuckle.geo.json
+  assets/thedigimod/geo/moves/holy_shoot.geo.json
+  assets/thedigimod/geo/moves/hyper_heat.geo.json
+  assets/thedigimod/geo/moves/ink_gun.geo.json
+  assets/thedigimod/geo/moves/mach_tornado.geo.json
+  assets/thedigimod/geo/moves/mega_blaster.geo.json
+  assets/thedigimod/geo/moves/mega_flame.geo.json
+  assets/thedigimod/geo/moves/meteor_wing.geo.json
+  assets/thedigimod/geo/moves/night_of_fire.geo.json
+  assets/thedigimod/geo/moves/ocean_storm.geo.json
+  assets/thedigimod/geo/moves/pepper_breath.geo.json
+  assets/thedigimod/geo/moves/petit_thunder.geo.json
+  assets/thedigimod/geo/moves/petit_twister.geo.json
+  assets/thedigimod/geo/moves/poison_breath.geo.json
+  assets/thedigimod/geo/moves/poop_throw.geo.json
+  assets/thedigimod/geo/moves/sand_blast.geo.json
+  assets/thedigimod/geo/moves/secret_identity.geo.json
+  assets/thedigimod/geo/moves/smiley_bomb.geo.json
+  assets/thedigimod/geo/moves/snow_bullet.geo.json
+  assets/thedigimod/geo/moves/thunderbolt.geo.json
+  assets/thedigimod/geo/moves/tron_flame.geo.json
+  assets/thedigimod/geo/moves/v_arrow.geo.json
+  assets/thedigimod/geo/moves/world_slash.geo.json
+  assets/thedigimod/geo/moves/x_attack.geo.json
+  assets/thedigimod/geo/training_goods/
+  assets/thedigimod/geo/training_goods/ball_good.geo.json
+  assets/thedigimod/geo/training_goods/clown_box.geo.json
+  assets/thedigimod/geo/training_goods/defence_table.geo.json
+  assets/thedigimod/geo/training_goods/dragon_bone.geo.json
+  assets/thedigimod/geo/training_goods/flytrap_good.geo.json
+  assets/thedigimod/geo/training_goods/lira_good.geo.json
+  assets/thedigimod/geo/training_goods/m2_disk.geo.json
+  assets/thedigimod/geo/training_goods/old_pc.geo.json
+  assets/thedigimod/geo/training_goods/punching_bag.geo.json
+  assets/thedigimod/geo/training_goods/red_freezer.geo.json
+  assets/thedigimod/geo/training_goods/shield.geo.json
+  assets/thedigimod/geo/training_goods/target.geo.json
+  assets/thedigimod/geo/training_goods/training_rock.geo.json
+  assets/thedigimod/geo/training_goods/update.geo.json
+  assets/thedigimod/geo/training_goods/wind_vane.geo.json
+  assets/thedigimod/lang/
+  assets/thedigimod/lang/en_us.json
+  assets/thedigimod/lang/ko_kr.json
+  assets/thedigimod/lang/zh_cn.json
+  assets/thedigimod/models/
+  assets/thedigimod/models/block/
+  assets/thedigimod/models/block/digi_card_deepslate_ore.json
+  assets/thedigimod/models/block/digi_card_ore.json
+  assets/thedigimod/models/block/digimeat_stage0.json
+  assets/thedigimod/models/block/digimeat_stage1.json
+  assets/thedigimod/models/block/digimeat_stage2.json
+  assets/thedigimod/models/block/digimeat_stage3.json
+  assets/thedigimod/models/block/digimeat_stage4.json
+  assets/thedigimod/models/block/digimeat_stage5.json
+  assets/thedigimod/models/block/digimeat_stage6.json
+  assets/thedigimod/models/block/digitama_aquan.json
+  assets/thedigimod/models/block/digitama_beast.json
+  assets/thedigimod/models/block/digitama_dragon.json
+  assets/thedigimod/models/block/digitama_earth.json
+  assets/thedigimod/models/block/digitama_holy.json
+  assets/thedigimod/models/block/digitama_machine.json
+  assets/thedigimod/models/block/digitama_nightmare.json
+  assets/thedigimod/models/block/digitama_plantinsect.json
+  assets/thedigimod/models/block/digitama_wind.json
+  assets/thedigimod/models/block/huanglong_deepslate_ore.json
+  assets/thedigimod/models/block/led_shroom.json
+  assets/thedigimod/models/item/
+  assets/thedigimod/models/item/admin_logo.json
+  assets/thedigimod/models/item/aquan_data.json
+  assets/thedigimod/models/item/aquan_pack.json
+  assets/thedigimod/models/item/bag_item.json
+  assets/thedigimod/models/item/ball_good.json
+  assets/thedigimod/models/item/battles_chip.json
+  assets/thedigimod/models/item/beast_data.json
+  assets/thedigimod/models/item/beast_digitama.json
+  assets/thedigimod/models/item/beast_pack.json
+  assets/thedigimod/models/item/black_digitron.json
+  assets/thedigimod/models/item/blue_card.json
+  assets/thedigimod/models/item/boss_cube.json
+  assets/thedigimod/models/item/botamon.json
+  assets/thedigimod/models/item/bubbmon.json
+  assets/thedigimod/models/item/bubbmonk.json
+  assets/thedigimod/models/item/byteattack.json
+  assets/thedigimod/models/item/bytedefense.json
+  assets/thedigimod/models/item/bytehealth.json
+  assets/thedigimod/models/item/bytespattack.json
+  assets/thedigimod/models/item/bytespdefense.json
+  assets/thedigimod/models/item/chicomon.json
+  assets/thedigimod/models/item/chip_bear_punch.json
+  assets/thedigimod/models/item/chip_beast_slash.json
+  assets/thedigimod/models/item/chip_bullet.json
+  assets/thedigimod/models/item/chip_cruel_sissors.json
+  assets/thedigimod/models/item/chip_crystal_rain.json
+  assets/thedigimod/models/item/chip_deadly_sting.json
+  assets/thedigimod/models/item/chip_death_claw.json
+  assets/thedigimod/models/item/chip_disc_attack.json
+  assets/thedigimod/models/item/chip_divine_axe.json
+  assets/thedigimod/models/item/chip_doctase.json
+  assets/thedigimod/models/item/chip_gatling_arm.json
+  assets/thedigimod/models/item/chip_giga_destroyer.json
+  assets/thedigimod/models/item/chip_gliding_rocks.json
+  assets/thedigimod/models/item/chip_gold_arrow.json
+  assets/thedigimod/models/item/chip_heavens_knuckle.json
+  assets/thedigimod/models/item/chip_holy_shoot.json
+  assets/thedigimod/models/item/chip_hyper_heat.json
+  assets/thedigimod/models/item/chip_ink_gun.json
+  assets/thedigimod/models/item/chip_love_song.json
+  assets/thedigimod/models/item/chip_mach_tornado.json
+  assets/thedigimod/models/item/chip_magma_spit.json
+  assets/thedigimod/models/item/chip_mega_blaster.json
+  assets/thedigimod/models/item/chip_mega_flame.json
+  assets/thedigimod/models/item/chip_meteor_wing.json
+  assets/thedigimod/models/item/chip_night_of_fire.json
+  assets/thedigimod/models/item/chip_ocean_storm.json
+  assets/thedigimod/models/item/chip_pepper_breath.json
+  assets/thedigimod/models/item/chip_petit_thunder.json
+  assets/thedigimod/models/item/chip_petit_twister.json
+  assets/thedigimod/models/item/chip_poison_breath.json
+  assets/thedigimod/models/item/chip_poop_throw.json
+  assets/thedigimod/models/item/chip_sand_blast.json
+  assets/thedigimod/models/item/chip_secret_identity.json
+  assets/thedigimod/models/item/chip_smiley_bomb.json
+  assets/thedigimod/models/item/chip_snow_bullet.json
+  assets/thedigimod/models/item/chip_thunderbolt.json
+  assets/thedigimod/models/item/chip_tron_flame.json
+  assets/thedigimod/models/item/chip_v_arrow.json
+  assets/thedigimod/models/item/chip_world_slash.json
+  assets/thedigimod/models/item/chip_x_attack.json
+  assets/thedigimod/models/item/chrome_digizoid.json
+  assets/thedigimod/models/item/chrondigizoit.json
+  assets/thedigimod/models/item/clown_box.json
+  assets/thedigimod/models/item/conomon.json
+  assets/thedigimod/models/item/d3.json
+  assets/thedigimod/models/item/darc.json
+  assets/thedigimod/models/item/dark_tower_shard.json
+  assets/thedigimod/models/item/datirimon.json
+  assets/thedigimod/models/item/digi_cake.json
+  assets/thedigimod/models/item/digi_card_deepslate_ore.json
+  assets/thedigimod/models/item/digi_card_ore.json
+  assets/thedigimod/models/item/digi_core.json
+  assets/thedigimod/models/item/digi_meat.json
+  assets/thedigimod/models/item/digi_meat_big.json
+  assets/thedigimod/models/item/digi_meat_rotten.json
+  assets/thedigimod/models/item/digi_memory.json
+  assets/thedigimod/models/item/digi_ribs.json
+  assets/thedigimod/models/item/digi_sushi.json
+  assets/thedigimod/models/item/digimon_card.json
+  assets/thedigimod/models/item/digitama_aquan.json
+  assets/thedigimod/models/item/digitama_beast.json
+  assets/thedigimod/models/item/digitama_dragon.json
+  assets/thedigimod/models/item/digitama_earth.json
+  assets/thedigimod/models/item/digitama_holy.json
+  assets/thedigimod/models/item/digitama_machine.json
+  assets/thedigimod/models/item/digitama_nightmare.json
+  assets/thedigimod/models/item/digitama_plantinsect.json
+  assets/thedigimod/models/item/digitama_wind.json
+  assets/thedigimod/models/item/digivice.json
+  assets/thedigimod/models/item/digivice01.json
+  assets/thedigimod/models/item/digivice2020.json
+  assets/thedigimod/models/item/digivice_burst.json
+  assets/thedigimod/models/item/digivice_ic.json
+  assets/thedigimod/models/item/dokimon.json
+  assets/thedigimod/models/item/dragon_bone.json
+  assets/thedigimod/models/item/dragon_data.json
+  assets/thedigimod/models/item/dragon_pack.json
+  assets/thedigimod/models/item/dscanner.json
+  assets/thedigimod/models/item/dstorage.json
+  assets/thedigimod/models/item/earth_data.json
+  assets/thedigimod/models/item/earth_pack.json
+  assets/thedigimod/models/item/flytrap_good.json
+  assets/thedigimod/models/item/gbattack.json
+  assets/thedigimod/models/item/gbdefence.json
+  assets/thedigimod/models/item/gbspattack.json
+  assets/thedigimod/models/item/gbspdefence.json
+  assets/thedigimod/models/item/goblimon_bat.json
+  assets/thedigimod/models/item/gold_poop.json
+  assets/thedigimod/models/item/guilmon_bread.json
+  assets/thedigimod/models/item/health_drives.json
+  assets/thedigimod/models/item/holy_data.json
+  assets/thedigimod/models/item/holy_pack.json
+  assets/thedigimod/models/item/huanglong_deepslate_ore.json
+  assets/thedigimod/models/item/huanglong_ore.json
+  assets/thedigimod/models/item/hunaglong_ore.json
+  assets/thedigimod/models/item/jyarimon.json
+  assets/thedigimod/models/item/kiimon.json
+  assets/thedigimod/models/item/led_shroom.json
+  assets/thedigimod/models/item/lira_good.json
+  assets/thedigimod/models/item/m2_disk_item.json
+  assets/thedigimod/models/item/machine_data.json
+  assets/thedigimod/models/item/machine_pack.json
+  assets/thedigimod/models/item/nightmare_data.json
+  assets/thedigimod/models/item/nightmare_pack.json
+  assets/thedigimod/models/item/nyokimon.json
+  assets/thedigimod/models/item/old_pc.json
+  assets/thedigimod/models/item/petitmon.json
+  assets/thedigimod/models/item/plantinsect_data.json
+  assets/thedigimod/models/item/plantinsect_pack.json
+  assets/thedigimod/models/item/poop.json
+  assets/thedigimod/models/item/poop_data.json
+  assets/thedigimod/models/item/poop_pack.json
+  assets/thedigimod/models/item/poyomon.json
+  assets/thedigimod/models/item/punimon.json
+  assets/thedigimod/models/item/puyomon.json
+  assets/thedigimod/models/item/red_freezer.json
+  assets/thedigimod/models/item/shield_item.json
+  assets/thedigimod/models/item/sunamon.json
+  assets/thedigimod/models/item/table_item.json
+  assets/thedigimod/models/item/tamer_leash.json
+  assets/thedigimod/models/item/target_item.json
+  assets/thedigimod/models/item/training_bag.json
+  assets/thedigimod/models/item/training_rock.json
+  assets/thedigimod/models/item/update_item.json
+  assets/thedigimod/models/item/vitalbracelet.json
+  assets/thedigimod/models/item/vpet.json
+  assets/thedigimod/models/item/wind_data.json
+  assets/thedigimod/models/item/wind_pack.json
+  assets/thedigimod/models/item/wind_vane.json
+  assets/thedigimod/models/item/xross_loader.json
+  assets/thedigimod/models/item/zurumon.json
+  assets/thedigimod/particles/
+  assets/thedigimod/particles/attack_up.json
+  assets/thedigimod/particles/battles_up.json
+  assets/thedigimod/particles/bullet_particle.json
+  assets/thedigimod/particles/defence_up.json
+  assets/thedigimod/particles/digitron_particles.json
+  assets/thedigimod/particles/energy_star.json
+  assets/thedigimod/particles/evolution_particles.json
+  assets/thedigimod/particles/evolution_particles_chmp.json
+  assets/thedigimod/particles/evolution_particles_ult.json
+  assets/thedigimod/particles/happy_bubble.json
+  assets/thedigimod/particles/health_up.json
+  assets/thedigimod/particles/holy_cross.json
+  assets/thedigimod/particles/joyful_bubble.json
+  assets/thedigimod/particles/life_particle.json
+  assets/thedigimod/particles/meat_bubble.json
+  assets/thedigimod/particles/meh_bubble.json
+  assets/thedigimod/particles/mistake_bubble.json
+  assets/thedigimod/particles/note_particle.json
+  assets/thedigimod/particles/pepper_breath.json
+  assets/thedigimod/particles/poop_particle.json
+  assets/thedigimod/particles/red_energy_star.json
+  assets/thedigimod/particles/red_explosion.json
+  assets/thedigimod/particles/rock_particle.json
+  assets/thedigimod/particles/sad_bubble.json
+  assets/thedigimod/particles/small_bullet.json
+  assets/thedigimod/particles/spattack_up.json
+  assets/thedigimod/particles/spdefence_up.json
+  assets/thedigimod/particles/stinger.json
+  assets/thedigimod/particles/thunder.json
+  assets/thedigimod/particles/xp_particle.json
+  assets/thedigimod/sounds.json
+  assets/thedigimod/sounds/
+  assets/thedigimod/sounds/baby_steps.ogg
+  assets/thedigimod/sounds/bag_open.ogg
+  assets/thedigimod/sounds/button_sound.ogg
+  assets/thedigimod/sounds/champion_steps.ogg
+  assets/thedigimod/sounds/default_shoot.ogg
+  assets/thedigimod/sounds/digitron.ogg
+  assets/thedigimod/sounds/evo.ogg
+  assets/thedigimod/sounds/level_up.ogg
+  assets/thedigimod/sounds/memory_save.ogg
+  assets/thedigimod/sounds/move_hit.ogg
+  assets/thedigimod/sounds/open_gui.ogg
+  assets/thedigimod/sounds/place_good.ogg
+  assets/thedigimod/sounds/r_sound.ogg
+  assets/thedigimod/sounds/rookie_steps.ogg
+  assets/thedigimod/sounds/ultimate_steps.ogg
+  assets/thedigimod/sounds/xp_up.ogg
+  assets/thedigimod/textures/
+  assets/thedigimod/textures/block/
+  assets/thedigimod/textures/block/digi_card_deepslate_ore.png
+  assets/thedigimod/textures/block/digi_card_ore.png
+  assets/thedigimod/textures/block/digimeat_stage0.png
+  assets/thedigimod/textures/block/digimeat_stage1.png
+  assets/thedigimod/textures/block/digimeat_stage2.png
+  assets/thedigimod/textures/block/digimeat_stage3.png
+  assets/thedigimod/textures/block/digimeat_stage4.png
+  assets/thedigimod/textures/block/digimeat_stage5.png
+  assets/thedigimod/textures/block/digimeat_stage6.png
+  assets/thedigimod/textures/block/digitama_aquan.png
+  assets/thedigimod/textures/block/digitama_beast.png
+  assets/thedigimod/textures/block/digitama_dragon.png
+  assets/thedigimod/textures/block/digitama_earth.png
+  assets/thedigimod/textures/block/digitama_holy.png
+  assets/thedigimod/textures/block/digitama_machine.png
+  assets/thedigimod/textures/block/digitama_nightmare.png
+  assets/thedigimod/textures/block/digitama_plantinsect.png
+  assets/thedigimod/textures/block/digitama_wind.png
+  assets/thedigimod/textures/block/huanglong_deepslate_ore.png
+  assets/thedigimod/textures/block/led_shroom.png
+  assets/thedigimod/textures/entities/
+  assets/thedigimod/textures/entities/aeroveedramon.png
+  assets/thedigimod/textures/entities/agumon.png
+  assets/thedigimod/textures/entities/agumonblack.png
+  assets/thedigimod/textures/entities/airdramon.png
+  assets/thedigimod/textures/entities/akatorimon.png
+  assets/thedigimod/textures/entities/alturkabuterimon.png
+  assets/thedigimod/textures/entities/alturkabuterimon_glowmask.png
+  assets/thedigimod/textures/entities/alturkabuterimonblue.png
+  assets/thedigimod/textures/entities/alturkabuterimonblue_glowmask.png
+  assets/thedigimod/textures/entities/andiramon.png
+  assets/thedigimod/textures/entities/angemon.png
+  assets/thedigimod/textures/entities/archelomon.png
+  assets/thedigimod/textures/entities/baboongamon.png
+  assets/thedigimod/textures/entities/babydmon.png
+  assets/thedigimod/textures/entities/bakemon.png
+  assets/thedigimod/textures/entities/bakemon_glowmask.png
+  assets/thedigimod/textures/entities/ballistamon.png
+  assets/thedigimod/textures/entities/bearmon.png
+  assets/thedigimod/textures/entities/bibimon.png
+  assets/thedigimod/textures/entities/birdramon.png
+  assets/thedigimod/textures/entities/birdramon_glowmask.png
+  assets/thedigimod/textures/entities/blackgabumon.png
+  assets/thedigimod/textures/entities/blackgalgomon.png
+  assets/thedigimod/textures/entities/blackgaogamon.png
+  assets/thedigimod/textures/entities/blackgrowlmon.png
+  assets/thedigimod/textures/entities/blackmachgaogamon.png
+  assets/thedigimod/textures/entities/blackmegalogrowlmon.png
+  assets/thedigimod/textures/entities/blackrapidmon.png
+  assets/thedigimod/textures/entities/blackweregarurumon.png
+  assets/thedigimod/textures/entities/boogiemon.png
+  assets/thedigimod/textures/entities/boogiemon_glowmask.png
+  assets/thedigimod/textures/entities/botamon.png
+  assets/thedigimod/textures/entities/brachimon.png
+  assets/thedigimod/textures/entities/bubbmon.png
+  assets/thedigimod/textures/entities/bulkmon.png
+  assets/thedigimod/textures/entities/centalmon.png
+  assets/thedigimod/textures/entities/centalmon_glowmask.png
+  assets/thedigimod/textures/entities/cerberumon.png
+  assets/thedigimod/textures/entities/chakmon.png
+  assets/thedigimod/textures/entities/chapmon.png
+  assets/thedigimod/textures/entities/chibimon.png
+  assets/thedigimod/textures/entities/chicomon.png
+  assets/thedigimod/textures/entities/chocomon.png
+  assets/thedigimod/textures/entities/conomon.png
+  assets/thedigimod/textures/entities/coredramon.png
+  assets/thedigimod/textures/entities/coredramongreen.png
+  assets/thedigimod/textures/entities/cyberdramon.png
+  assets/thedigimod/textures/entities/cyclomon.png
+  assets/thedigimod/textures/entities/darklizardmon.png
+  assets/thedigimod/textures/entities/darklizardmon_glowmask.png
+  assets/thedigimod/textures/entities/darklizzardmon.png
+  assets/thedigimod/textures/entities/darktyrannomon.png
+  assets/thedigimod/textures/entities/datirimon.png
+  assets/thedigimod/textures/entities/devidramon.png
+  assets/thedigimod/textures/entities/devidramon_glowmask.png
+  assets/thedigimod/textures/entities/digitamamon.png
+  assets/thedigimod/textures/entities/digitamamon_glowmask.png
+  assets/thedigimod/textures/entities/doggymon.png
+  assets/thedigimod/textures/entities/dokimon.png
+  assets/thedigimod/textures/entities/dolurumon.png
+  assets/thedigimod/textures/entities/dracomon.png
+  assets/thedigimod/textures/entities/drimogemon.png
+  assets/thedigimod/textures/entities/etemon.png
+  assets/thedigimod/textures/entities/exermon.png
+  assets/thedigimod/textures/entities/extyrannomon.png
+  assets/thedigimod/textures/entities/extyrannomon_glowmask.png
+  assets/thedigimod/textures/entities/fladramon.png
+  assets/thedigimod/textures/entities/flarerizamon.png
+  assets/thedigimod/textures/entities/flarerizamon_glowmask.png
+  assets/thedigimod/textures/entities/flymon.png
+  assets/thedigimod/textures/entities/gabumon.png
+  assets/thedigimod/textures/entities/gargomon.png
+  assets/thedigimod/textures/entities/garudamon.png
+  assets/thedigimod/textures/entities/garurumon.png
+  assets/thedigimod/textures/entities/garurumonblack.png
+  assets/thedigimod/textures/entities/gawappamon.png
+  assets/thedigimod/textures/entities/gesomon.png
+  assets/thedigimod/textures/entities/gigadramon.png
+  assets/thedigimod/textures/entities/gigimon.png
+  assets/thedigimod/textures/entities/gogmamon.png
+  assets/thedigimod/textures/entities/goldnumemon.png
+  assets/thedigimod/textures/entities/goldveedramon.png
+  assets/thedigimod/textures/entities/golemon.png
+  assets/thedigimod/textures/entities/goromon.png
+  assets/thedigimod/textures/entities/goromon_glowmask.png
+  assets/thedigimod/textures/entities/greymon.png
+  assets/thedigimod/textures/entities/greymonvirus.png
+  assets/thedigimod/textures/entities/grizzlymon.png
+  assets/thedigimod/textures/entities/groundramon.png
+  assets/thedigimod/textures/entities/growlmon.png
+  assets/thedigimod/textures/entities/growlmondata.png
+  assets/thedigimod/textures/entities/guilmon.png
+  assets/thedigimod/textures/entities/holyangemon.png
+  assets/thedigimod/textures/entities/icedevimon.png
+  assets/thedigimod/textures/entities/icedevimon_glowmask.png
+  assets/thedigimod/textures/entities/impmon.png
+  assets/thedigimod/textures/entities/jellymon.png
+  assets/thedigimod/textures/entities/jellymon_glowmask.png
+  assets/thedigimod/textures/entities/jyarimon.png
+  assets/thedigimod/textures/entities/kabuterimon.png
+  assets/thedigimod/textures/entities/kamemon.png
+  assets/thedigimod/textures/entities/karatukinumemon.png
+  assets/thedigimod/textures/entities/keemon.png
+  assets/thedigimod/textures/entities/kiimon.png
+  assets/thedigimod/textures/entities/kingscumon.png
+  assets/thedigimod/textures/entities/kingshoutmon.png
+  assets/thedigimod/textures/entities/koromon.png
+  assets/thedigimod/textures/entities/kunemon.png
+  assets/thedigimod/textures/entities/kuwagamon.png
+  assets/thedigimod/textures/entities/lighdramon.png
+  assets/thedigimod/textures/entities/lopmon.png
+  assets/thedigimod/textures/entities/mailbirdramon.png
+  assets/thedigimod/textures/entities/mailbirdramon_glowmask.png
+  assets/thedigimod/textures/entities/mamemon.png
+  assets/thedigimod/textures/entities/mametyramon.png
+  assets/thedigimod/textures/entities/manticoremon.png
+  assets/thedigimod/textures/entities/marinedevimon.png
+  assets/thedigimod/textures/entities/marinedevimon_glowmask.png
+  assets/thedigimod/textures/entities/megadramon.png
+  assets/thedigimod/textures/entities/megalogrowlmon.png
+  assets/thedigimod/textures/entities/megalogrowlmondata.png
+  assets/thedigimod/textures/entities/metalgreymon.png
+  assets/thedigimod/textures/entities/metalgreymon_glowmask.png
+  assets/thedigimod/textures/entities/metalgreymonvirus.png
+  assets/thedigimod/textures/entities/metalgreymonvirus_glowmask.png
+  assets/thedigimod/textures/entities/metaltyrannomon.png
+  assets/thedigimod/textures/entities/metaltyrannomon_glowmask.png
+  assets/thedigimod/textures/entities/mimicmon.png
+  assets/thedigimod/textures/entities/mochimon.png
+  assets/thedigimod/textures/entities/monzaemon.png
+  assets/thedigimod/textures/entities/namakemon.png
+  assets/thedigimod/textures/entities/nanimon.png
+  assets/thedigimod/textures/entities/numemon.png
+  assets/thedigimod/textures/entities/nyokimon.png
+  assets/thedigimod/textures/entities/octomon.png
+  assets/thedigimod/textures/entities/okuwamon.png
+  assets/thedigimod/textures/entities/omega_shoutmon.png
+  assets/thedigimod/textures/entities/omegashoutmon.png
+  assets/thedigimod/textures/entities/pagumon.png
+  assets/thedigimod/textures/entities/paildramon.png
+  assets/thedigimod/textures/entities/patamon.png
+  assets/thedigimod/textures/entities/pegasmon.png
+  assets/thedigimod/textures/entities/petitmon.png
+  assets/thedigimod/textures/entities/piyomon.png
+  assets/thedigimod/textures/entities/poyomon.png
+  assets/thedigimod/textures/entities/pulsemon.png
+  assets/thedigimod/textures/entities/punimon.png
+  assets/thedigimod/textures/entities/puyomon.png
+  assets/thedigimod/textures/entities/puyomon_glowmask.png
+  assets/thedigimod/textures/entities/puyoyomon.png
+  assets/thedigimod/textures/entities/puyoyomon_glowmask.png
+  assets/thedigimod/textures/entities/raremon.png
+  assets/thedigimod/textures/entities/rareraremon.png
+  assets/thedigimod/textures/entities/rareraremon_glowmask.png
+  assets/thedigimod/textures/entities/redveedramon.png
+  assets/thedigimod/textures/entities/roachmon.png
+  assets/thedigimod/textures/entities/runnermon.png
+  assets/thedigimod/textures/entities/runnermon_glowmask.png
+  assets/thedigimod/textures/entities/saberdramon.png
+  assets/thedigimod/textures/entities/saberdramon_glowmask.png
+  assets/thedigimod/textures/entities/saggitarimon.png
+  assets/thedigimod/textures/entities/scumon.png
+  assets/thedigimod/textures/entities/shawujinmon.png
+  assets/thedigimod/textures/entities/shoutmon.png
+  assets/thedigimod/textures/entities/shoutmonx2.png
+  assets/thedigimod/textures/entities/shoutmonx3.png
+  assets/thedigimod/textures/entities/skullgreymon.png
+  assets/thedigimod/textures/entities/skullgreymon_glowmask.png
+  assets/thedigimod/textures/entities/sunamon.png
+  assets/thedigimod/textures/entities/sunarizamon.png
+  assets/thedigimod/textures/entities/tentomon.png
+  assets/thedigimod/textures/entities/tentomon_glowmask.png
+  assets/thedigimod/textures/entities/teslajellymon.png
+  assets/thedigimod/textures/entities/teslajellymon_glowmask.png
+  assets/thedigimod/textures/entities/thetismon.png
+  assets/thedigimod/textures/entities/thetismon_glowmask.png
+  assets/thedigimod/textures/entities/thunderballmon.png
+  assets/thedigimod/textures/entities/tokomon.png
+  assets/thedigimod/textures/entities/tortamon.png
+  assets/thedigimod/textures/entities/tsunomon.png
+  assets/thedigimod/textures/entities/turuiemon.png
+  assets/thedigimod/textures/entities/tuskmon.png
+  assets/thedigimod/textures/entities/tyrannomon.png
+  assets/thedigimod/textures/entities/tyumon.png
+  assets/thedigimod/textures/entities/unimon.png
+  assets/thedigimod/textures/entities/unimon_glowmask.png
+  assets/thedigimod/textures/entities/veedramon.png
+  assets/thedigimod/textures/entities/veedramonblack.png
+  assets/thedigimod/textures/entities/vegiemon.png
+  assets/thedigimod/textures/entities/vmon.png
+  assets/thedigimod/textures/entities/wendimon.png
+  assets/thedigimod/textures/entities/weregarurumon.png
+  assets/thedigimod/textures/entities/wizardmon.png
+  assets/thedigimod/textures/entities/xvmon.png
+  assets/thedigimod/textures/entities/yokomon.png
+  assets/thedigimod/textures/entities/zurumon.png
+  assets/thedigimod/textures/gui/
+  assets/thedigimod/textures/gui/advancement_back.png
+  assets/thedigimod/textures/gui/button_attack.png
+  assets/thedigimod/textures/gui/button_attack_pressed.png
+  assets/thedigimod/textures/gui/button_chest.png
+  assets/thedigimod/textures/gui/button_eat.png
+  assets/thedigimod/textures/gui/button_fly.png
+  assets/thedigimod/textures/gui/button_line.png
+  assets/thedigimod/textures/gui/button_memory.png
+  assets/thedigimod/textures/gui/button_sit.png
+  assets/thedigimod/textures/gui/button_stand.png
+  assets/thedigimod/textures/gui/button_teleport.png
+  assets/thedigimod/textures/gui/button_wander.png
+  assets/thedigimod/textures/gui/button_work.png
+  assets/thedigimod/textures/gui/condition_end.png
+  assets/thedigimod/textures/gui/condition_mistakes.png
+  assets/thedigimod/textures/gui/condition_mood.png
+  assets/thedigimod/textures/gui/condition_none.png
+  assets/thedigimod/textures/gui/condition_top.png
+  assets/thedigimod/textures/gui/condition_wins.png
+  assets/thedigimod/textures/gui/condition_xp.png
+  assets/thedigimod/textures/gui/dark_shard_cond.png
+  assets/thedigimod/textures/gui/digimon_gui2.png
+  assets/thedigimod/textures/gui/inventory_baby.png
+  assets/thedigimod/textures/gui/inventory_champion.png
+  assets/thedigimod/textures/gui/inventory_rookie.png
+  assets/thedigimod/textures/gui/inventory_transporter.png
+  assets/thedigimod/textures/gui/inventory_ultimate.png
+  assets/thedigimod/textures/gui/left_gui.png
+  assets/thedigimod/textures/gui/line_graph.png
+  assets/thedigimod/textures/gui/prof_log.png
+  assets/thedigimod/textures/gui/prof_miner.png
+  assets/thedigimod/textures/gui/prof_ride.png
+  assets/thedigimod/textures/gui/prof_sappling.png
+  assets/thedigimod/textures/gui/prof_storer.png
+  assets/thedigimod/textures/gui/prof_wheat.png
+  assets/thedigimod/textures/gui/right_gui.png
+  assets/thedigimod/textures/icons/
+  assets/thedigimod/textures/icons/aeroveedramon.png
+  assets/thedigimod/textures/icons/agumon.png
+  assets/thedigimod/textures/icons/agumonblack.png
+  assets/thedigimod/textures/icons/airdramon.png
+  assets/thedigimod/textures/icons/akatorimon.png
+  assets/thedigimod/textures/icons/alturkabuterimon.png
+  assets/thedigimod/textures/icons/alturkabuterimonblue.png
+  assets/thedigimod/textures/icons/andiramon.png
+  assets/thedigimod/textures/icons/angemon.png
+  assets/thedigimod/textures/icons/archelomon.png
+  assets/thedigimod/textures/icons/baboongamon.png
+  assets/thedigimod/textures/icons/babydmon.png
+  assets/thedigimod/textures/icons/bakemon.png
+  assets/thedigimod/textures/icons/ballistamon.png
+  assets/thedigimod/textures/icons/bearmon.png
+  assets/thedigimod/textures/icons/bibimon.png
+  assets/thedigimod/textures/icons/birdramon.png
+  assets/thedigimod/textures/icons/blackgabumon.png
+  assets/thedigimod/textures/icons/blackgalgomon.png
+  assets/thedigimod/textures/icons/blackgaogamon.png
+  assets/thedigimod/textures/icons/blackgrowlmon.png
+  assets/thedigimod/textures/icons/blackmachgaogamon.png
+  assets/thedigimod/textures/icons/blackmegalogrowlmon.png
+  assets/thedigimod/textures/icons/blackrapidmon.png
+  assets/thedigimod/textures/icons/blackweregarurumon.png
+  assets/thedigimod/textures/icons/boogiemon.png
+  assets/thedigimod/textures/icons/botamon.png
+  assets/thedigimod/textures/icons/brachimon.png
+  assets/thedigimod/textures/icons/bubbmon.png
+  assets/thedigimod/textures/icons/bulkmon.png
+  assets/thedigimod/textures/icons/centalmon.png
+  assets/thedigimod/textures/icons/cerberumon.png
+  assets/thedigimod/textures/icons/chakmon.png
+  assets/thedigimod/textures/icons/chapmon.png
+  assets/thedigimod/textures/icons/chibimon.png
+  assets/thedigimod/textures/icons/chicomon.png
+  assets/thedigimod/textures/icons/chocomon.png
+  assets/thedigimod/textures/icons/conomon.png
+  assets/thedigimod/textures/icons/coredramon.png
+  assets/thedigimod/textures/icons/coredramongreen.png
+  assets/thedigimod/textures/icons/cyberdramon.png
+  assets/thedigimod/textures/icons/cyclomon.png
+  assets/thedigimod/textures/icons/darklizardmon.png
+  assets/thedigimod/textures/icons/darktyrannomon.png
+  assets/thedigimod/textures/icons/datirimon.png
+  assets/thedigimod/textures/icons/devidramon.png
+  assets/thedigimod/textures/icons/digitamamon.png
+  assets/thedigimod/textures/icons/doggymon.png
+  assets/thedigimod/textures/icons/dokimon.png
+  assets/thedigimod/textures/icons/dolurumon.png
+  assets/thedigimod/textures/icons/dracomon.png
+  assets/thedigimod/textures/icons/drimogemon.png
+  assets/thedigimod/textures/icons/empty.png
+  assets/thedigimod/textures/icons/etemon.png
+  assets/thedigimod/textures/icons/exermon.png
+  assets/thedigimod/textures/icons/extyrannomon.png
+  assets/thedigimod/textures/icons/fladramon.png
+  assets/thedigimod/textures/icons/flarerizamon.png
+  assets/thedigimod/textures/icons/flymon.png
+  assets/thedigimod/textures/icons/gabumon.png
+  assets/thedigimod/textures/icons/gargomon.png
+  assets/thedigimod/textures/icons/garudamon.png
+  assets/thedigimod/textures/icons/garurumon.png
+  assets/thedigimod/textures/icons/garurumonblack.png
+  assets/thedigimod/textures/icons/gawappamon.png
+  assets/thedigimod/textures/icons/gesomon.png
+  assets/thedigimod/textures/icons/gigadramon.png
+  assets/thedigimod/textures/icons/gigimon.png
+  assets/thedigimod/textures/icons/gogmamon.png
+  assets/thedigimod/textures/icons/goldnumemon.png
+  assets/thedigimod/textures/icons/goldveedramon.png
+  assets/thedigimod/textures/icons/golemon.png
+  assets/thedigimod/textures/icons/goromon.png
+  assets/thedigimod/textures/icons/greymon.png
+  assets/thedigimod/textures/icons/greymonvirus.png
+  assets/thedigimod/textures/icons/grizzlymon.png
+  assets/thedigimod/textures/icons/groundramon.png
+  assets/thedigimod/textures/icons/growlmon.png
+  assets/thedigimod/textures/icons/growlmondata.png
+  assets/thedigimod/textures/icons/guilmon.png
+  assets/thedigimod/textures/icons/holyangemon.png
+  assets/thedigimod/textures/icons/icedevimon.png
+  assets/thedigimod/textures/icons/impmon.png
+  assets/thedigimod/textures/icons/jellymon.png
+  assets/thedigimod/textures/icons/jyarimon.png
+  assets/thedigimod/textures/icons/kabuterimon.png
+  assets/thedigimod/textures/icons/kamemon.png
+  assets/thedigimod/textures/icons/karatukinumemon.png
+  assets/thedigimod/textures/icons/keemon.png
+  assets/thedigimod/textures/icons/kiimon.png
+  assets/thedigimod/textures/icons/kingscumon.png
+  assets/thedigimod/textures/icons/kingshoutmon.png
+  assets/thedigimod/textures/icons/koromon.png
+  assets/thedigimod/textures/icons/kunemon.png
+  assets/thedigimod/textures/icons/kuwagamon.png
+  assets/thedigimod/textures/icons/lighdramon.png
+  assets/thedigimod/textures/icons/lopmon.png
+  assets/thedigimod/textures/icons/mailbirdramon.png
+  assets/thedigimod/textures/icons/mamemon.png
+  assets/thedigimod/textures/icons/mametyramon.png
+  assets/thedigimod/textures/icons/manticoremon.png
+  assets/thedigimod/textures/icons/marinedevimon.png
+  assets/thedigimod/textures/icons/megadramon.png
+  assets/thedigimod/textures/icons/megalogrowlmon.png
+  assets/thedigimod/textures/icons/megalogrowlmondata.png
+  assets/thedigimod/textures/icons/metalgreymon.png
+  assets/thedigimod/textures/icons/metalgreymonvirus.png
+  assets/thedigimod/textures/icons/metaltyrannomon.png
+  assets/thedigimod/textures/icons/mimicmon.png
+  assets/thedigimod/textures/icons/mochimon.png
+  assets/thedigimod/textures/icons/monzaemon.png
+  assets/thedigimod/textures/icons/namakemon.png
+  assets/thedigimod/textures/icons/nanimon.png
+  assets/thedigimod/textures/icons/numemon.png
+  assets/thedigimod/textures/icons/nyokimon.png
+  assets/thedigimod/textures/icons/octomon.png
+  assets/thedigimod/textures/icons/okuwamon.png
+  assets/thedigimod/textures/icons/omegashoutmon.png
+  assets/thedigimod/textures/icons/pagumon.png
+  assets/thedigimod/textures/icons/paildramon.png
+  assets/thedigimod/textures/icons/patamon.png
+  assets/thedigimod/textures/icons/pegasmon.png
+  assets/thedigimod/textures/icons/petitmon.png
+  assets/thedigimod/textures/icons/piyomon.png
+  assets/thedigimod/textures/icons/poyomon.png
+  assets/thedigimod/textures/icons/prof_log.png
+  assets/thedigimod/textures/icons/prof_miner.png
+  assets/thedigimod/textures/icons/prof_ride.png
+  assets/thedigimod/textures/icons/prof_sappling.png
+  assets/thedigimod/textures/icons/prof_storer.png
+  assets/thedigimod/textures/icons/prof_wheat.png
+  assets/thedigimod/textures/icons/pulsemon.png
+  assets/thedigimod/textures/icons/punimon.png
+  assets/thedigimod/textures/icons/puyomon.png
+  assets/thedigimod/textures/icons/puyoyomon.png
+  assets/thedigimod/textures/icons/rank_fail.png
+  assets/thedigimod/textures/icons/rank_super.png
+  assets/thedigimod/textures/icons/rank_zero.png
+  assets/thedigimod/textures/icons/raremon.png
+  assets/thedigimod/textures/icons/rareraremon.png
+  assets/thedigimod/textures/icons/redveedramon.png
+  assets/thedigimod/textures/icons/roachmon.png
+  assets/thedigimod/textures/icons/runnermon.png
+  assets/thedigimod/textures/icons/saberdramon.png
+  assets/thedigimod/textures/icons/saggitarimon.png
+  assets/thedigimod/textures/icons/scumon.png
+  assets/thedigimod/textures/icons/shawujinmon.png
+  assets/thedigimod/textures/icons/shoutmon.png
+  assets/thedigimod/textures/icons/shoutmonx2.png
+  assets/thedigimod/textures/icons/shoutmonx3.png
+  assets/thedigimod/textures/icons/skullgreymon.png
+  assets/thedigimod/textures/icons/sunamon.png
+  assets/thedigimod/textures/icons/sunarizamon.png
+  assets/thedigimod/textures/icons/tentomon.png
+  assets/thedigimod/textures/icons/teslajellymon.png
+  assets/thedigimod/textures/icons/thetismon.png
+  assets/thedigimod/textures/icons/thunderballmon.png
+  assets/thedigimod/textures/icons/tokomon.png
+  assets/thedigimod/textures/icons/tortamon.png
+  assets/thedigimod/textures/icons/tsunomon.png
+  assets/thedigimod/textures/icons/turuiemon.png
+  assets/thedigimod/textures/icons/tuskmon.png
+  assets/thedigimod/textures/icons/tyrannomon.png
+  assets/thedigimod/textures/icons/tyumon.png
+  assets/thedigimod/textures/icons/unimon.png
+  assets/thedigimod/textures/icons/veedramon.png
+  assets/thedigimod/textures/icons/veedramonblack.png
+  assets/thedigimod/textures/icons/vegiemon.png
+  assets/thedigimod/textures/icons/vmon.png
+  assets/thedigimod/textures/icons/wendimon.png
+  assets/thedigimod/textures/icons/weregarurumon.png
+  assets/thedigimod/textures/icons/wizardmon.png
+  assets/thedigimod/textures/icons/wizzardmon.png
+  assets/thedigimod/textures/icons/xvmon.png
+  assets/thedigimod/textures/icons/yokomon.png
+  assets/thedigimod/textures/icons/zurumon.png
+  assets/thedigimod/textures/item/
+  assets/thedigimod/textures/item/admin_logo.png
+  assets/thedigimod/textures/item/aquan_data.png
+  assets/thedigimod/textures/item/aquan_pack.png
+  assets/thedigimod/textures/item/bag_item.png
+  assets/thedigimod/textures/item/ball_good.png
+  assets/thedigimod/textures/item/battles_chip.png
+  assets/thedigimod/textures/item/beast_data.png
+  assets/thedigimod/textures/item/beast_pack.png
+  assets/thedigimod/textures/item/black_digitron.png
+  assets/thedigimod/textures/item/blue_card.png
+  assets/thedigimod/textures/item/boss_cube.png
+  assets/thedigimod/textures/item/bubbmon.png
+  assets/thedigimod/textures/item/bubbmon.png.mcmeta
+  assets/thedigimod/textures/item/byteattack.png
+  assets/thedigimod/textures/item/bytedefense.png
+  assets/thedigimod/textures/item/bytehealth.png
+  assets/thedigimod/textures/item/bytespattack.png
+  assets/thedigimod/textures/item/bytespdefense.png
+  assets/thedigimod/textures/item/chip_bear_punch.png
+  assets/thedigimod/textures/item/chip_beast_slash.png
+  assets/thedigimod/textures/item/chip_bullet.png
+  assets/thedigimod/textures/item/chip_cruel_sissors.png
+  assets/thedigimod/textures/item/chip_crystal_rain.png
+  assets/thedigimod/textures/item/chip_deadly_sting.png
+  assets/thedigimod/textures/item/chip_death_claw.png
+  assets/thedigimod/textures/item/chip_disc_attack.png
+  assets/thedigimod/textures/item/chip_divine_axe.png
+  assets/thedigimod/textures/item/chip_doctase.png
+  assets/thedigimod/textures/item/chip_gatling_arm.png
+  assets/thedigimod/textures/item/chip_giga_destroyer.png
+  assets/thedigimod/textures/item/chip_gliding_rocks.png
+  assets/thedigimod/textures/item/chip_gold_arrow.png
+  assets/thedigimod/textures/item/chip_heavens_knuckle.png
+  assets/thedigimod/textures/item/chip_holy_shoot.png
+  assets/thedigimod/textures/item/chip_hyper_heat.png
+  assets/thedigimod/textures/item/chip_ink_gun.png
+  assets/thedigimod/textures/item/chip_love_song.png
+  assets/thedigimod/textures/item/chip_mach_tornado.png
+  assets/thedigimod/textures/item/chip_magma_spit.png
+  assets/thedigimod/textures/item/chip_mega_blaster.png
+  assets/thedigimod/textures/item/chip_mega_flame.png
+  assets/thedigimod/textures/item/chip_meteor_wing.png
+  assets/thedigimod/textures/item/chip_night_of_fire.png
+  assets/thedigimod/textures/item/chip_ocean_storm.png
+  assets/thedigimod/textures/item/chip_pepper_breath.png
+  assets/thedigimod/textures/item/chip_petit_thunder.png
+  assets/thedigimod/textures/item/chip_petit_twister.png
+  assets/thedigimod/textures/item/chip_poison_breath.png
+  assets/thedigimod/textures/item/chip_poop_throw.png
+  assets/thedigimod/textures/item/chip_sand_blast.png
+  assets/thedigimod/textures/item/chip_secret_identity.png
+  assets/thedigimod/textures/item/chip_smiley_bomb.png
+  assets/thedigimod/textures/item/chip_snow_bullet.png
+  assets/thedigimod/textures/item/chip_thunderbolt.png
+  assets/thedigimod/textures/item/chip_tron_flame.png
+  assets/thedigimod/textures/item/chip_v_arrow.png
+  assets/thedigimod/textures/item/chip_world_slash.png
+  assets/thedigimod/textures/item/chip_x_attack.png
+  assets/thedigimod/textures/item/chrome_digizoid.png
+  assets/thedigimod/textures/item/chrondigizoit.png
+  assets/thedigimod/textures/item/clown_box.png
+  assets/thedigimod/textures/item/conomon.png
+  assets/thedigimod/textures/item/conomon.png.mcmeta
+  assets/thedigimod/textures/item/d3.png
+  assets/thedigimod/textures/item/d3_overlay.png
+  assets/thedigimod/textures/item/darc.png
+  assets/thedigimod/textures/item/darc_overlay.png
+  assets/thedigimod/textures/item/dark_tower_shard.png
+  assets/thedigimod/textures/item/datirimon.png
+  assets/thedigimod/textures/item/datirimon.png.mcmeta
+  assets/thedigimod/textures/item/digi_cake.png
+  assets/thedigimod/textures/item/digi_core.png
+  assets/thedigimod/textures/item/digi_core.png.mcmeta
+  assets/thedigimod/textures/item/digi_meat.png
+  assets/thedigimod/textures/item/digi_meat_big.png
+  assets/thedigimod/textures/item/digi_meat_rotten.png
+  assets/thedigimod/textures/item/digi_meat_weird.png
+  assets/thedigimod/textures/item/digi_memory.png
+  assets/thedigimod/textures/item/digi_ribs.png
+  assets/thedigimod/textures/item/digi_sushi.png
+  assets/thedigimod/textures/item/digimon_card.png
+  assets/thedigimod/textures/item/digitama_aquan.png
+  assets/thedigimod/textures/item/digitama_beast.png
+  assets/thedigimod/textures/item/digitama_dragon.png
+  assets/thedigimod/textures/item/digitama_earth.png
+  assets/thedigimod/textures/item/digitama_holy.png
+  assets/thedigimod/textures/item/digitama_machine.png
+  assets/thedigimod/textures/item/digitama_nightmare.png
+  assets/thedigimod/textures/item/digitama_plantinsect.png
+  assets/thedigimod/textures/item/digitama_wind.png
+  assets/thedigimod/textures/item/digivice.png
+  assets/thedigimod/textures/item/digivice01.png
+  assets/thedigimod/textures/item/digivice01_overlay.png
+  assets/thedigimod/textures/item/digivice2020.png
+  assets/thedigimod/textures/item/digivice2020_overlay.png
+  assets/thedigimod/textures/item/digivice_burst.png
+  assets/thedigimod/textures/item/digivice_burst_overlay.png
+  assets/thedigimod/textures/item/digivice_ic.png
+  assets/thedigimod/textures/item/digivice_ic_overlay.png
+  assets/thedigimod/textures/item/digivice_overlay.png
+  assets/thedigimod/textures/item/dokimon.png
+  assets/thedigimod/textures/item/dokimon.png.mcmeta
+  assets/thedigimod/textures/item/dragon_baby.png
+  assets/thedigimod/textures/item/dragon_baby.png.mcmeta
+  assets/thedigimod/textures/item/dragon_bone.png
+  assets/thedigimod/textures/item/dragon_data.png
+  assets/thedigimod/textures/item/dragon_pack.png
+  assets/thedigimod/textures/item/dscanner.png
+  assets/thedigimod/textures/item/dscanner_overlay.png
+  assets/thedigimod/textures/item/dstorage.png
+  assets/thedigimod/textures/item/dstorage_overlay.png
+  assets/thedigimod/textures/item/earth_data.png
+  assets/thedigimod/textures/item/earth_pack.png
+  assets/thedigimod/textures/item/flytrap_good.png
+  assets/thedigimod/textures/item/gbattack.png
+  assets/thedigimod/textures/item/gbdefence.png
+  assets/thedigimod/textures/item/gbspattack.png
+  assets/thedigimod/textures/item/gbspdefence.png
+  assets/thedigimod/textures/item/goblimon_bat.png
+  assets/thedigimod/textures/item/gold_poop.png
+  assets/thedigimod/textures/item/guilmon_bread.png
+  assets/thedigimod/textures/item/health_drives.png
+  assets/thedigimod/textures/item/holy_data.png
+  assets/thedigimod/textures/item/holy_pack.png
+  assets/thedigimod/textures/item/huanglong_ore.png
+  assets/thedigimod/textures/item/img.png
+  assets/thedigimod/textures/item/img_1.png
+  assets/thedigimod/textures/item/img_2.png
+  assets/thedigimod/textures/item/img_3.png
+  assets/thedigimod/textures/item/led_shroom.png
+  assets/thedigimod/textures/item/lira_good.png
+  assets/thedigimod/textures/item/m2_disk_item.png
+  assets/thedigimod/textures/item/machine_data.png
+  assets/thedigimod/textures/item/machine_pack.png
+  assets/thedigimod/textures/item/nightmare_baby.png
+  assets/thedigimod/textures/item/nightmare_baby.png.mcmeta
+  assets/thedigimod/textures/item/nightmare_data.png
+  assets/thedigimod/textures/item/nightmare_pack.png
+  assets/thedigimod/textures/item/nyokimon.png
+  assets/thedigimod/textures/item/nyokimon.png.mcmeta
+  assets/thedigimod/textures/item/old_pc.png
+  assets/thedigimod/textures/item/plantinsect_data.png
+  assets/thedigimod/textures/item/plantinsect_pack.png
+  assets/thedigimod/textures/item/poop.png
+  assets/thedigimod/textures/item/poop_data.png
+  assets/thedigimod/textures/item/poop_pack.png
+  assets/thedigimod/textures/item/poyomon.png
+  assets/thedigimod/textures/item/poyomon.png.mcmeta
+  assets/thedigimod/textures/item/punimon.png
+  assets/thedigimod/textures/item/punimon.png.mcmeta
+  assets/thedigimod/textures/item/puyomon.png
+  assets/thedigimod/textures/item/puyomon.png.mcmeta
+  assets/thedigimod/textures/item/red_freezer.png
+  assets/thedigimod/textures/item/shield_item.png
+  assets/thedigimod/textures/item/sunamon.png
+  assets/thedigimod/textures/item/sunamon.png.mcmeta
+  assets/thedigimod/textures/item/table_item.png
+  assets/thedigimod/textures/item/tamer_leash.png
+  assets/thedigimod/textures/item/target_item.png
+  assets/thedigimod/textures/item/training_bag.png
+  assets/thedigimod/textures/item/training_rock.png
+  assets/thedigimod/textures/item/update_item.png
+  assets/thedigimod/textures/item/vitalbracelet.png
+  assets/thedigimod/textures/item/vitalbracelet_overlay.png
+  assets/thedigimod/textures/item/vpet.png
+  assets/thedigimod/textures/item/vpet_overlay.png
+  assets/thedigimod/textures/item/wind_data.png
+  assets/thedigimod/textures/item/wind_pack.png
+  assets/thedigimod/textures/item/wind_vane.png
+  assets/thedigimod/textures/item/xross_loader.png
+  assets/thedigimod/textures/item/xross_loader_overlay.png
+  assets/thedigimod/textures/moves/
+  assets/thedigimod/textures/moves/bear_punch.png
+  assets/thedigimod/textures/moves/beast_slash.png
+  assets/thedigimod/textures/moves/bullet.png
+  assets/thedigimod/textures/moves/cruel_sissors.png
+  assets/thedigimod/textures/moves/crystal_rain.png
+  assets/thedigimod/textures/moves/deadly_sting.png
+  assets/thedigimod/textures/moves/death_claw.png
+  assets/thedigimod/textures/moves/disc_attack.png
+  assets/thedigimod/textures/moves/divine_axe.png
+  assets/thedigimod/textures/moves/gatling_arm.png
+  assets/thedigimod/textures/moves/giga_destroyer.png
+  assets/thedigimod/textures/moves/gliding_rocks.png
+  assets/thedigimod/textures/moves/gold_arrow.png
+  assets/thedigimod/textures/moves/heavens_knuckle.png
+  assets/thedigimod/textures/moves/holy_shoot.png
+  assets/thedigimod/textures/moves/hyper_heat.png
+  assets/thedigimod/textures/moves/ink_gun.png
+  assets/thedigimod/textures/moves/mach_tornado.png
+  assets/thedigimod/textures/moves/mega_blaster.png
+  assets/thedigimod/textures/moves/mega_flame.png
+  assets/thedigimod/textures/moves/meteor_wing.png
+  assets/thedigimod/textures/moves/night_of_fire.png
+  assets/thedigimod/textures/moves/ocean_storm.png
+  assets/thedigimod/textures/moves/pepper_breath.png
+  assets/thedigimod/textures/moves/petit_thunder.png
+  assets/thedigimod/textures/moves/petit_twister.png
+  assets/thedigimod/textures/moves/poison_breath.png
+  assets/thedigimod/textures/moves/poop_throw.png
+  assets/thedigimod/textures/moves/sand_blast.png
+  assets/thedigimod/textures/moves/secret_identity.png
+  assets/thedigimod/textures/moves/smiley_bomb.png
+  assets/thedigimod/textures/moves/snow_bullet.png
+  assets/thedigimod/textures/moves/thunderbolt.png
+  assets/thedigimod/textures/moves/tron_flame.png
+  assets/thedigimod/textures/moves/v_arrow.png
+  assets/thedigimod/textures/moves/world_slash.png
+  assets/thedigimod/textures/moves/x_attack.png
+  assets/thedigimod/textures/particle/
+  assets/thedigimod/textures/particle/attack_up.png
+  assets/thedigimod/textures/particle/battles_up.png
+  assets/thedigimod/textures/particle/bullet_particle.png
+  assets/thedigimod/textures/particle/defence_up.png
+  assets/thedigimod/textures/particle/digitron.png
+  assets/thedigimod/textures/particle/energy_star.png
+  assets/thedigimod/textures/particle/evo_particle.png
+  assets/thedigimod/textures/particle/evo_particle.png.mcmeta
+  assets/thedigimod/textures/particle/evo_particle_chmp.png
+  assets/thedigimod/textures/particle/evo_particle_chmp.png.mcmeta
+  assets/thedigimod/textures/particle/evo_particle_ult.png
+  assets/thedigimod/textures/particle/evo_particle_ult.png.mcmeta
+  assets/thedigimod/textures/particle/happy_bubble.png
+  assets/thedigimod/textures/particle/health_up.png
+  assets/thedigimod/textures/particle/holy_cross.png
+  assets/thedigimod/textures/particle/joyful_bubble.png
+  assets/thedigimod/textures/particle/meat_bubble.png
+  assets/thedigimod/textures/particle/meh_bubble.png
+  assets/thedigimod/textures/particle/mistake_bubble.png
+  assets/thedigimod/textures/particle/note_particle.png
+  assets/thedigimod/textures/particle/pepper_breath.png
+  assets/thedigimod/textures/particle/pepper_breath.png.mcmeta
+  assets/thedigimod/textures/particle/poop_particle.png
+  assets/thedigimod/textures/particle/red_energy_star.png
+  assets/thedigimod/textures/particle/red_explosion.png
+  assets/thedigimod/textures/particle/red_explosion.png.mcmeta
+  assets/thedigimod/textures/particle/rock_particle.png
+  assets/thedigimod/textures/particle/sad_bubble.png
+  assets/thedigimod/textures/particle/small_bullet.png
+  assets/thedigimod/textures/particle/spattack_up.png
+  assets/thedigimod/textures/particle/spdefence_up.png
+  assets/thedigimod/textures/particle/stinger.png
+  assets/thedigimod/textures/particle/thunder.png
+  assets/thedigimod/textures/particle/thunder.png.mcmeta
+  assets/thedigimod/textures/particle/xp_particle.png
+  assets/thedigimod/textures/training_goods/
+  assets/thedigimod/textures/training_goods/ball_good.png
+  assets/thedigimod/textures/training_goods/clown_box.png
+  assets/thedigimod/textures/training_goods/defence_table.png
+  assets/thedigimod/textures/training_goods/dragon_bone.png
+  assets/thedigimod/textures/training_goods/flytrap_good.png
+  assets/thedigimod/textures/training_goods/lira_good.png
+  assets/thedigimod/textures/training_goods/m2_disk.png
+  assets/thedigimod/textures/training_goods/old_pc.png
+  assets/thedigimod/textures/training_goods/punching_bag.png
+  assets/thedigimod/textures/training_goods/red_freezer.png
+  assets/thedigimod/textures/training_goods/shield.png
+  assets/thedigimod/textures/training_goods/target.png
+  assets/thedigimod/textures/training_goods/training_rock.png
+  assets/thedigimod/textures/training_goods/update.png
+  assets/thedigimod/textures/training_goods/wind_vane.png
+  biomes
+  data/
+  data/minecraft/
+  data/minecraft/tags/
+  data/minecraft/tags/blocks/
+  data/minecraft/tags/blocks/mineable/
+  data/minecraft/tags/blocks/mineable/pickaxe.json
+  data/minecraft/tags/blocks/needs_stone_tool.json
+  data/thedigimod/
+  data/thedigimod/advancements/
+  data/thedigimod/advancements/collection_vtamer.json
+  data/thedigimod/advancements/collection_vtamer2.json
+  data/thedigimod/advancements/collection_vtamer3.json
+  data/thedigimod/advancements/cravings.json
+  data/thedigimod/advancements/deevolution.json
+  data/thedigimod/advancements/delighted_farmer.json
+  data/thedigimod/advancements/digitron.json
+  data/thedigimod/advancements/digivice.json
+  data/thedigimod/advancements/evolution.json
+  data/thedigimod/advancements/get_a_digimon.json
+  data/thedigimod/advancements/gym_bro_bronze.json
+  data/thedigimod/advancements/gym_bro_gold.json
+  data/thedigimod/advancements/gym_bro_silver.json
+  data/thedigimod/advancements/high_training.json
+  data/thedigimod/advancements/janitor.json
+  data/thedigimod/advancements/mine_digicard.json
+  data/thedigimod/advancements/mistake.json
+  data/thedigimod/advancements/numemon_scumon.json
+  data/thedigimod/advancements/party.json
+  data/thedigimod/advancements/root.json
+  data/thedigimod/advancements/shortcuts.json
+  data/thedigimod/advancements/tamer_bronze.json
+  data/thedigimod/advancements/tamer_gold.json
+  data/thedigimod/advancements/tamer_silver.json
+  data/thedigimod/advancements/training.json
+  data/thedigimod/digimon/
+  data/thedigimod/digimon/aeroveedramon.json
+  data/thedigimod/digimon/agumon.json
+  data/thedigimod/digimon/agumonblack.json
+  data/thedigimod/digimon/airdramon.json
+  data/thedigimod/digimon/akatorimon.json
+  data/thedigimod/digimon/alturkabuterimon.json
+  data/thedigimod/digimon/alturkabuterimonblue.json
+  data/thedigimod/digimon/andiramon.json
+  data/thedigimod/digimon/angemon.json
+  data/thedigimod/digimon/archelomon.json
+  data/thedigimod/digimon/baboongamon.json
+  data/thedigimod/digimon/babydmon.json
+  data/thedigimod/digimon/bakemon.json
+  data/thedigimod/digimon/ballistamon.json
+  data/thedigimod/digimon/bearmon.json
+  data/thedigimod/digimon/bibimon.json
+  data/thedigimod/digimon/birdramon.json
+  data/thedigimod/digimon/blackgabumon.json
+  data/thedigimod/digimon/blackgalgomon.json
+  data/thedigimod/digimon/blackgaogamon.json
+  data/thedigimod/digimon/blackgrowlmon.json
+  data/thedigimod/digimon/blackmachgaogamon.json
+  data/thedigimod/digimon/blackmegalogrowlmon.json
+  data/thedigimod/digimon/blackrapidmon.json
+  data/thedigimod/digimon/blackweregarurumon.json
+  data/thedigimod/digimon/boogiemon.json
+  data/thedigimod/digimon/botamon.json
+  data/thedigimod/digimon/brachimon.json
+  data/thedigimod/digimon/bubbmon.json
+  data/thedigimod/digimon/bulkmon.json
+  data/thedigimod/digimon/centalmon.json
+  data/thedigimod/digimon/cerberumon.json
+  data/thedigimod/digimon/chakmon.json
+  data/thedigimod/digimon/chapmon.json
+  data/thedigimod/digimon/chibimon.json
+  data/thedigimod/digimon/chicomon.json
+  data/thedigimod/digimon/chocomon.json
+  data/thedigimod/digimon/conomon.json
+  data/thedigimod/digimon/coredramon.json
+  data/thedigimod/digimon/coredramongreen.json
+  data/thedigimod/digimon/cyberdramon.json
+  data/thedigimod/digimon/cyclomon.json
+  data/thedigimod/digimon/darklizardmon.json
+  data/thedigimod/digimon/darktyrannomon.json
+  data/thedigimod/digimon/datirimon.json
+  data/thedigimod/digimon/devidramon.json
+  data/thedigimod/digimon/digitamamon.json
+  data/thedigimod/digimon/doggymon.json
+  data/thedigimod/digimon/dokimon.json
+  data/thedigimod/digimon/dolurumon.json
+  data/thedigimod/digimon/dracomon.json
+  data/thedigimod/digimon/drimogemon.json
+  data/thedigimod/digimon/etemon.json
+  data/thedigimod/digimon/exermon.json
+  data/thedigimod/digimon/extyrannomon.json
+  data/thedigimod/digimon/fladramon.json
+  data/thedigimod/digimon/flarerizamon.json
+  data/thedigimod/digimon/flymon.json
+  data/thedigimod/digimon/gabumon.json
+  data/thedigimod/digimon/gargomon.json
+  data/thedigimod/digimon/garudamon.json
+  data/thedigimod/digimon/garurumon.json
+  data/thedigimod/digimon/garurumonblack.json
+  data/thedigimod/digimon/gawappamon.json
+  data/thedigimod/digimon/gesomon.json
+  data/thedigimod/digimon/gigadramon.json
+  data/thedigimod/digimon/gigimon.json
+  data/thedigimod/digimon/gogmamon.json
+  data/thedigimod/digimon/goldnumemon.json
+  data/thedigimod/digimon/goldveedramon.json
+  data/thedigimod/digimon/golemon.json
+  data/thedigimod/digimon/goromon.json
+  data/thedigimod/digimon/greymon.json
+  data/thedigimod/digimon/greymonvirus.json
+  data/thedigimod/digimon/grizzlymon.json
+  data/thedigimod/digimon/groundramon.json
+  data/thedigimod/digimon/growlmon.json
+  data/thedigimod/digimon/growlmondata.json
+  data/thedigimod/digimon/guilmon.json
+  data/thedigimod/digimon/holyangemon.json
+  data/thedigimod/digimon/icedevimon.json
+  data/thedigimod/digimon/impmon.json
+  data/thedigimod/digimon/jellymon.json
+  data/thedigimod/digimon/jyarimon.json
+  data/thedigimod/digimon/kabuterimon.json
+  data/thedigimod/digimon/kamemon.json
+  data/thedigimod/digimon/karatukinumemon.json
+  data/thedigimod/digimon/keemon.json
+  data/thedigimod/digimon/kiimon.json
+  data/thedigimod/digimon/kingscumon.json
+  data/thedigimod/digimon/kingshoutmon.json
+  data/thedigimod/digimon/koromon.json
+  data/thedigimod/digimon/kunemon.json
+  data/thedigimod/digimon/kuwagamon.json
+  data/thedigimod/digimon/lighdramon.json
+  data/thedigimod/digimon/lopmon.json
+  data/thedigimod/digimon/mailbirdramon.json
+  data/thedigimod/digimon/mamemon.json
+  data/thedigimod/digimon/mametyramon.json
+  data/thedigimod/digimon/manticoremon.json
+  data/thedigimod/digimon/marinedevimon.json
+  data/thedigimod/digimon/megadramon.json
+  data/thedigimod/digimon/megalogrowlmon.json
+  data/thedigimod/digimon/megalogrowlmondata.json
+  data/thedigimod/digimon/metalgreymon.json
+  data/thedigimod/digimon/metalgreymonvirus.json
+  data/thedigimod/digimon/metaltyrannomon.json
+  data/thedigimod/digimon/mimicmon.json
+  data/thedigimod/digimon/mochimon.json
+  data/thedigimod/digimon/monzaemon.json
+  data/thedigimod/digimon/namakemon.json
+  data/thedigimod/digimon/nanimon.json
+  data/thedigimod/digimon/numemon.json
+  data/thedigimod/digimon/nyokimon.json
+  data/thedigimod/digimon/octomon.json
+  data/thedigimod/digimon/okuwamon.json
+  data/thedigimod/digimon/omegashoutmon.json
+  data/thedigimod/digimon/pagumon.json
+  data/thedigimod/digimon/paildramon.json
+  data/thedigimod/digimon/patamon.json
+  data/thedigimod/digimon/pegasmon.json
+  data/thedigimod/digimon/petitmon.json
+  data/thedigimod/digimon/piyomon.json
+  data/thedigimod/digimon/poyomon.json
+  data/thedigimod/digimon/pulsemon.json
+  data/thedigimod/digimon/punimon.json
+  data/thedigimod/digimon/puyomon.json
+  data/thedigimod/digimon/puyoyomon.json
+  data/thedigimod/digimon/raremon.json
+  data/thedigimod/digimon/rareraremon.json
+  data/thedigimod/digimon/redveedramon.json
+  data/thedigimod/digimon/roachmon.json
+  data/thedigimod/digimon/runnermon.json
+  data/thedigimod/digimon/saberdramon.json
+  data/thedigimod/digimon/saggitarimon.json
+  data/thedigimod/digimon/scumon.json
+  data/thedigimod/digimon/shawujinmon.json
+  data/thedigimod/digimon/shoutmon.json
+  data/thedigimod/digimon/shoutmonx2.json
+  data/thedigimod/digimon/shoutmonx3.json
+  data/thedigimod/digimon/skullgreymon.json
+  data/thedigimod/digimon/sunamon.json
+  data/thedigimod/digimon/sunarizamon.json
+  data/thedigimod/digimon/tentomon.json
+  data/thedigimod/digimon/teslajellymon.json
+  data/thedigimod/digimon/thetismon.json
+  data/thedigimod/digimon/thunderballmon.json
+  data/thedigimod/digimon/tokomon.json
+  data/thedigimod/digimon/tortamon.json
+  data/thedigimod/digimon/tsunomon.json
+  data/thedigimod/digimon/turuiemon.json
+  data/thedigimod/digimon/tuskmon.json
+  data/thedigimod/digimon/tyrannomon.json
+  data/thedigimod/digimon/tyumon.json
+  data/thedigimod/digimon/unimon.json
+  data/thedigimod/digimon/veedramon.json
+  data/thedigimod/digimon/veedramonblack.json
+  data/thedigimod/digimon/vegiemon.json
+  data/thedigimod/digimon/vmon.json
+  data/thedigimod/digimon/wendimon.json
+  data/thedigimod/digimon/weregarurumon.json
+  data/thedigimod/digimon/wizardmon.json
+  data/thedigimod/digimon/xvmon.json
+  data/thedigimod/digimon/yokomon.json
+  data/thedigimod/digimon/zurumon.json
+  data/thedigimod/forge/
+  data/thedigimod/forge/biome_modifier/
+  data/thedigimod/forge/biome_modifier/digi_card_deepslate_ore_biome_modifier.json
+  data/thedigimod/forge/biome_modifier/digi_card_ore_biome_modifier.json
+  data/thedigimod/forge/biome_modifier/huanglong_deepslate_ore_biome_modifier.json
+  data/thedigimod/forge/biome_modifier/led_shroom_biome_modifier.json
+  data/thedigimod/forge/biome_modifier/spawn_aquan_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_aquan_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_aquan_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_baby2.json
+  data/thedigimod/forge/biome_modifier/spawn_beast_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_beast_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_beast_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_cave_dripstone_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_cave_dripstone_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_cave_dripstone_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_cave_lush_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_cave_lush_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_cave_lush_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_clown_box.json
+  data/thedigimod/forge/biome_modifier/spawn_dragon_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_dragon_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_dragon_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_earth_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_earth_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_earth_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_end_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_end_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_holy_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_holy_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_holy_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_machine_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_machine_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_machine_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_nether_crimson_forest_digimon.json
+  data/thedigimod/forge/biome_modifier/spawn_nether_soul_valley_digimon.json
+  data/thedigimod/forge/biome_modifier/spawn_nether_warped_forest_digimon.json
+  data/thedigimod/forge/biome_modifier/spawn_nether_wastes_digimon.json
+  data/thedigimod/forge/biome_modifier/spawn_nightmare_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_nightmare_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_nightmare_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_plainsect_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_planinsect_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_planinsect_ultimate.json
+  data/thedigimod/forge/biome_modifier/spawn_shit_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_shit_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_wind_adult.json
+  data/thedigimod/forge/biome_modifier/spawn_wind_rookie.json
+  data/thedigimod/forge/biome_modifier/spawn_wind_ultimate.json
+  data/thedigimod/loot_tables/
+  data/thedigimod/loot_tables/blocks/
+  data/thedigimod/loot_tables/blocks/digi_card_deepslate_ore.json
+  data/thedigimod/loot_tables/blocks/digi_card_ore.json
+  data/thedigimod/loot_tables/blocks/digimeat_crop.json
+  data/thedigimod/loot_tables/blocks/digitama_aquan.json
+  data/thedigimod/loot_tables/blocks/digitama_beast.json
+  data/thedigimod/loot_tables/blocks/digitama_dragon.json
+  data/thedigimod/loot_tables/blocks/digitama_earth.json
+  data/thedigimod/loot_tables/blocks/digitama_holy.json
+  data/thedigimod/loot_tables/blocks/digitama_machine.json
+  data/thedigimod/loot_tables/blocks/digitama_nightmare.json
+  data/thedigimod/loot_tables/blocks/digitama_plantinsect.json
+  data/thedigimod/loot_tables/blocks/digitama_wind.json
+  data/thedigimod/loot_tables/blocks/huanglong_deepslate_ore.json
+  data/thedigimod/loot_tables/blocks/led_shroom.json
+  data/thedigimod/recipes/
+  data/thedigimod/recipes/black_digitron.json
+  data/thedigimod/recipes/blasting_chrondigizoit_to_chrome_digizoid.json
+  data/thedigimod/recipes/blue_card.json
+  data/thedigimod/recipes/dark_tower_shard.json
+  data/thedigimod/recipes/digi_cake.json
+  data/thedigimod/recipes/digi_cake2.json
+  data/thedigimod/recipes/digi_core.json
+  data/thedigimod/recipes/digi_ribs.json
+  data/thedigimod/recipes/digital_meat.json
+  data/thedigimod/recipes/digivice.json
+  data/thedigimod/recipes/digivice01.json
+  data/thedigimod/recipes/digivice2020.json
+  data/thedigimod/recipes/digivice_burst.json
+  data/thedigimod/recipes/digivice_d3.json
+  data/thedigimod/recipes/digivice_darc.json
+  data/thedigimod/recipes/digivice_dscanner.json
+  data/thedigimod/recipes/digivice_dstorage.json
+  data/thedigimod/recipes/digivice_ic.json
+  data/thedigimod/recipes/digivice_vital_bracelet.json
+  data/thedigimod/recipes/digivice_vpet.json
+  data/thedigimod/recipes/digivice_xross_loader.json
+  data/thedigimod/recipes/good_ball.json
+  data/thedigimod/recipes/good_clown_box.json
+  data/thedigimod/recipes/good_dragon_bone.json
+  data/thedigimod/recipes/good_flytrap.json
+  data/thedigimod/recipes/good_lira.json
+  data/thedigimod/recipes/good_m2_disk.json
+  data/thedigimod/recipes/good_old_pc.json
+  data/thedigimod/recipes/good_red_freezer.json
+  data/thedigimod/recipes/good_training_rock.json
+  data/thedigimod/recipes/good_wind_vane.json
+  data/thedigimod/recipes/guilmon_bread.json
+  data/thedigimod/recipes/name_tag.json
+  data/thedigimod/recipes/name_tag2.json
+  data/thedigimod/recipes/poop_to_bonemeal.json
+  data/thedigimod/recipes/punching_bag.json
+  data/thedigimod/recipes/shield.json
+  data/thedigimod/recipes/smelting_huanglong_deepslate_to_huanglong_ore.json
+  data/thedigimod/recipes/smelting_huanglong_to_chrondigizoit.json
+  data/thedigimod/recipes/sushi_from_fish.json
+  data/thedigimod/recipes/sushi_from_meat.json
+  data/thedigimod/recipes/table.json
+  data/thedigimod/recipes/target.json
+  data/thedigimod/recipes/update.json
+  data/thedigimod/structures/
+  data/thedigimod/structures/aquan_nest.nbt
+  data/thedigimod/structures/beast_nest.nbt
+  data/thedigimod/structures/dragon_nest.nbt
+  data/thedigimod/structures/earth_nest.nbt
+  data/thedigimod/structures/holy_nest.nbt
+  data/thedigimod/structures/machine_nest.nbt
+  data/thedigimod/structures/nightmare_nest.nbt
+  data/thedigimod/structures/plantinsect_nest.nbt
+  data/thedigimod/structures/wind_nest.nbt
+  data/thedigimod/tags/
+  data/thedigimod/tags/entity_types/
+  data/thedigimod/tags/entity_types/drops/
+  data/thedigimod/tags/entity_types/drops/feather.json
+  data/thedigimod/tags/entity_types/drops/fire_charge.json
+  data/thedigimod/tags/entity_types/drops/gold_ingot.json
+  data/thedigimod/tags/entity_types/drops/ink_sac.json
+  data/thedigimod/tags/entity_types/drops/iron_ingot.json
+  data/thedigimod/tags/entity_types/drops/poop.json
+  data/thedigimod/tags/entity_types/drops/rabbit_hide.json
+  data/thedigimod/tags/entity_types/drops/scute.json
+  data/thedigimod/tags/entity_types/drops/slime_ball.json
+  data/thedigimod/tags/entity_types/drops/snow_ball.json
+  data/thedigimod/tags/entity_types/riding/
+  data/thedigimod/tags/entity_types/riding/baby_rider.json
+  data/thedigimod/tags/entity_types/riding/baby_vehicle.json
+  data/thedigimod/tags/entity_types/riding/rider.json
+  data/thedigimod/tags/entity_types/sounds/
+  data/thedigimod/tags/entity_types/sounds/rookie_steps.json
+  data/thedigimod/tags/entity_types/spawns/
+  data/thedigimod/tags/entity_types/spawns/aquan_adult.json
+  data/thedigimod/tags/entity_types/spawns/aquan_rookie.json
+  data/thedigimod/tags/entity_types/spawns/aquan_ultimate.json
+  data/thedigimod/tags/entity_types/spawns/baby2_digimon.json
+  data/thedigimod/tags/entity_types/spawns/beast_adult.json
+  data/thedigimod/tags/entity_types/spawns/beast_rookie.json
+  data/thedigimod/tags/entity_types/spawns/beast_ultimate.json
+  data/thedigimod/tags/entity_types/spawns/crimson_forest.json
+  data/thedigimod/tags/entity_types/spawns/dragon_adult.json
+  data/thedigimod/tags/entity_types/spawns/dragon_rookie.json
+  data/thedigimod/tags/entity_types/spawns/dragon_ultimate.json
+  data/thedigimod/tags/entity_types/spawns/earth_adult.json
+  data/thedigimod/tags/entity_types/spawns/earth_rookie.json
+  data/thedigimod/tags/entity_types/spawns/earth_ultimate.json
+  data/thedigimod/tags/entity_types/spawns/holy_adult.json
+  data/thedigimod/tags/entity_types/spawns/holy_rookie.json
+  data/thedigimod/tags/entity_types/spawns/holy_ultimate.json
+  data/thedigimod/tags/entity_types/spawns/machine_adult.json
+  data/thedigimod/tags/entity_types/spawns/machine_rookie.json
+  data/thedigimod/tags/entity_types/spawns/machine_ultimate.json
+  data/thedigimod/tags/entity_types/spawns/nether_wastes.json
+  data/thedigimod/tags/entity_types/spawns/nightmare_adult.json
+  data/thedigimod/tags/entity_types/spawns/nightmare_rookie.json
+  data/thedigimod/tags/entity_types/spawns/nightmare_ultimate.json
+  data/thedigimod/tags/entity_types/spawns/planinsect_adult.json
+  data/thedigimod/tags/entity_types/spawns/planinsect_rookie.json
+  data/thedigimod/tags/entity_types/spawns/planinsect_ultimate.json
+  data/thedigimod/tags/entity_types/spawns/shit_adult.json
+  data/thedigimod/tags/entity_types/spawns/shit_rookie.json
+  data/thedigimod/tags/entity_types/spawns/soul_valley.json
+  data/thedigimod/tags/entity_types/spawns/warped_forest.json
+  data/thedigimod/tags/entity_types/spawns/wind_adult.json
+  data/thedigimod/tags/entity_types/spawns/wind_rookie.json
+  data/thedigimod/tags/entity_types/spawns/wind_ultimate.json
+  data/thedigimod/tags/items/
+  data/thedigimod/tags/items/babies/
+  data/thedigimod/tags/items/babies/babies.json
+  data/thedigimod/tags/items/digivices.json
+  data/thedigimod/tags/items/fish.json
+  data/thedigimod/tags/items/xps/
+  data/thedigimod/tags/items/xps/xps.json
+  data/thedigimod/worldgen/
+  data/thedigimod/worldgen/configured_feature/
+  data/thedigimod/worldgen/configured_feature/digi_card_deepslate_ore_ore.json
+  data/thedigimod/worldgen/configured_feature/digi_card_ore_ore.json
+  data/thedigimod/worldgen/configured_feature/huanglong_deepslate_ore_ore.json
+  data/thedigimod/worldgen/configured_feature/led_shroom.json
+  data/thedigimod/worldgen/placed_feature/
+  data/thedigimod/worldgen/placed_feature/digi_card_deepslate_ore_ore.json
+  data/thedigimod/worldgen/placed_feature/digi_card_ore_ore.json
+  data/thedigimod/worldgen/placed_feature/huanglong_deepslate_ore_ore.json
+  data/thedigimod/worldgen/placed_feature/led_shroom_placed.json
+  data/thedigimod/worldgen/structure/
+  data/thedigimod/worldgen/structure/aquan_nest.json
+  data/thedigimod/worldgen/structure/beast_nest.json
+  data/thedigimod/worldgen/structure/dragon_nest.json
+  data/thedigimod/worldgen/structure/earth_nest.json
+  data/thedigimod/worldgen/structure/holy_nest.json
+  data/thedigimod/worldgen/structure/machine_nest.json
+  data/thedigimod/worldgen/structure/nightmare_nest.json
+  data/thedigimod/worldgen/structure/plantinsect_nest.json
+  data/thedigimod/worldgen/structure/wind_nest.json
+  data/thedigimod/worldgen/structure_set/
+  data/thedigimod/worldgen/structure_set/aquan_nest.json
+  data/thedigimod/worldgen/structure_set/beast_nest.json
+  data/thedigimod/worldgen/structure_set/dragon_nest.json
+  data/thedigimod/worldgen/structure_set/earth_nest.json
+  data/thedigimod/worldgen/structure_set/holy_nest.json
+  data/thedigimod/worldgen/structure_set/machine_nest.json
+  data/thedigimod/worldgen/structure_set/nightmare_nest.json
+  data/thedigimod/worldgen/structure_set/plantinsect_nest.json
+  data/thedigimod/worldgen/structure_set/wind_nest.json
+  data/thedigimod/worldgen/template_pool/
+  data/thedigimod/worldgen/template_pool/nest_pools/
+  data/thedigimod/worldgen/template_pool/nest_pools/aquan_pool.json
+  data/thedigimod/worldgen/template_pool/nest_pools/beast_pool.json
+  data/thedigimod/worldgen/template_pool/nest_pools/dragon_pool.json
+  data/thedigimod/worldgen/template_pool/nest_pools/earth_pool.json
+  data/thedigimod/worldgen/template_pool/nest_pools/holy_pool.json
+  data/thedigimod/worldgen/template_pool/nest_pools/machine_pool.json
+  data/thedigimod/worldgen/template_pool/nest_pools/nightmare_pool.json
+  data/thedigimod/worldgen/template_pool/nest_pools/plantinsect_pool.json
+  data/thedigimod/worldgen/template_pool/nest_pools/wind_pool.json
+  logo.png
+  net/
+  net/modderg/
+  net/modderg/thedigimod/
+  net/modderg/thedigimod/TheDigiMod.class
+  net/modderg/thedigimod/TheDigimodConstants.class
+  net/modderg/thedigimod/client/
+  net/modderg/thedigimod/client/TDClientConfig.class
+  net/modderg/thedigimod/client/entity/
+  net/modderg/thedigimod/client/entity/CustomDigimonModel.class
+  net/modderg/thedigimod/client/entity/CustomDigimonRender.class
+  net/modderg/thedigimod/client/entity/CustomRenderType.class
+  net/modderg/thedigimod/client/events/
+  net/modderg/thedigimod/client/events/ClientEvents$ClientDistEventBusSubscriber$ClientDistEvents.class
+  net/modderg/thedigimod/client/events/ClientEvents$ClientDistEventBusSubscriber.class
+  net/modderg/thedigimod/client/events/ClientEvents.class
+  net/modderg/thedigimod/client/goods/
+  net/modderg/thedigimod/client/goods/AbstractGoodModel.class
+  net/modderg/thedigimod/client/goods/AbstractGoodRender.class
+  net/modderg/thedigimod/client/gui/
+  net/modderg/thedigimod/client/gui/CommandImageButton.class
+  net/modderg/thedigimod/client/gui/DigiviceEvoTreeScreen.class
+  net/modderg/thedigimod/client/gui/DigiviceScreen.class
+  net/modderg/thedigimod/client/gui/DigiviceScreenCommands.class
+  net/modderg/thedigimod/client/gui/DigiviceScreenStats.class
+  net/modderg/thedigimod/client/gui/KeyBindings.class
+  net/modderg/thedigimod/client/gui/inventory/
+  net/modderg/thedigimod/client/gui/inventory/DigimonInventory.class
+  net/modderg/thedigimod/client/gui/inventory/DigimonInventoryScreen.class
+  net/modderg/thedigimod/client/gui/inventory/DigimonMenu.class
+  net/modderg/thedigimod/client/gui/inventory/InitMenu.class
+  net/modderg/thedigimod/client/packet/
+  net/modderg/thedigimod/client/packet/CToSAttackCommandPacket.class
+  net/modderg/thedigimod/client/packet/CToSEatCommandPacket.class
+  net/modderg/thedigimod/client/packet/CToSFlyCommandPacket.class
+  net/modderg/thedigimod/client/packet/CToSGetTreeStringsPacket.class
+  net/modderg/thedigimod/client/packet/CToSMemorySpawnCommandPacket.class
+  net/modderg/thedigimod/client/packet/CToSOpenDigiInventoryPacket.class
+  net/modderg/thedigimod/client/packet/CToSSetRollFirstEvoPacket.class
+  net/modderg/thedigimod/client/packet/CToSSitCommandPacket.class
+  net/modderg/thedigimod/client/packet/CToSStandCommandPacket.class
+  net/modderg/thedigimod/client/packet/CToSTpCommandPacket.class
+  net/modderg/thedigimod/client/packet/CToSWanderCommandPacket.class
+  net/modderg/thedigimod/client/packet/CToSWorkCommandPacket.class
+  net/modderg/thedigimod/client/packet/CToSWriteDataToDigimonJsons.class
+  net/modderg/thedigimod/client/particles/
+  net/modderg/thedigimod/client/particles/DigitalParticles.class
+  net/modderg/thedigimod/client/particles/custom/
+  net/modderg/thedigimod/client/particles/custom/BrightParticle$Provider.class
+  net/modderg/thedigimod/client/particles/custom/BrightParticle.class
+  net/modderg/thedigimod/client/particles/custom/BubbleParticle$Provider.class
+  net/modderg/thedigimod/client/particles/custom/BubbleParticle.class
+  net/modderg/thedigimod/client/particles/custom/LifeParticle$Provider.class
+  net/modderg/thedigimod/client/particles/custom/LifeParticle.class
+  net/modderg/thedigimod/client/particles/custom/NegativeDigitalParticle$Provider.class
+  net/modderg/thedigimod/client/particles/custom/NegativeDigitalParticle.class
+  net/modderg/thedigimod/client/particles/custom/RegularDigitalParticle$Provider.class
+  net/modderg/thedigimod/client/particles/custom/RegularDigitalParticle.class
+  net/modderg/thedigimod/client/projectile/
+  net/modderg/thedigimod/client/projectile/CustomProjectileModel.class
+  net/modderg/thedigimod/client/projectile/CustomProjectileRender.class
+  net/modderg/thedigimod/server/
+  net/modderg/thedigimod/server/TDConfig.class
+  net/modderg/thedigimod/server/TDEntitiesJsonLoad.class
+  net/modderg/thedigimod/server/advancements/
+  net/modderg/thedigimod/server/advancements/TDAdvancements.class
+  net/modderg/thedigimod/server/block/
+  net/modderg/thedigimod/server/block/DigitamaBlock.class
+  net/modderg/thedigimod/server/block/MeatCropBlock.class
+  net/modderg/thedigimod/server/block/TDBlocks.class
+  net/modderg/thedigimod/server/commands/
+  net/modderg/thedigimod/server/commands/DigimodCommandSummonAll.class
+  net/modderg/thedigimod/server/entity/
+  net/modderg/thedigimod/server/entity/DigimonEntity.class
+  net/modderg/thedigimod/server/entity/FlyingDigimonEntity.class
+  net/modderg/thedigimod/server/entity/SwimmerDigimonEntity.class
+  net/modderg/thedigimod/server/entity/TDEntities.class
+  net/modderg/thedigimod/server/entity/goals/
+  net/modderg/thedigimod/server/entity/goals/DigimonFloatGoal.class
+  net/modderg/thedigimod/server/entity/goals/DigitalFollowOwnerGoal.class
+  net/modderg/thedigimod/server/entity/goals/DigitalHurtByTargetGoal.class
+  net/modderg/thedigimod/server/entity/goals/DigitalMeleeAttackGoal.class
+  net/modderg/thedigimod/server/entity/goals/DigitalRangedAttackGoal.class
+  net/modderg/thedigimod/server/entity/goals/DigitalWaterPathNavigation.class
+  net/modderg/thedigimod/server/entity/goals/EatShitGoal.class
+  net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal$BlockConditions.class
+  net/modderg/thedigimod/server/entity/goals/ProfessionAbstractGoal.class
+  net/modderg/thedigimod/server/entity/goals/ProfessionFarmerGoal.class
+  net/modderg/thedigimod/server/entity/goals/ProfessionLumberjackGoal.class
+  net/modderg/thedigimod/server/entity/goals/ProfessionMinerGoal.class
+  net/modderg/thedigimod/server/entity/goals/ProfessionTransporterGoal.class
+  net/modderg/thedigimod/server/entity/goals/ProfessionTreeGrower.class
+  net/modderg/thedigimod/server/entity/goals/WaterMoveControl.class
+  net/modderg/thedigimod/server/entity/managers/
+  net/modderg/thedigimod/server/entity/managers/DigimonJsonDataManager.class
+  net/modderg/thedigimod/server/entity/managers/EvolutionCondition.class
+  net/modderg/thedigimod/server/entity/managers/ItemAmountCondition.class
+  net/modderg/thedigimod/server/entity/managers/MaxCareMistakesCondition.class
+  net/modderg/thedigimod/server/entity/managers/MinWinsCondition.class
+  net/modderg/thedigimod/server/entity/managers/MoodEvolutionCondition.class
+  net/modderg/thedigimod/server/entity/managers/MoodManager.class
+  net/modderg/thedigimod/server/entity/managers/ParticleManager.class
+  net/modderg/thedigimod/server/entity/managers/SpecificXpOverCondition.class
+  net/modderg/thedigimod/server/entity/managers/StatManager.class
+  net/modderg/thedigimod/server/entity/passives/
+  net/modderg/thedigimod/server/entity/passives/AbstractPassiveSkill.class
+  net/modderg/thedigimod/server/events/
+  net/modderg/thedigimod/server/events/EventsBus$1.class
+  net/modderg/thedigimod/server/events/EventsBus$PlayerVariables.class
+  net/modderg/thedigimod/server/events/EventsBus$PlayerVariablesProvider.class
+  net/modderg/thedigimod/server/events/EventsBus$PlayerVariablesSyncMessage.class
+  net/modderg/thedigimod/server/events/EventsBus.class
+  net/modderg/thedigimod/server/events/EventsForgeBus.class
+  net/modderg/thedigimod/server/events/EventsModBus.class
+  net/modderg/thedigimod/server/events/FirstJoinStuff.class
+  net/modderg/thedigimod/server/events/RelaodListener.class
+  net/modderg/thedigimod/server/events/TagLootableStuff.class
+  net/modderg/thedigimod/server/goods/
+  net/modderg/thedigimod/server/goods/AbstractTrainingGood.class
+  net/modderg/thedigimod/server/goods/InitGoods.class
+  net/modderg/thedigimod/server/item/
+  net/modderg/thedigimod/server/item/DigitalCreativeTab.class
+  net/modderg/thedigimod/server/item/TDItems.class
+  net/modderg/thedigimod/server/item/TDItemsAdmin.class
+  net/modderg/thedigimod/server/item/TDItemsDigivices.class
+  net/modderg/thedigimod/server/item/custom/
+  net/modderg/thedigimod/server/item/custom/BabyDigimonItem.class
+  net/modderg/thedigimod/server/item/custom/BossCubeItem.class
+  net/modderg/thedigimod/server/item/custom/ContainerItem.class
+  net/modderg/thedigimod/server/item/custom/CustomXpItem.class
+  net/modderg/thedigimod/server/item/custom/DarkTowerShardItem.class
+  net/modderg/thedigimod/server/item/custom/DigiMemory.class
+  net/modderg/thedigimod/server/item/custom/DigimonItem.class
+  net/modderg/thedigimod/server/item/custom/DigitalItemNameBlockItem.class
+  net/modderg/thedigimod/server/item/custom/DigitronItem.class
+  net/modderg/thedigimod/server/item/custom/DigiviceItem.class
+  net/modderg/thedigimod/server/item/custom/EvolutionTriggerItem.class
+  net/modderg/thedigimod/server/item/custom/SpMoveItem.class
+  net/modderg/thedigimod/server/item/custom/SpawnGoodItem.class
+  net/modderg/thedigimod/server/item/custom/StatUpItem.class
+  net/modderg/thedigimod/server/item/custom/TameItem.class
+  net/modderg/thedigimod/server/item/diets/
+  net/modderg/thedigimod/server/item/diets/DietInit.class
+  net/modderg/thedigimod/server/item/diets/DigimonDiet.class
+  net/modderg/thedigimod/server/packet/
+  net/modderg/thedigimod/server/packet/PacketInit.class
+  net/modderg/thedigimod/server/packet/SToCDigiviceScreenHandle.class
+  net/modderg/thedigimod/server/packet/SToCDigiviceScreenPacket.class
+  net/modderg/thedigimod/server/packet/SToCSGainXpPacket.class
+  net/modderg/thedigimod/server/packet/StoCGetTreeStringsPacket.class
+  net/modderg/thedigimod/server/packet/StoCLaserScalePacket.class
+  net/modderg/thedigimod/server/packet/StoCShootParticlesPacket.class
+  net/modderg/thedigimod/server/projectiles/
+  net/modderg/thedigimod/server/projectiles/InitProjectiles.class
+  net/modderg/thedigimod/server/projectiles/ProjectileDefault.class
+  net/modderg/thedigimod/server/projectiles/ProjectileExplosion.class
+  net/modderg/thedigimod/server/projectiles/ProjectileLaserDefault.class
+  net/modderg/thedigimod/server/projectiles/ProjectileParticleStreamDefault.class
+  net/modderg/thedigimod/server/projectiles/ProjectileSkyFallingDefault.class
+  net/modderg/thedigimod/server/projectiles/ProjectileUnderTarget.class
+  net/modderg/thedigimod/server/projectiles/effects/
+  net/modderg/thedigimod/server/projectiles/effects/ProjectileEffect.class
+  net/modderg/thedigimod/server/projectiles/effects/ProjectileEffectDirty.class
+  net/modderg/thedigimod/server/projectiles/effects/ProjectileEffectFire.class
+  net/modderg/thedigimod/server/projectiles/effects/ProjectileEffectHeal.class
+  net/modderg/thedigimod/server/projectiles/effects/ProjectileEffectKnockUp.class
+  net/modderg/thedigimod/server/projectiles/effects/ProjectilePotionEffect.class
+  net/modderg/thedigimod/server/projectiles/effects/ProjectilePotionOwnerEffect.class
+  net/modderg/thedigimod/server/sound/
+  net/modderg/thedigimod/server/sound/DigiSounds.class
+  net/modderg/thedigimod/server/worldgen/
+  net/modderg/thedigimod/server/worldgen/AddTagAmbientSpawnsBiomeModifier.class
+  net/modderg/thedigimod/server/worldgen/AddTagMonsterSpawnsBiomeModifier.class
+  net/modderg/thedigimod/server/worldgen/AddTagSpawnsBiomeModifier.class
+  net/modderg/thedigimod/server/worldgen/DMBiomeModifier.class
+  pack.mcmeta
+  thedigimod.mixins.json

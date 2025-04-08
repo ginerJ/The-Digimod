@@ -1,0 +1,27 @@
+{
+  "has_emissive_texture": true,
+  "diet": "bug",
+  "profession": "lumberjack",
+  "xps": [
+    2
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.9
+  },
+  "default_sp_move": "mega_blaster",
+  "anims": [
+    "idle9",
+    "sit5",
+    "walk9",
+    "fly",
+    "attack7",
+    "shoot5"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "bubbmon"
+  ],
+  "digitron" : "alturkabuterimonblue"
+}

@@ -1,0 +1,7 @@
+{
+  "parent" : "minecraft:item/generated",
+  "textures" : {
+    "layer0" : "thedigimod:item/vitalbracelet",
+    "layer1" : "thedigimod:item/vitalbracelet_overlay"
+  }
+}

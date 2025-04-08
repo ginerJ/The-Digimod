@@ -1,0 +1,56 @@
+{
+  "diet": "carnivore",
+  "evolutions": {
+    "metalgreymonvirus": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:200",
+          "7:100",
+          "5:100"
+        ],
+        "item": {
+          "thedigimod:chrome_digizoid": 10
+        },
+        "rank": "super"
+      }
+    },
+    "skullgreymon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:200",
+          "7:200"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    7,
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "tron_flame",
+  "anims": [
+    "idle5",
+    "sit4",
+    "walk7",
+    "fly",
+    "attack",
+    "attack6"
+  ],
+  "rider_offset": 0.25,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ]
+}

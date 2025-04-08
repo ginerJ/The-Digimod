@@ -79,9 +79,8 @@ public class DigimonInventory implements INBTSerializable<CompoundTag> {
                         break;
                     }
                 }
-                if (!stack.isEmpty()) {
+                if (!stack.isEmpty())
                     dropItemStackInWorld(stack, digimon.level());
-                }
             }
         }
     }

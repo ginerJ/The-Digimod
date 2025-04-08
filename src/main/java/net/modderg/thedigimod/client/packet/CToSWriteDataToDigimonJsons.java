@@ -7,8 +7,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraftforge.network.NetworkEvent;
 import net.modderg.thedigimod.TheDigiMod;
 import net.modderg.thedigimod.server.entity.DigimonEntity;
-import net.modderg.thedigimod.server.packet.PacketInit;
-import net.modderg.thedigimod.server.packet.SToCLoadJsonDataPacket;
 import net.modderg.thedigimod.server.events.EventsForgeBus;
 
 import java.io.FileWriter;

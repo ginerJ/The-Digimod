@@ -1,0 +1,37 @@
+{
+  "diet": "baby",
+  "evolutions": {
+    "kunemon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "tentomon": {
+      "conditions": {
+        "mood": "Joyful",
+        "xp": []
+      }
+    }
+  },
+  "xps": [
+    2
+  ],
+  "evo_stage": 1,
+  "hitbox": {
+    "width": 0.9,
+    "height": 0.9
+  },
+  "default_sp_move": "bullet",
+  "anims": [
+    "idle6",
+    "sit7",
+    "walk8",
+    "fly",
+    "attack2",
+    "shoot4"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "bubbmon"
+  ]
+}

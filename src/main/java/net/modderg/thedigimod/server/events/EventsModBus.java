@@ -1,21 +1,40 @@
 package net.modderg.thedigimod.server.events;
 
+import net.minecraft.core.HolderSet;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.MobSpawnEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.RegistryObject;
 import net.modderg.thedigimod.TheDigiMod;
+import net.modderg.thedigimod.server.TDConfig;
+import net.modderg.thedigimod.server.advancements.TDAdvancements;
+import net.modderg.thedigimod.server.block.TDBlocks;
 import net.modderg.thedigimod.server.entity.DigimonEntity;
 import net.modderg.thedigimod.server.entity.TDEntities;
 import net.modderg.thedigimod.server.goods.AbstractTrainingGood;
 import net.modderg.thedigimod.server.goods.InitGoods;
 import net.modderg.thedigimod.server.events.EventsBus.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid=TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EventsModBus {
@@ -32,7 +51,7 @@ public class EventsModBus {
             SpawnPlacements.Type placement = wuter? SpawnPlacements.Type.NO_RESTRICTIONS : SpawnPlacements.Type.ON_GROUND;
 
             event.register(digimon, placement, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    (a,b,c,d,e) -> DigimonEntity.checkDigimonSpawnRules(), SpawnPlacementRegisterEvent.Operation.AND);
+                    DigimonEntity::checkDigimonSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         }
 
         InitGoods.GOODS.getEntries().forEach(good -> {

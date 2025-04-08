@@ -29,4 +29,26 @@ public class DMBiomeModifier {
                             TagKey.codec(ForgeRegistries.Keys.ENTITY_TYPES).fieldOf("entity_tag").forGetter(AddTagSpawnsBiomeModifier::entityTag)
                     ).apply(instance, AddTagSpawnsBiomeModifier::new))
             );
+
+    public static final RegistryObject<Codec<AddTagAmbientSpawnsBiomeModifier>> TAG_AMBIENT_BIOME_MODIFIER_CODEC =
+            BIOME_MODIFIERS.register("add_tag_ambient_spawns",
+                    () -> RecordCodecBuilder.create(instance -> instance.group(
+                            Biome.LIST_CODEC.fieldOf("biomes").forGetter(AddTagAmbientSpawnsBiomeModifier::biomes),
+                            Codec.INT.fieldOf("weight").forGetter(AddTagAmbientSpawnsBiomeModifier::weight),
+                            Codec.INT.fieldOf("minCount").forGetter(AddTagAmbientSpawnsBiomeModifier::minCount),
+                            Codec.INT.fieldOf("maxCount").forGetter(AddTagAmbientSpawnsBiomeModifier::maxCount),
+                            TagKey.codec(ForgeRegistries.Keys.ENTITY_TYPES).fieldOf("entity_tag").forGetter(AddTagAmbientSpawnsBiomeModifier::entityTag)
+                    ).apply(instance, AddTagAmbientSpawnsBiomeModifier::new))
+            );
+
+    public static final RegistryObject<Codec<AddTagMonsterSpawnsBiomeModifier>> TAG_MOSNTER_BIOME_MODIFIER_CODEC =
+            BIOME_MODIFIERS.register("add_tag_monster_spawns",
+                    () -> RecordCodecBuilder.create(instance -> instance.group(
+                            Biome.LIST_CODEC.fieldOf("biomes").forGetter(AddTagMonsterSpawnsBiomeModifier::biomes),
+                            Codec.INT.fieldOf("weight").forGetter(AddTagMonsterSpawnsBiomeModifier::weight),
+                            Codec.INT.fieldOf("minCount").forGetter(AddTagMonsterSpawnsBiomeModifier::minCount),
+                            Codec.INT.fieldOf("maxCount").forGetter(AddTagMonsterSpawnsBiomeModifier::maxCount),
+                            TagKey.codec(ForgeRegistries.Keys.ENTITY_TYPES).fieldOf("entity_tag").forGetter(AddTagMonsterSpawnsBiomeModifier::entityTag)
+                    ).apply(instance, AddTagMonsterSpawnsBiomeModifier::new))
+            );
 }

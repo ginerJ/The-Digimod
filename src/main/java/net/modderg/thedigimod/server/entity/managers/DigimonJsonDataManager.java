@@ -3,6 +3,9 @@ package net.modderg.thedigimod.server.entity.managers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.modderg.thedigimod.server.entity.DigimonEntity;
 import net.modderg.thedigimod.server.entity.goals.*;
 import net.modderg.thedigimod.server.item.diets.DietInit;
@@ -26,8 +29,10 @@ public class DigimonJsonDataManager {
             if(json.has("has_emissive_texture"))
                 digimon.isEmissive = json.getAsJsonPrimitive("has_emissive_texture").getAsBoolean();
 
-            if(json.has("evo_stage"))
-                digimon.setEvoStage(json.getAsJsonPrimitive("evo_stage").getAsInt());
+            if(json.has("evo_stage")){
+                int stage = json.getAsJsonPrimitive("evo_stage").getAsInt();
+                digimon.setEvoStage(stage);
+            }
 
             if(json.has("rider_offset"))
                 digimon.setMountDigimon(json.getAsJsonPrimitive("rider_offset").getAsFloat());
@@ -53,6 +58,11 @@ public class DigimonJsonDataManager {
                         anims.get(4).getAsString(),
                         anims.get(5).getAsString()
                 );
+            }
+
+            if(json.has("digitron")){
+                JsonPrimitive digitron = json.getAsJsonPrimitive("digitron");
+                digimon.setDigitronEvo(digitron.getAsString());
             }
 
             if(json.has("evolutions")){
@@ -88,6 +98,9 @@ public class DigimonJsonDataManager {
 
             if(digimon.getDiet()==DietInit.CRAP_DIET)
                 digimon.goalSelector.addGoal(8, new EatShitGoal(digimon));
+
+            if(json.has("baby_digimon"))
+                digimon.setBabyDrops(json.getAsJsonArray("baby_digimon").asList().stream().map(JsonElement::getAsString).toArray(String[]::new));
         }
     }
 
@@ -97,19 +110,25 @@ public class DigimonJsonDataManager {
         if(json.has("rank"))
             evo.setRank(json.getAsJsonPrimitive("rank").getAsString());
 
-        if (json.getAsJsonPrimitive("always_can").getAsBoolean())
+        if (json.has("always_can") && json.getAsJsonPrimitive("always_can").getAsBoolean())
             return evo.alwaysCan();
 
-        if (!json.getAsJsonPrimitive("mood").getAsString().isEmpty())
+        if (json.has("mood"))
             evo.moodCheck(json.getAsJsonPrimitive("mood").getAsString());
 
-        if (!json.getAsJsonPrimitive("max_mistakes").getAsString().isEmpty())
+        if (json.has("max_mistakes"))
             evo.maxMistakes(json.getAsJsonPrimitive("max_mistakes").getAsInt());
 
-        if (!json.getAsJsonPrimitive("min_wins").getAsString().isEmpty())
+        if (json.has("min_wins"))
             evo.minWins(json.getAsJsonPrimitive("min_wins").getAsInt());
 
-        if (!json.getAsJsonArray("xp").isEmpty())
+        if (json.has("item")){
+            JsonObject obj = json.getAsJsonObject("item");
+            obj.keySet().forEach(key ->
+                    evo.itemAmount(ForgeRegistries.ITEMS.getValue(new ResourceLocation(key)), obj.getAsJsonPrimitive(key).getAsInt()));
+        }
+
+        if (json.has("xp"))
             for (JsonElement element : json.getAsJsonArray("xp")) {
                 String[] xp = element.getAsString().split(":");
                 evo.xpOver(Integer.parseInt(xp[0]), Integer.parseInt(xp[1]));

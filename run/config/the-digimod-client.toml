@@ -1,0 +1,6 @@
+
+["The Digimod Client Config"]
+	#Useful if you have renedering issues do to shader/gpu issues
+	"Should dirty digimon effect be rendered: " = true
+	"Should glowmasks be rendered for digimon: " = true
+

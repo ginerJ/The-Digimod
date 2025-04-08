@@ -1,0 +1,69 @@
+{
+  "profession": "transporter",
+  "evolutions": {
+    "runnermon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "namakemon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "exermon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "2:100"
+        ]
+      }
+    },
+    "thunderballmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "5:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "bulkmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "0:100"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    5
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "petit_thunder",
+  "anims": [
+    "idle10",
+    "sit",
+    "walk5",
+    "fly",
+    "attack7",
+    "shoot2"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "dokimon"
+  ]
+}

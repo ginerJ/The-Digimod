@@ -20,7 +20,8 @@ public class BossCubeItem extends DigimonItem{
             cd.setBoss(true);
             cd.playSound(DigiSounds.XP_GAIN_SOUND.get(), 1.0F, 1.0F);
             cd.playSound(DigiSounds.LEVEL_UP_SOUND.get(), 1.0F, 1.0F);
-            cd.eatItemAnim(itemStack);
+            cd.eatItemAnim(itemStack.getItem());
+            itemStack.shrink(1);
         }
 
         return super.interactLivingEntity(itemStack, p_41399_, entity, p_41401_);

@@ -1,7 +1,7 @@
 package net.modderg.thedigimod.server.item.diets;
 
 import net.minecraft.world.item.Items;
-import net.modderg.thedigimod.server.block.BlocksInit;
+import net.modderg.thedigimod.server.block.TDBlocks;
 import net.modderg.thedigimod.server.item.TDItems;
 
 public class DietInit {
@@ -28,7 +28,7 @@ public class DietInit {
             Items.SUGAR, TDItems.DIGI_MEAT.get(), Items.HONEYCOMB, Items.HONEY_BOTTLE);
 
     public final static DigimonDiet ROCK_DIET = new DigimonDiet(
-            TDItems.DIGI_MEAT.get(), Items.COAL, BlocksInit.LED_SHROOM_ITEM.get(), Items.AMETHYST_SHARD);
+            TDItems.DIGI_MEAT.get(), Items.COAL, TDBlocks.LED_SHROOM_ITEM.get(), Items.AMETHYST_SHARD);
 
     public final static DigimonDiet SEA_DIET = new DigimonDiet(
             TDItems.DIGI_MEAT.get(), TDItems.DIGI_MEAT_BIG.get(), Items.SALMON, TDItems.DIGI_SUSHI.get());

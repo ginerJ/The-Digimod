@@ -1,0 +1,61 @@
+{
+  "has_emissive_texture": true,
+  "diet": "seafood",
+  "profession": "transporter",
+  "evolutions": {
+    "octomon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "karatukinumemon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "gesomon": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "7:50",
+          "3:50"
+        ]
+      }
+    },
+    "teslajellymon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "3:100"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    3
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 1.0,
+    "height": 1.55
+  },
+  "default_sp_move": "petit_thunder",
+  "anims": [
+    "idle3",
+    "sit",
+    "walk7",
+    "float",
+    "shoot5",
+    "shoot5"
+  ],
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "puyomon"
+  ]
+}

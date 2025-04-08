@@ -1,0 +1,82 @@
+{
+  "baby_steps": {
+    "sounds": [
+      "thedigimod:baby_steps"
+    ]
+  },
+  "rookie_steps": {
+    "sounds": [
+      "thedigimod:rookie_steps"
+    ]
+  },
+  "champion_steps": {
+    "sounds": [
+      "thedigimod:champion_steps"
+    ]
+  },
+  "ultimate_steps": {
+    "sounds": [
+      "thedigimod:ultimate_steps"
+    ]
+  },
+  "evo_sound": {
+    "sounds": [
+      "thedigimod:evo"
+    ]
+  },
+  "r_sound": {
+    "sounds": [
+      "thedigimod:r_sound"
+    ]
+  },
+  "button_sound": {
+    "sounds": [
+      "thedigimod:button_sound"
+    ]
+  },
+  "move_hit": {
+    "sounds": [
+      "thedigimod:move_hit"
+    ]
+  },
+  "default_shoot": {
+    "sounds": [
+      "thedigimod:default_shoot"
+    ]
+  },
+  "place_good": {
+    "sounds": [
+      "thedigimod:place_good"
+    ]
+  },
+  "bag_open": {
+    "sounds": [
+      "thedigimod:bag_open"
+    ]
+  },
+  "open_gui": {
+    "sounds": [
+      "thedigimod:open_gui"
+    ]
+  },
+  "memory_save": {
+    "sounds": [
+      "thedigimod:memory_save"
+    ]
+  },
+  "xp_up": {
+    "sounds": [
+      "thedigimod:xp_up"
+    ]
+  },
+  "digitron": {
+    "sounds": [
+      "thedigimod:digitron"
+    ]
+  },
+  "level_up": {
+    "sounds": [
+      "thedigimod:level_up"
+    ]
+  }
+}

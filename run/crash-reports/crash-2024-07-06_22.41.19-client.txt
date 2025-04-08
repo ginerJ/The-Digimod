@@ -1,0 +1,261 @@
+---- Minecraft Crash Report ----
+// Who set us up the TNT?
+
+Time: 2024-07-06 22:41:19
+Description: charTyped event handler
+
+java.lang.NullPointerException: Registry Object not present: geckolib:bat
+	at java.util.Objects.requireNonNull(Objects.java:336) ~[?:?] {}
+	at net.minecraftforge.registries.RegistryObject.get(RegistryObject.java:204) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraftforge.common.ForgeSpawnEggItem.getDefaultType(ForgeSpawnEggItem.java:70) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraft.world.item.SpawnEggItem.requiredFeatures(SpawnEggItem.java:156) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraft.world.flag.FeatureElement.isEnabled(FeatureElement.java:14) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraft.core.HolderLookup$RegistryLookup.lambda$filterFeatures$0(HolderLookup.java:105) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraft.core.HolderLookup$1.lambda$listElements$1(HolderLookup.java:37) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:178) ~[?:?] {}
+	at java.util.AbstractList$RandomAccessSpliterator.tryAdvance(AbstractList.java:706) ~[?:?] {}
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.lambda$initPartialTraversalState$0(StreamSpliterators.java:292) ~[?:?] {}
+	at java.util.stream.StreamSpliterators$AbstractWrappingSpliterator.fillBuffer(StreamSpliterators.java:206) ~[?:?] {}
+	at java.util.stream.StreamSpliterators$AbstractWrappingSpliterator.doAdvance(StreamSpliterators.java:169) ~[?:?] {}
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.tryAdvance(StreamSpliterators.java:298) ~[?:?] {}
+	at java.util.Spliterators$1Adapter.hasNext(Spliterators.java:681) ~[?:?] {}
+	at net.minecraft.commands.SharedSuggestionProvider.filterResources(SharedSuggestionProvider.java:78) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraft.commands.SharedSuggestionProvider.suggestResource(SharedSuggestionProvider.java:121) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraft.commands.SharedSuggestionProvider.suggestResource(SharedSuggestionProvider.java:138) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraft.commands.arguments.item.ItemParser.suggestItem(ItemParser.java:162) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraft.commands.arguments.item.ItemParser.fillSuggestions(ItemParser.java:95) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at net.minecraft.commands.arguments.item.ItemArgument.listSuggestions(ItemArgument.java:39) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading}
+	at com.mojang.brigadier.tree.ArgumentCommandNode.listSuggestions(ArgumentCommandNode.java:69) ~[brigadier-1.1.8.jar:?] {}
+	at com.mojang.brigadier.CommandDispatcher.getCompletionSuggestions(CommandDispatcher.java:599) ~[brigadier-1.1.8.jar:?] {}
+	at net.minecraft.client.gui.components.CommandSuggestions.updateCommandInfo(CommandSuggestions.java:184) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.screens.ChatScreen.onEdited(ChatScreen.java:73) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.components.EditBox.onValueChange(EditBox.java:143) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.components.EditBox.insertText(EditBox.java:137) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.components.EditBox.charTyped(EditBox.java:339) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.components.events.ContainerEventHandler.charTyped(ContainerEventHandler.java:82) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.KeyboardHandler.lambda$charTyped$6(KeyboardHandler.java:446) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.screens.Screen.wrapScreenError(Screen.java:437) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.KeyboardHandler.charTyped(KeyboardHandler.java:444) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.KeyboardHandler.lambda$setup$10(KeyboardHandler.java:470) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.util.thread.BlockableEventLoop.execute(BlockableEventLoop.java:90) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.KeyboardHandler.lambda$setup$11(KeyboardHandler.java:469) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at org.lwjgl.glfw.GLFWCharModsCallbackI.callback(GLFWCharModsCallbackI.java:46) ~[lwjgl-glfw-3.3.1.jar:build 7] {}
+	at org.lwjgl.system.JNI.invokeV(Native Method) ~[lwjgl-3.3.1.jar:build 7] {}
+	at org.lwjgl.glfw.GLFW.glfwPollEvents(GLFW.java:3403) ~[lwjgl-glfw-3.3.1.jar:build 7] {}
+	at com.mojang.blaze3d.systems.RenderSystem.pollEvents(RenderSystem.java:175) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.mojang.blaze3d.systems.RenderSystem.flipFrame(RenderSystem.java:184) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.mojang.blaze3d.platform.Window.updateDisplay(Window.java:274) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1170) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:718) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:126) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:114) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.runService(ForgeClientUserdevLaunchHandler.java:19) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:108) ~[loader-47.1.47.jar:47.1] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at java.util.Objects.requireNonNull(Objects.java:336) ~[?:?] {}
+	at net.minecraftforge.registries.RegistryObject.get(RegistryObject.java:204) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23188%23195!/:?] {re:classloading}
+	at net.minecraftforge.common.ForgeSpawnEggItem.getDefaultType(ForgeSpawnEggItem.java:70) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23188%23195!/:?] {re:classloading}
+	at net.minecraft.world.item.SpawnEggItem.requiredFeatures(SpawnEggItem.java:156) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.world.flag.FeatureElement.isEnabled(FeatureElement.java:14) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.core.HolderLookup$RegistryLookup.lambda$filterFeatures$0(HolderLookup.java:105) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.core.HolderLookup$1.lambda$listElements$1(HolderLookup.java:37) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:178) ~[?:?] {}
+	at java.util.AbstractList$RandomAccessSpliterator.tryAdvance(AbstractList.java:706) ~[?:?] {}
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.lambda$initPartialTraversalState$0(StreamSpliterators.java:292) ~[?:?] {}
+	at java.util.stream.StreamSpliterators$AbstractWrappingSpliterator.fillBuffer(StreamSpliterators.java:206) ~[?:?] {}
+	at java.util.stream.StreamSpliterators$AbstractWrappingSpliterator.doAdvance(StreamSpliterators.java:169) ~[?:?] {}
+	at java.util.stream.StreamSpliterators$WrappingSpliterator.tryAdvance(StreamSpliterators.java:298) ~[?:?] {}
+	at java.util.Spliterators$1Adapter.hasNext(Spliterators.java:681) ~[?:?] {}
+	at net.minecraft.commands.SharedSuggestionProvider.filterResources(SharedSuggestionProvider.java:78) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.commands.SharedSuggestionProvider.suggestResource(SharedSuggestionProvider.java:121) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.commands.SharedSuggestionProvider.suggestResource(SharedSuggestionProvider.java:138) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.commands.arguments.item.ItemParser.suggestItem(ItemParser.java:162) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.commands.arguments.item.ItemParser.fillSuggestions(ItemParser.java:95) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.commands.arguments.item.ItemArgument.listSuggestions(ItemArgument.java:39) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at com.mojang.brigadier.tree.ArgumentCommandNode.listSuggestions(ArgumentCommandNode.java:69) ~[brigadier-1.1.8.jar%23134!/:?] {}
+	at com.mojang.brigadier.CommandDispatcher.getCompletionSuggestions(CommandDispatcher.java:599) ~[brigadier-1.1.8.jar%23134!/:?] {}
+	at net.minecraft.client.gui.components.CommandSuggestions.updateCommandInfo(CommandSuggestions.java:184) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.screens.ChatScreen.onEdited(ChatScreen.java:73) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.components.EditBox.onValueChange(EditBox.java:143) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.components.EditBox.insertText(EditBox.java:137) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.components.EditBox.charTyped(EditBox.java:339) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.components.events.ContainerEventHandler.charTyped(ContainerEventHandler.java:82) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.KeyboardHandler.lambda$charTyped$6(KeyboardHandler.java:446) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.gui.screens.Screen.wrapScreenError(Screen.java:437) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.KeyboardHandler.charTyped(KeyboardHandler.java:444) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.KeyboardHandler.lambda$setup$10(KeyboardHandler.java:470) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.util.thread.BlockableEventLoop.execute(BlockableEventLoop.java:90) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.KeyboardHandler.lambda$setup$11(KeyboardHandler.java:469) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at org.lwjgl.glfw.GLFWCharModsCallbackI.callback(GLFWCharModsCallbackI.java:46) ~[lwjgl-glfw-3.3.1.jar%23162!/:build 7] {}
+	at org.lwjgl.system.JNI.invokeV(Native Method) ~[lwjgl-3.3.1.jar%23174!/:build 7] {}
+	at org.lwjgl.glfw.GLFW.glfwPollEvents(GLFW.java:3403) ~[lwjgl-glfw-3.3.1.jar%23162!/:build 7] {}
+	at com.mojang.blaze3d.systems.RenderSystem.pollEvents(RenderSystem.java:175) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.mojang.blaze3d.systems.RenderSystem.flipFrame(RenderSystem.java:184) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+-- Affected screen --
+Details:
+	Screen name: net.minecraft.client.gui.screens.ChatScreen
+Stacktrace:
+	at net.minecraft.client.gui.screens.Screen.wrapScreenError(Screen.java:437) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.KeyboardHandler.charTyped(KeyboardHandler.java:444) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.KeyboardHandler.lambda$setup$10(KeyboardHandler.java:470) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.util.thread.BlockableEventLoop.execute(BlockableEventLoop.java:90) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.KeyboardHandler.lambda$setup$11(KeyboardHandler.java:469) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at org.lwjgl.glfw.GLFWCharModsCallbackI.callback(GLFWCharModsCallbackI.java:46) ~[lwjgl-glfw-3.3.1.jar:build 7] {}
+	at org.lwjgl.system.JNI.invokeV(Native Method) ~[lwjgl-3.3.1.jar:build 7] {}
+	at org.lwjgl.glfw.GLFW.glfwPollEvents(GLFW.java:3403) ~[lwjgl-glfw-3.3.1.jar:build 7] {}
+	at com.mojang.blaze3d.systems.RenderSystem.pollEvents(RenderSystem.java:175) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.mojang.blaze3d.systems.RenderSystem.flipFrame(RenderSystem.java:184) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.mojang.blaze3d.platform.Window.updateDisplay(Window.java:274) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1170) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:718) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:126) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:114) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.runService(ForgeClientUserdevLaunchHandler.java:19) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:108) ~[loader-47.1.47.jar:47.1] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+
+
+-- Affected level --
+Details:
+	All players: 1 total; [LocalPlayer['Dev'/198, l='ClientLevel', x=-132.21, y=73.00, z=4.25]]
+	Chunk stats: 729, 453
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (-80,73,-16), Section: (at 0,9,0 in -5,4,-1; chunk contains blocks -80,-64,-16 to -65,319,-1), Region: (-1,-1; contains chunks -32,-32 to -1,-1, blocks -512,-64,-512 to -1,319,-1)
+	Level time: 3087 game time, 3087 day time
+	Server brand: forge
+	Server type: Non-integrated multiplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.ClientLevel.fillReportDetails(ClientLevel.java:455) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,xf:fml:xaerominimap:xaero_clientworldclass,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.fillReport(Minecraft.java:2319) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:735) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.1.79_mapped_official_1.20.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:126) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:114) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.runService(ForgeClientUserdevLaunchHandler.java:19) ~[loader-47.1.47.jar:47.1] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:108) ~[loader-47.1.47.jar:47.1] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.10.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: Yes
+	Packs: vanilla, mod_resources
+
+-- System Details --
+Details:
+	Minecraft Version: 1.20.1
+	Minecraft Version ID: 1.20.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.9, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 522404072 bytes (498 MiB) / 952107008 bytes (908 MiB) up to 4276092928 bytes (4078 MiB)
+	CPUs: 12
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 5 3600 6-Core Processor              
+	Identifier: AuthenticAMD Family 23 Model 113 Stepping 0
+	Microarchitecture: Zen 2
+	Frequency (GHz): 3.59
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 12
+	Graphics card #0 name: AMD Radeon RX 7600 XT
+	Graphics card #0 vendor: Advanced Micro Devices, Inc. (0x1002)
+	Graphics card #0 VRAM (MB): 4095.00
+	Graphics card #0 deviceId: 0x7480
+	Graphics card #0 versionInfo: DriverVersion=32.0.11021.1011
+	Memory slot #0 capacity (MB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 2.67
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 2.67
+	Memory slot #1 type: DDR4
+	Virtual memory max (MB): 28594.19
+	Virtual memory used (MB): 22180.09
+	Swap memory total (MB): 12288.00
+	Swap memory used (MB): 1057.75
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Launched Version: MOD_DEV
+	Backend library: LWJGL version 3.3.1 build 7
+	Backend API: AMD Radeon RX 7600 XT GL version 4.6.0 Core Profile Context 24.6.1.240619, ATI Technologies Inc.
+	Window size: 1920x1017
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: 
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'forge'
+	Type: Client (map_client.txt)
+	Graphics mode: fabulous
+	Resource Packs: vanilla, mod_resources
+	Current Language: en_us
+	CPU: 12x AMD Ryzen 5 3600 6-Core Processor 
+	ModLauncher: 10.0.10+10.0.10+main.22f00f84
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		mixin-0.8.5.jar mixin PLUGINSERVICE 
+		eventbus-6.0.5.jar eventbus PLUGINSERVICE 
+		loader-47.1.47.jar slf4jfixer PLUGINSERVICE 
+		loader-47.1.47.jar object_holder_definalize PLUGINSERVICE 
+		loader-47.1.47.jar runtime_enum_extender PLUGINSERVICE 
+		loader-47.1.47.jar capability_token_subclass PLUGINSERVICE 
+		accesstransformers-8.0.4.jar accesstransformer PLUGINSERVICE 
+		loader-47.1.47.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-10.0.10.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-10.0.10.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		lowcodefml@47.1
+		minecraft@47.1
+		javafml@47.1
+	Mod List: 
+		forge-1.20.1-47.1.79_mapped_official_1.20-recomp.j|Minecraft                     |minecraft                     |1.20.1              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |NeoForge                      |forge                         |47.1.79             |DONE      |Manifest: NOSIGNATURE
+		main                                              |The Digimod                   |thedigimod                    |1.20-1.0.0          |DONE      |Manifest: NOSIGNATURE
+		Xaeros-263420-4812568_mapped_official_1.20.jar    |Xaero's Minimap               |xaerominimap                  |23.8.4              |DONE      |Manifest: NOSIGNATURE
+		geckolib-forge-1.20-4.2_mapped_official_1.20.jar  |GeckoLib 4                    |geckolib                      |4.2                 |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: be48a90c-431e-4c2a-9ec2-64c4c55bab80
+	FML: 47.1
+	NeoForge: net.neoforged:47.1.79

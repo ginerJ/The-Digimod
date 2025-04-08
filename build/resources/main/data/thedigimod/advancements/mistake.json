@@ -1,0 +1,29 @@
+{
+  "parent": "thedigimod:get_a_digimon",
+  "display": {
+    "icon": {
+      "item": "thedigimod:goblimon_bat"
+    },
+    "title": {"translate": "advancements.thedigimod.mistake"},
+    "description": {"translate": "advancements.thedigimod.mistake.description"},
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "imposibol": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "imposibol"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": false
+}

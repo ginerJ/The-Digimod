@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: thedigimod
+Specification-Vendor: examplemodsareus
+Specification-Version: 1
+Implementation-Title: The-Digimod-private
+Implementation-Version: 0.0.1-1.19
+Implementation-Vendor: examplemodsareus
+Implementation-Timestamp: 2025-04-04T11:29:32-0300
+

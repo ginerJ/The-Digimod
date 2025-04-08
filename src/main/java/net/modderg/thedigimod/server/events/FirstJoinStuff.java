@@ -6,8 +6,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.registries.RegistryObject;
-import net.modderg.thedigimod.server.ModCommonConfigs;
-import net.modderg.thedigimod.server.item.TDItemsBabyDigimon;
+import net.modderg.thedigimod.server.TDConfig;
+import net.modderg.thedigimod.server.entity.TDEntities;
 import net.modderg.thedigimod.server.item.TDItemsDigivices;
 import net.modderg.thedigimod.server.item.TDItems;
 import net.modderg.thedigimod.server.item.custom.DigiviceItem;
@@ -40,7 +40,7 @@ public class FirstJoinStuff {
             }
             if (entity instanceof Player _player) {
 
-                ItemStack _setstack = new ItemStack(chooseItem(TDItemsBabyDigimon.babiesMap.values().stream().toList()).get());
+                ItemStack _setstack = new ItemStack(chooseItem(TDEntities.BABIES.getEntries().stream().toList()).get());
 
                 ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 
@@ -48,7 +48,7 @@ public class FirstJoinStuff {
 
                 ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 
-                if(ModCommonConfigs.GIVE_TRAINING_BAG.get())
+                if(TDConfig.GIVE_TRAINING_BAG.get())
                     ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(TDItems.TRAINING_BAG.get()));
 
                 ItemHandlerHelper.giveItemToPlayer(_player, new ItemStack(TDItems.DIGI_MEAT.get(), 20));

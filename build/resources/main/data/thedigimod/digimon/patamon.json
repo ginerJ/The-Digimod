@@ -1,0 +1,81 @@
+{
+  "profession": "tree_lover",
+  "evolutions": {
+    "unimon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "goldnumemon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "centalmon": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "5:50",
+          "3:50"
+        ]
+      }
+    },
+    "mimicmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "5:50",
+          "7:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "pegasmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "8:100"
+        ]
+      }
+    },
+    "angemon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "8:100"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    8
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 1.5,
+    "height": 1.5
+  },
+  "default_sp_move": "bullet",
+  "anims": [
+    "idle5",
+    "sit2",
+    "walk",
+    "fly4",
+    "attack10",
+    "attack10"
+  ],
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "poyomon"
+  ]
+}

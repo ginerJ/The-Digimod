@@ -1,0 +1,36 @@
+{
+  "parent": "thedigimod:root",
+  "display": {
+    "icon": {
+      "item": "thedigimod:vpet"
+    },
+    "title": {"translate": "advancements.thedigimod.digivice"},
+    "description": {"translate": "advancements.thedigimod.digivice.description"},
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain_digivice": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "thedigimod:digivices"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_digivice"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": false
+}

@@ -25,9 +25,13 @@ import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInst
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
+import static net.modderg.thedigimod.server.TDConfig.*;
+
 public class AbstractTrainingGood extends Animal implements GeoEntity {
 
     protected float statMultiplier = 1.0f;
+    public float getStatMultiplier(){return statMultiplier;}
+
     public AbstractTrainingGood setStatMultiplier(float f){statMultiplier = f; return this;}
 
     public AbstractTrainingGood(EntityType<? extends Animal> p_27557_, Level p_27558_) {
@@ -64,18 +68,24 @@ public class AbstractTrainingGood extends Animal implements GeoEntity {
     public String getGoodName(){return goodName;}
     public AbstractTrainingGood setName(String name){goodName = name; return this;}
 
-
-
     @Override
     public boolean isCustomNameVisible() {
         return true;
+    }
+
+    protected int minStatGain(DigimonEntity digimon) {
+        return digimon.getRank().equals("zero") ? F_RANK_MIN_STAT_GAIN.get() : (digimon.getRank().equals("super") ? S_RANK_MIN_STAT_GAIN.get() : F_RANK_MIN_STAT_GAIN.get());
+    }
+
+    protected int maxStatGain(DigimonEntity digimon) {
+        return digimon.getRank().equals("zero") ? F_RANK_MAX_STAT_GAIN.get() : (digimon.getRank().equals("super") ? S_RANK_MAX_STAT_GAIN.get() : F_RANK_MAX_STAT_GAIN.get());
     }
 
     @Override
     public boolean hurt(DamageSource source, float p_27568_) {
         if(source.getDirectEntity() instanceof DigimonEntity digimon && this.random.nextInt(6) == 2){
 
-            int add = random.nextInt(digimon.minStatGain(), digimon.maxStatGain());
+            int add = random.nextInt(minStatGain(digimon), maxStatGain(digimon));
             add = (int) (add * statMultiplier);
 
             digimon.moodManager.restMoodPoints(10);
@@ -148,12 +158,10 @@ public class AbstractTrainingGood extends Animal implements GeoEntity {
     protected AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
     private PlayState animController(AnimationState<AbstractTrainingGood> event) {
-        if(this.hurtTime > 0){
+        if(this.hurtTime > 0)
             event.getController().setAnimation(RawAnimation.begin().then("hit", Animation.LoopType.LOOP));
-        } else {
+        else
             event.getController().setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
-
-        }
         return PlayState.CONTINUE;
     }
 

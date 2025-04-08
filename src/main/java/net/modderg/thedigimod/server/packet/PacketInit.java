@@ -106,12 +106,6 @@ public class PacketInit {
                 .consumerMainThread(StoCShootParticlesPacket::handle)
                 .add();
 
-        INSTANCE.messageBuilder(SToCLoadJsonDataPacket.class, id++)
-                .encoder(SToCLoadJsonDataPacket::encode)
-                .decoder(SToCLoadJsonDataPacket::new)
-                .consumerMainThread(SToCLoadJsonDataPacket::handle)
-                .add();
-
         INSTANCE.messageBuilder(CToSWriteDataToDigimonJsons.class, id++)
                 .encoder(CToSWriteDataToDigimonJsons::encode)
                 .decoder(CToSWriteDataToDigimonJsons::new)

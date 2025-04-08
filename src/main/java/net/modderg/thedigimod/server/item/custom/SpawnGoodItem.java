@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
@@ -33,8 +34,10 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.RegistryObject;
+import net.modderg.thedigimod.server.advancements.TDAdvancements;
 import net.modderg.thedigimod.server.goods.AbstractTrainingGood;
 import net.modderg.thedigimod.server.sound.DigiSounds;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -61,9 +64,8 @@ public class SpawnGoodItem extends DigimonItem {
         super.inventoryTick(stack, p_41405_, p_41406_, p_41407_, p_41408_);
         CompoundTag compoundNBT = stack.getOrCreateTag();
 
-        if (!compoundNBT.contains("USES")) {
+        if (!compoundNBT.contains("USES"))
             compoundNBT.putInt("USES", DEFAULT_INTEGER_VALUE);
-        }
     }
 
     @Override
@@ -75,15 +77,15 @@ public class SpawnGoodItem extends DigimonItem {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext p_43223_) {
+    public InteractionResult useOn(UseOnContext context) {
 
-        Level level = p_43223_.getLevel();
-        if (!(level instanceof ServerLevel)) {
+        Level level = context.getLevel();
+        if (!(level instanceof ServerLevel))
             return InteractionResult.SUCCESS;
-        } else {
-            ItemStack itemstack = p_43223_.getItemInHand();
-            BlockPos blockpos = p_43223_.getClickedPos();
-            Direction direction = p_43223_.getClickedFace();
+        else {
+            ItemStack itemstack = context.getItemInHand();
+            BlockPos blockpos = context.getClickedPos();
+            Direction direction = context.getClickedFace();
             BlockState blockstate = level.getBlockState(blockpos);
             if (blockstate.is(Blocks.SPAWNER)) {
                 BlockEntity blockentity = level.getBlockEntity(blockpos);
@@ -93,28 +95,34 @@ public class SpawnGoodItem extends DigimonItem {
                     spawnerblockentity.setEntityId(entitytype1, level.getRandom());
                     blockentity.setChanged();
                     level.sendBlockUpdated(blockpos, blockstate, blockstate, 3);
-                    level.gameEvent(p_43223_.getPlayer(), GameEvent.BLOCK_CHANGE, blockpos);
+                    level.gameEvent(context.getPlayer(), GameEvent.BLOCK_CHANGE, blockpos);
                     itemstack.shrink(1);
                     return InteractionResult.CONSUME;
                 }
             }
 
             BlockPos blockpos1;
-            if (blockstate.getCollisionShape(level, blockpos).isEmpty()) {
+            if (blockstate.getCollisionShape(level, blockpos).isEmpty())
                 blockpos1 = blockpos;
-            } else {
+            else
                 blockpos1 = blockpos.relative(direction);
-            }
+
 
             EntityType<?> entitytype = this.getType(itemstack.getTag());
 
-            Entity entity = entitytype.spawn((ServerLevel) level, itemstack, p_43223_.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP);
+            Entity entity = entitytype.spawn((ServerLevel) level, itemstack, context.getPlayer(), blockpos1, MobSpawnType.SPAWN_EGG, true, !Objects.equals(blockpos, blockpos1) && direction == Direction.UP);
             if (entity instanceof AbstractTrainingGood good) {
-                good.setHealth(p_43223_.getItemInHand().getOrCreateTag().getInt("USES"));
+                good.setHealth(context.getItemInHand().getOrCreateTag().getInt("USES"));
                 itemstack.shrink(1);
-                level.gameEvent(p_43223_.getPlayer(), GameEvent.ENTITY_PLACE, blockpos);
+                level.gameEvent(context.getPlayer(), GameEvent.ENTITY_PLACE, blockpos);
+
+                if(context.getPlayer() instanceof ServerPlayer sPlayer){
+                    TDAdvancements.grantAdvancement(sPlayer, TDAdvancements.TRAINING);
+                    if(good.getStatMultiplier() > 1)
+                        TDAdvancements.grantAdvancement(sPlayer, TDAdvancements.HIGH_TRAINING);
+                }
             }
-            p_43223_.getPlayer().playNotifySound(DigiSounds.PLACE_GOOD_SOUND.get(), SoundSource.PLAYERS, 1F, 1.0F);
+            context.getPlayer().playNotifySound(DigiSounds.PLACE_GOOD_SOUND.get(), SoundSource.PLAYERS, 1F, 1.0F);
 
             return InteractionResult.CONSUME;
         }
@@ -135,7 +143,7 @@ public class SpawnGoodItem extends DigimonItem {
         return p_41436_.clip(new ClipContext(vec3, vec31, ClipContext.Block.OUTLINE, p_41438_, p_41437_));
     }
 
-    public InteractionResultHolder<ItemStack> use(Level p_43225_, Player p_43226_, InteractionHand p_43227_) {
+    public InteractionResultHolder<ItemStack> use(@NotNull Level p_43225_, Player p_43226_, @NotNull InteractionHand p_43227_) {
         ItemStack itemstack = p_43226_.getItemInHand(p_43227_);
         HitResult hitresult = getPlayerPOVHitResult(p_43225_, p_43226_, ClipContext.Fluid.SOURCE_ONLY);
         if (hitresult.getType() != HitResult.Type.BLOCK) {
@@ -176,9 +184,8 @@ public class SpawnGoodItem extends DigimonItem {
     public EntityType<?> getType(@Nullable CompoundTag p_43229_) {
         if (p_43229_ != null && p_43229_.contains("EntityTag", 10)) {
             CompoundTag compoundtag = p_43229_.getCompound("EntityTag");
-            if (compoundtag.contains("id", 8)) {
+            if (compoundtag.contains("id", 8))
                 return EntityType.byString(compoundtag.getString("id")).orElse(this.defaultType.get());
-            }
         }
 
         return this.defaultType.get();

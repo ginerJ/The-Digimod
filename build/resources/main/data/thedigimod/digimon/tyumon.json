@@ -1,0 +1,123 @@
+{
+  "profession": "farmer",
+  "diet": "poop",
+  "xps": [
+    9
+  ],
+  "evolutions": {
+    "scumon": {
+      "conditions": {
+        "always_can": "true",
+        "rank": "super"
+      }
+    },
+    "numemon": {
+      "conditions": {
+        "mood": "Meh",
+        "xp": [
+          "9:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "raremon": {
+      "conditions": {
+        "mood": "Meh",
+        "xp": [
+          "9:50",
+          "5:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "namakemon": {
+      "conditions": {
+        "mood": "Meh",
+        "xp": [
+          "5:25",
+          "1:25",
+          "9:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "karatukinumemon": {
+      "conditions": {
+        "mood": "Meh",
+        "xp": [
+          "9:50",
+          "3:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "roachmon": {
+      "conditions": {
+        "mood": "Meh",
+        "xp": [
+          "9:50",
+          "2:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "bakemon": {
+      "conditions": {
+        "mood": "Meh",
+        "xp": [
+          "9:50",
+          "7:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "vegiemon": {
+      "conditions": {
+        "mood": "Meh",
+        "xp": [
+          "9:50",
+          "2:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "doggymon": {
+      "conditions": {
+        "mood": "Meh",
+        "xp": [
+          "9:50",
+          "1:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "nanimon": {
+      "conditions": {
+        "mood": "Meh",
+        "xp": [
+          "9:50",
+          "7:50"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "poop_throw",
+  "anims": [
+    "idle10",
+    "sit",
+    "walk12",
+    "fly",
+    "attack8",
+    "shoot5"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "zurumon"
+  ]
+}

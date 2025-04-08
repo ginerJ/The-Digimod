@@ -1,0 +1,7 @@
+Java Launcher: C:\Users\juanc\.gradle\jdks\eclipse_adoptium-17-amd64-windows\jdk-17.0.9+9\bin\java.exe
+Arguments: '--inJar, C:\Users\juanc\.gradle\caches\forge_gradle\minecraft_user_repo\net\neoforged\forge\1.20.1-47.1.79\forge-1.20.1-47.1.79-injected.jar, --outJar, C:\Users\juanc\.gradle\caches\forge_gradle\minecraft_user_repo\net\neoforged\forge\1.20.1-47.1.79_mapped_official_1.20\forge-1.20.1-47.1.79_mapped_official_1.20.jar, --logFile, accesstransform.log, --atFile, C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod\build\_atJar_4\parent_at.cfg'
+Classpath:
+ - C:\Users\juanc\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\accesstransformers\8.0.7\accesstransformers-8.0.7-fatjar.jar
+Working directory: C:\Users\juanc\OneDrive\Escritorio\mods\The-Digimod\build\_atJar_4
+Main class: net.minecraftforge.accesstransformer.TransformerProcessor
+====================================

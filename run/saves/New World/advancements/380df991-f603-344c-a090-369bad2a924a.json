@@ -1,0 +1,30 @@
+{
+  "thedigimod:digivice": {
+    "criteria": {
+      "obtain_digivice": "2025-04-04 20:37:38 -0300"
+    },
+    "done": true
+  },
+  "thedigimod:root": {
+    "criteria": {
+      "trigger_on_join": "2025-04-04 20:37:39 -0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2025-04-04 20:37:39 -0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:beach": "2025-04-04 20:37:42 -0300",
+      "minecraft:river": "2025-04-07 23:45:24 -0300",
+      "minecraft:forest": "2025-04-04 20:37:40 -0300",
+      "minecraft:savanna": "2025-04-04 20:37:51 -0300"
+    },
+    "done": false
+  },
+  "DataVersion": 3465
+}

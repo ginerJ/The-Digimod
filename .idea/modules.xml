@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/The-Digimod-private.main.iml" filepath="$PROJECT_DIR$/.idea/modules/The-Digimod-private.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/The-Digimod-private.test.iml" filepath="$PROJECT_DIR$/.idea/modules/The-Digimod-private.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/The-Digimod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/The-Digimod.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/The-Digimod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/The-Digimod.test.iml" />
+    </modules>
+  </component>
+</project>

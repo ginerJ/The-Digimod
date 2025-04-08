@@ -17,10 +17,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
-import net.minecraftforge.registries.RegistryObject;
-import net.modderg.thedigimod.server.block.BlocksInit;
-import net.modderg.thedigimod.client.ModClientConfigs;
-import net.modderg.thedigimod.server.ModCommonConfigs;
+import net.modderg.thedigimod.server.block.TDBlocks;
+import net.modderg.thedigimod.client.TDClientConfig;
+import net.modderg.thedigimod.server.TDConfig;
 import net.modderg.thedigimod.server.entity.DigimonEntity;
 import net.modderg.thedigimod.server.entity.TDEntities;
 import net.modderg.thedigimod.client.gui.inventory.InitMenu;
@@ -28,7 +27,6 @@ import net.modderg.thedigimod.server.events.EventsBus;
 import net.modderg.thedigimod.server.goods.AbstractTrainingGood;
 import net.modderg.thedigimod.server.goods.InitGoods;
 import net.modderg.thedigimod.server.item.*;
-import net.modderg.thedigimod.server.item.custom.DigiviceItem;
 import net.modderg.thedigimod.server.packet.PacketInit;
 import net.modderg.thedigimod.client.particles.DigitalParticles;
 import net.modderg.thedigimod.server.projectiles.InitProjectiles;
@@ -56,18 +54,17 @@ public class TheDigiMod {
 
         DigitalCreativeTab.CREATIVE_TABS.register(bus);
 
-        BlocksInit.BLOCKS.register(bus);
+        TDBlocks.BLOCKS.register(bus);
+
+        TDEntities.register(bus);
 
         TDItems.register(bus);
-        TDItemsBabyDigimon.register(bus);
         TDItemsDigivices.register(bus);
         TDItemsAdmin.register(bus);
 
         InitProjectiles.register(bus);
 
         InitGoods.register(bus);
-
-        TDEntities.register(bus);
 
         DMBiomeModifier.BIOME_MODIFIERS.register(bus);
 
@@ -79,8 +76,8 @@ public class TheDigiMod {
 
         InitMenu.register(bus);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModClientConfigs.SPEC, "the-digimod-client.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModCommonConfigs.SPEC, "the-digimod-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, TDClientConfig.SPEC, "the-digimod-client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, TDConfig.SPEC, "the-digimod-common.toml");
 
         bus.addListener(this::addCreativeTab);
     }
@@ -107,33 +104,18 @@ public class TheDigiMod {
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event){
         if(event.getTab() == DigitalCreativeTab.DIGITAL_TAB.get()){
 
-            for(RegistryObject<DigiviceItem> item : TDItemsDigivices.vicesMap)
-                event.accept(item.get());
+            TDItemsDigivices.DIGIVICES.getEntries().forEach(event::accept);
 
-            event.accept(BlocksInit.CARD_ORE_ITEM);
-            event.accept(BlocksInit.CARD_DEEPSLATE_ORE_ITEM);
-            event.accept(BlocksInit.HUANGLONG_DEEPSLATE_ORE_ITEM);
+            event.accept(TDBlocks.CARD_ORE_ITEM);
+            event.accept(TDBlocks.CARD_DEEPSLATE_ORE_ITEM);
+            event.accept(TDBlocks.HUANGLONG_DEEPSLATE_ORE_ITEM);
             event.accept(TDItems.HUANGLONG_ORE);
             event.accept(TDItems.CHRONDIGIZOIT);
             event.accept(TDItems.CHROME_DIGIZOID);
             event.accept(TDItems.DIGIMON_CARD);
             event.accept(TDItems.DIGIMON_BLUE_CARD);
 
-            event.accept(TDItemsBabyDigimon.BOTAMON);
-            event.accept(TDItemsBabyDigimon.CHICOMON);
-            event.accept(TDItemsBabyDigimon.JYARIMON);
-            event.accept(TDItemsBabyDigimon.PETITMON);
-            event.accept(TDItemsBabyDigimon.DATIRIMON);
-            event.accept(TDItemsBabyDigimon.PUYOMON);
-            event.accept(TDItemsBabyDigimon.CONOMON);
-            event.accept(TDItemsBabyDigimon.POYOMON);
-            event.accept(TDItemsBabyDigimon.BUBBMON);
-            event.accept(TDItemsBabyDigimon.PUNIMON);
-            event.accept(TDItemsBabyDigimon.DOKIMON);
-            event.accept(TDItemsBabyDigimon.NYOKIMON);
-            event.accept(TDItemsBabyDigimon.KIIMON);
-            event.accept(TDItemsBabyDigimon.ZURUMON);
-            event.accept(TDItemsBabyDigimon.SUNAMON);
+            TDEntities.BABIES.getEntries().forEach(event::accept);
 
             event.accept(TDItems.DIGI_MEAT_ROTTEN);
             event.accept(TDItems.DIGI_MEAT);
@@ -142,7 +124,7 @@ public class TheDigiMod {
             event.accept(TDItems.GUILMON_BREAD);
             event.accept(TDItems.DIGI_CAKE);
             event.accept(TDItems.DIGI_SUSHI);
-            event.accept(BlocksInit.LED_SHROOM_ITEM);
+            event.accept(TDBlocks.LED_SHROOM_ITEM);
             event.accept(TDItems.POOP);
             event.accept(TDItems.GOLD_POOP);
 
@@ -215,15 +197,15 @@ public class TheDigiMod {
             event.accept(TDItems.CHIP_WORLD_SLASH);
             event.accept(TDItems.CHIP_SECRET_IDENTITY);
 
-            event.accept(BlocksInit.DIGITAMA_DRAGON_ITEM);
-            event.accept(BlocksInit.DIGITAMA_BEAST_ITEM);
-            event.accept(BlocksInit.DIGITAMA_HOLY_ITEM);
-            event.accept(BlocksInit.DIGITAMA_PLANTINSECT_ITEM);
-            event.accept(BlocksInit.DIGITAMA_NIGHTMARE_ITEM);
-            event.accept(BlocksInit.DIGITAMA_WIND_ITEM);
-            event.accept(BlocksInit.DIGITAMA_EARTH_ITEM);
-            event.accept(BlocksInit.DIGITAMA_AQUAN_ITEM);
-            event.accept(BlocksInit.DIGITAMA_MACHINE_ITEM);
+            event.accept(TDBlocks.DIGITAMA_DRAGON_ITEM);
+            event.accept(TDBlocks.DIGITAMA_BEAST_ITEM);
+            event.accept(TDBlocks.DIGITAMA_HOLY_ITEM);
+            event.accept(TDBlocks.DIGITAMA_PLANTINSECT_ITEM);
+            event.accept(TDBlocks.DIGITAMA_NIGHTMARE_ITEM);
+            event.accept(TDBlocks.DIGITAMA_WIND_ITEM);
+            event.accept(TDBlocks.DIGITAMA_EARTH_ITEM);
+            event.accept(TDBlocks.DIGITAMA_AQUAN_ITEM);
+            event.accept(TDBlocks.DIGITAMA_MACHINE_ITEM);
         }
         if(event.getTab() == DigitalCreativeTab.ADMIN_TAB.get()){
             event.accept(TDItemsAdmin.ATTACK_GB);

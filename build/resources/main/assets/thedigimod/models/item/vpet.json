@@ -1,0 +1,7 @@
+{
+  "parent" : "minecraft:item/generated",
+  "textures" : {
+    "layer0" : "thedigimod:item/vpet",
+    "layer1" : "thedigimod:item/vpet_overlay"
+  }
+}

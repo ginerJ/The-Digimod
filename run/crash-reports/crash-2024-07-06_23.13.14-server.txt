@@ -1,0 +1,137 @@
+---- Minecraft Crash Report ----
+// Why did you do that?
+
+Time: 2024-07-06 23:13:14
+Description: Exception ticking world
+
+java.lang.NullPointerException: Cannot invoke "com.google.gson.JsonElement.toString()" because "json" is null
+	at net.modderg.thedigimod.events.ForgeBusEvents.onEntityJoinServerWorld(ForgeBusEvents.java:25) ~[%23194!/:?] {re:classloading}
+	at net.modderg.thedigimod.events.__ForgeBusEvents_onEntityJoinServerWorld_EntityJoinLevelEvent.invoke(.dynamic) ~[%23194!/:?] {re:classloading,pl:eventbus:B}
+	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:73) ~[eventbus-6.0.5.jar%23114!/:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:315) ~[eventbus-6.0.5.jar%23114!/:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:296) ~[eventbus-6.0.5.jar%23114!/:?] {}
+	at net.minecraft.world.level.entity.PersistentEntitySectionManager.addEntity(PersistentEntitySectionManager.java:79) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.world.level.entity.PersistentEntitySectionManager.lambda$processPendingLoads$11(PersistentEntitySectionManager.java:260) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at java.util.Collections$2.tryAdvance(Collections.java:4853) ~[?:?] {}
+	at java.util.Collections$2.forEachRemaining(Collections.java:4861) ~[?:?] {}
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[?:?] {}
+	at net.minecraft.world.level.entity.PersistentEntitySectionManager.processPendingLoads(PersistentEntitySectionManager.java:259) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.world.level.entity.PersistentEntitySectionManager.tick(PersistentEntitySectionManager.java:269) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:355) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:893) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.dedicated.DedicatedServer.tickChildren(DedicatedServer.java:283) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:814) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:661) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:251) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at net.modderg.thedigimod.events.ForgeBusEvents.onEntityJoinServerWorld(ForgeBusEvents.java:25) ~[%23194!/:?] {re:classloading}
+	at net.modderg.thedigimod.events.__ForgeBusEvents_onEntityJoinServerWorld_EntityJoinLevelEvent.invoke(.dynamic) ~[%23194!/:?] {re:classloading,pl:eventbus:B}
+	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:73) ~[eventbus-6.0.5.jar%23114!/:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:315) ~[eventbus-6.0.5.jar%23114!/:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:296) ~[eventbus-6.0.5.jar%23114!/:?] {}
+	at net.minecraft.world.level.entity.PersistentEntitySectionManager.addEntity(PersistentEntitySectionManager.java:79) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.world.level.entity.PersistentEntitySectionManager.lambda$processPendingLoads$11(PersistentEntitySectionManager.java:260) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at java.util.Collections$2.tryAdvance(Collections.java:4853) ~[?:?] {}
+	at java.util.Collections$2.forEachRemaining(Collections.java:4861) ~[?:?] {}
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762) ~[?:?] {}
+	at net.minecraft.world.level.entity.PersistentEntitySectionManager.processPendingLoads(PersistentEntitySectionManager.java:259) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.world.level.entity.PersistentEntitySectionManager.tick(PersistentEntitySectionManager.java:269) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading}
+	at net.minecraft.server.level.ServerLevel.tick(ServerLevel.java:355) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+-- Affected level --
+Details:
+	All players: 0 total; []
+	Chunk stats: 2209
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (0,95,0), Section: (at 0,15,0 in 0,5,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Level time: 17888 game time, 17888 day time
+	Level name: world
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Level weather: Rain time: 64735 (now: false), thunder time: 116132 (now: false)
+	Known server brands: forge
+	Removed feature flags: 
+	Level was modded: true
+	Level storage version: 0x04ABD - Anvil
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:893) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.dedicated.DedicatedServer.tickChildren(DedicatedServer.java:283) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:814) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:661) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:251) ~[forge-1.20.1-47.1.79_mapped_official_1.20-recomp.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,xf:fml:xaerominimap:xaero_minecraftserver}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.20.1
+	Minecraft Version ID: 1.20.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.9, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 1137170944 bytes (1084 MiB) / 2011168768 bytes (1918 MiB) up to 4276092928 bytes (4078 MiB)
+	CPUs: 12
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 5 3600 6-Core Processor              
+	Identifier: AuthenticAMD Family 23 Model 113 Stepping 0
+	Microarchitecture: Zen 2
+	Frequency (GHz): 3.59
+	Number of physical packages: 1
+	Number of physical CPUs: 6
+	Number of logical CPUs: 12
+	Graphics card #0 name: AMD Radeon RX 7600 XT
+	Graphics card #0 vendor: Advanced Micro Devices, Inc. (0x1002)
+	Graphics card #0 VRAM (MB): 4095.00
+	Graphics card #0 deviceId: 0x7480
+	Graphics card #0 versionInfo: DriverVersion=32.0.11021.1011
+	Memory slot #0 capacity (MB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 2.67
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 2.67
+	Memory slot #1 type: DDR4
+	Virtual memory max (MB): 28594.19
+	Virtual memory used (MB): 19492.89
+	Swap memory total (MB): 12288.00
+	Swap memory used (MB): 984.07
+	JVM Flags: 0 total; 
+	Server Running: true
+	Player Count: 0 / 20; []
+	Data Packs: vanilla, mod:forge, mod:thedigimod (incompatible), mod:xaerominimap, mod:geckolib
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Stable
+	Is Modded: Definitely; Server brand changed to 'forge'
+	Type: Dedicated Server (map_server.txt)
+	ModLauncher: 10.0.10+10.0.10+main.22f00f84
+	ModLauncher launch target: forgeserveruserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		mixin-0.8.5.jar mixin PLUGINSERVICE 
+		eventbus-6.0.5.jar eventbus PLUGINSERVICE 
+		loader-47.1.47.jar slf4jfixer PLUGINSERVICE 
+		loader-47.1.47.jar object_holder_definalize PLUGINSERVICE 
+		loader-47.1.47.jar runtime_enum_extender PLUGINSERVICE 
+		loader-47.1.47.jar capability_token_subclass PLUGINSERVICE 
+		accesstransformers-8.0.4.jar accesstransformer PLUGINSERVICE 
+		loader-47.1.47.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-10.0.10.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-10.0.10.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		lowcodefml@47.1
+		minecraft@47.1
+		javafml@47.1
+	Mod List: 
+		forge-1.20.1-47.1.79_mapped_official_1.20-recomp.j|Minecraft                     |minecraft                     |1.20.1              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |NeoForge                      |forge                         |47.1.79             |DONE      |Manifest: NOSIGNATURE
+		main                                              |The Digimod                   |thedigimod                    |1.20-1.0.0          |DONE      |Manifest: NOSIGNATURE
+		Xaeros-263420-4812568_mapped_official_1.20.jar    |Xaero's Minimap               |xaerominimap                  |23.8.4              |DONE      |Manifest: NOSIGNATURE
+		geckolib-forge-1.20-4.2_mapped_official_1.20.jar  |GeckoLib 4                    |geckolib                      |4.2                 |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 518c8832-aec8-434a-997a-e85e0d528c28
+	FML: 47.1
+	NeoForge: net.neoforged:47.1.79

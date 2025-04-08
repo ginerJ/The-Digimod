@@ -26,11 +26,10 @@ import net.modderg.thedigimod.client.gui.KeyBindings;
 import net.modderg.thedigimod.client.gui.inventory.DigimonInventoryScreen;
 import net.modderg.thedigimod.client.gui.inventory.InitMenu;
 import net.modderg.thedigimod.client.particles.DigitalParticles;
+import net.modderg.thedigimod.server.item.TDItemsDigivices;
 import net.modderg.thedigimod.server.projectiles.ProjectileDefault;
 import net.modderg.thedigimod.client.projectile.CustomProjectileRender;
 import net.modderg.thedigimod.server.projectiles.InitProjectiles;
-
-import static net.modderg.thedigimod.server.item.TDItemsDigivices.vicesMap;
 
 public class ClientEvents {
     @Mod.EventBusSubscriber(modid = TheDigiMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -39,7 +38,7 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onRegisterItemColors(RegisterColorHandlersEvent.Item event) {
             event.register((p_92708_, p_92709_) -> p_92709_ > 0 ? -1 : ((DyeableLeatherItem) p_92708_.getItem()).getColor(p_92708_),
-                    vicesMap.stream().map(RegistryObject::get).toArray(Item[]::new));
+                    TDItemsDigivices.DIGIVICES.getEntries().stream().map(RegistryObject::get).toArray(Item[]::new));
         }
 
         @SubscribeEvent
@@ -114,7 +113,7 @@ public class ClientEvents {
             public static void registerParticleFactories(final RenderNameTagEvent event){
                 if(event.getEntity() instanceof DigimonEntity cd){
                     event.setContent(Component.literal(
-                            event.getContent().getString().replace("Digimon",I18n.get("entity.thedigimod." + cd.getLowerCaseSpecies()))
+                            event.getContent().getString().replace("Digimon", I18n.get(cd.getType().getDescriptionId()))
                     ));
                 }
             }

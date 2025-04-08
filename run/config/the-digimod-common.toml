@@ -1,0 +1,47 @@
+
+["The Digimod Server Configs"]
+	#side note: disabling digimon professions is not a config, it can be turned off by setting mob griefing to false 
+	#
+	#allows digimon to spawn in the overworld
+	"digimon spawn enabled:" = true
+	#
+	#should newly joined players spawn with training bag
+	"players spawn with training bag enabled:" = true
+	#
+	#maximum amount of lives a tamed digimon can have (3 max value)
+	"tamed digimon lives max:" = 3
+	#
+	#levels at which each stage is achieved (only natural numbers, current max level is 65)
+	"rookie evolution level:" = 6
+	"champion evolution level:" = 20
+	"ultimate evolution level:" = 40
+	#
+	#chance over a hundred of each item a digimon drops (only natural numbers until 100)
+	"baby drop chance:" = 3
+	"move chip drop chance:" = 5
+	"chance of digi food drop:" = 5
+	"chance of green card drop:" = 2
+	"chance of stat bytes drop:" = 5
+	#
+	#allow riding of both ground and flying digimon in servers
+	"ground digimon rideable:" = true
+	"flying digimon rideable:" = true
+	#
+	#allow fire attacks to turn hit blocks on fire
+	"fire attacks spread fire:" = true
+	#
+	#Scale the size of digimon to make them bigger or smaller to your preference
+	"Baby digimon size %:" = 100
+	"Rookie digimon size %:" = 100
+	"Champion digimon size %:" = 100
+	"Ultimate digimon size %:" = 100
+	"Boss digimon size %:" = 100
+	#
+	#Min and max amount of stat gain per training on each digimon rank
+	"Failed rank digimon min stat gain: " = 1
+	"Failed rank digimon max stat gain: " = 4
+	"Zero rank digimon min stat gain: " = 2
+	"Zero rank digimon max stat gain: " = 6
+	"Super rank digimon min stat gain: " = 3
+	"Super rank digimon max stat gain: " = 8
+

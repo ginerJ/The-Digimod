@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:savanna",
+    "minecraft:dark_forest",
+    "minecraft:mushroom_fields"
+  ],
+  "spawners": {
+    "type": "thedigimod:clown_box",
+    "weight": 10,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "parent": "thedigimod:gym_bro_silver",
+  "display": {
+    "icon": {
+      "item": "thedigimod:gbdefence"
+    },
+    "title": {"translate": "advancements.thedigimod.gym_bro_gold"},
+    "description": {"translate": "advancements.thedigimod.gym_bro_gold.description"},
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "imposibol": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "imposibol"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": false
+}

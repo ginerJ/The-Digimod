@@ -1,0 +1,59 @@
+{
+  "profession": "transporter",
+  "evolutions": {
+    "grizzlymon": {
+      "conditions": {
+        "always_can": "true",
+        "rank": "super"
+      }
+    },
+    "doggymon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "blackgaogamon": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "7:100"
+        ]
+      }
+    },
+    "chakmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "3:100"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    1
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 1.0,
+    "height": 1.5
+  },
+  "default_sp_move": "bear_punch",
+  "anims": [
+    "idle3",
+    "sit",
+    "walk7",
+    "fly",
+    "attack7",
+    "shoot5"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "punimon"
+  ]
+}

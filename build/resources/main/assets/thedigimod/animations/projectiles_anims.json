@@ -1,0 +1,139 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"loop": true,
+			"animation_length": 1.04,
+			"bones": {
+				"projectile": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.04": {
+							"vector": [360, 0, 0]
+						}
+					}
+				},
+				"vortex": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.24": {
+							"vector": [0, 83.08, 0]
+						},
+						"1.04": {
+							"vector": [0, 360, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.16": {
+							"vector": [1, 1, 1]
+						},
+						"0.28": {
+							"vector": [0.9, 0.9, 0.9]
+						},
+						"0.32": {
+							"vector": [1, 1, 1]
+						},
+						"0.48": {
+							"vector": [1, 1, 1]
+						},
+						"0.6": {
+							"vector": [0.9, 0.9, 0.9]
+						},
+						"0.64": {
+							"vector": [1, 1, 1]
+						},
+						"0.8": {
+							"vector": [1, 1, 1]
+						},
+						"0.92": {
+							"vector": [0.9, 0.9, 0.9]
+						},
+						"0.96": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"z_spin": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.04": {
+							"vector": [0, 0, 1257.5]
+						}
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"sissors": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.44": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						},
+						"0.52": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.04": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"sissors2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.44": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						},
+						"0.52": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.04": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"sissor": {
+					"position": {
+						"0.0": {
+							"vector": [0, 3, 0]
+						},
+						"0.44": {
+							"vector": [0, -2, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.52": {
+							"vector": [0, 11, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.68": {
+							"vector": [0, 17, 0],
+							"easing": "easeInOutSine"
+						},
+						"1.04": {
+							"vector": [0, 3, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

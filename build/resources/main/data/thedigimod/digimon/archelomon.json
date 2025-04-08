@@ -1,0 +1,25 @@
+{
+  "diet": "seafood",
+  "xps": [
+    3
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 1.0
+  },
+  "default_sp_move": "ocean_storm",
+  "anims": [
+    "idle3",
+    "sit2",
+    "walk5",
+    "swim2",
+    "attack5",
+    "shoot3"
+  ],
+  "rider_offset": 0.0,
+  "movement_type": "swimmer",
+  "baby_digimon": [
+    "datirimon"
+  ]
+}

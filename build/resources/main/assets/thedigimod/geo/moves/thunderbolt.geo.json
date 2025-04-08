@@ -1,0 +1,25 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.thunderbolt.geo",
+				"texture_width": 64,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [8, 0, -13],
+					"cubes": [
+						{"origin": [-6, 2.5, -13], "size": [12, 9, 8], "uv": [8, 0]},
+						{"origin": [-15, 7, -8], "size": [30, 0, 10], "uv": [-8, 21]}
+					]
+				}
+			]
+		}
+	]
+}

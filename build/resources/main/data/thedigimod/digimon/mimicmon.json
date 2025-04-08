@@ -1,0 +1,39 @@
+{
+  "profession": "transporter",
+  "evolutions": {
+    "manticoremon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "2:150",
+          "7:150",
+          "8:200"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    8
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.0
+  },
+  "default_sp_move": "gatling_arm",
+  "anims": [
+    "idle8",
+    "sit5",
+    "walk9",
+    "fly",
+    "attack",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "poyomon"
+  ]
+}

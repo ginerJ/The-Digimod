@@ -51,7 +51,8 @@ public class SpMoveItem extends DigimonItem {
     public @NotNull InteractionResult interactLivingEntity(@NotNull ItemStack itemStack, @NotNull Player player, @NotNull LivingEntity entity, @NotNull InteractionHand p_41401_) {
         if(entity instanceof DigimonEntity cd && cd.isOwnedBy(player)){
             cd.setSpMoveName(itemName);
-            cd.eatItemAnim(itemStack);
+            cd.eatItemAnim(itemStack.getItem());
+            itemStack.shrink(1);
         }
         return super.interactLivingEntity(itemStack, player, entity, p_41401_);
     }

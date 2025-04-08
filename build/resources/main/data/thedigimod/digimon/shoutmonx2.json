@@ -1,0 +1,40 @@
+{
+  "diet": "scrap",
+  "profession": "lumberjack",
+  "evolutions": {
+    "shoutmonx3": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:250",
+          "5:250"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    5,
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.0
+  },
+  "default_sp_move": "v_arrow",
+  "anims": [
+    "idle3",
+    "sit6",
+    "walk12",
+    "fly",
+    "attack12",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "jyarimon"
+  ]
+}

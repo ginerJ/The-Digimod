@@ -1,0 +1,29 @@
+{
+  "parent": "thedigimod:root",
+  "display": {
+    "icon": {
+      "item": "thedigimod:bag_item"
+    },
+    "title": {"translate": "advancements.thedigimod.training"},
+    "description": {"translate": "advancements.thedigimod.training.description"},
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "imposibol": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "imposibol"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": false
+}

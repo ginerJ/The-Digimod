@@ -1,0 +1,82 @@
+{
+  "diet": "carnivore",
+  "profession": "miner",
+  "evolutions": {
+    "darklizardmon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "numemon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "blackgrowlmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "0:100"
+        ]
+      }
+    },
+    "greymonvirus": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "7:50",
+          "0:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "veedramonblack": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "6:100"
+        ]
+      }
+    },
+    "darktyrannomon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "7:100"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    7,
+    0
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "pepper_breath",
+  "anims": [
+    "idle11",
+    "sit3",
+    "walk5",
+    "fly",
+    "attack",
+    "attack13"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ]
+}

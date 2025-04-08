@@ -19,6 +19,9 @@ import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 
+import static net.modderg.thedigimod.client.TDClientConfig.SHOULD_RENDER_DIRTY_EFFECT;
+import static net.modderg.thedigimod.client.TDClientConfig.SHOULD_RENDER_GLOWMASKS;
+
 
 public class CustomDigimonRender extends GeoEntityRenderer<DigimonEntity> {
     protected Style XpStyle = Style.EMPTY;
@@ -32,7 +35,7 @@ public class CustomDigimonRender extends GeoEntityRenderer<DigimonEntity> {
     @Override
     public void render(@NotNull DigimonEntity entity, float entityYaw, float partialTicks, @NotNull PoseStack stack, @NotNull MultiBufferSource bufferIn, int packedLightIn) {
 
-        if (entity.isEmissive && !this.renderLayers.getRenderLayers().contains(glowingLayer))
+        if (SHOULD_RENDER_GLOWMASKS.get() && entity.isEmissive && !this.renderLayers.getRenderLayers().contains(glowingLayer))
             this.addRenderLayer(glowingLayer);
 
         if(this.shadowRadius == 0)
@@ -50,7 +53,7 @@ public class CustomDigimonRender extends GeoEntityRenderer<DigimonEntity> {
 
     @Override
     public void renderRecursively(PoseStack poseStack, DigimonEntity animatable, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        if (animatable.getDirtyCounter() > 0)
+        if (SHOULD_RENDER_DIRTY_EFFECT.get() && animatable.getDirtyCounter() > 0)
             super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, 0.949f, 0.675f, 0.812f, 0.05f);
         else
             super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
