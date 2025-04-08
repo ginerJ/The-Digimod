@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " l ",
+    "coc",
+    " i "
+  ],
+  "key": {
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "c": {
+      "item": "thedigimod:chrondigizoit"
+    },
+    "o": {
+      "item": "thedigimod:digimon_card"
+    }
+  },
+  "result": {
+    "item": "thedigimod:darc",
+    "count": 1
+  }
+}

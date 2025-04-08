@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 250,
+  "experience": 0.7,
+  "ingredient": {
+    "item": "thedigimod:chrondigizoit"
+  },
+  "result": "thedigimod:chrome_digizoid"
+}

@@ -1,0 +1,15 @@
+{
+  "type": "thedigimod:add_tag_spawns",
+  "biomes": [
+    "minecraft:forest",
+    "minecraft:birch_forest",
+    "minecraft:meadow",
+    "minecraft:sunflower_plains",
+    "minecraft:windswept_forest",
+    "minecraft:birch_forest"
+  ],
+  "weight": 15,
+  "minCount": 2,
+  "maxCount": 10,
+  "entity_tag": "thedigimod:spawns/baby2_digimon"
+}

@@ -1,0 +1,29 @@
+{
+  "parent": "thedigimod:get_a_digimon",
+  "display": {
+    "icon": {
+      "item": "thedigimod:digi_cake"
+    },
+    "title": {"translate": "advancements.thedigimod.party"},
+    "description": {"translate": "advancements.thedigimod.party.description"},
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "imposibol": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "imposibol"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": false
+}

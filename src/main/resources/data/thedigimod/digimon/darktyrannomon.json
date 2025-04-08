@@ -1,0 +1,78 @@
+{
+  "diet": "carnivore",
+  "evolutions": {
+    "metaltyrannomon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:250",
+          "5:250"
+        ],
+        "item": {
+          "thedigimod:chrome_digizoid": 10
+        },
+        "rank": "super"
+      }
+    },
+    "mametyramon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:200",
+          "6:200"
+        ]
+      }
+    },
+    "gigadramon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "5:200",
+          "7:200"
+        ]
+      }
+    },
+    "extyrannomon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "7:100",
+          "9:100",
+          "0:200"
+        ],
+        "rank": "zero"
+      }
+    }
+  },
+  "xps": [
+    7,
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.2
+  },
+  "default_sp_move": "tron_flame",
+  "anims": [
+    "idle9",
+    "sit6",
+    "walk9",
+    "fly",
+    "attack7",
+    "shoot"
+  ],
+  "rider_offset": 0.2,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ]
+}

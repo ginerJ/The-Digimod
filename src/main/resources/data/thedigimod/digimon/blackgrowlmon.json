@@ -1,0 +1,41 @@
+{
+  "diet": "carnivore",
+  "evolutions": {
+    "blackmegalogrowlmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:200",
+          "7:200"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    7,
+    1
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.5
+  },
+  "default_sp_move": "tron_flame",
+  "anims": [
+    "idle9",
+    "sit6",
+    "walk9",
+    "fly",
+    "attack",
+    "shoot"
+  ],
+  "rider_offset": -0.2,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon",
+    "jyarimon"
+  ]
+}

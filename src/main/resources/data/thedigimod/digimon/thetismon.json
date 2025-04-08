@@ -1,0 +1,26 @@
+{
+  "has_emissive_texture": true,
+  "profession": "tree_lover",
+  "xps": [
+    3
+  ],
+  "diet": "seafood",
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.8
+  },
+  "default_sp_move": "doctase",
+  "anims": [
+    "idle3",
+    "sit6",
+    "walk10",
+    "fly6",
+    "attack",
+    "shoot7"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "puyomon"
+  ]
+}

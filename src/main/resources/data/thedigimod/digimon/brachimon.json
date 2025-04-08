@@ -1,0 +1,27 @@
+{
+  "diet": "carnivore",
+  "xps": [
+    0
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 3.9
+  },
+  "default_sp_move": "magma_spit",
+  "anims": [
+    "idle5",
+    "sit5",
+    "walk",
+    "fly",
+    "attack4",
+    "shoot2"
+  ],
+  "rider_offset": 0.0,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon",
+    "datirimon",
+    "sunamon"
+  ]
+}

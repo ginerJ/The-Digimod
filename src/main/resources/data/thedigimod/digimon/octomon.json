@@ -1,0 +1,25 @@
+{
+  "diet": "seafood",
+  "xps": [
+    3
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.0
+  },
+  "default_sp_move": "ink_gun",
+  "anims": [
+    "idle6",
+    "sit2",
+    "walk8",
+    "swim",
+    "attack9",
+    "shoot3"
+  ],
+  "rider_offset": -0.2,
+  "movement_type": "swimmer",
+  "baby_digimon": [
+    "puyomon"
+  ]
+}

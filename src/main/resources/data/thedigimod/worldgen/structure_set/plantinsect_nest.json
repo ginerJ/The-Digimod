@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "thedigimod:plantinsect_nest",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1645050508,
+
+    "spacing": 40,
+
+    "separation": 10,
+
+    "type": "minecraft:random_spread"
+  }
+}

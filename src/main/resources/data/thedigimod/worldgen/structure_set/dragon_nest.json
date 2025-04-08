@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "thedigimod:dragon_nest",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1645050505,
+
+    "spacing": 40,
+
+    "separation": 10,
+
+    "type": "minecraft:random_spread"
+  }
+}

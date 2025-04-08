@@ -1,0 +1,97 @@
+{
+  "diet": "carnivore",
+  "profession": "miner",
+  "evolutions": {
+    "veedramon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "xvmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "0:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "gargomon": {
+      "conditions": {
+        "mood": "Meh",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "8:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "fladramon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "8:50",
+          "0:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "lighdramon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "8:50",
+          "1:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "numemon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "veedramonblack": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "10",
+        "xp": [
+          "6:100"
+        ],
+        "item": {
+          "thedigimod:black_digitron": 5
+        }
+      }
+    }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "pepper_breath",
+  "anims": [
+    "idle8",
+    "sit",
+    "walk9",
+    "fly",
+    "attack12",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "chicomon"
+  ]
+}

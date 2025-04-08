@@ -1,0 +1,29 @@
+{
+  "parent": "thedigimod:tamer_silver",
+  "display": {
+    "icon": {
+      "item": "minecraft:gold_ingot"
+    },
+    "title": {"translate": "advancements.thedigimod.tamer_silver"},
+    "description": {"translate": "advancements.thedigimod.tamer_silver.description"},
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "imposibol": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "imposibol"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": false
+}

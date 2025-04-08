@@ -1,0 +1,39 @@
+{
+  "diet": "rock",
+  "evolutions": {
+    "gogmamon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "6:400",
+          "7:100"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    6
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.5
+  },
+  "default_sp_move": "gliding_rocks",
+  "anims": [
+    "idle5",
+    "sit3",
+    "walk",
+    "fly",
+    "attack6",
+    "shoot"
+  ],
+  "rider_offset": 0.0,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "sunamon"
+  ]
+}

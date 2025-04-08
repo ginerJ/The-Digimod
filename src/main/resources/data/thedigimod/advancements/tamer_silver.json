@@ -1,0 +1,29 @@
+{
+  "parent": "thedigimod:tamer_bronze",
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_ingot"
+    },
+    "title": {"translate": "advancements.thedigimod.tamer_gold"},
+    "description": {"translate": "advancements.thedigimod.tamer_gold.description"},
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "imposibol": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "imposibol"
+    ]
+  ],
+  "rewards": {
+    "experience": 150
+  },
+  "sends_telemetry_event": false
+}

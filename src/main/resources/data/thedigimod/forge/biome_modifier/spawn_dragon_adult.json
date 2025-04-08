@@ -1,0 +1,15 @@
+{
+  "type": "thedigimod:add_tag_spawns",
+  "biomes": [
+    "minecraft:savanna",
+    "minecraft:savanna_plateau",
+    "minecraft:windswept_savanna",
+    "minecraft:badlands",
+    "minecraft:eroded_badlands",
+    "minecraft:wooded_badlands"
+  ],
+  "weight": 10,
+  "minCount": 1,
+  "maxCount": 6,
+  "entity_tag": "thedigimod:spawns/dragon_adult"
+}

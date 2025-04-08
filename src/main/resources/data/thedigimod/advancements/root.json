@@ -1,0 +1,19 @@
+{
+  "display": {
+    "title": {"translate": "advancements.thedigimod.root"},
+    "description": {"translate": "advancements.thedigimod.root.description"},
+    "icon": {
+      "item": "thedigimod:botamon"
+    },
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger_on_join": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

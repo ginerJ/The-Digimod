@@ -1,0 +1,29 @@
+{
+  "parent": "thedigimod:collection_vtamer2",
+  "display": {
+    "icon": {
+      "item": "thedigimod:digivice01"
+    },
+    "title": {"translate": "advancements.thedigimod.collection_vtamer3"},
+    "description": {"translate": "advancements.thedigimod.collection_vtamer3.description"},
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "imposibol": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "imposibol"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": false
+}

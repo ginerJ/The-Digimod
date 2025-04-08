@@ -1,0 +1,62 @@
+{
+  "has_emissive_texture": true,
+  "diet": "bug",
+  "profession": "tree_lover",
+  "evolutions": {
+    "kuwagamon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "roachmon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "kabuterimon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "2:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "ballistamon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "6:50",
+          "2:50"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    2
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 0.75,
+    "height": 1.5
+  },
+  "default_sp_move": "petit_thunder",
+  "anims": [
+    "idle10",
+    "sit3",
+    "walk7",
+    "fly",
+    "attack11",
+    "shoot8"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "bubbmon"
+  ]
+}

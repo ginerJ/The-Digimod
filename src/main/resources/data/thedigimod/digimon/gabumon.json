@@ -1,0 +1,86 @@
+{
+  "profession": "miner",
+  "evolutions": {
+    "drimogemon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "numemon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "garurumonblack": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "7:50",
+          "1:50"
+        ],
+        "item": {
+          "thedigimod:chrome_digizoid": 5
+        }
+      }
+    },
+    "garurumon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "1:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "cyclomon": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "0:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "doggymon": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "5",
+        "xp": [
+          "1:50",
+          "9:50"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "digitron" : "blackgabumon",
+  "xps": [
+    1
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 1.0,
+    "height": 1.5
+  },
+  "default_sp_move": "bear_punch",
+  "anims": [
+    "idle10",
+    "sit3",
+    "walk9",
+    "fly",
+    "attack13",
+    "shoot8"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "punimon"
+  ]
+}

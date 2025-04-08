@@ -1,0 +1,25 @@
+{
+  "has_emissive_texture": true,
+  "profession": "transporter",
+  "xps": [
+    7
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "poison_breath",
+  "anims": [
+    "idle3",
+    "sit6",
+    "walk7",
+    "fly4",
+    "attack5",
+    "shoot6"
+  ],
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "kiimon"
+  ]
+}

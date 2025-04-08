@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ddd",
+    "d0d",
+    "ddd"
+  ],
+  "key": {
+    "0": {
+      "item": "thedigimod:blue_card"
+    },
+    "d": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "item": "thedigimod:training_rock",
+    "count": 1
+  }
+}

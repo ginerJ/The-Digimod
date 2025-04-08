@@ -1,0 +1,38 @@
+{
+  "diet": "carnivore",
+  "profession": "miner",
+  "evolutions": {
+    "aeroveedramon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:400",
+          "4:100"
+        ]
+      }
+    }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "v_arrow",
+  "anims": [
+    "idle3",
+    "sit",
+    "walk7",
+    "fly",
+    "attack",
+    "attack6"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "jyarimon"
+  ]
+}

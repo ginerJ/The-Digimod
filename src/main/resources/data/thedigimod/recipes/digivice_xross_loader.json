@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nnn",
+    "coc",
+    " i "
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:iron_nugget"
+    },
+    "c": {
+      "item": "thedigimod:chrondigizoit"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "o": {
+      "item": "thedigimod:digimon_card"
+    }
+  },
+  "result": {
+    "item": "thedigimod:xross_loader",
+    "count": 1
+  }
+}

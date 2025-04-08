@@ -1,0 +1,31 @@
+{
+  "diet": "baby",
+  "evolutions": {
+    "dracomon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 1,
+  "hitbox": {
+    "width": 0.9,
+    "height": 0.9
+  },
+  "default_sp_move": "bullet",
+  "anims": [
+    "idle6",
+    "sit7",
+    "walk4",
+    "fly7",
+    "attack2",
+    "shoot4"
+  ],
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "petitmon"
+  ]
+}

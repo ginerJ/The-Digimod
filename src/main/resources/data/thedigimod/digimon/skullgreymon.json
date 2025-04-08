@@ -1,0 +1,27 @@
+{
+  "has_emissive_texture": true,
+  "diet": "carnivore",
+  "xps": [
+    7,
+    0
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 3.2
+  },
+  "default_sp_move": "giga_destroyer",
+  "anims": [
+    "idle7",
+    "sit15",
+    "walk12",
+    "float2",
+    "attack6",
+    "shoot"
+  ],
+  "rider_offset": 0,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon"
+  ]
+}

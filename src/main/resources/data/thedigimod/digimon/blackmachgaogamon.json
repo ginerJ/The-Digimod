@@ -1,0 +1,18 @@
+{
+  "profession": "miner",
+  "xps": [
+    7,
+    1,
+    5
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.9
+  },
+  "default_sp_move": "mach_tornado",
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "punimon"
+  ]
+}

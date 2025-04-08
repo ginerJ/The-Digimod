@@ -1,0 +1,32 @@
+{
+  "has_emissive_texture": true,
+  "diet": "baby",
+  "evolutions": {
+    "jellymon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    }
+  },
+  "xps": [
+    3
+  ],
+  "evo_stage": 1,
+  "hitbox": {
+    "width": 0.9,
+    "height": 0.9
+  },
+  "default_sp_move": "bullet",
+  "anims": [
+    "idle6",
+    "sit7",
+    "walk4",
+    "swim",
+    "attack2",
+    "shoot4"
+  ],
+  "movement_type": "swimmer",
+  "baby_digimon": [
+    "puyomon"
+  ]
+}

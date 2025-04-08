@@ -1,0 +1,41 @@
+{
+  "diet": "carnivore",
+  "evolutions": {
+    "groundramon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:125",
+          "7:125",
+          "6:250"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    6,
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.35
+  },
+  "default_sp_move": "mega_flame",
+  "anims": [
+    "idle3",
+    "sit6",
+    "walk9",
+    "fly",
+    "attack6",
+    "shoot"
+  ],
+  "rider_offset": 0.15,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "petitmon"
+  ]
+}

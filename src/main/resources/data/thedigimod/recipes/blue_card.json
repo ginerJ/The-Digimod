@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "thedigimod:digimon_card"
+    },
+    {
+      "item": "thedigimod:digimon_card"
+    },
+    {
+      "item": "thedigimod:digimon_card"
+    },
+    {
+      "item": "thedigimod:digimon_card"
+    }
+  ],
+  "result": {
+    "item": "thedigimod:blue_card",
+    "count": 1
+  }
+}

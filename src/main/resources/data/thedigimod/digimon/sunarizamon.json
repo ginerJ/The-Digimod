@@ -1,0 +1,82 @@
+{
+  "diet": "rock",
+  "profession": "miner",
+  "evolutions": {
+    "tortamon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "numemon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "flarerizamon": {
+      "conditions": {
+        "mood": "Meh",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "0:100"
+        ],
+        "rank": "super"
+      }
+    },
+    "cyclomon": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "10",
+        "xp": [
+          "0:100"
+        ]
+      }
+    },
+    "baboongamon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "6:50",
+          "1:50"
+        ],
+        "rank": "super"
+      }
+    },
+    "golemon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "6:100"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    6
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 1.5,
+    "height": 0.75
+  },
+  "default_sp_move": "sand_blast",
+  "anims": [
+    "idle3",
+    "sit12",
+    "walk7",
+    "fly",
+    "attack3",
+    "shoot6"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "sunamon"
+  ]
+}

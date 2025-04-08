@@ -1,0 +1,26 @@
+{
+  "profession": "miner",
+  "xps": [
+    6
+  ],
+  "diet": "rock",
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.9
+  },
+  "default_sp_move": "crystal_rain",
+  "anims": [
+    "idle8",
+    "sit5",
+    "walk9",
+    "fly",
+    "attack8",
+    "attack11"
+  ],
+  "rider_offset": 0.1,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "sunamon"
+  ]
+}

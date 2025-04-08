@@ -1,0 +1,27 @@
+{
+  "diet": "scrap",
+  "xps": [
+    5,
+    0
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.0,
+    "height": 3.0
+  },
+  "default_sp_move": "mach_tornado",
+  "anims": [
+    "idle8",
+    "sit9",
+    "walk5",
+    "fly",
+    "attack12",
+    "shoot8"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "chicomon",
+    "jyarimon",
+    "kiimon"
+  ]
+}

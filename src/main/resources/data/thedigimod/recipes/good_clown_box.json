@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "d0d",
+    "ddd"
+  ],
+  "key": {
+    "0": {
+      "item": "thedigimod:blue_card"
+    },
+    "d": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "thedigimod:clown_box",
+    "count": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "diet": "carnivore",
+  "profession": "tree_lover",
+  "xps": [
+    0,
+    8
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.25,
+    "height": 2.75
+  },
+  "default_sp_move": "gold_arrow",
+  "anims": [
+    "idle3",
+    "sit",
+    "walk7",
+    "fly",
+    "attack",
+    "attack6"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon",
+    "chicomon"
+  ]
+}

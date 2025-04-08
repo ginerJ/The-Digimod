@@ -1,0 +1,25 @@
+{
+  "profession": "miner",
+  "xps": [
+    7,
+    1
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.4
+  },
+  "default_sp_move": "tron_flame",
+  "anims": [
+    "idle3",
+    "sit13",
+    "walk10",
+    "fly",
+    "attack",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "punimon"
+  ]
+}

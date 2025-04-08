@@ -1,0 +1,25 @@
+{
+  "xps": [
+    8,
+    1
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.0
+  },
+  "default_sp_move": "holy_shoot",
+  "anims": [
+    "idle3",
+    "sit11",
+    "walk7",
+    "fly4",
+    "attack3",
+    "shoot6"
+  ],
+  "rider_offset": -0.15,
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "poyomon"
+  ]
+}

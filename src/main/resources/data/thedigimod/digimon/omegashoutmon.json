@@ -1,0 +1,26 @@
+{
+  "diet": "scrap",
+  "profession": "transporter",
+  "xps": [
+    8,
+    0
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 3.0
+  },
+  "default_sp_move": "divine_axe",
+  "anims": [
+    "idle8",
+    "sit15",
+    "walk12",
+    "fly",
+    "attack13",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "jyarimon"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "diet": "carnivore",
+  "evolutions": {
+    "megalogrowlmondata": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:200",
+          "5:200"
+        ]
+      }
+    },
+    "megalogrowlmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:250",
+          "5:250"
+        ],
+        "rank": "super",
+        "item": {
+          "thedigimod:chrome_digizoid": 10
+        }
+      }
+    },
+    "blackmegalogrowlmon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "0:250",
+          "5:250"
+        ],
+        "item": {
+          "thedigimod:black_digitron": 5
+        },
+        "rank": "super"
+      }
+    },
+    "megadramon": {
+      "conditions": {
+        "mood": "Sad",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:200",
+          "5:200"
+        ]
+      }
+    }
+  },
+  "xps": [
+    0
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.5
+  },
+  "default_sp_move": "mega_flame",
+  "anims": [
+    "idle9",
+    "sit6",
+    "walk9",
+    "fly",
+    "attack",
+    "shoot"
+  ],
+  "rider_offset": -0.2,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "jyarimon"
+  ],
+  "digitron" : "blackgrowlmon"
+}

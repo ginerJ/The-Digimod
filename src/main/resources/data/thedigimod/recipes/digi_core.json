@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "did",
+    "i0i",
+    "did"
+  ],
+  "key": {
+    "i": {
+      "item": "thedigimod:blue_card"
+    },
+    "0": {
+      "tag": "thedigimod:babies/babies"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "thedigimod:digi_core",
+    "count": 1
+  }
+}

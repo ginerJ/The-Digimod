@@ -1,0 +1,52 @@
+{
+  "diet": "poop",
+  "evolutions": {
+    "extyrannomon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "7:100",
+          "9:100",
+          "0:200"
+        ],
+        "rank": "super"
+      }
+    },
+    "rareraremon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "9:200",
+          "5:150"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    9,
+    5
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 1.75
+  },
+  "default_sp_move": "poop_throw",
+  "anims": [
+    "idle6",
+    "sit2",
+    "walk8",
+    "fly",
+    "attack14",
+    "shoot4"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "zurumon"
+  ]
+}

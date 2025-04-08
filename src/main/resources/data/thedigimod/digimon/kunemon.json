@@ -1,0 +1,49 @@
+{
+  "diet": "bug",
+  "profession": "farmer",
+  "evolutions": {
+    "kuwagamon": {
+      "conditions": {
+        "always_can": "true"
+      }
+    },
+    "roachmon": {
+      "conditions": {
+        "mood": "Sad",
+        "rank": "fail"
+      }
+    },
+    "flymon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "0",
+        "min_wins": "15",
+        "xp": [
+          "2:100"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    2
+  ],
+  "evo_stage": 2,
+  "hitbox": {
+    "width": 1.5,
+    "height": 1.55
+  },
+  "default_sp_move": "petit_thunder",
+  "anims": [
+    "idle3",
+    "sit2",
+    "walk8",
+    "fly",
+    "attack3",
+    "shoot"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "bubbmon"
+  ]
+}

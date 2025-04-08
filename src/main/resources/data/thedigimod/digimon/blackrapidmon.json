@@ -1,0 +1,27 @@
+{
+  "diet": "carnivore",
+  "xps": [
+    1,
+    7,
+    5
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 3.2
+  },
+  "default_sp_move": "gatling_arm",
+  "anims": [
+    "idle9",
+    "sit9",
+    "walk5",
+    "float",
+    "attack7",
+    "shot8"
+  ],
+  "profession": "miner",
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "conomon"
+  ]
+}

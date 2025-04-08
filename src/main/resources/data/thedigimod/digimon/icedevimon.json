@@ -1,0 +1,40 @@
+{
+  "has_emissive_texture": true,
+  "profession": "miner",
+  "evolutions": {
+    "marinedevimon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "5",
+        "min_wins": "50",
+        "xp": [
+          "7:250",
+          "3:250"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "xps": [
+    7,
+    3
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.75
+  },
+  "default_sp_move": "death_claw",
+  "anims": [
+    "idle3",
+    "sit6",
+    "walk7",
+    "fly4",
+    "attack5",
+    "shoot6"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "kiimon"
+  ]
+}

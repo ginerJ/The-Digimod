@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:glass"
+    },
+    {
+      "item": "thedigimod:black_digitron"
+    }
+  ],
+  "result": {
+    "item": "thedigimod:dark_tower_shard",
+    "count": 1
+  }
+}

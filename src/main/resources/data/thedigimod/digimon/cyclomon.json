@@ -1,0 +1,42 @@
+{
+  "diet": "carnivore",
+  "xps": [
+    6,
+    7
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.5
+  },
+  "evolutions" : {
+    "skullgreymon": {
+      "conditions": {
+        "mood": "Joyful",
+        "max_mistakes": "10",
+        "min_wins": "40",
+        "xp": [
+          "0:200",
+          "7:200"
+        ],
+        "rank": "super"
+      }
+    }
+  },
+  "default_sp_move": "hyper_heat",
+  "anims": [
+    "idle5",
+    "sit5",
+    "walk7",
+    "fly",
+    "attack",
+    "shoot"
+  ],
+  "rider_offset": 0.0,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "botamon",
+    "punimon",
+    "sunamon"
+  ]
+}

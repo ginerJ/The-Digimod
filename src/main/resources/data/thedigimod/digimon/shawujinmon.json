@@ -1,0 +1,25 @@
+{
+  "diet": "seafood",
+  "profession": "lumberjack",
+  "xps": [
+    3
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.25,
+    "height": 3.5
+  },
+  "default_sp_move": "gatling_arm",
+  "anims": [
+    "idle4",
+    "sit14",
+    "walk6",
+    "fly",
+    "attack5",
+    "shoot5"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "datirimon"
+  ]
+}

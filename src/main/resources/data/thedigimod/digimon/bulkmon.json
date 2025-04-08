@@ -1,0 +1,25 @@
+{
+  "diet": "carnivore",
+  "xps": [
+    5
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.35
+  },
+  "default_sp_move": "thunderbolt",
+  "anims": [
+    "idle7",
+    "sit5",
+    "walk9",
+    "fly",
+    "attack7",
+    "shoot"
+  ],
+  "rider_offset": -0.1,
+  "movement_type": "ground",
+  "baby_digimon": [
+    "dokimon"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "diet": "bug",
+  "profession": "lumberjack",
+  "xps": [
+    2
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.9
+  },
+  "default_sp_move": "cruel_sissors",
+  "anims": [
+    "idle8",
+    "sit5",
+    "walk7",
+    "fly7",
+    "attack7",
+    "attack6"
+  ],
+  "rider_offset": 0.2,
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "bubbmon",
+    "dokimon"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "parent": "thedigimod:training",
+  "display": {
+    "icon": {
+      "item": "thedigimod:bytedefense"
+    },
+    "title": {"translate": "advancements.thedigimod.gym_bro_bronze"},
+    "description": {"translate": "advancements.thedigimod.gym_bro_bronze.description"},
+    "background": "thedigimod:textures/gui/advancement_back.png",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "imposibol": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "imposibol"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": false
+}

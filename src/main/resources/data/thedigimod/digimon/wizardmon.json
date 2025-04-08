@@ -1,0 +1,24 @@
+{
+  "profession": "tree_lover",
+  "xps": [
+    7
+  ],
+  "evo_stage": 3,
+  "hitbox": {
+    "width": 1.0,
+    "height": 2.5
+  },
+  "default_sp_move": "meteor_wing",
+  "anims": [
+    "idle4",
+    "sit6",
+    "walk6",
+    "fly",
+    "attack5",
+    "shoot2"
+  ],
+  "movement_type": "ground",
+  "baby_digimon": [
+    "kiimon"
+  ]
+}

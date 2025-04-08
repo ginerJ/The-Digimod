@@ -1,0 +1,28 @@
+{
+  "diet": "carnivore",
+  "xps": [
+    5,
+    0,
+    7
+  ],
+  "evo_stage": 4,
+  "hitbox": {
+    "width": 1.5,
+    "height": 2.9
+  },
+  "default_sp_move": "giga_destroyer",
+  "anims": [
+    "idle8",
+    "sit",
+    "float2",
+    "float2",
+    "attack12",
+    "shoot8"
+  ],
+  "rider_offset": 0.35,
+  "movement_type": "flyer",
+  "baby_digimon": [
+    "botamon",
+    "petitmon"
+  ]
+}
